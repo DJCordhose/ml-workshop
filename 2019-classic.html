@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Workshop Classic Machine Learning</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+
+        .todo:before {
+            content: 'TODO: ';
+        }
+
+        .todo {
+            color: red !important;
+        }
+
+        code span.line-number {
+            color: lightcoral;
+        }
+
+        .reveal pre code {
+            max-height: 1000px !important;
+        }
+
+        img {
+            border: 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .reveal {
+            -ms-touch-action: auto !important;
+            touch-action: auto !important;
+        }
+
+        .reveal h2,
+        .reveal h3,
+        .reveal h4 {
+            letter-spacing: 2px;
+            font-family: 'Amiri', serif;
+            /* font-family: 'Times New Roman', Times, serif; */
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: -2px;
+            text-transform: none !important;
+        }
+
+        .reveal em {
+            font-weight: bold;
+        }
+
+        .reveal .step-subtitle h1 {
+            letter-spacing: 1px;
+        }
+
+        .reveal .step-subtitle h2,
+        .reveal .step-subtitle h3 {
+            text-transform: none;
+            font-style: italic;
+            font-weight: normal;
+            /* font-weight: 400; */
+            /* font-family: 'Amiri', serif; */
+            font-family: 'Lobster', serif;
+            letter-spacing: 1px;
+            color: #2aa198;
+            text-decoration: underline;
+        }
+
+        .reveal .front-page h1,
+        .reveal .front-page h2 {
+            font-family: "League Gothic";
+            font-style: normal;
+            text-transform: uppercase !important;
+            letter-spacing: 1px;
+        }
+
+        .reveal .front-page h1 {
+            font-size: 2.5em !important;
+        }
+
+        .reveal .highlight {
+            background-color: #D3337B;
+            color: white;
+        }
+
+        .reveal section img {
+            background: none;
+        }
+
+        .reveal img.with-border {
+            border: 1px solid #586e75 !important;
+            box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .reveal li {
+            margin-bottom: 8px;
+        }
+
+        /* For li's that use FontAwesome icons as bullet-point */
+        .reveal ul.fa-ul li {
+            list-style-type: none;
+        }
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown class="preparation">
+                <textarea data-template>
+### Preparation
+
+                </textarea>
+            </section>
+
+            <section data-markdown>
+                <textarea data-template>
+## Workshop Classic Machine Learning
+
+### 2 day introduction to classic machine learning using
+* pandas
+* matplotlib
+* Scikit-learn
+            </textarea>
+            </section>
+
+            <section data-markdown class="todo">
+                <textarea data-template>
+### Schedule
+
+1. Data-Viz and Preprocessing
+    1. Pandas 
+    * resources SQL
+    * exercise: prepare insurance dataset
+    1. Matplotlib
+    * plot dataset
+        * seaborn
+        * 2-d
+
+
+
+        </textarea>
+            </section>
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            // do we want this???
+            $('li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            width: 1100,
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>

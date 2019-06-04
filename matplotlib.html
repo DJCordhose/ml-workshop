@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Matplotlib</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                          letter-spacing: 2px;
+                          font-family: 'Amiri', serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+            <!-- <section data-markdown class="preparation">
+                    <textarea data-template>
+### Preparation
+* Rehearse Demos
+
+                </textarea>
+            </section> -->
+<section>
+            <h2>Basic Visualization with Matplotlib</h2>
+            <p><em>Just the default low level data viz library</em></p>
+
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+<img src='img/matplotlib/logo.png'>
+<img src='img/matplotlib/intro.png'>
+
+https://matplotlib.org/
+        </textarea>
+    </section>
+
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Matplotlib and its friends
+
+<img src='img/matplotlib/trio.png' height="500px">
+
+<small>
+https://twitter.com/vboykis/status/1032631145035427840    
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Notebooks on Colab to make them run
+
+<img src='img/matplotlib/trio2.png'>
+
+<small>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-1-matplotlib-hello-world.ipynb
+</small>
+</textarea>
+</section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Matplotlib comes with a state-based, MATLAB-like way of plotting
+
+<img src='img/matplotlib/pyplot.png'>
+
+<small>
+https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html
+</small>
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Matplotlib Hello World: Our first Colab Notebook
+
+* Notebooks as the classic way of scripting
+* Colab let's you run your notebooke on Google servers
+* Links
+  * <a href=' https://docs.google.com/presentation/d/1n2RlMdmv1p25Xy5thJUhkKGvjtV-dkAIsUXP-AL4ffI/edit#slide=id.g362da58057_0_1'>
+    Joel Grus does not like Notebooks
+  </a>
+  * <a href='https://jakevdp.github.io/blog/2017/03/03/reproducible-data-analysis-in-jupyter/'>
+    Jake VanderPlas likes them and has some recommendations on reproducibility
+</a>
+  
+<small>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-1-matplotlib-hello-world.ipynb
+</small>
+    </textarea>
+</section>
+
+
+    
+    <section data-markdown>
+        <textarea data-template>
+### It is recommended to use the Object Oriented API, though
+
+<small>
+https://matplotlib.org/api/pyplot_summary.html#the-object-oriented-api
+</small>
+    
+<pre><code contenteditable data-trim class="line-numbers python">fig, ax = plt.subplots()
+ax.plot(x, y)
+fig.savefig("test.png")
+</code></pre>
+
+* creating subplots: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots
+* most things you will do on subplots: https://matplotlib.org/api/axes_api.html
+* container around subplots: https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Don't let naming confuse you
+
+<img src='img/matplotlib/figure_axes_axis_labeled.png' height="500px">
+
+<small>
+https://github.com/matplotlib/AnatomyOfMatplotlib/blob/master/images/figure_axes_axis_labeled.png
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Anatomy of a figure
+
+<img src='img/matplotlib/anatomy.png' height="500px">
+
+<small>
+https://matplotlib.org/tutorials/introductory/usage.html
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### subplots vs subplot
+
+* <em>subplot</em> is an API inspired by MATLAB
+* its API is totally weird if you MATLAB is not your mind set
+* use <em>subplots</em> as shown before if you want an intuitive interface
+
+because their names are so close to each other, if things do not behave as expected make sure you are using the right API
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What can you pass as data?
+
+* all plotting functions expect <em>np.array</em>
+* array-like data structures <em>might</em> work
+* best to explicitely convert everything to <em>np.array</em>
+* Pandas Dataframe: <em>df.values</em>
+* Numpy Matrix: <em>np.asarray(matrix)</em>
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise: Create a composed Figure using the OO style API
+
+<img src='notebooks/img/two-subplots.png'>
+
+<small>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-2-matplotlib-oo-api.ipynb
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Classic Charts with Matplotlib
+
+<img src='notebooks/img/bars.png' height="300px">
+
+* https://matplotlib.org/gallery.html
+* https://matplotlib.org/tutorials/introductory/sample_plots.html
+
+<small>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-3-matplotlib-charts-overview.ipynb
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Hands-On
+
+#### Choose one Chart Sample that is closest to your use case and make it "yours" 
+
+* https://matplotlib.org/gallery.html
+* https://matplotlib.org/tutorials/introductory/sample_plots.html
+* https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-3-matplotlib-charts-overview.ipynb
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Plotting in 3d
+
+<img src='img/3d-s.png' height="400px">
+
+<small>
+https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot
+https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-4-matplotlib-3d.ipynb
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise: 3d plots
+
+* Change Viewpoint of 3d plot
+    * Use online help and Wikipedia to understand azimuth
+* Use the Iris data set or any other dataset instead of the s-curve
+
+<small>
+https://en.wikipedia.org/wiki/Azimuth
+<br>
+<br>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/2-4-matplotlib-3d.ipynb
+<br>
+<br>
+http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris
+<br><br>
+http://scikit-learn.org/stable/datasets/index.html
+</small>
+        
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## What's next?
+### Visualizing up to 6 dimensions
+
+<img src='img/DJ_Sarkar_4d.png' height="350">
+
+<small>
+https://towardsdatascience.com/the-art-of-effective-visualization-of-multi-dimensional-data-6c7202990c57
+</small>
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+## Strange Graphics
+
+<a href='https://xeno.graphics/scatter-pies/'>
+<img src='img/scatter-pies.png' height="350">
+</a>
+
+<small>
+https://xeno.graphics/
+<br>
+https://xeno.graphics/scatter-pies/
+</small>
+
+    </textarea>
+    </section>
+
+
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### What else
+
+* Legends
+  * https://twitter.com/choldgraf/status/1020351698735226880
+* Axis / Scale
+* Texts and Annotations
+  * https://matplotlib.org/1.5.0/users/pyplot_tutorial.html#working-with-text
+<small>
+
+</small>
+        
+</textarea>
+</section> -->
+
+
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        if (window.location.hostname.indexOf('localhost') !== -1 && !printMode) {
+        } else {
+            // only applies to public version
+            $('.todo').remove();
+            $('.preparation').remove();
+            $('.local').remove();
+        }
+        Reveal.addEventListener( 'ready', function( event ) {
+            // do we want this???
+            $('li').addClass('fragment')
+
+            if (window.location.hostname.indexOf('localhost') !== -1) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+            // applies to all versions
+            $('code').addClass('line-numbers');
+
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+
+        } );
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+        // $('section').attr('data-background-size', "1620px");
+
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+            mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

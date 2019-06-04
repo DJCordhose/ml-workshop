@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Dimensionality Reduction</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                          letter-spacing: 2px;
+                          font-family: 'Amiri', serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+            <!-- <section data-markdown class="preparation">
+                    <textarea data-template>
+### Preparation
+* Rehearse Demos
+
+                </textarea>
+            </section> -->
+<section>
+        <h2>Dimensionality Reduction</h2>
+        <p><em>What do you do if your data just is in more than 3d (or even 2d)</em></p>
+</section>
+
+<!-- <section data-markdown class="todo">
+        <textarea data-template>
+
+</textarea>
+</section>     -->
+
+
+<section data-markdown>
+        <textarea data-template>
+### What is Dimensionality Reduction?
+
+* Linear Correlations: PCA: Find out what really matters in your data
+* Non-Linear Correlations: t-SNE: Visualizing High Dimensional Data
+</textarea>
+    </section>
+    
+<section data-markdown>
+        <textarea data-template>
+## PCA
+### Principal Component Analysis
+
+</textarea>
+    </section>
+
+    <section>
+        <img src="img/flashcards/Principal_Component_Analysis_print.png">
+    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### PCA in 2d
+
+<img src="img/unsupervised/pca_setosa.png">
+
+<small>
+http://setosa.io/ev/principal-component-analysis/
+</small>
+    </textarea>
+    </section>
+
+    <!-- <section data-markdown>
+        <textarea data-template>
+### Questions
+
+1. Why is a transformation from 2d to 2d reasonable in the first place?
+1. Where in the visualization do you see high and low variance of a principal component? How is this expressed? 
+1. With the initial data points, why don't we loose much when we drop principal component 2? 
+1. Can you find a configuration of points where none of the principal components could be dropped without loosing a lot of information?
+
+    </textarea>
+    </section> -->
+
+    <section>
+        <h2>How does PCA work?</h2>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Overview
+
+1. Fit an n-dimensional ellipsoid to the data
+1. Each axis of the ellipsoid represents one principal component
+1. Each principal component has a range of values
+1. If this range is small, the variance of this principal component is also small
+1. Principal components of low variance can be dropped without loosing a lot of information 
+
+<small>
+https://en.wikipedia.org/wiki/Principal_component_analysis
+</small>
+</textarea>
+</section>
+
+    <section>
+        <h3>Intuition in 3d</h3>
+        <p>Rotate the camera to a position that reveals the most information</p>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+<a href='https://youtu.be/4DpdpZkl8HI?t=65' target="_blank">
+<img src='img/unsupervised/perceptual-shift.png' height="500px">
+</a>
+
+<small>
+The Making of Perceptual Shift: https://youtu.be/4DpdpZkl8HI?t=65
+</small>
+</textarea>
+    </section>
+    
+<section data-markdown>
+        <textarea data-template>
+### Experiment with PCA in 3d
+
+<img src="img/unsupervised/pca_setosa_3d.png" height="400">
+
+<small>
+http://setosa.io/ev/principal-component-analysis/
+</small>
+    </textarea>
+    </section>
+        
+    <section data-markdown>
+        <textarea data-template>
+### Questions
+
+1. Manually "rotate the camera" to find the best principal components
+1. Compare your manual solution to the automated PCA transformation 
+1. How would you tell which one is better? Is it even different? 
+1. How many principal components would you advice to drop?
+    </textarea>
+    </section>
+
+    
+<section>
+<h3>Typical Use Case: Dimensionality Reduction</h3>
+<div style="float: left">
+        <img src="img/unsupervised/pca-example.png" height="500px">
+    </div>
+    <div style="float: right" class="fragment">
+            <img src="img/unsupervised/pca-example-pcs.jpg" height="500px">
+    </div>
+<small>
+    <a href="https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb">
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb
+</a>
+</small>    
+        </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise: Feature Elimination
+
+_Create a dataset where no principal component could be dropped (without losing significant amounts of information)_
+
+<small>
+https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb
+</small>
+        
+</textarea>
+</section>
+
+<section>
+<h2>t-SNE</h2>
+<h3>t-distributed stochastic neighbor embedding</h3>
+<p>Visualizing High Dimensional Data</p>
+</section>
+
+<section>
+    <h3>Motivation</h3>
+    <p>As humans looking at a computer screen we are naturally limited to two-dimensional visualizations that at best change over time and to reactions to interaction.</p>
+</section>
+    
+<section data-markdown>
+        <textarea data-template>
+### Idea of t-SNE
+
+_Describe a projection from high dimension to 2-d as a machine learning problem_
+
+1. Create pairwise probability distributions over high dimensional data 
+1. Create similar distribution in 2-d
+1. Loss is distance between the two using relative entropy
+1. Minimize loss
+
+<small>
+https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding
+<br>
+https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Watch t-SNE learn - Dancing Bacteria
+
+<img src='img/unsupervised/animated_tSNE.gif'>
+
+<small>
+https://twitter.com/ChaseClarkatUIC/status/984839270132338688
+<br>
+https://chasemc.github.io/post/animated-t-sne/
+</small></textarea>
+</section>
+
+<!-- <section data-markdown style="font-size: x-large">
+                <textarea data-template>
+The following work is based on
+* https://beta.observablehq.com/@nstrayer/t-sne-explained-in-plain-javascript (Notebook by https://twitter.com/NicholasStrayer)
+* http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf (original Paper)
+* https://lvdmaaten.github.io/tsne/ (Summary page by one of the authors)
+                    </textarea>
+        </section> -->
+        
+<section data-markdown>
+        <textarea data-template>
+### How t-SNE works
+
+1. Randomly initialize mappings between high and low dimension data points
+1. Calculate the cost and gradient for the current mapping
+1. Use the gradient to nudge all our mappings to slightly better postions
+1. Repeat 2 and 3 until we've lowered our cost function a satisfactory amount.
+
+        </textarea></section>
+
+        <!-- <section data-markdown>
+        <textarea data-template>
+#### 10 dimensions, 5 randomly placed clusters
+
+<img src='img/unsupervised/t-sne-5-10.png' height="500px">
+<small>
+https://beta.observablehq.com/@djcordhose/t-sne-explained-in-plain-javascript#reset_button
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Gradient Descent with two tweaks
+
+* _early exageration_: exagerate the distances between the points in the higher dimensions
+  * some amount for some number of iterations
+  * intuition: focus more on broad scale patterns
+* _late momentum change_: paper recomends having the momentum start out stronger and then get weaker after some number of iterations
+  * avoid early local minima
+
+        </textarea></section> -->
+
+<section data-markdown>
+        <textarea data-template>
+### t-SNE's crucial parameter: Perplexity
+
+* Intuition: a guess about the number of close neighbors each point has
+  * Low Perplexity: Local variations dominate
+  * High Perplexity: Include even more remote data in neighborhood (all data as an extreme)
+* Can dramatically change the results of t-SNE
+
+<small>
+https://en.wikipedia.org/wiki/Perplexity    
+</small>
+            </textarea>
+        </section>
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Perplexity
+
+_Perplexity is a measure related to the entropy (or dispersed-ness) of the system of points._
+
+* is the log of the entropy
+* untuitively is the effective number of neighbors for each point
+* how many points to capture from the distribution over each point
+* The original paper says, “The performance of SNE is fairly robust to changes in the perplexity, and typical values are between 5 and 50.” 
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Pairwise probability calculations
+
+_Given distance and variance_: How likely is it that two observations come from the same normal distribution?
+
+<img src='img/unsupervised/Pairwise_probability_calculations.png' height="370px">
+
+<small>
+https://beta.observablehq.com/@djcordhose/t-sne-explained-in-plain-javascript#new_point
+</small>
+</textarea>
+</section> -->
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Probability Density Function
+
+function of a continuous random variable, whose integral across an interval gives the probability that the value of the variable lies within the same interval
+
+<img src='img/Boxplot_vs_PDF.svg' height="300px">
+
+<small>
+https://en.wikipedia.org/wiki/Probability_density_function
+<br>
+(c) https://en.wikipedia.org/wiki/User:Jhguch
+</small>
+</textarea>
+</section> -->
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Perplexity derived from Variance
+
+What variance achieves a certain perplexity? How many points to include?
+
+<img src='img/unsupervised/Variance_to_Perplexity.png' height="370px">
+
+<small>
+https://beta.observablehq.com/@djcordhose/t-sne-explained-in-plain-javascript#variance
+</small>
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+        <textarea data-template>
+### What is being trained with t-SNE?
+
+1. Optimal Variance for each point based on gloabally set perplexity
+   * Uses simple binary search: https://en.wikipedia.org/wiki/Binary_search_algorithm
+1. Minimmal difference between probability distributions in high dimensions (original data) and low dimensions (projection)
+   * Calculated using Kullback–Leibler divergence: https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence 
+            </textarea>
+        </section>
+         -->
+<section data-markdown style="font-size: xx-large">
+        <textarea data-template>
+### How to Use t-SNE Effectively
+
+1. Perplexity really matters
+1. Iterate until reaching a stable configuration
+1. Cluster sizes in a t-SNE plot mean nothing
+1. Distances between clusters might not mean anything
+
+<img src='img/unsupervised/misread-tsne.png' height="250px">
+
+<small>
+https://distill.pub/2016/misread-tsne/
+<br>
+FAQ: http://lvdmaaten.github.io/tsne/
+</small>
+</textarea>
+</section>
+
+<section data-markdown style="font-size: x-large">
+        <textarea data-template >
+### Exercise
+
+_For the 2 cluster example, can you find a perplexity that no longer gives good results?_
+
+* Reasonable perplexities are between 5 and 50. 
+* What is the perplexity?
+* Why?
+
+<img src='img/unsupervised/2-clusters-misread-tsne.png' height="300px">
+
+https://distill.pub/2016/misread-tsne/
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### T-SNE can also reduce dimensions
+
+1. There is no model, however
+1. can only perform <em>fit_transform</em>
+1. works well on clusters
+
+<small>
+    https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-2-t-sne.ipynb
+</small>
+</textarea>
+</section>
+
+
+<section>
+<h3>UMAP: Alternative to t-SNE</h3>
+<p><small>Searching for a low dimensional projection of the data that has the closest possible equivalent fuzzy topological structure (Riemannian manifold).</small></p>
+<div style="float: left">
+        <img src="img/unsupervised/umap_example_mnist1.png" height="300px">
+        <p>
+            <small>MNIST Digit Dataset</small>
+        </p>
+    </div>
+    <div style="float: right">
+            <img src="img/unsupervised/umap_example_fashion_mnist1.png" height="300px">
+            <p>
+            <small>Fashion Items</small>
+        </p>
+    </div>
+<small>
+    <a href="https://github.com/lmcinnes/umap">
+https://github.com/lmcinnes/umap
+</a>
+</small>    
+        </section>
+        
+        <section data-markdown>
+            <textarea data-template>
+### Fashion MNIST
+
+28x28 grayscale images of fashion Items
+
+<img src="img/fashion-mnist-sprite.png" height="400px">
+
+
+<small>
+https://github.com/zalandoresearch/fashion-mnist
+<br>
+https://arxiv.org/abs/1708.07747
+</small>    
+        
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### What do numbers look like?
+
+the first million integers, represented as binary vectors indicating their prime factors 
+
+<img src='img/primes_umap_1e6_contrast_enhanced.png' height="300">
+
+<small>
+https://youtu.be/nCk8dyU7zUM
+<br>
+https://twitter.com/algoritmic/status/1036658934042509312
+https://johnhw.github.io/umap_primes/index.md.html
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Dimensionality Reduction with UMAP
+
+1. Much faster than T-SNE with comparable results
+1. Main parameter (number of neighbors) a bit more intinutive
+1. Has abstract model
+1. Can also make use of labels
+
+<small>
+    https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-3-umap.ipynb
+</small>
+</textarea>
+</section>
+
+
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        if (window.location.hostname.indexOf('localhost') !== -1 && !printMode) {
+        } else {
+            // only applies to public version
+            $('.todo').remove();
+            $('.preparation').remove();
+            $('.local').remove();
+        }
+        Reveal.addEventListener( 'ready', function( event ) {
+            // do we want this???
+            $('li').addClass('fragment')
+
+            if (window.location.hostname.indexOf('localhost') !== -1) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+            // applies to all versions
+            $('code').addClass('line-numbers');
+
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+
+        } );
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+        // $('section').attr('data-background-size', "1620px");
+
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+            mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
