@@ -211,6 +211,48 @@ https://twitter.com/pcastr/status/1138403466613796864
             </textarea>
             </section>
 
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning
+
+<div  style="max-width: 45%; float: left">
+<br>
+<img src="img/rl.png">
+</div>
+<div style="max-width: 50%; float: right">
+<br>
+<ol>
+    <li>Based on _Observations_ an _Agent_ executes </li>
+<li>_Actions_ within a given  
+<li>_Environment_ which lead to positive or negative 
+<li>_Rewards_.
+</ol>
+</div>
+
+<div style="clear: both;">
+    <br>
+    <p >The Agent’s job is to maximize the cumulative Reward</p>
+</div>
+
+<small>
+http://gym.openai.com/docs/    
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Algorithm Overview
+
+<img src='img/rl_algorithms_9_15.svg'>
+<small>
+https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html    
+</small>
+    
+    </textarea>
+    </section>
+
             <section data-markdown>
                 <textarea data-template>
 ## Implementation using Tf-Agents and TensorFlow 2
@@ -233,6 +275,28 @@ https://www.youtube.com/watch?v=tAOApRQAgpc
 </small>
         </textarea>
             </section>
+
+            <section data-markdown>
+                <textarea data-template>
+### Environments in TF-Agents
+
+
+* environments can be implemented either in Python or TensorFlow
+* Python environments are usually easier to implement 
+* TensorFlow environments are more efficient and allow natural parallelization
+* common workflow 
+  * implement environment in Python
+  * use wrapper to automatically convert it into TensorFlow
+
+<small>
+https://colab.research.google.com/github/tensorflow/agents/blob/master/tf_agents/colabs/2_environments_tutorial.ipynb    
+</small>
+
+        </textarea>
+            </section>
+
+
+
 
             <section data-markdown>
                 <textarea data-template>
