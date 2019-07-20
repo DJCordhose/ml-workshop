@@ -206,19 +206,31 @@ Pipelines
             </textarea>
                 </section>
 
-            <section data-markdown class="todo">
+        <section data-markdown>
                 <textarea data-template>
-### Rules of ML                    
+### Data and Process are king                    
 
-<img src='img/googleml/compilers-vs-ml.jpg'>
 <img src='img/googleml/model-architecture-not-important.jpg'>
-<img src='img/googleml/ml-objectives.jpg'>
 
 <small>
+
 https://developers.google.com/machine-learning/guides/rules-of-ml/    
 </small>                    
                 </textarea>
             </section>
+        
+            <!-- <section data-markdown>
+                <textarea data-template>
+### Rules of ML                    
+
+<img src='img/googleml/compilers-vs-ml.jpg'>
+
+<small>
+
+https://developers.google.com/machine-learning/guides/rules-of-ml/    
+</small>                    
+                </textarea>
+            </section> -->
 
             <section data-markdown>
                     <textarea data-template>
@@ -289,6 +301,7 @@ _Caution: Make sure you Serialize your models using the exact same versions of s
 1. Code for Cleaning and Trained Model
 1. Trained Model
 1. Serving Code
+1. Training Data if size permits (consider https://dvc.org/)
             </textarea>
         </section>
 
@@ -370,7 +383,7 @@ def predict(speed, age, miles):
     
     <section data-markdown>
             <textarea data-template>
-# Part IV: Once you are in production evertyhing changes
+## Once you are in production everything changes
         </textarea>
     </section>
 
@@ -386,6 +399,19 @@ _make sure your model works on real data_
 
     </textarea>
 </section>
+
+<section data-markdown>
+        <textarea data-template>
+### What is your real objective?                    
+
+<img src='img/googleml/ml-objectives.jpg'>
+
+<small>
+
+https://developers.google.com/machine-learning/guides/rules-of-ml/    
+</small>                    
+        </textarea>
+    </section>
 
 <section data-markdown>
     <textarea data-template>
@@ -420,7 +446,7 @@ Always check with <a href='https://gdpr-info.eu/'>GDPR</a>
     <textarea data-template>
 #### Pair plots to find blank data spots
 
-<img src='img/pair-plot.png' height="600">
+<img src='img/insurance/pair-plot.png' height="600">
 
 </textarea>
 </section>
@@ -429,7 +455,7 @@ Always check with <a href='https://gdpr-info.eu/'>GDPR</a>
     <textarea data-template>
 #### What about people driving more than 90k miles / year?
 
-<img src='img/histogram-miles.png' height="600">
+<img src='img/insurance/histogram-miles.png' height="600">
 
 </textarea>
 </section>
@@ -463,7 +489,7 @@ Try to get more data, even incrementally
 
 If the user expects a certain pattern to be in the model, they expect it to persist
 
-<img src="img/applications/turtle.png" height="400px">
+<img src="img/turtle.png" height="400px">
 
     </textarea>
 </section>
