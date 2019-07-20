@@ -184,7 +184,7 @@ in Python oder Scikit-learn. Du brauchst lediglich ein Laptop auf dem der Chrome
 </section>
 
 
-<section data-markdown style="font-size: xx-large">
+<!-- <section data-markdown style="font-size: xx-large">
         <textarea data-template>
 ## Hands-on-lab: Machine Learning for Software Developers
 
@@ -197,9 +197,9 @@ If you are bored
    * save the notebook in your Drive
     
     </textarea>
-    </section>
+    </section> -->
     
-            <section>
+            <!-- <section>
             <br>
             <br>
             <h2>Grundlagen von Machine Learning</h2>
@@ -214,7 +214,7 @@ If you are bored
             <p><small><a href="http://bit.ly/xxx">
                     http://bit.ly/xxxx
             </a></small></p>
-        </section>
+        </section> -->
 
         <section data-markdown class="todo">
                 <textarea data-template>
@@ -224,8 +224,15 @@ Intro Wie bei jfokus: 2019_jfokus_workshop.html ohne TensorFlow 0,5
 
         <section data-markdown class="todo">
                 <textarea data-template>
-    ### Grafiken aus AI rüberkopieren                
-                </textarea>
+Depending on what your background is, machine learning can have different challenges. If you come from data science the
+idea of treating your working like a software project that needs to go through different phases - one of them being
+production - and cycles might be new to you. A notebook is great to try things out and produce results from data once,
+but might not be the right tool when your project lives for a longer amount of time. If you, however, come from software
+development, understanding that data is the critical factor and if it is lacking in either quantity or quality you might
+not be able to have a working model at all. This makes the process for creating a good machine learning model pretty
+different from standard processes in software development.
+
+                    </textarea>
             </section>
 
     
@@ -286,7 +293,7 @@ Intro Wie bei jfokus: 2019_jfokus_workshop.html ohne TensorFlow 0,5
 ### Three Inputs for Prediction
 
 <a href='html/calculator.html'>
-<img src='img/manning/calculator.png' height="450">
+<img src='img/insurance/calculator.png' height="450">
 </a>
 <p><small>
     <a href='html/calculator.html' target="_blank">
@@ -303,14 +310,14 @@ Intro Wie bei jfokus: 2019_jfokus_workshop.html ohne TensorFlow 0,5
             
             <section data-markdown>
                     <textarea data-template>
-                    <img src='img/sketch/classic-development.jpg'>
+                    <img src='img/classic-development.jpg'>
                     </textarea>
                     </section>
                     
                     <section data-markdown>
                         <textarea data-template>
     ### Exploration
-    <img src='img/sns-pairplot.png' height="550px">
+    <img src='img/insurance/sns-pairplot.png' height="550px">
                 
                     </textarea>
                     </section>
@@ -367,7 +374,7 @@ return green # otherwise: low risk
 <h3>Different Approach</h3>
 
 <div style="max-width: 50%; float: left;">
-    <img src='img/df_head.jpg' height="450">
+    <img src='img/insurance/df_head.jpg' height="450">
 </div>
 <div style="max-width: 50%; float: right;">
 
@@ -391,7 +398,7 @@ Looking at the problem from the perspective of our data
 
 <section>
     <h3>Let's check: Is the data we have any good?</h3>
-    <img src="img/manning/all.png" height="500px" class="fragment">
+    <img src="img/insurance/all.png" height="500px" class="fragment">
     <small  class="fragment">Would we able to rank me (47) for a car having 100 mph top speed, driving 10k miles per year?</small>
 </section>
 
@@ -459,7 +466,7 @@ Are they the same? What is the key difference?
 
 <section data-markdown>
 <textarea data-template>
-<img src='img/sketch/supervised-ml.jpg' height="650px">
+<img src='img/supervised-ml.jpg' height="650px">
 </textarea>
 </section>
 
@@ -487,7 +494,7 @@ _collecting data might be the hardest part of the job_
     <textarea data-template>
 ### Clean Data and Select Features
 
-<img src='img/applications/data.png' height="500">
+<img src='img/insurance/data.png' height="500">
 
 </textarea>
 </section>
@@ -539,7 +546,7 @@ _Feature Selection_
     <textarea data-template>
 ### Final Check on Collected Data
 
-<img src='img/df_describe.png' height="500">
+<img src='img/insurance/df_describe.png' height="500">
 
 </textarea>
 </section>
@@ -691,19 +698,19 @@ https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/skl
         <h3>The Issue: Overfitting</h2>
     <div>
     <div style="float: left">
-        <img src="img/scans/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
+        <img src="img/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
         <p>
             <small><em>Training Score</em></small>
         </p>
     </div>
     <div style="float: left" class="fragment" data-fragment-index='5'>
-        <img src="img/scans/elements/down.jpg" height="200">
+        <img src="img/elements/down.jpg" height="200">
     </div>
     <div style="float: left" class="fragment" data-fragment-index='4'>
-        <img src="img/scans/elements/up.jpg" height="200">
+        <img src="img/elements/up.jpg" height="200">
     </div>
     <div style="float: left">
-            <img src="img/scans/elements/70_percent.jpg" height="225"  class="fragment" data-fragment-index='2'>
+            <img src="img/elements/70_percent.jpg" height="225"  class="fragment" data-fragment-index='2'>
             <p>
                 <small><em>Test Score</em></small>
             </p>
@@ -805,60 +812,43 @@ Which one is better? Why?
 
 </div>
 
-<script src="reveal.js/lib/js/head.min.js"></script>
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
 
 <script>
-        if (window.location.hostname.indexOf('localhost') !== -1 && !printMode) {
-            // only applies to local version
-            $('.remote').remove();
-            $('.detail').remove();
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
         } else {
             // only applies to public version
-            $('.todo').remove();
-            $('.preparation').remove();
-            $('.local').remove();
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
         }
-        // remove for workshop version
-        // $('.workshop').remove();
-        // $('.exercise').remove();
-
-        // tensorflow / neural network
-        // $('.nn').remove();
-        
-        // remove for talk
-        $('.talk').remove();
-
+    
         Reveal.addEventListener( 'ready', function( event ) {
-            // do we want this???
-            $('li').addClass('fragment')
-
-            if (window.location.hostname.indexOf('localhost') !== -1) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
                 // only applies to presentation version
                 Reveal.configure({ controls: false });
             } else {
                 // only applies to public version
                 $('.fragment').removeClass('fragment');
             }
-            // applies to all versions
-            $('code').addClass('line-numbers');
-
-            // make all links open in new tab
-            $('a').attr('target', '_blank')
-
+    
+    
         } );
-        $('section').attr('data-background-image', "backgrounds/sky.jpg");
-        // $('section').attr('data-background-image', "backgrounds/cloud.jpg");
-        // $('section').attr('data-background-image', "backgrounds/snow.jpg");
-
-        // $('section').attr('data-background-image', "backgrounds/light-metal.jpg");
-        // $('section').attr('data-background-image', "backgrounds/pink.jpg");
-        // $('section').attr('data-background-image', "backgrounds/white.jpg");
-        // $('section').attr('data-background-image', "backgrounds/white-transparent.jpg")
-        // $('section').attr('data-background-image', "backgrounds/murmel2.jpg")
-
-    //    $('section').attr('data-background-image', "backgrounds/code.jpg");
     </script>
     
 <script>
