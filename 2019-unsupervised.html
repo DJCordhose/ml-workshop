@@ -213,10 +213,26 @@ http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
 </textarea>
     </section>
 
-    <section>
-        <img src="img/flashcards/Principal_Component_Analysis_print.png">
-    </section>
+    <section data-markdown>
+            <textarea data-template>
+### Principal Component Analysis
+
+_Creates principal components: uncorrelated orthogonal basis set_
+
+* statistical procedure 
+* transforms possibly correlated variables
+* first principal component has the largest possible variance 
+* each succeeding component is
+  * orthogonal to the preceding components
+  * has the highest variance possible 
+
+<small>
     
+https://en.wikipedia.org/wiki/Principal_component_analysis
+</small>                
+    </textarea>
+</section>
+
     <section data-markdown>
         <textarea data-template>
 ### PCA in 2d
@@ -224,6 +240,7 @@ http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
 <img src="img/unsupervised/pca_setosa.png">
 
 <small>
+
 http://setosa.io/ev/principal-component-analysis/
 </small>
     </textarea>
@@ -595,7 +612,7 @@ https://arxiv.org/abs/1708.07747
 
 the first million integers, represented as binary vectors indicating their prime factors 
 
-<img src='img/primes_umap_1e6_contrast_enhanced.png' height="300">
+<img src='img/unsupervised/primes_umap_1e6_contrast_enhanced.png' height="300">
 
 <small>
 https://youtu.be/nCk8dyU7zUM
@@ -626,7 +643,6 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 
 </div>
 
-<script src="reveal.js/lib/js/head.min.js"></script>
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
 
@@ -642,8 +658,7 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
             $('.local').remove();
         }
         Reveal.addEventListener( 'ready', function( event ) {
-            // do we want this???
-            $('li').addClass('fragment')
+            $('.fragments li').addClass('fragment')
 
             if (isLocal && !printMode) {
                 // only applies to presentation version
