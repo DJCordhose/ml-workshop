@@ -158,43 +158,226 @@
 
             <section data-markdown class="todo">
                     <textarea data-template>
-* Add Clustering
-  * M3
-  * Woher noch? Was noch aufnehmen?            
 
-
-  Unsupervised:
-  []https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d 
-  
-  
-  Clustering mit k means auf Insurance
-  []Kenne k
-  []Auch DBScan
-  
             </textarea>
             </section>    
 
-            <section data-markdown>
-                    <textarea data-template>
-
-<a href='http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html'>
-<img src='img/ml_map.png' height="600px">                        
-</a>
+<section data-markdown>
+    <textarea data-template>
+## Types of Learning
+<img src='img/types-of-ml.jpg'>
 <small>
 
-http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+https://www.facebook.com/nipsfoundation/posts/795861577420073/
+<br>
+https://ranzato.github.io/publications/tutorial_deep_unsup_learning_part1_NeurIPS2018.pdf
 </small>
-    
-                </textarea>
-                </section>
-                
+</textarea>
+</section>
 
 <section>
-        <h2>Dimensionality Reduction</h2>
-        <p><em>What do you do if your data just is in more than 3d (or even 2d)</em></p>
+        <h3>Unsupervised Learning</h3>
+        <img src='img/unsupervised/decisions/question.png'>
+    </section>
+
+
+    <section>
+        <h1>Part I</h1>
+        <h2>Clustering</h2>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Automatic Clustering
+
+_Clustering is the task of grouping a set of objects in such a way that objects in the same group (called a cluster) are more
+similar (in some sense) to each other than to those in other groups (clusters)._
+
+https://en.wikipedia.org/wiki/Cluster_analysis
+        </textarea>
 </section>
 
 
+<section data-markdown>
+        <textarea data-template>
+### Exercise on Paper: Clusters and Outliers
+<img src='img/unsupervised/clustering.jpg' height="550px">
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Exercise
+
+1. Mark all clusters
+1. Mark all data points that do not belong to a cluster
+
+Questions
+1. Do you see clusters that look suspicious?
+1. What could be on the axes? Is this important for recognizing clusters?
+1. What could a cluster mean?
+1. How could you interpret data points do not belong to a cluster?
+    </textarea>
+</section>
+
+    <!-- <section data-markdown class="todo">
+            <textarea data-template>
+### Applications of clustering
+* Outlier Detection: one of these things is not like the others
+* https://hackernoon.com/unsupervised-machine-learning-for-fun-profit-with-basket-clusters-17a1161e7aa1
+* https://flowingdata.com/2018/03/07/visualizing-outliers/?imm_mid=0fbfda&cmp=em-data-na-na-newsltr_20180314
+            </textarea>
+</section> -->
+
+        <section data-markdown>
+            <textarea data-template>
+### Looking at standard implementations
+
+Using Scikit-learn
+
+<small>
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/k-means_vs_dbscan.ipynb
+</small>
+    
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Let's try K-Means on this example
+
+<img src="img/unsupervised/blobs.png" height="550px">
+
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+<img src="img/unsupervised/kmeans-blobs.jpg">
+    
+            </textarea>
+        </section>
+
+        <section>
+            <h3>What do you think is the fundamental weakness of this approach?</h3>            
+        </section>
+
+    
+            <section>
+                <img src="img/unsupervised/blobs_kmeans_3.png" height="550px">
+                <p>Perfect result for k = 3</p>
+        </section>
+            
+        <section>
+            <img src="img/unsupervised/blobs_kmeans_10.png" height="550px">
+            <p>And this is the result for k = 10</p>
+        </section>
+
+        <section>
+            <h3>You need to make a good guess of how many reasonable clusters there are</h3>
+        </section>
+
+        <section>
+                <h3>There are more issues with the k-means approach</h3>            
+        </section>
+
+        <section data-markdown>
+                <textarea data-template>
+    <img src="img/unsupervised/noisy_circles.png" height="500px">
+
+Some shapes we can identify, but can k-means?    
+                </textarea>
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+<img src="img/unsupervised/no_structure.png" height="500px">
+
+What about no structure at all?    
+            </textarea>
+</section>
+
+<section>
+        <h3>Results for k-means</h3>            
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+<img src="img/unsupervised/noisy_circles_kmeans.png" height="500px">
+
+even with k=2 not a chance    
+        </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src="img/unsupervised/no_structure_kmeans.png" height="500px">
+
+structure out of nothing
+    </textarea>
+</section>
+
+<section>
+    <h2>Comparing Clustering Algorithms</h2>
+    <p>Choose your favorite!</p>
+    <!-- <pre>
+- http://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html
+- http://hdbscan.readthedocs.io/en/latest/performance_and_scalability.html
+    </pre> -->
+</section>
+
+<section data-markdown>
+<textarea data-template>
+<img src="img/unsupervised/sphx_glr_plot_cluster_comparison_001.png" height="550px">
+
+<p><small><a href="http://scikit-learn.org/stable/modules/clustering.html">
+http://scikit-learn.org/stable/modules/clustering.html
+</a></small></p>
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### DBSCAN     
+
+1. Find the points in the ε (eps) neighborhood of every point, and identify the core points with more than minPts neighbors
+1. Find the connected components of core points on the neighbor graph, ignoring all non-core points.
+1. Assign each non-core point to a nearby cluster if the cluster is an ε (eps) neighbor, otherwise assign it to noise.
+
+Density-Based Spatial Clustering: https://en.wikipedia.org/wiki/DBSCAN
+            </textarea>
+        </section>
+        
+
+    <section data-markdown>
+            <textarea data-template>
+### Demo Cluster
+<img src="img/unsupervised/dbscan-demo.png" height="550px">
+
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Why DBSCAN?
+
+1. 
+
+<small>
+https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d 
+</small>
+</textarea>
+</section>
+
+
+
+
+<section>
+        <h1>Part II</h2>
+        <h2>Dimensionality Reduction</h2>
+</section>
 
 <section data-markdown>
         <textarea data-template>
@@ -227,7 +410,7 @@ _Creates principal components: uncorrelated orthogonal basis set_
   * has the highest variance possible 
 
 <small>
-    
+
 https://en.wikipedia.org/wiki/Principal_component_analysis
 </small>                
     </textarea>
@@ -344,6 +527,21 @@ _Create a dataset where no principal component could be dropped (without losing 
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/pca.ipynb
 </small>
         
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### PCA vs Linear Regression
+
+
+When asked to draw a regression line, people draw something closer to the PCA line
+
+<video src='img/unsupervised/pca-vs-ols.mp4' controls height="350px"></video>
+
+<small>
+https://twitter.com/andre_quentin/status/1087367223839256576
+</small>
 </textarea>
 </section>
 
@@ -565,6 +763,19 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 </textarea>
 </section>
 
+<section data-markdown>
+        <textarea data-template>
+### Great Use Case for T-SNE (and PCA )
+
+<a href='https://projector.tensorflow.org'>
+<img src="img/unsupervised/embedding-projector.png" height="500px">
+</a>
+
+<small>
+https://projector.tensorflow.org
+</small>
+</textarea>
+</section>
 
 <section>
 <h3>UMAP: Alternative to t-SNE</h3>
