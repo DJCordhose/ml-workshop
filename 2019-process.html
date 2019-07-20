@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Workshop Classic Machine Learning</title>
+    <title>Workshop NVE</title>
 
     <link rel="stylesheet" href="reveal.js/css/reset.css">
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
@@ -139,6 +139,7 @@
 <body>
     <div class="reveal">
         <div class="slides">
+
             <section data-markdown class="preparation">
                 <textarea data-template>
 ### Preparation
@@ -146,36 +147,34 @@
                 </textarea>
             </section>
 
+            
             <section data-markdown class="todo">
-                <textarea data-template>
-### Introduction
-
-
-http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
-
-* Dafür ca. 60 Minuten durch alle Pfaden mit springen zu Referenzen
-* Probleme stellen oder Leute ihre eigenen Probleme damit klassifizieren lassen, 30 Minuten
-
-
-Rest des Tages die wichtigsten durchgehen und behandeln
-
-3. Supervised Learning: Comparing Classifiers - KNN, SVM, Decision Trees, Random Forest, AdaBoost, Gaussian Naive Bayes
-* based on M3 Talk and plots from Bayesian notebook
-1. Evaluation
-1. Regularization
-
-
+                    <textarea data-template>
+Bringing Scikit-learn Models into Production
+* den JS Predictor nutzen, um die API abzufragen anstatt lokales tfjs Modell
+* Aus Prod Talk extrahieren Flask
+* Pipelines 
+* Feature Engineering
+Pipelines
+[] https://scikit-learn.org/0.21/modules/compose.html#column-transformer
+    []https://scikit-learn.org/0.21/modules/generated/sklearn.compose.ColumnTransformer.html 
+[]https://medium.com/dunder-data/from-pandas-to-scikit-learn-a-new-exciting-workflow-e88e2271ef62 
             </textarea>
-            </section>
+                </section>
 
             <section data-markdown class="todo">
                 <textarea data-template>
-### Overview Supervised Learning
+### Rules of ML                    
 
-https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html
+<img src='img/googleml/compilers-vs-ml.jpg'>
+<img src='img/googleml/model-architecture-not-important.jpg'>
+<img src='img/googleml/ml-objectives.jpg'>
 
-        </textarea>
-    </section>
+<small>
+https://developers.google.com/machine-learning/guides/rules-of-ml/    
+</small>                    
+                </textarea>
+            </section>
 
         </div>
     </div>
