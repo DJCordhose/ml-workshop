@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Dimensionality Reduction</title>
+    <title>Unsupervised</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -155,16 +155,45 @@
 
                 </textarea>
             </section> -->
+
+            <section data-markdown class="todo">
+                    <textarea data-template>
+* Add Clustering
+  * M3
+  * Woher noch? Was noch aufnehmen?            
+
+
+  Unsupervised:
+  []https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d 
+  
+  
+  Clustering mit k means auf Insurance
+  []Kenne k
+  []Auch DBScan
+  
+            </textarea>
+            </section>    
+
+            <section data-markdown>
+                    <textarea data-template>
+
+<a href='http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html'>
+<img src='img/ml_map.png' height="600px">                        
+</a>
+<small>
+
+http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+</small>
+    
+                </textarea>
+                </section>
+                
+
 <section>
         <h2>Dimensionality Reduction</h2>
         <p><em>What do you do if your data just is in more than 3d (or even 2d)</em></p>
 </section>
 
-<!-- <section data-markdown class="todo">
-        <textarea data-template>
-
-</textarea>
-</section>     -->
 
 
 <section data-markdown>
@@ -282,8 +311,8 @@ http://setosa.io/ev/principal-component-analysis/
             <img src="img/unsupervised/pca-example-pcs.jpg" height="500px">
     </div>
 <small>
-    <a href="https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb">
-https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb
+    <a href="https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/pca.ipynb">
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/pca.ipynb
 </a>
 </small>    
         </section>
@@ -295,7 +324,7 @@ https://colab.research.google.com/github/djcordhose/data-viz/blob/master/noteboo
 _Create a dataset where no principal component could be dropped (without losing significant amounts of information)_
 
 <small>
-https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-1-pca.ipynb
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/pca.ipynb
 </small>
         
 </textarea>
@@ -514,7 +543,7 @@ https://distill.pub/2016/misread-tsne/
 1. works well on clusters
 
 <small>
-    https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-2-t-sne.ipynb
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/t-sne.ipynb
 </small>
 </textarea>
 </section>
@@ -582,12 +611,12 @@ https://johnhw.github.io/umap_primes/index.md.html
 ### Dimensionality Reduction with UMAP
 
 1. Much faster than T-SNE with comparable results
-1. Main parameter (number of neighbors) a bit more intinutive
+1. Main parameter (number of neighbors) a bit more intuitive
 1. Has abstract model
 1. Can also make use of labels
 
 <small>
-    https://colab.research.google.com/github/djcordhose/data-viz/blob/master/notebooks/5-3-umap.ipynb
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/umap.ipynb
 </small>
 </textarea>
 </section>
@@ -602,7 +631,10 @@ https://johnhw.github.io/umap_primes/index.md.html
 <script src="lib/jquery-2.2.4.js"></script>
 
 <script>
-        if (window.location.hostname.indexOf('localhost') !== -1 && !printMode) {
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
         } else {
             // only applies to public version
             $('.todo').remove();
@@ -613,7 +645,7 @@ https://johnhw.github.io/umap_primes/index.md.html
             // do we want this???
             $('li').addClass('fragment')
 
-            if (window.location.hostname.indexOf('localhost') !== -1) {
+            if (isLocal && !printMode) {
                 // only applies to presentation version
                 Reveal.configure({ controls: false });
             } else {
