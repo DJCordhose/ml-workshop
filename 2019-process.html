@@ -158,6 +158,31 @@ notice when model becomes stale and needs to be updated.
 </textarea>
 </section>
 
+<section data-markdown class="todo">
+        <textarea data-template>
+
+* Normalize vs Standardize
+* Create Pipeline
+* Export models from notebooks with new notebook
+* Make server run
+* Log/Monitor requests/results 
+
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+        <textarea data-template>
+
+[]Standardize: mu 0, sigma: 1
+[]Normalize: Scale between 0 and 1
+
+Normalizing and Standardising
+[]https://twitter.com/ChelseaParlett/status/1138931986049847296
+[]https://www.statisticshowto.datasciencecentral.com/normalized/ 
+</textarea>
+</section>
+
     <section data-markdown>
         <textarea data-template>
 <!-- ### ML rather is research and a bit of engineering than a craft -->
@@ -194,6 +219,266 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
 </small>                    
                 </textarea>
             </section>
+
+            <section data-markdown>
+                    <textarea data-template>
+## Serving Sklearn Models
+                        </textarea>
+                    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### Do machine learning like the great engineer you are 
+
+_not like the great machine learning expert you aren’t_
+
+1. Make sure your pipeline is solid end to end.
+1. Start with a reasonable objective.
+1. Add common­-sense features in a simple way.
+1. Make sure that your pipeline stays solid.
+
+<small>
+
+https://developers.google.com/machine-learning/guides/rules-of-ml/
+</small>
+    </textarea>
+    </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Serving Sklearn models
+
+_Caution: Be very sure you have the same pipeline of steps when serving as you had for training and evaluation!_
+
+<small>It might make sense to use: http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html</small>
+
+<small>Same goes for TensorFlow: https://github.com/tensorflow/transform / https://beam.apache.org/</small>
+
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### After training
+
+* Serialize Main Model using Pickle
+* Make sure you also serialze your Encoders (LabelEncoder, OneHotEncoder, StandardScaler, etc.) 
+* If you need different in/out combinations, train multiple models
+
+_Caution: Make sure you Serialize your models using the exact same versions of software as in production (this might be harder than you think)._
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### For Prediction
+
+* Load / Deserialize all Models using Pickle <em>only once on startup</em>
+* Perform all the necessary encoding and decoding steps
+* Consider using VM or Docker for consistent installation
+* Serve requests sequentially using Flask
+* Scale by using multiple instances and load balancers / dedicated ML server per installation
+* Log real world predictions (if ok with <a href='https://gdpr-info.eu/'>GDPR</a>)
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Version together
+
+1. Code for Cleaning and Trained Model
+1. Trained Model
+1. Serving Code
+            </textarea>
+        </section>
+
+        <section>
+<h3>Running a Flask Server</h3>
+
+<pre><code contenteditable data-trim class="fragment">
+@app.route('/predict', methods=['POST'])
+def do_predict():
+    speed = request.json['speed']
+    age = request.json['age']
+    miles = request.json['miles']
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment">
+    predicted_category, probabilities, classes = predict(speed, age, miles)
+    return jsonify({
+        'category': predicted_category,
+        'prediction': probabilities,
+        'classes': classes
+    })
+</code></pre>
+
+<p><small><a href='http://flask.pocoo.org/'>http://flask.pocoo.org/</a></small></p>
+
+    </section>
+
+        <section>
+<h3>A Sample Call to the Flask Server</h3>
+
+<pre><code contenteditable data-trim class="python fragment">
+curl http://localhost:8889/predict -X POST \
+-d '{"speed": 100, "age": 47, "miles": 10}'
+</code></pre>
+
+<pre><code contenteditable data-trim class="python fragment">
+# {
+#    'category': 'GREEN',
+#    'prediction': [0.0, 0.87, 0.13],
+#    'classes': ['RED', 'GREEN', 'YELLOW']
+# }</code></pre>
+
+<p><small><a href='https://curl.haxx.se/'>https://curl.haxx.se//</a></small></p>
+
+    </section>
+
+        <section>
+<h3>Prediction Code</h3>
+
+<pre><code contenteditable data-trim class="python fragment">
+# loading models only once on startup
+model = pickle.load(open('models/dt.model', 'rb'))
+
+y_le = pickle.load(open('models/y_le.model', 'rb'))
+speed_std_scale = pickle.load(open('models/speed_std_scale.model', 'rb'))
+age_std_scale = pickle.load(open('models/age_std_scale.model', 'rb'))
+miles_std_scale = pickle.load(open('models/miles_std_scale.model', 'rb'))
+    </code></pre>
+
+<pre><code contenteditable data-trim class="python fragment">
+# using models for prediction
+def predict(speed, age, miles):
+    sample = [[speed_std_scale.transform([speed])[0],
+               age_std_scale.transform([age])[0],
+               miles_std_scale.transform([miles])[0]]]
+    </code></pre>
+<pre><code contenteditable data-trim class="python fragment">
+    result = model.predict(sample)
+    result_group = y_le.inverse_transform(result)[0]
+    prediction = model.predict_proba(sample)[0].tolist()
+    
+    return result_group, prediction, y_le.classes_.tolist()
+    </code></pre>
+
+
+    <p><small><a href='https://docs.python.org/3/library/pickle.html'>https://docs.python.org/3/library/pickle.html</a></small></p>
+    
+        </section>
+    
+    <section data-markdown>
+            <textarea data-template>
+# Part IV: Once you are in production evertyhing changes
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### New challenge
+
+_make sure your model works on real data_
+
+* What do you do with new incoming data?
+* How to monitor the quality of your model?
+* Users get used to what you have, good or bad
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Check for bias / unfairness
+
+* Your model might perform well for a few users, but badly for others
+* Accuracy and loss only show the average
+* Some areas might not have properly covered with data samples (including test)
+* Curse of High Dimensions
+
+https://developers.google.com/machine-learning/fairness-overview/
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Dealing with Bias / Unfairness
+
+* log real requests
+* log matching user behavior
+* evaluate those requests (Elastic)
+* if you recommend, do users follow your advice?
+* if there is probabilty, how good is it?
+* do you see bias/unfairness?
+* put more emphasis on data that suffers from bias
+
+Always check with <a href='https://gdpr-info.eu/'>GDPR</a>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Pair plots to find blank data spots
+
+<img src='img/pair-plot.png' height="600">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### What about people driving more than 90k miles / year?
+
+<img src='img/histogram-miles.png' height="600">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### How to deal with blank spots?
+
+* Relying on ambiguous prediction scores is not enough
+* Either restrict range of input
+* Or warn user / log request when blank spot is hit
+
+Try to get more data, even incrementally
+    </textarea>
+</section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Continuity in model predictions
+
+* People who use your model regularly will expect most things to stay the way they know it
+* Even if it not totally accurate
+* That might mean you can not train a model from scratch even if you have better data or a better model architecture
+* Consider mixing more than one model
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### The Turtle Effect
+
+If the user expects a certain pattern to be in the model, they expect it to persist
+
+<img src="img/applications/turtle.png" height="400px">
+
+    </textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### More resources
+
+* Oliver Zeigermann, M3, 2018: http://bit.ly/m3-ml-quality
+
+* What’s your ML Test Score? A rubric for ML production systems
+  * <a href='https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf'>PDF</a>
+  * https://nips.cc/Conferences/2016/Schedule?showEvent=6255
+</textarea>
+</section>
 
         </div>
     </div>
