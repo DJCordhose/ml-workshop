@@ -320,19 +320,17 @@ structure out of nothing
 <section>
     <h2>Comparing Clustering Algorithms</h2>
     <p>Choose your favorite!</p>
-    <!-- <pre>
-- http://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html
-- http://hdbscan.readthedocs.io/en/latest/performance_and_scalability.html
-    </pre> -->
 </section>
 
 <section data-markdown>
 <textarea data-template>
 <img src="img/unsupervised/sphx_glr_plot_cluster_comparison_001.png" height="550px">
 
-<p><small><a href="http://scikit-learn.org/stable/modules/clustering.html">
+<small>
+
 http://scikit-learn.org/stable/modules/clustering.html
-</a></small></p>
+http://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html
+</small>
 
 </textarea>
 </section>
@@ -363,7 +361,10 @@ Density-Based Spatial Clustering: https://en.wikipedia.org/wiki/DBSCAN
         <textarea data-template>
 ### Why DBSCAN?
 
-1. 
+
+1. It requires minimum domain knowledge.
+2. It can discover clusters of arbitrary shape.
+3. Efficient for large database, i.e. sample size more than few thousands.
 
 <small>
 https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d 
