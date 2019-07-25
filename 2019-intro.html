@@ -168,18 +168,18 @@ in Python oder Scikit-learn. Du brauchst lediglich ein Laptop auf dem der Chrome
 
  -->
 
- <section data-markdown class="variations">
+ <!-- <section data-markdown class="variations">
         <textarea data-template>
 * NVE Workshop
 * ML Summit            
     </textarea>
     </section>
-    
+     -->
  <section data-markdown class="preparation">
     <textarea data-template>
 ### Preparation Workshop
 
-* exercise/2019-workshop-exercise-supervised.docx ausdrucken für alle Teilnehmer
+* `exercise/2019-workshop-exercises.docx` ausdrucken für alle Teilnehmer
 </textarea>
 </section>
 
@@ -216,36 +216,6 @@ If you are bored
             </a></small></p>
         </section> -->
 
-        <section data-markdown class="todo">
-                <textarea data-template>
-Intro Wie bei jfokus: 2019_jfokus_workshop.html ohne TensorFlow 0,5            
-                    </textarea>
-            </section>
-
-        <section data-markdown class="todo">
-                <textarea data-template>
-Depending on what your background is, machine learning can have different challenges. If you come from data science the
-idea of treating your working like a software project that needs to go through different phases - one of them being
-production - and cycles might be new to you. A notebook is great to try things out and produce results from data once,
-but might not be the right tool when your project lives for a longer amount of time. If you, however, come from software
-development, understanding that data is the critical factor and if it is lacking in either quantity or quality you might
-not be able to have a working model at all. This makes the process for creating a good machine learning model pretty
-different from standard processes in software development.
-
-                    </textarea>
-            </section>
-
-    
-        <section data-markdown class="todo">
-                <textarea data-template>
-### Abschluss
-
-<img src='img/ML-strategy-helper.png'>
-
-
-                </textarea>
-            </section>
-            
     <!-- <section data-markdown class="todo">
         <textarea data-template>
     </textarea>
@@ -253,28 +223,14 @@ different from standard processes in software development.
 
     <section data-markdown>
         <textarea data-template>
-### Our plan for today
+### Our plan for this module
 
 1. Nature of Machine Learning
-1. Data Preparation (Optional)
+1. Data Preparation
 1. Implementation using Scikit-learn
 1. Making sure we really generalize to unknown data
 </textarea>
 </section>
-
-<section data-markdown class="local no-fragment"">
-    <textarea data-template>
-## Stellt euch euren Nachbarn vor                
-
-* Was macht ihr?
-* Was wollt ihr mit Machine Learning erreichen?
-* Was wisst ihr schon?
-* Falls noch nicht passiert, helft euren Nachbarn, diese Folien zu bekommen http://bit.ly/xxx und das Notebook https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/dt-intro.ipynb zum laufen zu bringen (siehe erste Folie)
-
-
-    </textarea>
-</section>
-
 
     <section data-markdown>
         <textarea data-template>
@@ -614,6 +570,7 @@ y_pred = clf.predict(input)
 <img src="img/dt/cart.png" height="500px">
 
 <small>
+
 http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart
 </small>
         
@@ -651,7 +608,8 @@ _Run your first Colab Notbook_
 * Save your notebook in your Google Drive (or on Github if you want to)
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/dt-intro.ipynb
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/dt-intro.ipynb
 </small>
 </textarea>
 </section>
@@ -748,7 +706,10 @@ _Regularize your Decision tree_
 * What are your best scores? 
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/dt-intro.ipynb
+
+<a href='https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/dt-intro.ipynb'>
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/dt-intro.ipynb
+</a>
 </small>
 </textarea>
 </section>
@@ -775,39 +736,56 @@ Which one is better? Why?
 </textarea>
 </section>
 
+<section data-markdown>
+        <textarea data-template>
+## Wrapping it up
 
-    <section data-markdown class="workshop">
-    <textarea data-template>
-### Where to go from here
 
-* Find yourself some datasets to experiment with: https://toolbox.google.com/datasetsearch
-* TensorFlow datasets (directly from Colab): https://github.com/tensorflow/datasets
-* Watch my Deep Learning Crash Course: https://www.manning.com/livevideo/deep-learning-crash-course?a_aid=djcordhose&a_bid=e8e77cbf
+        </textarea>
+    </section>
+
+<section data-markdown style="font-size: xx-large" class="fragments">
+        <textarea data-template>
+### Challenges of Machine Learning
+
+_Depending on what your background is, machine learning can have different challenges_
+* coming from data science: treating your work like a software project
+  * needs to go through different phases and cycles
+  * one of them being production
+* notebooks are great to try things out and produce results from data once
+  * not the best tool when your project lives longer 
+* coming from software development: data is the critical factor
+  * if it is lacking in either quantity or quality you might get a working model at all 
+  * the process of creating a good machine learning model is pretty different from standard processes in software development
+
+            </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Map: Finding your strategy
+
+<img src='img/ML-strategy-helper.png' height="550px">
+
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+<textarea data-template>
+### Team exercise
+
+_Find the right strategy for your project_
+
+* Team up with your neighbors
+* Find one o more projects to evaluate
+* Use the map from the previous slide (ask instructor to put it up on the projector) 
+* What might be the best approach?
+* What questions do you still have about your project: Write them down and check then in the final part of this workshop
+
 </textarea>
 </section>
-
-<section style="font-size: xx-large">
-    <h2>Wrap-Up</h2>
-    <ul>
-        <li class="fragment">Machine Learning can learn from existing data and generalize from it
-        <li class="fragment">Sometimes, it can be an alternative to explicit, classic business logic
-        <li class="fragment">Classic Machine Learning strategies are often enough
-        <li class="fragment">Decision Trees and Random Forests are powerful strategies provided by Scikit-learn
-        <li class="fragment">Colab is a free service for executing your Python code using Scikit-learn and TensorFlow
-    </ul>
-    <br>
-    <p>
-            <em>JFokus 2019: Machine Learning for Software Developers</em>
-        <br>
-        <br>
-    <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a></a>
-        <br>
-    <a href="http://bit.ly/ml-jfokus-hands-on">
-        http://bit.ly/ml-jfokus-hands-on
-    </a>
-    </p>
-</section>
-
+    
     </div>
 
 </div>
