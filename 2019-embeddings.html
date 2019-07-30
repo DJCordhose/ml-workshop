@@ -182,7 +182,8 @@ http://bit.ly/euroscipy-embeddings
             <section data-markdown class="todo">
                     <textarea data-template>
 * erzeugen http://bit.ly/euroscipy-embeddings
-[]Schildkröten Grafik
+* kürzen, 30 Folien
+[]Schildkröten Grafik bei Stabilisierung
 []Kein Clustering als Beispiel, rohe 2d Embeddings
 []Für Stabilisierung: https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed 
 []https://medium.com/tensorflow/introducing-tf-text-438c8552bd5e für Vorverarbeitung der Texte
@@ -381,7 +382,7 @@ model.add(Dense(units=output_dim, activation='softmax'))
 
 <section data-markdown>
         <textarea data-template>
-### Make sure the model trains properly
+### Make sure the model trains / loss converges
 
 <div style="float: left">
 <img src='img/embeddings/airlines-2d-loss.png' height="300px"><br>
@@ -405,7 +406,7 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
     <textarea data-template>
 ### What are we after here?
 
-* Model should train, i.e. loss should go down
+* Model should train, i.e. loss should converge
 * If it does not you might do things to hidden layers
 * Typically we do not get good accuracy
 * But this is not what we are after
