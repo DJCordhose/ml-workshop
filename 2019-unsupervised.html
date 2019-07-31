@@ -571,7 +571,28 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 </textarea>
 </section>
 
+<section>
+        <h3>Another Motivation: Visualizations</h3>
+        <p>As humans looking at a computer screen we are naturally limited to two-dimensional visualizations that at best change over time and to reactions to interaction.</p>
+    </section>
+        
 <section data-markdown>
+        <textarea data-template>
+#### Great Use Case for Dimensionality Reduction (PCA and T-SNE)
+
+<a href='https://projector.tensorflow.org'>
+<img src="img/unsupervised/embedding-projector.png" height="500px">
+</a>
+
+<small>
+
+https://projector.tensorflow.org
+</small>
+</textarea>
+</section>
+
+    
+<!-- <section data-markdown>
         <textarea data-template>
 ### PCA vs Linear Regression
 
@@ -585,19 +606,14 @@ When asked to draw a regression line, people draw something closer to the PCA li
 https://twitter.com/andre_quentin/status/1087367223839256576
 </small>
 </textarea>
-</section>
+</section> -->
 
 <section>
 <h2>t-SNE</h2>
 <h3>t-distributed stochastic neighbor embedding</h3>
-<p>Visualizing High Dimensional Data</p>
+<p>Strong in Visualizing High Dimensional Data</p>
 </section>
 
-<section>
-    <h3>Motivation</h3>
-    <p>As humans looking at a computer screen we are naturally limited to two-dimensional visualizations that at best change over time and to reactions to interaction.</p>
-</section>
-    
 <section data-markdown>
         <textarea data-template>
 ### Idea of t-SNE
@@ -610,6 +626,7 @@ _Describe a projection from high dimension to 2-d as a machine learning problem_
 1. Minimize loss
 
 <small>
+
 https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding
 <br>
 https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
@@ -624,6 +641,7 @@ https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
 <img src='img/unsupervised/animated_tSNE.gif'>
 
 <small>
+
 https://twitter.com/ChaseClarkatUIC/status/984839270132338688
 <br>
 https://chasemc.github.io/post/animated-t-sne/
@@ -683,6 +701,7 @@ https://beta.observablehq.com/@djcordhose/t-sne-explained-in-plain-javascript#re
 * Can dramatically change the results of t-SNE
 
 <small>
+
 https://en.wikipedia.org/wiki/Perplexity    
 </small>
             </textarea>
@@ -768,6 +787,7 @@ https://beta.observablehq.com/@djcordhose/t-sne-explained-in-plain-javascript#va
 <img src='img/unsupervised/misread-tsne.png' height="250px">
 
 <small>
+
 https://distill.pub/2016/misread-tsne/
 <br>
 FAQ: http://lvdmaaten.github.io/tsne/
@@ -785,6 +805,7 @@ _For the 2 cluster example, can you find a perplexity that no longer gives good 
 * What is the perplexity?
 * Why?
 
+<br>
 <img src='img/unsupervised/2-clusters-misread-tsne.png' height="300px">
 
 https://distill.pub/2016/misread-tsne/
@@ -800,21 +821,8 @@ https://distill.pub/2016/misread-tsne/
 1. works well on clusters
 
 <small>
+
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/t-sne.ipynb
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Great Use Case for T-SNE (and PCA )
-
-<a href='https://projector.tensorflow.org'>
-<img src="img/unsupervised/embedding-projector.png" height="500px">
-</a>
-
-<small>
-https://projector.tensorflow.org
 </small>
 </textarea>
 </section>
@@ -841,7 +849,7 @@ https://github.com/lmcinnes/umap
 </small>    
         </section>
         
-        <section data-markdown>
+        <!-- <section data-markdown>
             <textarea data-template>
 ### Fashion MNIST
 
@@ -857,9 +865,9 @@ https://arxiv.org/abs/1708.07747
 </small>    
         
             </textarea>
-        </section>
+        </section> -->
 
-        <section data-markdown>
+        <!-- <section data-markdown>
             <textarea data-template>
 ### What do numbers look like?
 
@@ -874,7 +882,7 @@ https://twitter.com/algoritmic/status/1036658934042509312
 https://johnhw.github.io/umap_primes/index.md.html
 </small>
 </textarea>
-</section>
+</section> -->
 
 <section data-markdown>
     <textarea data-template>
@@ -886,6 +894,7 @@ https://johnhw.github.io/umap_primes/index.md.html
 1. Can also make use of labels
 
 <small>
+
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/umap.ipynb
 </small>
 </textarea>
