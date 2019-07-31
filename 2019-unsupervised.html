@@ -442,7 +442,7 @@ http://setosa.io/ev/principal-component-analysis/
     </textarea>
     </section> -->
 
-    <section>
+    <!-- <section>
         <h2>How does PCA work?</h2>
     </section>
 
@@ -500,7 +500,7 @@ http://setosa.io/ev/principal-component-analysis/
 1. How would you tell which one is better? Is it even different? 
 1. How many principal components would you advice to drop?
     </textarea>
-    </section>
+    </section> -->
 
     
 <section>
@@ -518,6 +518,45 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 </small>    
         </section>
 
+
+<section data-markdown>
+    <textarea data-template>
+### Why Dimensionality Reduction?
+
+The curse of dimensionality: you should have a number of times more samples than features 
+
+if you have more dimensions than samples
+* you are prone to overfitting
+* training might take a long time
+
+https://en.wikipedia.org/wiki/Curse_of_dimensionality
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Data in 1d
+
+<img src='img/unsupervised/1d.png' height="500px">    
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+            <textarea data-template>
+### Data in 2d
+    
+<img src='img/unsupervised/2d.png' height="500px">    
+        </textarea>
+        </section>
+<section data-markdown>
+        <textarea data-template>
+### Data in 3d
+
+<img src='img/unsupervised/3d.png' height="500px">    
+    </textarea>
+    </section>
+    
 <section data-markdown>
     <textarea data-template>
 ### Exercise: Feature Elimination
@@ -525,6 +564,7 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 _Create a dataset where no principal component could be dropped (without losing significant amounts of information)_
 
 <small>
+
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/pca.ipynb
 </small>
         
@@ -541,6 +581,7 @@ When asked to draw a regression line, people draw something closer to the PCA li
 <video src='img/unsupervised/pca-vs-ols.mp4' controls height="350px"></video>
 
 <small>
+
 https://twitter.com/andre_quentin/status/1087367223839256576
 </small>
 </textarea>
