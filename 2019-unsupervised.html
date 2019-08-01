@@ -233,9 +233,8 @@ Questions
             <textarea data-template>
 ### Looking at standard implementations
 
-Using Scikit-learn
-
 <small>
+
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/unsupervised/k-means_vs_dbscan.ipynb
 </small>
     
@@ -317,6 +316,19 @@ structure out of nothing
     </textarea>
 </section>
 
+<section data-markdown>
+        <textarea data-template>
+### Why k-means clustering?
+
+1. Works nice when you know the expected number of clusters
+1. Works nice on blobs
+1. Reasonably simple
+1. Robust to scaling
+
+</textarea>
+</section>
+
+
 <section>
     <h2>Comparing Clustering Algorithms</h2>
     <p>Choose your favorite!</p>
@@ -361,7 +373,6 @@ Density-Based Spatial Clustering: https://en.wikipedia.org/wiki/DBSCAN
         <textarea data-template>
 ### Why DBSCAN?
 
-
 1. It requires minimum domain knowledge.
 2. It can discover clusters of arbitrary shape.
 3. Efficient for large database, i.e. sample size more than few thousands.
@@ -372,7 +383,18 @@ https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-w
 </textarea>
 </section>
 
+<section data-markdown>
+        <textarea data-template>
+### Exercise: Apply clustering to our insurance example
 
+<img src='img/unsupervised/cluster-insurance.png'>
+
+<small>
+    
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/unsupervised/cluster-insurance.ipynb
+</small>
+</textarea>
+</section>
 
 
 <section>
