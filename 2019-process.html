@@ -154,14 +154,27 @@
     </section>
 
 
+<section data-markdown>
+    <textarea data-template>
+### Objectives
 
-            <section data-markdown class="todo">
+* How to export your model after you are satisfied with it?
+* Setting up a common pipeline
+* How to serve the model?
+* How to monitor quality of your model?
+    </textarea>
+</section>
+
+
+            <section data-markdown>
                     <textarea data-template>
 
-The key often is generalization: Does the model perform well on the data that it encounters in the real world or only on
-the data you used for training? There are ways to get an idea of this quality from the data you already know. But if the
+_The key often is generalization: Does the model perform well on the data that it encounters in the real world or only on
+the data you used for training?_
+
+_There are ways to get an idea of this quality from the data you already know. But if the
 data you see in production are from the same distribution is something you need to monitor constantly. You also need to
-notice when model becomes stale and needs to be updated.
+notice when the model becomes stale and needs to be updated._ - Oliver Zeigermann
 
 </textarea>
 </section>
@@ -218,9 +231,8 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
     
     <section data-markdown>
         <textarea data-template>
-### Do machine learning like the great engineer you are 
+### Rules for bringing ML in production
 
-_not like the great machine learning expert you aren’t_
 
 1. Make sure your pipeline is solid end to end.
 1. Start with a reasonable objective.
