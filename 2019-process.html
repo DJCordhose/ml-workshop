@@ -165,67 +165,9 @@
     </textarea>
 </section>
 
-
             <section data-markdown>
                     <textarea data-template>
-
-_The key often is generalization: Does the model perform well on the data that it encounters in the real world or only on
-the data you used for training?_
-
-_There are ways to get an idea of this quality from the data you already know. But if the
-data you see in production are from the same distribution is something you need to monitor constantly. You also need to
-notice when the model becomes stale and needs to be updated._ - Oliver Zeigermann
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-        <textarea data-template>
-
-https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/process/export.ipynb
-https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/process/export-pipeline.ipynb
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/process/flask-server.ipynb
-</textarea>
-</section>
-
-    <section data-markdown>
-        <textarea data-template>
-<!-- ### ML rather is research and a bit of engineering than a craft -->
-### Machine Learning = Lab Work
-<img src='img/ml_is_not_programming.jpg' height="450px">
-    </textarea>
-    </section>
-
-
-        <section data-markdown>
-                <textarea data-template>
-### Data and Process are king                    
-
-<img src='img/googleml/model-architecture-not-important.jpg'>
-
-<small>
-
-https://developers.google.com/machine-learning/guides/rules-of-ml/    
-</small>                    
-                </textarea>
-            </section>
-        
-            <!-- <section data-markdown>
-                <textarea data-template>
-### Rules of ML                    
-
-<img src='img/googleml/compilers-vs-ml.jpg'>
-
-<small>
-
-https://developers.google.com/machine-learning/guides/rules-of-ml/    
-</small>                    
-                </textarea>
-            </section> -->
-
-            <section data-markdown>
-                    <textarea data-template>
-## Serving Sklearn Models
+## Step 1: Preparing and exporting for production
                         </textarea>
                     </section>
     
@@ -233,11 +175,9 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
         <textarea data-template>
 ### Rules for bringing ML in production
 
-
-1. Make sure your pipeline is solid end to end.
-1. Start with a reasonable objective.
-1. Add common­-sense features in a simple way.
-1. Make sure that your pipeline stays solid.
+1. Make sure your pipeline is solid end to end
+1. Start with a reasonable objective
+1. Add common­-sense features in a simple way
 
 <small>
 
@@ -259,6 +199,17 @@ _Caution: Be very sure you have the same pipeline of steps when serving as you h
             </textarea>
         </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Version together
+
+1. Code for Cleaning and Trained Model
+1. Trained Model
+1. Serving Code
+1. Training Data if size permits (consider https://dvc.org/)
+    </textarea>
+</section>
+
         <section data-markdown>
             <textarea data-template>
 ### After training
@@ -270,6 +221,56 @@ _Caution: Be very sure you have the same pipeline of steps when serving as you h
 _Caution: Make sure you Serialize your models using the exact same versions of software as in production (this might be harder than you think)._
             </textarea>
         </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Notebook and exercise: Preparation and Export
+
+* let's go through the notebook together
+* We will learn about the Pipeline and ColumnTransformer API
+* your favorite model and download it
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/process/export-pipeline.ipynb
+</textarea>
+</section>
+
+
+        <section data-markdown>
+            <textarea data-template>
+## Step 2: Serving your model
+                </textarea>
+            </section>
+            
+<section data-markdown>
+    <textarea data-template>
+### Server Environment
+
+* most likely Linux
+* Consider using Production Web Server (nginx, Apache httpd, etc.) when serving of HTTPS
+* Anaconda 3.x distribution (https://www.anaconda.com/distribution/) or equivalent
+* Only controlled update of versions
+* Keep development and production versions in sync
+* Consider using Docker (https://www.docker.com/)
+* Possibly shared Docker image (https://hub.docker.com/r/continuumio/anaconda3) 
+
+
+</textarea>
+</section>
+
+<section data-markdown class="local">
+    <textarea data-template>
+### Short Demo: Docker Container
+
+* https://hub.docker.com/r/continuumio/anaconda3
+* Start container: `docker run -v C:/Users/olive/Development:/mnt/dev -p 8888:8888 -i -t continuumio/anaconda3 /bin/bash`
+
+* Inside docker container
+  * `cd /mnt/dev/ml-workshop/notebooks`
+  * `jupyter notebook --ip=0.0.0.0 --allow-root`
+
+* On local machine: open browser on URL indicated  
+</textarea>
+</section>
 
         <section data-markdown>
             <textarea data-template>
@@ -284,16 +285,7 @@ _Caution: Make sure you Serialize your models using the exact same versions of s
             </textarea>
         </section>
 
-        <section data-markdown>
-            <textarea data-template>
-### Version together
 
-1. Code for Cleaning and Trained Model
-1. Trained Model
-1. Serving Code
-1. Training Data if size permits (consider https://dvc.org/)
-            </textarea>
-        </section>
 
         <section>
 <h3>Running a Flask Server</h3>
@@ -371,11 +363,36 @@ def predict(speed, age, miles):
     
         </section>
     
+<section data-markdown>
+<textarea data-template>
+### Notebook and exercise: Serve your model on Colab
+
+_let's go through the notebook together and let you create your favorite model_
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/process/flask-server.ipynb
+</textarea>
+</section>
+
+
     <section data-markdown>
             <textarea data-template>
 ## Once you are in production everything changes
         </textarea>
     </section>
+
+    <section data-markdown>
+        <textarea data-template>
+
+_The key often is generalization: Does the model perform well on the data that it encounters in the real world or only on
+the data you used for training?_
+
+_There are ways to get an idea of this quality from the data you already know. But if the
+data you see in production are from the same distribution is something you need to monitor constantly. You also need to
+notice when the model becomes stale and needs to be updated._ - Oliver Zeigermann
+
+</textarea>
+</section>
+
 
     <section data-markdown>
         <textarea data-template>
