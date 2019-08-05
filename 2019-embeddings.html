@@ -166,6 +166,21 @@ https://pretalx.com/euroscipy-2019/talk/QGZTDZ/
                 </textarea>
             </section>
 
+            <section data-markdown class="todo">
+                    <textarea data-template>
+* kürzen, 30 Folien
+</textarea>
+</section>
+
+<!-- <section data-markdown class="todo">
+        <textarea data-template>
+Nice to have            
+[]Für Stabilisierung: https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed 
+[]https://medium.com/tensorflow/introducing-tf-text-438c8552bd5e für Vorverarbeitung der Texte
+</textarea>
+</section> -->
+
+
 <section>
         <h2>The Magic of Neural Embeddings</h2>
         <h3>with TensorFlow 2</h3>
@@ -179,114 +194,66 @@ http://bit.ly/euroscipy-embeddings
 </a></small></p>
 </section>
 
-            <section data-markdown class="todo">
-                    <textarea data-template>
-* erzeugen http://bit.ly/euroscipy-embeddings
-* kürzen, 30 Folien
-[]Schildkröten Grafik bei Stabilisierung (aus 2019-process.html)
-[]Kein Clustering als Beispiel, rohe 2d Embeddings
-[]Für Stabilisierung: https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed 
-[]https://medium.com/tensorflow/introducing-tf-text-438c8552bd5e für Vorverarbeitung der Texte
-[]EuroScipy eher anwendungsbezogen
-    []nicht zu viele technische Details
-[]Auch Stabilibisierung zeigen, wichtig für Konstanz in Visualisierung
-</textarea>
-</section>
-
-            <section data-markdown class="todo">
-                    <textarea data-template>
-### Story
-
-3 Anwendungen
-
-Click
-
-Button wird en passend mittrainiert, 
-Ist schon im Notebook, mit geplottetem Embedding
-
-
-Worum geht es: Reduction von Dimensionen aka Embeddings
-
-Football
-
-Wie in M3 Football Talk
-Hier ist PCA echt gut, besonders weil man alles total einfach auf Zahlen abbilden kann, aber wie sieht es aus wenn man das nicht kann?
-
-* https://towardsdatascience.com/autoencoders-vs-pca-when-to-use-which-73de063f5d7
-
-
-Airline
-
-Imagine you want to compare airlines
-
-Plot in 2d
-d1: size / passenger
-d2: where do they fly? 
-
-How to get d2?
-
-
-
-
-                        </textarea>
-                    </section>
-
-            <section data-markdown>
-                    <textarea data-template>
-### What are Embeddings?
-
-* Embedding: Transform a high dim. vector space to a lower one
-* word/symbol Embedding: Transform sparse one hot encodings into a dense lower dim. encoding 
-
-<small>https://en.wikipedia.org/wiki/Word_embedding</small>
-                        </textarea>
-                    </section>
-
-            <section data-background='img/embeddings/pca.png'>
-<h3 style='color:blue'>Example</h3> 
-<h2 style='color:blue'>Similarities in Bundesliga Football Players</h2>
-<br>
-<br>
-<h3 style='color:blue'>transformed down from 30+ dimensions to 2 to make them accessible for humans using PCA</h3>
-
-                    </section>
-
-            <section data-markdown data-background='img/embeddings/pca.png'>
-                    <textarea data-template>
-<!-- <img src='img/embeddings/pca.png' height="600px"> -->
-
-                        </textarea>
-                    </section>
-                    
-
 <section data-markdown>
-        <textarea data-template>
-### Principal Component Analysis
+    <textarea data-template>
+### Why I am here
 
-* PCA, T-SNE and others often work really well
-* They can transform high dimensions into low dim
-* PCA: Can also explain which feature have which impact on which Principal Component
-* A single layered autoencoder with a linear activation function is very similar to PCA (https://towardsdatascience.com/autoencoders-vs-pca-when-to-use-which-73de063f5d7)
+_Do you have a problem for my solution?_
 
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-        <textarea data-template>
-### Neural Embeddings?
-
-* Train an embedding layer as part of a neural network
-* Each neuron in the layer serves as one dimension of embedding
-* extremely flexible setup
-* can reduce dimensions of really abstract concepts
-* can enocode non-linear relationships
+* I have been intrigued by the power of Neural Embeddings
+* Want to have this method in your toolbelt
+* Maybe you have an application for this (please tell me in this case)
 
 </textarea>
 </section>
 
 <section data-markdown>
+    <textarea data-template>
+### Imagine you want to compare airlines
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+
+<section data-markdown>
         <textarea data-template>
-### Word Embeddings using word2vec
+### Why would you want that?
+
+_Exploration of concepts_
+
+* You probably have a different use case
+
+* Which ones are similar?
+* Which are exceptions?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Isn't that esay?
+
+* First dimension: number of passengers
+* Second dimension: similarty by typical route
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Challenge
+
+### How do you describe similarty in a single dimension?
+
+            </textarea>
+        </section>
+        
+        
+<section data-markdown>
+        <textarea data-template>
+### Example: Word Embeddings using word2vec
 
 _main assumption: words appearing in similar contexts have similar meaning_
 
@@ -300,31 +267,91 @@ https://projector.tensorflow.org
 </small>
 </textarea>
 </section>
+    
+<section data-markdown>
+        <textarea data-template>
+### What are Embeddings?
 
-                    <section data-markdown>
+* Embedding: Transform a high dim. vector space to a lower one
+* word/symbol Embedding: Transform sparse one hot encodings into a dense lower dim. encoding 
+
+<small>https://en.wikipedia.org/wiki/Word_embedding</small>
+            </textarea>
+        </section>
+
+<section data-background='img/embeddings/pca.png'>
+<h3 style='color:blue'>Example</h3> 
+<h2 style='color:blue'>Similarities in Bundesliga Football Players</h2>
+<br>
+<br>
+<h3 style='color:blue'>transformed down from 30+ dimensions to 2 to make them accessible for humans using PCA</h3>
+
+        </section>
+
+<section data-markdown data-background='img/embeddings/pca.png'>
+        <textarea data-template>
+<!-- <img src='img/embeddings/pca.png' height="600px"> -->
+
+            </textarea>
+        </section>
+        
+
+<section data-markdown>
 <textarea data-template>
-<img src="img/embeddings/word_embeddings.png" height="550px">
+### Principal Component Analysis
 
-<small>
-<a href="https://github.com/fchollet/deep-learning-with-python-notebooks/blob/master/6.1-using-word-embeddings.ipynb">
+* PCA, T-SNE and others often work really well
+* They can transform high dimensions into low dim
+* PCA: Can also explain which feature have which impact on which Principal Component
+* A single layered autoencoder with a linear activation function is very similar to PCA (https://towardsdatascience.com/autoencoders-vs-pca-when-to-use-which-73de063f5d7)
 
-Deep Learning with Python
-</a>
-</small>
 </textarea>
 </section>
 
+<section data-markdown>
+<textarea data-template>
+### Neural Embeddings?
+
+* Train an embedding layer as part of a neural network
+* Each neuron in the layer serves as one dimension of embedding
+* extremely flexible setup
+* can reduce dimensions of really abstract concepts
+* can enocode non-linear relationships
+
+</textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
-### Our main use case: Clustering on concepts
+### Back to our use case: Clustering on concepts
 
-<img src='img/embeddings/airline-embedded-cluster.png'>
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
 
-<small>
+        </textarea>
+    </section>
 
-Only works if an embedding really encodes similarities    
-</small>
+<section data-markdown>
+    <textarea data-template>
+### What?
+
+* You might want to reduce a complex concept to a single or two dimensions
+* This can be very helpful for
+  * Visualizations
+  * Clustering, Outliers
+* Neural Embeddings can deal with pretty much any semantic information on the concept
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How does this relate to our use case?
+
+* We want to compare airlines
+* Which ones are similar?
+* Which are exceptions?
+* We have data about with routes they provide service for
+* Now we use the pure number of airline to predict that route
 
         </textarea>
     </section>
@@ -354,10 +381,9 @@ Only works if an embedding really encodes similarities
     <pre><code contenteditable data-trim class="fragment line-numbers python">
 number_of_airlines = len(airlines) + 1
 embedding_dim = 1 # up to us
-sequence_length = 1
 
 model.add(Embedding(input_dim=number_of_airlines, 
-                    output_dim=embedding_dim, input_length=sequence_length))
+                    output_dim=embedding_dim))
 </code></pre>
 
     <pre><code contenteditable data-trim class="fragment line-numbers python">
@@ -396,8 +422,9 @@ Accuracy
 
 <div style="clear: both">
 Curves for 2-d embedding (1-d accuracy closer to 10%)
+
 <small>        
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/embeddings.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
 </small>
 </div>
 </textarea>
@@ -423,7 +450,8 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
 
 <pre><code contenteditable data-trim class="fragment line-numbers python">
 embedding_layer = model.get_layer('embedding')
-embedding_model = Model(inputs=model.input, outputs=embedding_layer.output)
+embedding_model = Model(inputs=model.input, 
+                        outputs=embedding_layer.output)
 embeddings_2d = embedding_model.predict(samples).reshape(-1, 2)
 </code></pre>
 
@@ -433,9 +461,9 @@ latent_y = embeddings_2d[:, 1]
 
 plt.scatter(latent_x, latent_y)
 </code></pre>
+<small>
 
-<small style="font-size: large">
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/embeddings.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
 </small>
 
 </textarea>
@@ -453,24 +481,31 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
     </textarea>
 </section>
 
-
 <section data-markdown>
-    <textarea data-template>
-## Part II
+        <textarea data-template>
+## Every Story needs a wolf
 
-### Practical Challenges
 
-</textarea>
+<img src='img/chk_wolf.jpg' height="450px" style="float: left">
+
+<img src='img/chk_rot.jpg' height="450px" style="float: right">
+
+
+    </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Our Wolf: The Turtle Effect
+
+If the user expects a certain pattern to be in the model, they expect it to persist
+
+<img src="img/turtle.png" height="400px">
+
+    </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-### Returning to Example: Clustering on concepts
-
-<img src='img/embeddings/cluster-original.png' height="550px">
-
-        </textarea>
-    </section>
 
 <section data-markdown>
         <textarea data-template>
@@ -485,54 +520,15 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
     </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-### How to stabilize the embedding
-
-* for the same data we would ike to see the same output every time
-  * simple: use initialization with seed
-  * will not work when model or data changes
-* even with same initialization training might not be deterministic
-  * can change from GPU to GPU
-  * same amount of EPOCHS, same BATCH_SIZE, same ordering of data, same version of framework
-
-</textarea>
-</section>
-
-<section data-markdown transition='none'>
-    <textarea data-template>
-### Clustering original
-
-<img src='img/embeddings/cluster-original.png' height="550px">
-
-        </textarea>
-    </section>
-
-<section data-markdown transition='none'>
-    <textarea data-template>
-### Clustering same seed, same everthing
-
-<img src='img/embeddings/clsutering-same-seed.png' height="550px">
-
-        </textarea>
-    </section>
-
 
 <section data-markdown>
     <textarea data-template>
-### Brainstorming: How to achieve stabilization when model architecture and/or data changes?
+### How to stabilize the embedding?
 
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Options: Stabilization
-
-1. Use initial model as starting point and _carefully_ retrain
+1. _Transfer_: Use initial model as starting point and _carefully_ retrain
    * use small learning rate
    * will work only if model architecture has not changed
-1. Train from scratch, but use difference to original latent representation as part of loss function
+1. _Force_: Train from scratch, but use difference to original latent representation as part of loss function
    * Wow, sounds promising, as it should work under all circumstances
    * but: How do we do this???
 
@@ -552,7 +548,7 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
 </textarea>
 </section>
 
-<section data-markdown transition='none'>
+<section data-markdown>
     <textarea data-template>
 ### Adding a second model head
 
@@ -561,7 +557,7 @@ https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown data-transition='none'>
     <textarea data-template>
 ### Adding a second model head
 
@@ -602,9 +598,11 @@ model.fit(x=X, y={'main_output': Y, 'embedding': original_embeddings})
 </code></pre>
 
 <small>
+
 https://keras.io/getting-started/functional-api-guide/
 <br>
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+
 </small>
 </textarea>
         </section>
@@ -626,7 +624,7 @@ Accuracy on Main Head
 </section>
 
 
-<section data-markdown transition='none'>
+<section data-markdown data-transition='none'>
     <textarea data-template>
 ### Clustering original
 
@@ -635,7 +633,7 @@ Accuracy on Main Head
         </textarea>
     </section>
 
-<section data-markdown transition='none'>
+<section data-markdown data-transition='none'>
     <textarea data-template>
 ### Clustering Stabilized
 
@@ -644,11 +642,20 @@ Accuracy on Main Head
         </textarea>
     </section>
 
-    <section data-markdown transition='none'>
+    <section data-markdown data-transition='none'>
     <textarea data-template>
 ### Clustering Unstabilized
 
 <img src='img/embeddings/clsutering-same-seed.png' height="550px">
+
+        </textarea>
+    </section>
+
+<section data-markdown data-transition='none'>
+    <textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
 
         </textarea>
     </section>
@@ -662,71 +669,8 @@ Accuracy on Main Head
 </textarea>
 </section>
 
-
-<!-- Letzter Teil, Wohin noch? -->
-
-<section data-markdown>
-    <textarea data-template>
-## What else?
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Embeddings as the first layer of a neural network 
-
-Encode complex properties into a few dimensions and continue processing
-
-Von Knöpfen
-
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-## This works for all kinds of latent representations
-    </textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Like Autoencoders 
-
-<img src='img/embeddings/autoencoder_schema.jpg'>
-
-<small style="font-size: large">
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/2019_tf/autoencoders_tabular.ipynb
-<br>
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/2019_tf/autoencoders_stabilize.ipynb
-
-</small>
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## But isn't that just a small fraction of all network architectures?
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-#### All all types of neural networks have a latent representation somewhere
- 
-<img src='img/embeddings/encoder-decoder-everywhere.png' height="530" class='fragment'>
-
-<small style="font-size: large">
-https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
-</small>
-    </textarea>
-</section>
-
-    <section data-markdown style="font-size: xx-large">
-            <textarea data-template>
+<section data-markdown class="fragments">
+        <textarea data-template>
 ### Wrapup
 
 * Data is still king
@@ -734,25 +678,21 @@ https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview
 * Embeddings are no silver bullet
 * They can only be one more tool in your tool box
 * Can be used to reduce dimensions in a semantically reasonable way
-* Can also be used as an input to more complex processing
 * You can extract embeddings or use as part of complete network
-* Using the idea of latent representations you can stabilize the result of any neural network
-* Auto-Encoders are related
 
 <p>
-        <em>The Magic of Neural Embeddings</em>
-    <br>
-    <small>
+    <em>The Magic of Neural Embeddings</em>
+<br>
+<small>
 <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-    <br>
+<br>
 <a href="http://bit.ly/euroscipy-embeddings">
 http://bit.ly/euroscipy-embeddings</a>
 </small>
 </p>
 
-                </textarea>
-            </section>
-
+            </textarea>
+        </section>
 
             
         </div>
