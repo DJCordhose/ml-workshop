@@ -146,72 +146,14 @@
                 </textarea>
             </section>
 
-            <section data-markdown class="todo">
-                <textarea data-template>
-### Applications
-
-Where do you see applications of reinforcement learning?
-
-Find at least 3 szenarios where you can apply reinforcement learning and create a sketch of your RL design as a PoC
-* What are the
-  * Agent
-  * Environment
-  * Actions
-  * Observation
-  * Reward
-* 5 min each
-
-RL
-* Learn how to control traffic lights in a complex of intersections (2010, http://web.eecs.utk.edu/~ielhanan/Papers/IET_ITS_2010.pdf)
-  * agent is the control system for the traffic lights
-  * reward: decrease of overall delay
-  * actions: 
-  * environment: simulation of several cars within a set of complex insections                    
-* Optimize Chemical reactions (2017, https://github.com/lightingghost/chemopt)
-  *  reaction is the environment, an agent decides what experimental conditions to try (actions), in order to achieve the highest yield (reward) determined by simulation or real world experiment.
-* News Recommendation, (2018, http://www.personal.psu.edu/~gjz5038/paper/www2018_reinforceRec/www2018_reinforceRec.pdf)
-  * In our system, user pool and
-  news pool make up the environment, and our recommendation
-  algorithms play the role of agent. The state is defined as feature
-  representation for users and action is defined as feature representation for news. Each time when a user requests for news, a state
-  representation (i.e., features of users) and a set of action representations (i.e., features of news candidates) are passed to the agent.
-  The agent will select the best action (i.e., recommending a list of
-  news to user) and fetch user feedback as reward. Specifically, the
-  reward is composed of click labels and estimation of user activeness
-* Finding a good set of hyperparameters in deep learning (2017, https://bair.berkeley.edu/blog/2017/09/12/learning-to-optimize-with-rl/, https://ai.googleblog.com/2018/10/introducing-adanet-fast-and-flexible.html)
-  * agent: algorithm to optimize hyperparameters
-  * action: tweak hyperparameter in a certain way
-  * reward: loss of network
-  * environment: TensorFlow
-* Teaching a robot to pick up objects (2016, https://www.technologyreview.com/s/601045/this-factory-robot-learns-a-new-job-overnight/)
-
-Non-RL
-* Detecting tuberculosis from X-Rays 
-* Deciding risk classed of potential customers for car insurance
-* Detecting credit card fraud 
-* Which two football players are similar to each other?
-* Find an open position for an incoming payment
-
-* https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-world-1a94955bcd12
-        </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-### Overview Reinforcement Learning Algorithms
-
-* https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html
-* https://djcordhose.github.io/ai/2019_tf_rl.html
-</textarea>
-</section>
-
             <section data-markdown>
                 <textarea data-template>
 ### Notebooks
 
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/rl/line.ipynb
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/rl/orso.ipynb
-
+https://colab.research.google.com/github/tensorflow/agents/blob/master/tf_agents/colabs/3_policies_tutorial.ipynb
+https://colab.research.google.com/github/tensorflow/agents/blob/master/tf_agents/colabs/6_reinforce_tutorial.ipynb
         </textarea>
     </section>
 
