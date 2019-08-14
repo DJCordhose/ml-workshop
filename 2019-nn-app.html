@@ -257,6 +257,7 @@ model.add(Dense(units=3, activation='softmax'))
 
 <p>Training</p>
 <pre><code contenteditable data-trim class="fragment line-numbers python">
+model.compile(loss='categorical_crossentropy', optimizer='adam')
 model.fit(X_train, y_train, epochs=1000, batch_size=1000)
                     </code></pre>
                     
@@ -274,7 +275,7 @@ y_pred = model.predict([[100, 47, 10]])
 <img src='img/loss.jpg' height="500px">
 
 <small>
-Dependencies to parameters are tracked and parameters tweaked to bring loss down
+Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
 </small>
 </textarea>
 </section>
