@@ -194,12 +194,112 @@
 ### What makes neural networks special?
 
 * highly flexible
-* also complex
+* but also complex
         
 </textarea>
 </section>
 
-    
+<section data-markdown>
+    <textarea data-template>
+### You state your problem as an optimization
+
+* arbitrary input and output
+* freely choose hidden complexity
+* auto derivation libraries find gradients
+* loss function determines what you are after
+* based on gradients and loss they tune the parameters of your model
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### artificial neuron, the atom of neural networks
+
+<img src='img/neuron.png'>
+
+<small>
+Parameters are weights and biases, initially all random    
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## How a Neural Network learns
+
+1. Architecture: Setup of neural network
+1. Loss between ground truth and prediction
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Architecture: Setup of neural network
+
+<img src='img/nn-architecture.png'>
+
+<small>
+Parameters are weights and biases, initially all random
+</small>
+</textarea>
+</section>
+
+    <section>
+<h3>Code in TensorFlow</h3>
+
+<p>Model</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.add(Dense(units=50, input_dim=3))
+model.add(Dense(units=3, activation='softmax'))
+                    </code></pre>
+
+<p>Training</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.fit(X_train, y_train, epochs=1000, batch_size=1000)
+                    </code></pre>
+                    
+<p>Prediction</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+y_pred = model.predict([[100, 47, 10]])
+        </code></pre>
+
+        </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How loss is computed
+
+<img src='img/loss.jpg' height="500px">
+
+<small>
+Dependencies to parameters are tracked and parameters tweaked to bring loss down
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Use when you have a lot of data 
+
+<img src='img/classic-vs-deep.png' height="500px">
+
+<small>
+This also implies who need specialized hardware: at least a decent GPU    
+</small>
+    </textarea>
+    </section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Or have time series or images
+
+<img src='img/data.png' height="550px">
+    </textarea>
+    </section>
 
     </div>
 
