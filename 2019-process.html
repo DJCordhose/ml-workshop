@@ -149,7 +149,7 @@
 
 <section data-markdown>
         <textarea data-template>
-## Deploying Models
+## Deploying Scikit-learn Models
         </textarea>
     </section>
 
@@ -513,6 +513,357 @@ If the user expects a certain pattern to be in the model, they expect it to pers
   * https://nips.cc/Conferences/2016/Schedule?showEvent=6255
 </textarea>
 </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Deploying TensorFlow Models
+        </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### You could also use the Flask approach
+
+* In principal you can bring TensorFlow and Keras models into production like described before
+* This might be ok for a test installation
+* For the typical production setting there are better options
+            </textarea>
+        </section>
+                
+    <section data-markdown>
+            <textarea data-template>
+### Deploying to Google Cloud ML
+
+* Takes away the scaling and installation burden
+* Requires to convert your Keras model to a TensorFlow model
+* You need to define Signatures for input and output
+* The generated serving model also works for your local model servers (more on that later)
+* Can use CPU or GPU
+                </textarea>
+            </section>
+                        
+
+        <section>
+<h3>Preparing a Keras model for serving</h3>
+
+<div class="fragment">
+<p>Creating the Signature</p>
+
+<pre><code contenteditable data-trim class="python">
+signature = saved_model.signature_def_utils.build_signature_def(
+    inputs={'inputs': build_tensor_info(model.input)},
+    outputs={'scores': build_tensor_info(model.output)},
+    method_name=saved_model.signature_constants.PREDICT_METHOD_NAME)
+
+</code></pre>
+<p><small><a href='https://www.tensorflow.org/serving/signature_defs'>https://www.tensorflow.org/serving/signature_defs</a></small></p>
+</div>
+
+<div class="fragment">
+<p>Creating the builder and save model</p>
+
+<pre><code contenteditable data-trim class="python">
+builder = saved_model.builder.SavedModelBuilder("path_to_model")
+builder.add_meta_graph_and_variables(
+    sess, [saved_model.tag_constants.SERVING],
+    signature_def_map={
+        saved_model.signature_constants.
+            DEFAULT_SERVING_SIGNATURE_DEF_KEY: signature
+    })
+builder.save()
+</code></pre>
+</div>
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+### Alternative
+
+1. Turn your Keras Model into a High-Level TensorFlow Estimator Model Model using <em>model\_to\_estimator</em> 
+1. Freeze the TensorFlow model using <em>freeze\_graph.py</em> 
+
+<small>
+https://cloud.google.com/blog/products/gcp/new-in-tensorflow-14-converting-a-keras-model-to-a-tensorflow-estimator
+<br>
+https://www.tensorflow.org/extend/tool_developers/#freezing
+<br>
+https://towardsdatascience.com/freezing-a-keras-model-c2e26cb84a38
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Whichever approach you take, you now have a TensorFlow Model
+
+* You will have a _.pb_ file at this point
+* which is a frozen TensorFlow model
+            </textarea>
+        </section>
+        
+        <section>
+<h3>Checking our saved model</h3>
+
+<div class="fragment">
+<pre><code contenteditable data-trim class="python">
+saved_model_cli show --dir tf/1 \
+  --tag_set serve --signature_def serving_default
+</code></pre>
+<pre><code contenteditable data-trim class="fragment python">
+The given SavedModel SignatureDef contains the following input(s)
+  inputs['inputs'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 3)
+      name: hidden1_input:0
+The given SavedModel SignatureDef contains the following output(s)
+  outputs['scores'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 3)
+      name: softmax/Softmax:0
+Method name is: tensorflow/serving/predict
+</code></pre>
+</div>
+
+<div class="fragment">
+<pre><code contenteditable data-trim class="python">
+saved_model_cli run --dir tf/1 --signature_def serving_default \
+--tag_set serve --input_exprs inputs=[[100.0,47.0,10.0]]
+</code></pre>
+<pre><code contenteditable data-trim class="fragment python">
+Result for output key scores: [[0.0027608  0.8720881  0.12515119]]
+</code></pre>
+</div>
+<p><small><a href='https://www.tensorflow.org/guide/saved_model#cli_to_inspect_and_execute_savedmodel'>https://www.tensorflow.org/guide/saved_model#cli_to_inspect_and_execute_savedmodel</a></small></p>
+    </section>
+
+    <!-- <section data-markdown>
+            <textarea data-template>
+### Screencast: Checking our model                
+<video controls src="video/U4-M5-tf-check.mp4" type="video/mp4"  height="500"></video>
+
+</textarea>
+</section> -->
+
+
+        <section>
+<h3>Deploying to Google Clound ML</h3>
+
+<div class="fragment">
+    <p>Copy your model to a Cloud Bucket</p>
+<pre><code contenteditable data-trim class="python">
+gsutil mb gs://my_bucket
+gsutil cp -R tf/1 gs://my_bucket
+</code></pre>
+<p><small>
+Needs Google Cloud SDK:         
+    <a href='https://cloud.google.com/sdk/install'>https://cloud.google.com/sdk/install</a></small></p>
+</div>
+<div class="fragment">
+    <p>Deploy from this bucket</p>
+<pre><code contenteditable data-trim class="python">
+gcloud ml-engine models create "ml_insurance" --enable-logging
+gcloud ml-engine versions create "v1" --model "ml_insurance" \
+ --origin "gs://my_bucket/1"
+gcloud ml-engine versions describe "v1" --model "ml_insurance"
+</code></pre>
+<p><small>
+<a href='https://cloud.google.com/ml-engine/docs/tensorflow/deploying-models'>
+    https://cloud.google.com/ml-engine/docs/tensorflow/deploying-models</a>
+<br>
+<a href='https://cloud.google.com/ml-engine/docs/tensorflow/prediction-overview#prediction_logging'>
+    https://cloud.google.com/ml-engine/docs/tensorflow/prediction-overview#prediction_logging</a></small></p>
+</div>
+
+    </section>
+
+        <section>
+<h3>Making Predictions</h3>
+
+<div class="fragment">
+    <p>Input format is a bit special</p>
+<pre><code contenteditable data-trim class="python">
+# sample_insurance.json    
+{"inputs": [ 160,  18,  100]}
+{"inputs": [ 100,  47,  10]}
+{"inputs": [ 90,  20,  20]}    
+</code></pre>
+</div>
+<div class="fragment">
+    <p>Call from Google Cloud Console</p>
+<pre><code contenteditable data-trim class="python fragment">
+gcloud ml-engine predict --model "ml_insurance" --version "v1" \
+ --json-instances ./sample_insurance.json
+</code></pre>
+<pre><code contenteditable data-trim class="python fragment">
+SCORES
+[0.8658562898635864, 7.318668918511809e-14, 0.13414366543293]
+[0.002760800765827298, 0.8720880746841431, 0.12515118718147278]
+[5.452934419736266e-05, 0.005952719133347273, 0.9939927458763123]    
+</code></pre>
+</div>
+
+<p><small>
+<a href='https://cloud.google.com/ml-engine/docs/tensorflow/online-predict'>https://cloud.google.com/ml-engine/docs/tensorflow/online-predict</a>
+</small></p>
+
+</section>
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Screencast: Deploying to the Google Clound and making predictions                 
+<video controls src="video/U4-M6-cloud.mp4" type="video/mp4" height="500"></video>
+
+</textarea>
+</section> -->
+
+
+
+        <section>
+<h3>Making Predictions from Python</h3>
+
+<div class="fragment">
+    <p>First we need a few more libraries</p>
+<pre><code contenteditable data-trim class="python">
+pip install google-api-python-client
+pip install tensorflow-serving-api
+</code></pre>
+</div>
+<div class="fragment">
+    <p>Input needs to conform to JSON now</p>
+<pre><code contenteditable data-trim class="python">
+instances = [{"inputs": [100,  47,  10]}]
+predict_json("ml_project", "ml_insurance", instances=instances)
+</code></pre>
+<pre><code contenteditable data-trim class="python fragment">
+[{'scores': 
+  [0.002760800765827298, 0.8720880746841431, 0.12515118718147278]}]
+</code></pre>
+</div>
+
+<p><small>
+<a href='https://cloud.google.com/ml-engine/docs/tensorflow/online-predict'>https://cloud.google.com/ml-engine/docs/tensorflow/online-predict</a>
+</small></p>
+
+    </section>
+
+            <section>
+<h3>Python API</h3>
+
+<div class="fragment">
+<pre><code contenteditable data-trim class="python">
+import googleapiclient.discovery
+
+def predict_json(project, model, instances):
+    service = googleapiclient.discovery.build('ml', 'v1')
+</code></pre>
+<pre><code contenteditable class="python fragment">    name = 'projects/{}/models/{}'.format(project, model)
+
+    response = service.projects().predict(
+        name=name,
+        body={'instances': instances}
+    ).execute()
+
+    return response['predictions']</code></pre>
+</div>
+
+<p><small>
+<a href='https://cloud.google.com/ml-engine/docs/tensorflow/online-predict'>https://cloud.google.com/ml-engine/docs/tensorflow/online-predict</a>
+<br>
+<a href='https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/ml_engine/online_prediction/predict.py'>
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/ml_engine/online_prediction/predict.py
+</a>
+
+</small></p>
+
+    </section>
+
+        <section>
+<h3>TensorFlow Serving REST API</h3>
+
+<div class="fragment">
+<p>Starting the Model Server in Rest Mode (needs Linux)</p>
+
+<pre><code contenteditable data-trim>
+tensorflow_model_server --rest_api_port=8501 \
+--model_name=manning_insurance_1 \
+--model_base_path=$(pwd)/tf
+</code></pre>
+<p><small><a href='https://www.tensorflow.org/serving/api_rest'>https://www.tensorflow.org/serving/api_rest</a></small></p>
+</div>
+
+<div class="fragment">
+<p>Curling to it</p>
+
+<pre><code contenteditable data-trim class="python">
+curl -X POST \
+http://localhost:8501/v1/models/manning_insurance_1:predict  \
+-d '{ "instances": [{"inputs": [ 100.0,  47.0,  10.0]}]}' 
+# {
+#     "predictions": [[0.0027608, 0.872088, 0.125151]]
+# }</code></pre>
+</div>
+
+<p class="fragment"><small>
+    <em>Note</em>: To make this work from a browser you need a server in between, because 
+    <a href='https://enable-cors.org/'>CORS</a> makes an 
+    <a href='js/serving-sandbox.html'>
+        OPTION request</a>
+     that is not implemented by model server</small></p>
+
+    </section>
+
+        <section data-markdown style="font-size: xx-large">
+            <textarea data-template>
+### Docker Container
+
+* often the runtime environment is pretty complex and needs to scale
+* at least we want something that has all the dependencies resolved and just works
+* automatically starting a Flask Server or TensorFlow serving is also nice
+*  if we need a GPU installed on a server
+   * https://github.com/NVIDIA/nvidia-docker
+   * https://devblogs.nvidia.com/gpu-containers-runtime/
+* but
+  * only works with NVIDIA GPU
+  * be careful, if your software requires a GPU make sure the server you run it on has a matching one
+        </textarea>
+    </section>
+
+        <section>
+<h3>Deploying to the Browser</h3>
+
+<div class="fragment">
+<p>Converting our Keras Model to TensorFlow.js</p>
+
+<pre><code contenteditable data-trim class="python">
+tensorflowjs_converter --input_format keras \
+./model/insurance.hdf5 \
+./tfjs    
+</code></pre>
+<p><small><a href='https://js.tensorflow.org/tutorials/import-keras.html'>
+    https://js.tensorflow.org/tutorials/import-keras.html</a></small></p>
+
+</div>
+
+<div class="fragment">
+<p>Loading and using directly from the browser</p>
+
+            <pre><code contenteditable data-trim class="fragment line-numbers javascript">
+const model = await tf.loadModel('tfjs/model.json');
+            </code></pre>
+            <pre><code contenteditable data-trim class="fragment line-numbers javascript">
+// max speed, age, thousand miles per year
+const example = tf.tensor([[100, 47, 10]]);
+const prediction = model.predict(example);
+console.log(await prediction.data());
+//[0.00334801129065454, 0.8710343241691589, 0.12561771273612976]
+    </code></pre>
+
+<p><small>
+            <a href='js/tensorflow-sandbox/load_manning_model.html' target="_blank">
+                https://djcordhose.github.io/ai/js/tensorflow-sandbox/load_manning_model.html</a></small>
+        </small></p>
+    </div>   
+    </section>
 
         </div>
     </div>
