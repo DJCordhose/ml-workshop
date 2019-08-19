@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>RNN</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+
+        .todo:before {
+            content: 'TODO: ';
+        }
+
+        .todo {
+            color: red !important;
+        }
+
+        code span.line-number {
+            color: lightcoral;
+        }
+
+        .reveal pre code {
+            max-height: 1000px !important;
+        }
+
+        img {
+            border: 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .reveal {
+            -ms-touch-action: auto !important;
+            touch-action: auto !important;
+        }
+
+        .reveal h2,
+        .reveal h3,
+        .reveal h4 {
+            letter-spacing: 2px;
+            font-family: 'Amiri', serif;
+            /* font-family: 'Times New Roman', Times, serif; */
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: -2px;
+            text-transform: none !important;
+        }
+
+        .reveal em {
+            font-weight: bold;
+        }
+
+        .reveal .step-subtitle h1 {
+            letter-spacing: 1px;
+        }
+
+        .reveal .step-subtitle h2,
+        .reveal .step-subtitle h3 {
+            text-transform: none;
+            font-style: italic;
+            font-weight: normal;
+            /* font-weight: 400; */
+            /* font-family: 'Amiri', serif; */
+            font-family: 'Lobster', serif;
+            letter-spacing: 1px;
+            color: #2aa198;
+            text-decoration: underline;
+        }
+
+        .reveal .front-page h1,
+        .reveal .front-page h2 {
+            font-family: "League Gothic";
+            font-style: normal;
+            text-transform: uppercase !important;
+            letter-spacing: 1px;
+        }
+
+        .reveal .front-page h1 {
+            font-size: 2.5em !important;
+        }
+
+        .reveal .highlight {
+            background-color: #D3337B;
+            color: white;
+        }
+
+        .reveal section img {
+            background: none;
+        }
+
+        .reveal img.with-border {
+            border: 1px solid #586e75 !important;
+            box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .reveal li {
+            margin-bottom: 8px;
+        }
+
+        /* For li's that use FontAwesome icons as bullet-point */
+        .reveal ul.fa-ul li {
+            list-style-type: none;
+        }
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+<section data-markdown>
+        <textarea data-template>
+## Block III
+
+### Netzwerke für Sequenzen und Texte (Recurrent Layers)
+</textarea>
+</section>
+
+<section>
+    <h3>How does this sequence continue?</h3>
+    
+    <pre><code contenteditable data-trim class="line-numbers python">
+[10, 20, 30, 40, 50, 60, 70, 80, 90]    
+        </code></pre>
+    <p>Question: How do we train a network to predict the next number?</p>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Challenge: Dense Networks have no memory of previous events
+
+They lack capability to deal with sequential data, which is required to predict time series or "understand" text
+            </textarea>
+            </section>
+
+            <section data-markdown class='advanced'>
+        <textarea data-template>
+### Solution: Recurrent Neural Networks (RNNs)
+
+_If training vanilla neural nets is optimization over functions, training recurrent nets is optimization over programs._
+
+RNNs are Turing-Complete 
+
+<small>
+http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+<br>
+http://binds.cs.umass.edu/papers/1995_Siegelmann_Science.pdf
+</small>
+</textarea>
+            </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### RNNs - Networks with Loops
+<img src='img/nlp/colah/RNN-rolled.png' height="450px">
+
+<small>
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+        </textarea>
+    </section>
+        
+    <section data-markdown>
+        <textarea data-template>
+### Unrolling the loop
+
+<img src='img/nlp/colah/RNN-unrolled.png'>
+
+<small>
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+        </textarea>
+    </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Simple RNN
+
+<img src='img/nlp/fchollet_rnn.png'>
+
+<script type="math/tex; mode=display">
+output_t = \tanh(W input_t + U output_{t-1} + b)
+</script>
+    
+<small>
+<a href="https://livebook.manning.com/#!/book/deep-learning-with-python/chapter-6/129">
+    Deep Learning with Python, Chapter 6, François Chollet, Manning            
+</a>
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Question
+
+_Even having a network that can deal with time sequences, how do you train it using our data?_
+
+        </textarea>
+    </section>
+
+<section>
+    <h3>First Step: Slice and Splice data to have a training set</h3>
+
+
+    <p>Training Data, sliced to only use 3 past events</p>
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+[10, 20, 30] => 40
+[20, 30, 40] => 50
+[30, 40, 50] => 60
+[40, 50, 60] => 70
+[50, 60, 70] => 80
+[60, 70, 80] => 90
+                        </code></pre>
+</section>
+
+<section>
+    <h3>Simple Time Series Forecasting with RNNs</h3>
+        <p>The Model</p>
+        <pre><code contenteditable data-trim class="fragment line-numbers python">
+n_features = 1
+n_steps = 3
+
+model.add(SimpleRNN(units=50, activation='relu', name="RNN_Input"))
+model.add(Dense(units=1, name="Linear_Output"))
+model.compile(optimizer='adam', loss='mse')
+model.fit(X, y)
+        </code></pre>
+
+    <p>Predictions</p>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+[10, 20, 30] => 39.767338
+[70, 80, 90] => 100.001076
+[100, 110, 120] => 130.40291
+[200, 210, 220] => 231.74236
+[200, 300, 400] => 489.32404
+                        </code></pre>
+
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Exercise: Time Series Prediction
+
+_Train the model_
+
+* go through the notebook as it is
+* Try to improve the model
+  * Change activation function
+  * More nodes? less nodes?
+  * What else might help improving the results?
+                
+<small style="font-size: large">
+https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/time-series.ipynb
+</small>
+        </textarea>
+    </section>
+    
+
+    <section data-markdown>
+            <textarea data-template>
+### Main issues with RNNs
+
+_Vanishing or exploding gradient problem:_
+
+* Each step in training applies the same weights to the output, also in back-propagation  
+* The further we move backwards, the bigger (explodes) or smaller (vanishes) the gradient becomes
+* Multiplying many numbers <1 closes in on 0 (vanshing) and the same for >1 approaches infinty (exploding)
+
+<small>
+https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Intuition of effect
+
+_Effectively long term memory does not work:_
+
+* there is no training, because you are either on a plateau or in front of a wall
+* RNNs experiences difficulty in memorising words from far away in the sequence
+* Predictions based on most recent words only
+
+<small>
+    https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
+</small>
+</textarea>
+</section>
+
+    <section data-markdown>
+        <textarea data-template>
+### LSTM (Long short-term memory) / GRU (Gated Recurrent Unit)
+
+_allow past information
+to be reinjected at a later time, thus fighting the vanishing-gradient problem_
+
+<small>
+https://en.wikipedia.org/wiki/Long_short-term_memory
+<br>            
+<a href="https://www.manning.com/books/deep-learning-with-python">
+    Deep Learning with Python, Chapter 6.2.2, François Chollet, Manning            
+</a>            
+https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be
+<br>
+<br>
+https://datascience.stackexchange.com/questions/14581/when-to-use-gru-over-lstm
+<br>
+<br>
+https://arxiv.org/ftp/arxiv/papers/1701/1701.05923.pdf
+<br>
+https://www.dlology.com/blog/how-to-deal-with-vanishingexploding-gradients-in-keras/
+<br>
+https://towardsdatascience.com/animated-rnn-lstm-and-gru-ef124d06cf45
+</small>
+</textarea>
+</section>
+
+<section>
+    <h3>Advanced Keras RNN Layers</h3>
+
+    <p><small>LSTM / GRU Nodes</small></p>
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+model.add(LSTM(units=rnn_units))
+model.add(GRU(units=rnn_units))
+</code></pre>
+
+<p><small>Passes all outputs of all timesteps (not only the last one) to the next layer</small></p>
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+model.add(GRU(units=rnn_units, return_sequences=True))
+        </code></pre>
+
+<p><small>Adds Dropout inside feedback loop</small></p>
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+model.add(GRU(units=rnn_units, return_sequences=True, recurrent_dropout=0.2))
+        </code></pre>
+    </p>
+    <small>
+            <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">
+                https://www.tensorflow.org/api_docs/python/tf/keras/layers
+            </a>
+                    
+    </small>
+<small data-markdown>
+https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/time-series-advanced.ipynb
+</small>
+
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: false,
+            history: true,
+            center: true,
+            width: 1100,
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>
