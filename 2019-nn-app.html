@@ -158,7 +158,6 @@
             <section data-markdown class="todo">
                     <textarea data-template>
 
-* NNs in notebook für Classifier Überblick als Vergleich und Ausblick
 
             </textarea>
             </section>    
@@ -188,6 +187,16 @@
 3. Questions / Discussion   
 </textarea>
             </section>
+
+<section data-markdown>
+    <textarea data-template>
+## Part I
+### What makes neural networks special?
+
+</textarea>
+</section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -235,6 +244,27 @@ Parameters are weights and biases, initially all random
 </section>
 
 <section data-markdown>
+        <textarea data-template>
+### Remember our sample application?
+
+* We are CTO of a highly innovative Car Insurance Company
+* Different from other insurance companies we determine the rate by the actual number of accidents per customer
+* _Objective: how many accidents will prospective customers have?_ 
+ 
+<img src='img/pixabay/accident-151668_1280.png' height="300px">
+        </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Our data
+
+<img src='img/insurance/train.png'>
+        </textarea>
+    </section>
+
+
+<section data-markdown>
     <textarea data-template>
 ### Architecture: Setup of neural network
 
@@ -251,8 +281,8 @@ Parameters are weights and biases, initially all random
 
 <p>Model</p>
 <pre><code contenteditable data-trim class="fragment line-numbers python">
-model.add(Dense(units=50, input_dim=3))
-model.add(Dense(units=3, activation='softmax'))
+model.add(Dense(units=50, input_dim=number_of_features))
+model.add(Dense(units=number_of_classes, activation='softmax'))
                     </code></pre>
 
 <p>Training</p>
@@ -272,7 +302,7 @@ y_pred = model.predict([[100, 47, 10]])
     <textarea data-template>
 ### How loss is computed
 
-<img src='img/loss.jpg' height="500px">
+<img src='img/computing_loss.png' height="500px">
 
 <small>
 Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
@@ -280,6 +310,12 @@ Dependencies to parameters are tracked and parameters tweaked by optimizer to br
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+## Part II
+### Applications
+</textarea>
+</section>
 
 <section data-markdown>
         <textarea data-template>
@@ -302,6 +338,124 @@ This also implies who need specialized hardware: at least a decent GPU
     </textarea>
     </section>
 
+<section data-markdown>
+        <textarea data-template>
+## Application: Click Prediction
+### Using Time Series data with RNNs
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Improve UX by predictive highlights
+
+<img src='img/ux/app.gif'>
+
+<small>
+http://djcordhose.github.io/ux-by-tfjs/dist
+</small>
+</textarea>
+</section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Data Collection
+
+<img src='img/ux/mouse-positions.png' class="fragment">
+
+<small>
+What data would you collect?    
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### RNNs - Networks with Loops
+
+<img src='img/colah/RNN-rolled.png' height="450px">
+
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+    </textarea>
+</section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Unrolling the loop
+#### Becomes a truly deep feed-forward network!
+<img src='img/colah/RNN-unrolled.png'>
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Options for Model architectures 
+<pre><code contenteditable data-trim class="fragment line-numbers javascript">
+// GRUs are great in learning history
+// learns complete paths, best evaluation in numbers
+GRU(units=50, dropout=0.1)
+</code></pre>
+
+
+<pre><code contenteditable data-trim class="fragment line-numbers javascript">
+// LSTMs are similar to GRUs, but more complex
+// slower to train and worse evaluation, but really good real world performance
+LSTM(units=50, dropout=0.1)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers javascript">
+// trains fast, bad evaluation, but in real life does what we expect, 
+// only uses very recent history, generalizing great by proximity
+SimpleRNN(units=50, dropout=0.1)
+</code></pre>
+        
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Results for Simple RNN
+
+<img src='img/ux/simpleRNN.gif' class="fragment">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Results for LSTM
+
+<img src='img/ux/lstm.gif' class="fragment" height="500px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Lessons Learned
+
+* Recurrent Neural Networks can learn from sequences of data
+* Network Architecture, like type of layers, can have a big impact on results 
+</textarea>
+</section>
+
+<!-- 
+    * Image Processing: Traffic Sign Recognition
+    * Smart Dimensionality Reduction: Similarities in Airlines
+  -->
+ 
     </div>
 
 </div>
