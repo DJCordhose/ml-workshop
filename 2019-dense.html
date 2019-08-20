@@ -266,6 +266,26 @@ Dependencies to parameters are tracked and parameters tweaked by optimizer to br
 </textarea>
 </section>
 
+<section data-markdown style='font-size: xx-large'>
+    <textarea data-template>
+### Local minima?
+
+* local optimal points in the objective landscape almost always lay in saddle-points or plateaus rather than valleys
+* there is always a subset of dimensions containing paths to leave local optima and keep on exploring
+
+<img src='img/optimization-landscape-shape.png'>  
+
+<small>
+
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
+https://arxiv.org/abs/1406.2572
+<br>
+https://www.offconvex.org/2016/03/22/saddlepoints/
+
+</small>
+    </textarea>
+</section>
+
 <section>
     <h3>Next step: Encode this with Keras Layers</h3>
 
@@ -383,7 +403,29 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
     </textarea>
     </section>
 
+<section data-markdown style='font-size: xx-large'>
+    <textarea data-template>
+### How big should your network be?
 
+* Universal Approximation Theorem: 
+one hidden layer containing a finite number of neurons can approximate any continuous functions to arbitrary accuracy
+  * does not guarantee whether the model can be trained or generalizes properly
+* There exists a two-layer neural network with ReLU activations 
+and _2n+d_ weights that can represent any function on a sample of _size n_ in _d dimensions_
+  * can learn unstructured random noise perfectly
+* these are theoretical insights
+  * what really works needs to be shown by experiment
+  * more layers might reduce overall number of neurons
+  * 2-3 hidden layers is a good rule of thumb
+
+<small>
+
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
+https://arxiv.org/abs/1611.03530
+
+</small>
+    </textarea>
+</section>
     
 <section data-markdown>
         <textarea data-template>
@@ -418,7 +460,7 @@ _We do not have any idea how well our model performs in the real world, yet_
 </textarea>
 </section>
 
-<!-- <section data-markdown>
+<section data-markdown>
         <textarea data-template>
 ### Prediction
 
@@ -426,7 +468,7 @@ _We do not have any idea how well our model performs in the real world, yet_
 
     </textarea>
     </section>
- -->
+
 <section data-markdown>
         <textarea data-template>
 ### Splitting data sets
@@ -439,11 +481,14 @@ X_train, X_test, y_train, y_test =
 </code></pre>
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2/nn-training.ipynb
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-training.ipynb
+
 </small>
-<!-- <small>
+
+<small>
 In the real world, test and training often are split anyway and come from different sources    
-</small> -->
+</small>
     </textarea>
     </section>
 
@@ -457,19 +502,19 @@ In the real world, test and training often are split anyway and come from differ
         <h3>The Issue: Overfitting</h2>
     <div>
     <div style="float: left">
-        <img src="img/scans/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
+        <img src="img/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
         <p>
             <small><em>Training Score</em></small>
         </p>
     </div>
     <div style="float: left" class="fragment" data-fragment-index='5'>
-        <img src="img/scans/elements/down.jpg" height="200">
+        <img src="img/elements/down.jpg" height="200">
     </div>
     <div style="float: left" class="fragment" data-fragment-index='4'>
-        <img src="img/scans/elements/up.jpg" height="200">
+        <img src="img/elements/up.jpg" height="200">
     </div>
     <div style="float: left">
-            <img src="img/scans/elements/70_percent.jpg" height="200"  class="fragment" data-fragment-index='2'>
+            <img src="img/elements/70_percent.jpg" height="200"  class="fragment" data-fragment-index='2'>
             <p>
                 <small><em>Test Score</em></small>
             </p>
@@ -492,37 +537,16 @@ the problem may not have a unique solution
 the existence of multiple solutions, and overfitting often coincide
 
 <small>
+
 https://stats.stackexchange.com/questions/223486/modelling-with-more-variables-than-data-points/223517#223517
+
 </small>
             </textarea>
             </section>
-<section>
-        <h3>Illustration using Loss Landscape</h2>
-    <div>
-    <div style="float: left"  class="fragment">
-        <img src="img/resnet56_noshort_small.jpg" height="350">
-        <p>
-            <small><em>deep network, sharp surface, many solutions</em></small>
-        </p>
-    </div>
-    <div style="float: right"  class="fragment">
-            <img src="img/resnet56_small.jpg" height="350">
-            <p>
-                <small><em>residual shortcuts, smooth surface, naturally converging</em></small>
-            </p>
-    </div>
-    <p style="clear: both"><small>ResNet Architecture having 56 layers
-<br>
-<a href='https://github.com/tomgoldstein/loss-landscape#visualizing-3d-loss-surface'>
-https://github.com/tomgoldstein/loss-landscape#visualizing-3d-loss-surface
-</a>
-    </small></p>
 
-    </section>
-    
     <section data-markdown>
         <textarea data-template>
-### First approach: Train for fewer epochs
+### First measure: Train for fewer epochs
 
 <img src='img/accuracy.png'>
 
@@ -531,30 +555,32 @@ _Watch where training and validation accuracy diverge and stop training there_
 <small>
 Early stopping possible: 
 <br>
+
 https://keras.io/callbacks/#earlystopping
 <br>
 https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping
+
 </small>    
 
             </textarea>
             </section>
     
 <section id='overfitting-capacity'>
-        <h3>Second approach: Reduce capacity of model</h2>
+        <h3>Second measure: Reduce capacity of model</h2>
     <div style="float: left; width: 400px" class="fragment" data-fragment-index='1'>
-        <img src="img/scans/elements/model-large.jpg" height="200">
+        <img src="img/elements/model-large.jpg" height="200">
         <p>
             <small><em>Original model</em></small>
         </p>
     </div>
     <div style="float: left; width: 200px" class="fragment" data-fragment-index='2'>
         <br>
-        <img src="img/scans/elements/right.jpg">
+        <img src="img/elements/right.jpg">
         <br>
     </div>
     <div style="float: left; width: 500px"   class="fragment" data-fragment-index='3'>
             <br>
-            <img src="img/scans/elements/model-small.jpg" height="100">
+            <img src="img/elements/model-small.jpg" height="100">
             <br>
             <br>
             <p>
@@ -565,22 +591,22 @@ https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping
     </section>
 
 <section id='overfitting-dropout'>
-        <h3>Third approach: Use Dropout</h2>
+        <h3>Third measure: Use Dropout</h2>
             <p><em>Dropouts only train a certain percentage of neurons per batch</em></p>
     <div style="float: left; width: 400px" class="fragment" data-fragment-index='1'>
-        <img src="img/scans/elements/model-large.jpg" height="225">
+        <img src="img/elements/model-large.jpg" height="225">
         <p>
             <small><em>Original model</em></small>
         </p>
     </div>
     <div style="float: left; width: 200px" class="fragment" data-fragment-index='2'>
         <br>
-        <img src="img/scans/elements/right.jpg">
+        <img src="img/elements/right.jpg">
         <br>
     </div>
     <div style="float: left; width: 500px"   class="fragment" data-fragment-index='3'>
             <br>
-            <img src="img/scans/elements/model-emsemble.jpg" height="100">
+            <img src="img/elements/model-emsemble.jpg" height="100">
             <br>
             <br>
             <p>
@@ -592,19 +618,16 @@ https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping
 
     <section data-markdown id='overfitting-bn'>
             <textarea data-template>
-### Fourth approach: Batch Normalization
+### Fourth measure: Batch Normalization
 
-<ul>
-    <li class="fragment">Subtracts batch mean
-    <li class="fragment">Multiplies by standard deviation     
-</ul>
-
-<!-- <img src='img/scans/elements/sigmoid.jpg' class="fragment" height="200"> -->
+* Subtracts batch mean
+* Multiplies by standard deviation     
     
-<p class="fragment"><em>Intuition: Makes model robust by adding noise</em></p>
+_Intuition: Makes model robust by adding noise_
 
-<p class="fragment"><small><em>Bonus:</em> Lets model train faster by fighting vanishing gradients</small></p>
+_Bonus:_ Lets model train faster by fighting vanishing gradients</small>
 <small>
+
 http://gradsci.org/batchnorm
 <br>
 https://www.youtube.com/watch?v=ZOabsYbmBRM
@@ -614,7 +637,7 @@ Batch Norm is often frowned upon, because it is brittle magic and a small change
                 </textarea>
                 </section>
 
-        <section data-markdown style="font-size: xx-large">
+        <!-- <section data-markdown style="font-size: xx-large">
             <textarea data-template>
 ### Fifth approach: L1/L2 weight Regularization
 
@@ -626,16 +649,42 @@ Batch Norm is often frowned upon, because it is brittle magic and a small change
   * heavily penalizes especially large coefficients
 
 <small style="font-size: large">
+
 https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/overfit_and_underfit.ipynb#scrollTo=4rHoVWcswFLa
 <br>
 https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c    
 </small>
                 </textarea>
-                </section>
-        
+                </section> -->
+
+        <!-- <section data-markdown>
+            <textarea data-template>
+### There is more
+
+_L1/L2 weight Regularization_
+
+<small style="font-size: large">
+
+https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/overfit_and_underfit.ipynb#scrollTo=4rHoVWcswFLa
+<br>
+https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c    
+</small>
+
+_Batch Size in Combination with Learning Rate_
+
+<small>
+Is there a comprehensive review on the effect of SGD batchsize on generalization?
+
+I've seen papers arguing that large batch GD does not generalise, and also papers that argue the opposite or say the generalisation gap is not all that bad for large-batch SGD. So which one is it?
+(https://twitter.com/fhuszar/status/1161932346947489794?s=03)
+</small>
+
+              </textarea>
+                </section> -->
+                
         <section data-markdown>
             <textarea data-template>
-### Sixth approach: Get more training data
+### Final measure: Get more training data
 
 _if you can_
 
@@ -645,47 +694,21 @@ if not
               </textarea>
                 </section>
 
-<section data-markdown style='font-size: xx-large'  class='advanced'>
-    <textarea data-template>
-### How big should your network be
+<section data-markdown>
+        <textarea data-template>
+### This is how overfitting looks like
 
-* Universal Approximation Theorem: 
-one hidden layer containing a finite number of neurons can approximate any continuous functions to arbitrary accuracy
-  * does not guarantee whether the model can be trained or generalizes properly
-* There exists a two-layer neural network with ReLU activations 
-and 2n+d weights that can represent any function on a sample of size n in d dimensions
-  * can learn unstructured random noise perfectly
-* these are theoretical insights
-  * what really works needs to be shown be experiment
-  * more layers might reduce overall number of neurons
-  * 2-3 hidden layers is a good rule of thumb
+<div style="float: left">
+<img src='img/insurance/overfit-loss.png' height="300px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/insurance/overfit-accuracy.png' height="300px"><br>
+Accuracy
+</div>
 
-<small>
-https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
-https://arxiv.org/abs/1611.03530    
-</small>
-    </textarea>
+</textarea>
 </section>
-
-<section data-markdown style='font-size: xx-large' class='advanced'>
-    <textarea data-template>
-### Local minima?
-
-* local optimal points in the objective landscape almost always lay in saddle-points or plateaus rather than valleys
-* there is always a subset of dimensions containing paths to leave local optima and keep on exploring
-
-<img src='img/optimization-landscape-shape.png'>  
-
-<small>
-https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
-https://arxiv.org/abs/1406.2572
-<br>
-https://www.offconvex.org/2016/03/22/saddlepoints/
-</small>
-    </textarea>
-</section>
-
-
 
 <section data-markdown class="smaller">
         <textarea data-template>
@@ -703,7 +726,9 @@ _Regularize your model_
      * Run notebook from previous slide to see how this works -->
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2/nn-reg.ipynb
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-reg.ipynb
+
 </small>
     </textarea>
     </section>
@@ -717,7 +742,9 @@ https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2
 Up to 80% of accuracy
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2/nn-final.ipynb
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
+
 </small>
 </textarea>
     </section>
