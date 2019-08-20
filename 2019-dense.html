@@ -197,6 +197,20 @@ _What type of problem are we dealing with here?_
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### You state your problem as an optimization
+
+* arbitrary input and output
+* freely choose hidden complexity
+* auto derivation libraries find gradients
+* loss function determines what you are after
+* based on gradients and loss they tune the parameters of your model
+        
+</textarea>
+</section>
+
+
     <section data-markdown>
         <textarea data-template>
 ## Shared Exercise
@@ -240,24 +254,46 @@ _Key to architecture: What do we want to predict and what do we have as input?_
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### How loss is computed
+
+<img src='img/computing_loss.png' height="500px">
+
+<small>
+Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
+</small>
+</textarea>
+</section>
+
 <section>
     <h3>Next step: Encode this with Keras Layers</h3>
 
-    <p><small>Sequential Model</small></p>
     <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Sequential Model        
 model = keras.Sequential()
         </code></pre>
 
-    <p><small>Fully Connected Hidden Layer</small></p>
     <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Fully Connected Hidden Layer        
 model.add(Dense(units=50, input_dim=3))
 </code></pre>
 
-        <p><small>Softmax Output Layer</small></p>
         <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Softmax Output Layer            
 model.add(Dense(units=3, activation='softmax'))
         </code></pre>
-                            
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# uses sparse instead of a one-hot-encoding    
+model.compile(loss='sparse_categorical_crossentropy',
+              optimizer='adam')
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# train the model    
+model.fit(X, y)</code></pre>
+        
     <small>
             <a href="https://www.tensorflow.org/alpha/guide/keras/">
                 https://www.tensorflow.org/alpha/guide/keras/
@@ -286,45 +322,14 @@ Trainable params: 353
 Non-trainable params: 0
 _________________________________________________________________</code></pre>
 
-<small>
-How parameters are related to loss is expressed by the chain rule:
-<br>
-https://towardsdatascience.com/back-propagation-demystified-in-7-minutes-4294d71a04d7    
-</small>
 </textarea>
 </section>
-
-<section data-markdown>
-        <textarea data-template>
-### How do we determine the loss?
-
-<pre><code contenteditable data-trim class="line-numbers python">
-model.compile(loss='sparse_categorical_crossentropy',
-              optimizer='adam')
-</code></pre>
-
-<pre><code contenteditable data-trim class="line-numbers python">
-model.fit(X, y)</code></pre>
-
-
-<div  style="font-size: xx-large">
-* cross entropy can be used as an error measure when a network's outputs can be thought of as representing independent hypotheses
-* activations can be understood as representing the probability that each hypothesis might be true
-* the loss indicates the distance between what the network believes this distribution should be, and what the teacher says it should be 
-* can use a sparse instead of a one-hot-encoding
-</div>
-<small>
-https://en.wikipedia.org/wiki/Cross_entropy
-http://www.cse.unsw.edu.au/~billw/cs9444/crossentropy.html
-</small>
-    </textarea>
-    </section>
 
     <section data-markdown>
         <textarea data-template>
 ### Loss over time while training
 
-<img src='img/loss.png'>
+<img src='img/insurance/loss.png'>
 
     </textarea>
     </section>
@@ -345,7 +350,7 @@ _often given for training and test data separately_
         <textarea data-template>
 ### Accuracy over time while training
 
-<img src='img/training.png'>
+<img src='img/insurance/accuracy.png'>
 
     </textarea>
     </section>
@@ -362,10 +367,10 @@ _Create the TensorFlow model and at make it train_
 * How many hidden layers?
 * How many neurons per layer?
 * How good can you get?
-* Optional: Can you create a plot for loss over time?
 
 <small>
-https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2/nn-model.ipynb
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
 </small>
     </textarea>
     </section>
