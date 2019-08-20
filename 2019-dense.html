@@ -274,14 +274,20 @@ Dependencies to parameters are tracked and parameters tweaked by optimizer to br
 model = keras.Sequential()
         </code></pre>
 
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Input Layer        
+model.add(Input(name='input', shape=(num_features,)))
+</code></pre>
+                
+
     <pre><code contenteditable data-trim class="fragment line-numbers python">
 # Fully Connected Hidden Layer        
-model.add(Dense(units=50, input_dim=3))
+model.add(Dense(name='hidden', units=500, activation='relu'))
 </code></pre>
 
         <pre><code contenteditable data-trim class="fragment line-numbers python">
 # Softmax Output Layer            
-model.add(Dense(units=3, activation='softmax'))
+model.add(Dense(name='output', units=num_categories, activation='softmax'))
         </code></pre>
 
 <pre><code contenteditable data-trim class="fragment line-numbers python">
@@ -302,7 +308,7 @@ model.fit(X, y)</code></pre>
 </p>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
         <textarea data-template>
 <h3>What does the neural network learn?</h3>
 <p>Optimal values of weights (+biases) for all neurons</p>
@@ -353,7 +359,7 @@ _often given for training and test data separately_
 <img src='img/insurance/accuracy.png'>
 
     </textarea>
-    </section>
+    </section> -->
 
 
 <section data-markdown>
@@ -364,6 +370,7 @@ _Create the TensorFlow model and at make it train_
 
 * We will start with the notebook provided and go though it step by step
 * Write down a model that trains at least a bit
+* Make sense of the trainable parameters of your model
 * How many hidden layers?
 * How many neurons per layer?
 * How good can you get?
@@ -371,6 +378,7 @@ _Create the TensorFlow model and at make it train_
 <small>
 
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
+
 </small>
     </textarea>
     </section>
