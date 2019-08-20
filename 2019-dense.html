@@ -142,15 +142,16 @@
 
 <section data-markdown>
         <textarea data-template>
-## Block II
 
-### Netzwerke für strukturierte Daten (Fully Connected Layers)
+## Networks for Tabular and Structured data
+### Fully Connected layers
+
 </textarea>
 </section>
 
 <section>
         <h3>Example: Customer Data - Risk of Accidents</h3>
-        <img src="img/manning/all.png" height="400px" class="fragment">
+        <img src="img/insurance/all.png" height="400px" class="fragment">
         <p class="fragment">
             <small>How would you rank me (48) for a car having 100 mph top speed, driving 10k miles per year?</small>
         </p>
@@ -158,40 +159,28 @@
     
 <section data-markdown>
     <textarea data-template>
-## Types of Learning
-<img src='img/types-of-ml.jpg'>
-<small>
-https://www.facebook.com/nipsfoundation/posts/795861577420073/
+### Sample Data
+
+<div style="max-width: 50%; float: left;">
+    <img src='img/insurance/df_head.jpg' height="450">
+</div>
+<div style="max-width: 50%; float: right;">
+
 <br>
-https://ranzato.github.io/publications/tutorial_deep_unsup_learning_part1_NeurIPS2018.pdf
-</small>
+<br>
+<br>
+<ul>
+    <li>0 - red: many accidents</li>
+    <li>1 - green: few or no accidents</li>
+    <li>2 - yellow: in the middle</li>
+</ul>
+</div>
+
 </textarea>
 </section>
 
 <section data-markdown>
     <textarea data-template>
-### Sample Data
-
-<div style="max-width: 50%; float: left;">
-    <img src='img/df_head.jpg' height="450">
-</div>
-<div style="max-width: 50%; float: right;">
-
-    <br>
-    <br>
-    <br>
-    <ul>
-        <li>0 - red: many accidents</li>
-        <li>1 - green: few or no accidents</li>
-        <li>2 - yellow: in the middle</li>
-    </ul>
-</div>
-
-</textarea>
-</section>
-
-<!-- <section data-markdown>
-        <textarea data-template>
 ### Classification vs Regression
 
 _Regressions predict a quantity, and classifications predict a label_
@@ -199,13 +188,14 @@ _Regressions predict a quantity, and classifications predict a label_
 1. Regression: Fitting a line through data points
 2. Classification: What category can be derived from data
 
-<img src="img/sketch/classification.jpg" height="300px">
+<img src="img/classification.jpg" height="300px">
 
 <small>
+
 _What type of problem are we dealing with here?_
 </small>
 </textarea>
-</section> -->
+</section>
 
     <section data-markdown>
         <textarea data-template>
@@ -275,29 +265,6 @@ model.add(Dense(units=3, activation='softmax'))
     </small>
 </p>
 </section>
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### Intuition for the learning process
-
-_network stretches and folds the paper until it can find a line to separate red from blue_
-
-<video controls 
-        poster='video/layer-linear.jpg'
-        src="video/layer.mp4" type="video/mp4" height="300"></video>
-
-<small>
-https://twitter.com/random_forests/status/1084618439602298881
-<br>
-http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
-<br>
-https://cs.stanford.edu/people/karpathy/convnetjs/
-<br>
-https://brohrer.github.io/what_nns_learn.html
-</small>
-</textarea>
-</section> -->
-
 
 <section data-markdown>
         <textarea data-template>
@@ -794,6 +761,8 @@ https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/tf2
             history: true,
             center: true,
             width: 1100,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
 
             math: {
                 mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
