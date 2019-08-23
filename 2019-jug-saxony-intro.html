@@ -154,83 +154,117 @@
 <div class="reveal">
     <div class="slides">
 
+
 <!-- 
-    
- JUG Saxony Day
+  
+TAG
+
+https://www.the-architecture-gathering.de/programm/programm-details/1395/wieso-sie-sich-jetzt-mit-machine-learning-beschaeftigen-sollten/
+
+45 Minuten
+
+Anders als in der klassischen Software-Entwicklung werden im Machine Learning anhand von Beispiel-Daten Zusammenhänge
+erlernt, die von den ursprünglichen Daten abstrahieren.
+
+Während sich die Boulevard-Presse entweder mit Horror- oder Heils-Szenarien überschlägt, möchte ich in diesem Talk
+praktisch und konkret darauf eingehen, warum es sich lohnen kann, sich mit Machine Learning zu beschäftigen.
+
+Ich zeige dazu 4 Beispiele von Anwendungen aus unterschiedlichen Bereichen die Sie mit klassischer Programmierung nicht
+erzielen könnten, die aber dennoch erstaunlich nützlich sind. Wir werden uns dabei mit Supervised, Unsupervised und
+Reinforcement Learning am Beispiel von TensorFlow beschäftigen.
+            
+---
+
+ML Summit
+
+https://ml-summit.de/machine-learning-basics-and-tools/was-man-mit-machine-learning-heute-machen-kann-4-case-studies/
+
+45 Minuten
+
+Was man mit Machine Learning heute machen kann – 4 Case Studies
+
+Machine Learning ist nicht die Zukunft, sondern die Gegenwart. In diesem Talk zeigt Oliver Zeigermann 4 Beispiele für
+Machine Learning, die heute existieren und ohne Machine Learning so nicht denkbar wären.
+
+---
+
+JUG Saxony Day
 
 60 minutes
 
-Wieso du dich jetzt mit Machine Learning beschäftigen solltest
+Einführung in Machine Learning
+
+Anders als in der klassischen Software-Entwicklung werden im Machine Learning anhand von Beispiel-Daten Zusammenhänge
+erlernt, die von den ursprünglichen Daten abstrahieren.
+
+Während sich die Boulevard-Presse entweder mit Horror- oder
+Heils-Szenarien überschlägt, möchte ich in diesem Talk praktisch und konkret darauf eingehen, warum es sich lohnen kann,
+sich mit Machine Learning zu beschäftigen. 
+
+Ich zeige dazu 4 Beispiele von Anwendungen aus unterschiedlichen Bereichen,
+die du mit klassischer Programmierung nicht erzielen könntest, die aber dennoch erstaunlich nützlich sind. Wir werden
+uns dabei mit Supervised, Unsupervised und Reinforcement Learning am Beispiel von TensorFlow beschäftigen.
 
 -->
 
+<section data-markdown class="preparation">
+        <textarea data-template>
+### Preparation
+
+* Bevor es los geht, das hier abspielen, wenn die Leute rein kommen
+
+https://www.youtube.com/watch?v=dKjCWfuvYxQ&feature=youtu.be
+        </textarea>
+    </section>
+
+<!-- 
+        <section data-markdown class="todo">
+            <textarea data-template>
+* Für ML Summit und TAG auf 40-45 Folien ausdünnen
+
+</textarea>
+        </section>
+ -->
+
+
+
 <section>
             <br>
-            <br>
-            <h2>Wieso du dich jetzt mit Machine Learning beschäftigen solltest</h2>
-            <br>
-            <br>
-            <p><a target="_blank" href="https://jug-saxony-day.org">
+            <!-- <h2>Wieso du dich jetzt mit Machine Learning beschäftigen solltest</h2> -->
+            <h2>Einführung in Machine Learning</h2>
+            <!-- <h2>Was man mit Machine Learning heute machen kann – 4 Case Studies</h2> -->
+            <p><a target="_blank" href="https://jug-saxony-day.org/programm/#!/P21">
                 JUG Saxony Day, September 2019
             </a></p>
+            <br>
             <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
                 <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </h4>
+            <h4><a href="https://www.embarc.de/">embarc Software Consulting GmbH</a></h4>
+            <br>
+
             <p><small><a href="http://bit.ly/ml-jug-saxony">
                 http://bit.ly/ml-jug-saxony
             </a></small></p>
         </section>
 
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Grafiken aus AI rüberkopieren                
-            </textarea>
-        </section>
+<section data-markdown>
+        <textarea data-template>
+<img src='img/p8vfaxqrfud31.jpg' height="600">
 
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Intro                
-https://i.redd.it/p8vfaxqrfud31.jpg        
+<small>
+
+https://i.redd.it/p8vfaxqrfud31.jpg
+</small>        
 </textarea>
-        </section>
+    </section>
 
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Intro NN wie bei NVE                
-</textarea>
-        </section>
-
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Click Teil wie bei NN Intro, also nicht Maus, sondern Click Path
-
-    </textarea>
-</section>
-
-        
-        <section data-markdown class="todo">
-            <textarea data-template>
-### RL Teil neu machen
-
-* Orso mit neuen Grafiken
-* Und Sketch wie RL funktioniert
-
-* Das hier als anschauliche Demo: https://ai.googleblog.com/2019/06/introducing-google-research-football.html
-
-Intro, einen Teil von Robbi dreht durch
-* https://www.youtube.com/watch?v=dKjCWfuvYxQ&feature=youtu.be  
-
-* Besonders sinnvolle Anwendung Climate Change: https://twitter.com/demishassabis/status/1140052231925981184 
-    </textarea>
-</section>
-
-<section data-markdown class="todo">
+<section data-markdown>
     <textarea data-template>
-### Bird's Eye View
+#### Choosing your Machine Learning Type
 
-<img src='img/ML-strategy-helper.png'>
+<img src='img/ML-strategy-helper.png' height="600">
 
-Das hier immer wieder als Map nehmen, wo man gerade ist
 </textarea>
 </section>
 
@@ -262,12 +296,6 @@ Das hier immer wieder als Map nehmen, wo man gerade ist
                         </textarea>
                         </section>
             
-            <!-- <section data-markdown>
-                    <textarea data-template>
-                    <img src='img/sketch/classic-development.jpg'>
-                    </textarea>
-                    </section> -->
-                    
     <section>
         <h3>Programmer's approach: Code Rules by Hand</h3>
         <div class="fragment">
@@ -298,9 +326,9 @@ if miles_per_year > 20:
 return green # otherwise: low risk
             </code></pre>
         </div>
-<p><small>
-    <a href='https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb>'>https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb</a>
-</small></p>
+<!-- <p><small>
+    <a href='https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb'>https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb</a>
+</small></p> -->
     </section>
 
 <section data-markdown>
@@ -363,7 +391,7 @@ Let's compare it to guessing
 
 <section data-markdown>
                 <textarea data-template>
-### My claim: Manual Business Logic does not work for complex tasks
+### My claim: Manual Business Logic often does not work for complex tasks
 
 1. either not sufficient
 1. or not maintainable
@@ -402,7 +430,7 @@ Let's compare it to guessing
     </div>
         </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
 <textarea data-template>
 ## Core Question
 
@@ -424,20 +452,13 @@ Let's compare it to guessing
 https://en.wikipedia.org/wiki/Feature_learning    
 </small>
 </textarea>
-</section>
+</section> -->
 
 <!-- <section data-markdown>
-<textarea data-template>
-<img src='img/sketch/supervised-ml.jpg' height="650px">
-</textarea>
-</section>
- -->
-
-<section data-markdown>
     <textarea data-template>
 ## A Machine can learn to write those rules
 </textarea>
-</section>
+</section> -->
 
     <section data-markdown>
             <textarea data-template>
@@ -501,156 +522,167 @@ y_pred = clf.predict(input)
 </textarea>
 </section>
 
-
-<section data-markdown>
-    <textarea data-template>
-### Improve UX by predictive highlights
-
-<img src='img/ux/app.gif'>
-
-<small>
-http://djcordhose.github.io/ux-by-tfjs/dist
-</small>
-</textarea>
-</section>
-
 <section data-markdown>
         <textarea data-template>
-## Programmatic solution
-
-highlight button 
-* of closest proximity after certain threshold
-* if vector of movement points to it
-            </textarea>
-            </section>
-
-
-    <section data-markdown>
-        <textarea data-template>
-### Data Collection
-
-<img src='img/ux/mouse-positions.png' class="fragment">
-
-<small>
-What data would you collect?    
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### TensorFlow.js
-
-<img src='img/ux/tfjs.png'>
-
-<small>
-https://www.tensorflow.org/js/    
-</small>
+### Central Question
+## How can we help our users find the right buttons to click?
 
 </textarea>
 </section>
+<!-- 
+hatten bei Daniels Software mal etwas eingesetzt das heißt True Story
+da nehmen alle Events auf und anhand dessen kann man sehen, was die Benutzer wirklich auf der Seite mahchen
+also später abspielen
+kann man sich dann angucken
+aufgrund hoher emotionaler Belastung haben wir das nach ein paar Tagen abgestellt
+ist wirklich so wie bei den Typen
+ -->
 
 <section data-markdown>
-    <textarea data-template>
-### RNNs - Networks with Loops
-<img src='img/colah/RNN-rolled.png' height="450px">
+        <textarea data-template>
+            <a href='https://twitter.com/PPathole/status/1100406765156327427'>
+<img src='img/ux/ux-joke1.png' height="550px">
+</a>
 
 <small>
-http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+https://twitter.com/PPathole/status/1100406765156327427    
 </small>
-    </textarea>
+</textarea>
 </section>
-    
-<section data-markdown>
-    <textarea data-template>
-### Unrolling the loop
-#### Becomes a truly deep feed-forward network!
-<img src='img/colah/RNN-unrolled.png'>
-
-<small>
-http://colah.github.io/posts/2015-08-Understanding-LSTMs/
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Options for Model architectures 
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// GRUs are great in learning history
-// learns complete paths, best evaluation in numbers
-tf.layers.gru({
-    units: 50,
-    dropout: 0.1
-})
-</code></pre>
-
-
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// LSTMs are similar to GRUs, but more complex
-// slower to train and worse evaluation, but really good real world performance
-tf.layers.lstm({
-    units: 50,
-    dropout: 0.1
-})
-</code></pre>
-
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// trains fast, bad evaluation, but in real life does what we expect, 
-// only uses very recent history, generalizing great by proximity
-tf.layers.simpleRNN({
-    units: 50,
-    dropout: 0.1
-})
-</code></pre>
-        
-    </textarea>
-</section>
-
 
 <!-- <section data-markdown>
-    <textarea data-template>
-### Training
+        <textarea data-template>
+<a href='https://twitter.com/page_eco/status/1082971149208772609'>
 
-<img src='img/ux/accuracy-reg.png' height="500px">
+<img src='img/ux/ux-joke2.png' height="550px">
+</a>
 
+<small>
+
+https://twitter.com/page_eco/status/1082971149208772609    
+</small>
 </textarea>
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### Evaluation
+        <textarea data-template>
+<img src='img/ux/ux-joke3.png' height="550px">
 
-<img src='img/ux/confusion-right-for-middle.png' height="550px">
+<small>
 
+https://twitter.com/dkhan/status/1129153536565104641    
+</small>
 </textarea>
 </section>
  -->
 <section data-markdown>
     <textarea data-template>
-### Results for Simple RNN
+### Demo
 
-<img src='img/ux/simpleRNN.gif' class="fragment">
+_Which button to click?_
+
+<img src='img/ux/bad_ux.png'>
+
+http://djcordhose.github.io/ux-by-tfjs/dist
+
+</textarea>
+</section>    
+
+<section data-markdown>
+        <textarea data-template>
+## Programmatic solution
+
+highlight button based on 
+* hard coded assumptions
+* collected data, analyse and build a model
+            </textarea>
+            </section>
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/classic-development.jpg'>
+</textarea>
+</section>
+                    
+<section data-markdown>
+<textarea data-template>
+<img src='img/supervised-ml.jpg' height="650px">
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Training data collected from users
+
+<pre><code contenteditable data-trim class="line-numbers javascript">
+[ "train-model", "save-model-to-local" ],
+[ "train-model", "show-eval", 
+  "train-model", "save-model-to-local" ],
+[ "load-local-model", "toggle-prediction" ]
+</code></pre>
 
 </textarea>
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### Results for LSTM
+        <textarea data-template>
+### Challenge: Classic Dense Networks have no memory of previous events
 
-<img src='img/ux/lstm.gif' class="fragment" height="500px">
+They lack capability to deal with sequential data
+            </textarea>
+            </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Training Setup
+
+<a href='https://colab.research.google.com/github/DJCordhose/ux-by-tfjs/blob/master/notebooks/click-sequence-model.ipynb'>
+<img src='img/ux/click-model-setup.png' height="450">            
+</a>
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ux-by-tfjs/blob/master/notebooks/click-sequence-model.ipynb
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Training
+
+<img src='img/ux/click_acc.png' style="background-color: azure">            
 
 </textarea>
 </section>
 
+<section data-markdown>
+        <textarea data-template>
+### Evaluation
+
+<img src='img/ux/click_cm.png' style="background-color: azure" height="550px">            
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+        <textarea data-template>
+### Prediction
+
+<img src='img/ux/click_prediction.gif'>            
+<small>
+
+http://djcordhose.github.io/ux-by-tfjs/dist
+</small>
+</textarea>
+</section>
+            
 <section data-markdown>
         <textarea data-template>
 ## Lessons Learned
 
 * Neural Networks are a different style of machine learning
 * Recurrent Neural Networks can learn from sequences of data
-* Network Architecture, like type of layers, can have a big impact on results 
 * Neural Networks are very powerful and might outperform hand written heuristics
 </textarea>
 </section>
@@ -663,12 +695,30 @@ tf.layers.simpleRNN({
 </textarea>
 </section>
 
+<!-- <section data-markdown class="todo">
+        <textarea data-template>
+* Das hier als anschauliche Demo: https://ai.googleblog.com/2019/06/introducing-google-research-football.html
+* Auch hier zur Belustigung: https://twitter.com/randal_olson/status/1164562565667495936
+
+Intro, einen Teil von Robbi dreht durch
+* https://www.youtube.com/watch?v=dKjCWfuvYxQ&feature=youtu.be  
+
+* Besonders sinnvolle Anwendung Climate Change: https://twitter.com/demishassabis/status/1140052231925981184 
+</textarea>
+</section> -->
+
+
 <section data-markdown>
         <textarea data-template>
-### Find the near optimal route
+### Find the optimal route
 
-<img src='img/rl/berater/graph-large-zeros.jpg' height="500px">
+<img src='img/rl/turf.png' height="450px">
 
+<small>
+
+https://opendatascience.com/bears-need-to-learn-as-well-practical-reinforcement-learning-with-tensorflow-2-0-tf-agents/
+
+</small>
     </textarea>
 </section>
 
@@ -693,75 +743,44 @@ Swapping
 
                         </textarea>
                     </section>
-                       
 
 <section data-markdown>
     <textarea data-template>
-### Types of Machine Learning
+#### But we have no training data
 
-<img src='img/types-of-ml.jpg'>
-<small>
-https://www.facebook.com/nipsfoundation/posts/795861577420073/
-<br>
-https://ranzato.github.io/publications/tutorial_deep_unsup_learning_part1_NeurIPS2018.pdf
-</small>
-</textarea>
-</section>
-<!-- 
-<section data-markdown>
-        <textarea data-template>
-### Types of Learning in our Brains
+<img src='img/ML-strategy-helper.png' height="600">
 
-<img src='img/brain-and-ml.jpg' height="450px">
-<small>
-https://twitter.com/hardmaru/status/1101535801278693376
-<br>
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.178.2123&rep=rep1&type=pdf
-</small>
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-
-<img src='img/hinton-unsupervised.png'>
-<small>
-https://sites.google.com/view/berkeley-cs294-158-sp19/home    
-</small>
-</textarea>
-</section> -->
-                    
 <section data-markdown>
 <textarea data-template>
-### Reinforcement Learning
+### Reinforcement Learning: Using an Agent
 
-<div  style="max-width: 45%; float: left">
-<br>
-<img src="img/rl.png">
-</div>
-<div style="max-width: 50%; float: right">
-<br>
-<ol>
-    <li>Based on _Observations_ an _Agent_ executes </li>
-<li>_Actions_ within a given  
-<li>_Environment_ which lead to positive or negative 
-<li>_Rewards_.
-</ol>
-</div>
-
-<div style="clear: both;">
-    <br>
-    <p >The Agent’s job is to maximize the cumulative Reward</p>
-</div>
-
-<small>
-http://gym.openai.com/docs/    
-</small>
+<img src='img/rl/rl-train-play-1.png' height="550">
 
 </textarea>
 </section>
 
 <section data-markdown>
+<textarea data-template>
+### Reinforcement Learning: Training an agent
+
+<img src='img/rl/rl-train-play-2.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Solution
+<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
+                
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
         <textarea data-template>
 ### Learning in a simulated world
 <video controls src="video/knocked-over-stand-up.mp4"  muted type="video/mp4" height="500"></video>
@@ -770,7 +789,7 @@ http://gym.openai.com/docs/
     https://blog.openai.com/openai-baselines-ppo/
 </small>
 </textarea>
-</section>
+</section> -->
 
 <!-- <section data-markdown>
     <textarea data-template>
@@ -784,7 +803,7 @@ https://openai.com/systems/
 </textarea>
 </section> -->
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 ### Modelling our world
 <pre><code contenteditable data-trim class="fragment line-numbers python">
@@ -835,7 +854,7 @@ Average length of path: ~ 15
 https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/rl/berater-v11.ipynb
 </small>
             </textarea>
-        </section>
+        </section> -->
 
         <!-- <section data-markdown>
                 <textarea data-template>
@@ -860,6 +879,7 @@ https://arxiv.org/abs/1904.11102
 * You will need a simulator for your problem, though 
 * Agent will learn by being rewarded in a simulated world
 * Modelling that simulated world might be the hardest part of the job
+*  serious applications include operations research, robotics, planning, and configuration 
 </textarea>
 </section>
 
@@ -889,91 +909,106 @@ https://twitter.com/frpays/status/1077672273673359361
 </section>
 
 <section data-markdown>
-        <textarea data-template>
-### Similarities of Airlines and Outliers 
-
-<img src='img/embeddings/airline-embedded-cluster.png' height="450px">
-
-<small>
-<a href='.//poster-sf.png'>https://djcordhose.github.io/ai/poster-sf.png</a>
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Step I: Bring airline into a number
-
-Similar numbers also indicate similarity of airline
-
-<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' height="450px">
-
-<br>
-<small>
-http://bit.ly/embed-airlines
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Programmatic solution
- 
-* turn airline into just any number 
-* determine Similarities by hand and encode into static data structure
-            </textarea>
-            </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Machine Learning solution
- 
-* use routes data: which airline flies which routes
-* train a neural network to predict route for airline
-* impossible as there is no single route to predict
-* make it even harder by introducing a bottleneck
-* still network tries very hard
-* our hope: bottleneck will contain all the semantics
-* use that bottleneck only to express semantics of airline 
-            </textarea>
-            </section>
-
-<section>
-        <h3>Creating a neural embedding</h3>
-        <img src="img/embeddings/embedding-train.png" height="200px" class="fragment">
-        <span class="fragment" style="position: relative; top: -105px; font-size: 60px"><strong>=></strong></span>
-        <img src="img/embeddings/embedding-predict.png" height="200px" class="fragment">
-    </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Step II: Cluster in 2d against other value
+    <textarea data-template>
+### Imagine you want to compare airlines
 
 <img src='img/embeddings/airline-embedded-cluster.png' height="550px">
-    </textarea>
+
+</textarea>
 </section>
 
 <section data-markdown>
         <textarea data-template>
-### DBSCAN Clustering: Algorithm or Machine Learning?    
-<img src="img/unsupervised/dbscan-demo.png" height="500px">
+### Why would you want that?
 
+_Exploration of concepts_
 
-</textarea>
-</section>
+* You probably have a different use case
 
+* Which ones are similar?
+* Which are exceptions?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Isn't that easy?
+
+* First dimension: number of passengers
+* Second dimension: similarity by typical route
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Challenge
+
+### How do you describe similarity in a single dimension?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_1.png'>
+
+            </textarea>
+        </section>
 
 
 <section data-markdown>
-<textarea data-template>
-<img src="img/unsupervised/sphx_glr_plot_cluster_comparison_001.png" height="550px">
+        <textarea data-template>
 
-<p><small><a href="http://scikit-learn.org/stable/modules/clustering.html">
-http://scikit-learn.org/stable/modules/clustering.html
-</a></small></p>
+<img src='img/embeddings/embedding_2.png'>
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_3.png'>
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png'>
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_5.png'>
+
+            </textarea>
+        </section>
+<section data-markdown>
+    <textarea data-template>
+### Resulting Plot of Airline Embedding 
+
+<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
+<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Result: Clustering using 1d embedding
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
 
 </textarea>
 </section>
+
 
 <section data-markdown>
         <textarea data-template>
@@ -997,21 +1032,12 @@ http://scikit-learn.org/stable/modules/clustering.html
 </textarea>
 </section>
 
-
-    <section data-markdown>
+<section data-markdown class="no-fragment">
         <textarea data-template>
-## So?
-            </textarea>
-    </section>
+## Wrapping it up 
+</textarea>
+</section>
 
-        <section data-markdown>
-        <textarea data-template>
-<img src='img/ML_ellen_friedman_jfokus.jpg' height="600px">
-<small>
-Ellen Friedman, Tales from the Field: The Future is Now, Jfokus 2019
-</small>
-            </textarea>
-    </section>
 
     <section data-markdown class="no-fragment">
             <textarea data-template>
@@ -1037,12 +1063,13 @@ _Classic Business Logic often does not work well for complex tasks_
         </section>
 
 <section style="font-size: xx-large">
-    <h2>Wrap-Up</h2>
+    <h2>Thank you</h2>
     
     <em>Modern Machine Learning is an important tool for software developers</em>
     <br>
     <br>
     <ul>
+        <li class="fragment">Classic Business Logic often does not work well for complex tasks
         <li class="fragment">Machine Learning can learn from existing data and generalize from it
         <li class="fragment">Sometimes, it can be an alternative to explicit, classic business logic
         <li class="fragment">Reinforcement Learning does not need any static data
