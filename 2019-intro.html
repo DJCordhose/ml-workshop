@@ -268,7 +268,7 @@ If you are bored
 </a>
 <p><small>
     <a href='html/calculator.html' target="_blank">
-        https://djcordhose.github.io/ai/html/calculator.html</a></small>
+        https://djcordhose.github.io/ml-workshop/html/calculator.html</a></small>
 </small></p>
 </textarea>
     </section>
@@ -285,13 +285,13 @@ If you are bored
                     </textarea>
                     </section>
                     
-                    <section data-markdown>
+                    <!-- <section data-markdown>
                         <textarea data-template>
     ### Exploration
     <img src='img/insurance/sns-pairplot.png' height="550px">
                 
                     </textarea>
-                    </section>
+                    </section> -->
     <section>
         <h3>Programmer's approach: Code Rules by Hand</h3>
         <div class="fragment">
@@ -323,7 +323,8 @@ return green # otherwise: low risk
             </code></pre>
         </div>
 <p><small>
-    <a href='https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb>'>https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb</a>
+    <a href='https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/classic/classic-code.ipynb'>
+        https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/classic/classic-code.ipynb</a>
 </small></p>
     </section>
 
@@ -370,7 +371,7 @@ Looking at the problem from the perspective of our data
 <section>
     <h3>Let's check: Is the data we have any good?</h3>
     <img src="img/insurance/all.png" height="500px" class="fragment">
-    <small  class="fragment">Would we able to rank me (47) for a car having 100 mph top speed, driving 10k miles per year?</small>
+    <small  class="fragment">Would we able to rank me (48) for a car having 100 mph top speed, driving 10k miles per year?</small>
 </section>
 
 <section data-markdown class="workshop">
@@ -592,7 +593,7 @@ y_pred = clf.predict(input)
 </small>
         </section>
         
-
+<!-- 
     <section data-markdown class="detail">
             <textarea data-template>
 ### How do they learn?
@@ -607,7 +608,7 @@ http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-a
         
         </textarea>
         </section>
-
+ -->
     <section>
             <h3>Decision Trees</h3>
             <div>
@@ -681,6 +682,29 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
     </textarea>
         </section>
 
+<section data-markdown class="workshop">
+<textarea data-template>
+### Remember the two sample solutions?
+
+<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
+<small>
+Are they the same? What is the key difference?
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
+<textarea data-template>
+### Now on test data
+
+<img src='img/decision-boundaries/decision-boundaries-test.jpg'>
+<small>
+Which one is better? Why?
+</small>
+</textarea>
+</section>
+
+
 
 <section id='overfitting'>
         <h3>The Issue: Overfitting</h2>
@@ -744,28 +768,6 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 </textarea>
 </section>
 
-<section data-markdown class="workshop">
-<textarea data-template>
-### Remember the two sample solutions?
-
-<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
-<small>
-Are they the same? What is the key difference?
-</small>
-</textarea>
-</section>
-
-<section data-markdown class="workshop">
-<textarea data-template>
-### Now on test data
-
-<img src='img/decision-boundaries/decision-boundaries-test.jpg'>
-<small>
-Which one is better? Why?
-</small>
-</textarea>
-</section>
-
 <section data-markdown>
         <textarea data-template>
 ## Wrapping it up
@@ -785,7 +787,7 @@ _Depending on what your background is, machine learning can have different chall
 * notebooks are great to try things out and produce results from data once
   * not the best tool when your project lives longer 
 * coming from software development: data is the critical factor
-  * if it is lacking in either quantity or quality you might get a working model at all 
+  * if it is lacking in either quantity or quality you might not get a working model at all 
   * the process of creating a good machine learning model is pretty different from standard processes in software development
 
             </textarea>
@@ -808,7 +810,7 @@ _Depending on what your background is, machine learning can have different chall
 _Find the right strategy for your project_
 
 * Team up with your neighbors
-* Find one o more projects to evaluate
+* Find one or more projects to evaluate
 * Use the map from the previous slide (ask instructor to put it up on the projector) 
 * What might be the best approach?
 * What questions do you still have about your project: Write them down and check then in the final part of this workshop
