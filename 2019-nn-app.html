@@ -147,13 +147,14 @@
 
 <div class="reveal">
     <div class="slides">
-
+<!-- 
             <section data-markdown class="preparation">
                     <textarea data-template>
 ### Preparation
 
                 </textarea>
             </section>
+             -->
 <!-- 
             <section data-markdown class="todo">
                     <textarea data-template>
@@ -172,6 +173,8 @@
 ## Neural Networks when and where?
 
 ### Four examples
+
+https://djcordhose.github.io/ml-workshop/2019-nn-app.html
                     </textarea>
                 </section>
 
@@ -182,7 +185,7 @@
 <img src='img/classic-vs-deep.png' height="500px">
 
 <small>
-This also implies who need specialized hardware: at least a decent GPU    
+This also implies the need for specialized hardware: at least a decent GPU    
 </small>
     </textarea>
     </section>
@@ -220,10 +223,33 @@ This also implies who need specialized hardware: at least a decent GPU
 
 * arbitrary input and output
 * freely choose hidden complexity
-* auto derivation libraries find gradients
 * loss function determines what you are after
+* auto derivation libraries find gradients
 * based on gradients and loss they tune the parameters of your model
         
+</textarea>
+</section>
+
+<!-- 
+<section data-markdown>
+    <textarea data-template>
+## How a Neural Network learns
+
+1. Architecture: Setup of neural network
+1. Loss between ground truth and prediction
+</textarea>
+</section>
+ -->
+
+<section data-markdown>
+    <textarea data-template>
+### Architecture: Setup of neural network
+
+<img src='img/nn-architecture.png'>
+
+<small>
+Parameters are weights and biases, initially all random
+</small>
 </textarea>
 </section>
 
@@ -239,28 +265,6 @@ Parameters are weights and biases, initially all random
 </textarea>
 </section>
 
-
-<section data-markdown>
-    <textarea data-template>
-## How a Neural Network learns
-
-1. Architecture: Setup of neural network
-1. Loss between ground truth and prediction
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Architecture: Setup of neural network
-
-<img src='img/nn-architecture.png'>
-
-<small>
-Parameters are weights and biases, initially all random
-</small>
-</textarea>
-</section>
 
     <section>
 <h3>Code in TensorFlow</h3>
@@ -296,20 +300,31 @@ Dependencies to parameters are tracked and parameters tweaked by optimizer to br
 </textarea>
 </section>
 
-
 <section data-markdown>
-        <textarea data-template>
-### Use Neural Networks when you have time series or images
+    <textarea data-template>
+### Classification using Neural Networks
 
-<img src='img/data.png' height="550px">
-    </textarea>
-    </section>
+<img src='img/insurance/all-data-classified-nn.png' height="500px">
+
+<small>
+background indicates what network predicts, the darker the more certain
+</small>
+</textarea>
+</section>
 
 <section data-markdown>
         <textarea data-template>
 ## Application #2: Click Prediction
 ### Using Time Series data with RNNs
 
+    </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Use Neural Networks when you have time series or images
+
+<img src='img/data.png' height="550px">
     </textarea>
     </section>
 
