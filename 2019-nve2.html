@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Workshop NVE</title>
+    <title>Part II, NVE</title>
 
     <link rel="stylesheet" href="reveal.js/css/reset.css">
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
@@ -139,52 +139,9 @@
 <body>
     <div class="reveal">
         <div class="slides">
-<!-- 
-            <section data-markdown class="preparation">
-                <textarea data-template>
-### Preparation
-
-                </textarea>
-            </section>
- -->
-<!-- 
-    <section data-markdown class="todo">
-            <textarea data-template>
-### Nice to have
-
-* Metrics wie hier unten confusion matrix und classification_report
-  * https://github.com/brianspiering/decision_tree_intro/blob/master/decision_trees.ipynb
-* https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html
-* https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html
-
-[]Intro: Lineare und logistische Regression so ziemlich von Null wie bei TensorFlow als Intro?
-  []https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html 
-
-[]Was kann ich da machen?
-   https://azure.microsoft.com/de-de/services/machine-learning-studio/ 
-
-  [] https://github.com/dariyasydykova/open_projects/tree/master/ROC_animation
-  []https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-metrics.ipynb
-
-
-Auskennen, Wissen anhäufen
-https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html 
-
-Ausschlachten
-[]https://github.com/amueller/scipy-2018-sklearn 
-    []weiter bei 04
-    []ml-workshop-1-of-4 bis ml-workshop-4-of-4
-
-[]https://www.doulos.com/content/training/deep_learning.php 
-
-
-                </textarea>
-            </section>
- -->
-
  <section data-markdown style="font-size: xx-large">
         <textarea data-template>
-### Introduction to Machine Learning with Scikit-learn
+### Introduction to Neural Networks with TensorFlow
 
 If you are bored
 <!-- 1. You will need a ball pen
@@ -200,139 +157,43 @@ If you are bored
     </section>
 
 <section data-markdown>
-    <textarea data-template>        
-### Olli
-
-<img src='img/olli-hamburg.jpg' height="400px">
-<br>
-<small>
-
-http://zeigermann.eu/
-<br>
-https://en.wikipedia.org/wiki/Altona,_Hamburg    
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>        
-## Scratchpad to share links and information
-
-On Google Drive, everyone with link can read and edit
-
-http://bit.ly/nve-scratch
-
-<!-- 
-https://docs.google.com/document/d/12S40uiNrLXdR_K3yrKjD0e0bXs9WsVkLUh0PKhcMYnI/edit
- -->
-</textarea>
-</section>
-    
-
-    <section data-markdown>
-        <textarea data-template>
-### About this workshop: A practical overview for beginners
-
-_Prerequisite: Basic scripting and data knowledge_
-
-_Objective: Be enabled to apply machine learning in simple settings_
-
-* Workshop in English because I do not speak Norwegian
-* This is not like a lecture in school or university
-* Emphasis is on understanding how to get things to work
-* I am myself a practitioner (pretty much like you, I guess)
-<!-- * Theoretical depth is very limited -->
-<!-- * If you are mostly interested in theoretical concepts, this is not the ideal workshop for you -->
-<!-- * I can still support you individually if this is your thing -->
-* questions/comments/doubts/suggestions are always welcome
-
-</textarea>
-</section>
-
-<section data-markdown class="local"">
     <textarea data-template>
-## Introduce yourself to your direct neighbors, please
+### You should have
 
-* What do you work on?
-* What do you want to achieve with Machine Learning?
-* What do you already know about ML?
-* What do you want to learn here?
+* A use case
+* Data for your use case
+* Have the data loaded into a notebook
+* Have the data in a format accessible to TensorFlow or to any other library you want to use 
 
-_If not done, yet, help your neighbors to get these slides http://bit.ly/workshop-ml-nve and make this notebook http://bit.ly/ml-dt-intro run (see first slide for more information)_ 
-
-    </textarea>
-</section>
-
-
-<section data-markdown class="local"">
-    <textarea data-template>
-## What is your background?
-
-* R
-* Programming
-* Python
-* Scikit-learn
-* TensorFlow
-* Pytorch
-* Data Science
-* What else?
 </textarea>
 </section>
 
+<section data-markdown class="todo">
+    <textarea data-template>
+### Notebooks
 
-            <section data-markdown style="font-size: x-large">
-                    <textarea data-template>
-### Schedule
+* Notebook skeleton for Time Series data
+* Notebook skeleton for Image data
 
-Day 1 (9:00 - 12:00, 13:00 - 16:00)
-1. <a href='2019-intro.html'>Introduction: Machine Learning with Scikit-learn</a>
-2. <a href='2019-data-science.html'>Data Science with Python</a>
+</textarea>
+</section>
 
-Day 2  (9:00 - 12:00, 13:00 - 16:00)
-3. <a href='2019-unsupervised.html'>Unsupervised Learning: Clustering and Dimensionality Reduction</a>
-4. <a href='2019-classic.html'>Classic Supervised Learning</a>
+<section data-markdown style="font-size: x-large">
+    <textarea data-template>
+### Plan for this week
 
-Day 3 (9:00 - 12:00)
-5. <a href='2019-nn-app.html'>Keynote - Neural Networks when and where? (1h)</a>
-6. Introduction NVE projects
-7. Setting up / Getting started with your own projects
-8. Planning next workshop
-            </textarea>
-                </section>
+* Day 1 (Wednesday, September 25th, 9:00 - 12:00, 13:00 - 16:00): Neural Network Basics`
+  * Morning: <a href='2019-nn-intro.html'>Understanding to Neural Networks with TensorFlow</a>
+  * Afternoon: Work on projects
+* Day 2 (Thursday, September 26th, 9:00 - 12:00, 13:00 - 16:00): Sequences, Time Series
+  * Morning: <a href='2019-rnn.html'>Introduction to Sequences and Time Series</a>
+  * Afternoon: Work on projects
+* Day 3 (Friday, September 27th, 9:00 - 12:00, 13:00 - 16:00): Images
+  * Morning: <a href='2019-cnn.html'>Introduction to Image Recognition</a>
+  * Afternoon: Work on projects
 
-                <section data-markdown>
-                    <textarea data-template>
-### Introduction NVE projects
-
-_Guideline_
-
-* Who am I? What do I work on?
-* What data do I have or need?
-* How do I want to use the data for machine learning?
-
-5 minutes each
-
-            </textarea>
-                </section>
-
-                <section data-markdown style="font-size: xx-large">
-                    <textarea data-template>
-### Potential Services for "Setting up / Getting started with your own projects"
-
-_What is your use case and what do you need for it?_
-
-* installating software locally
-* discuss where you could use machine Learning
-* can you use machine learning at all?
-* what knowledge ist still missing
-* discuss which data is needed
-* discuss what is the right approach for existing data
-* what is possible?
-* potential topics for keynotes for next workshop
-
-            </textarea>
-                </section>
+</textarea>
+</section>
             
         </div>
     </div>
