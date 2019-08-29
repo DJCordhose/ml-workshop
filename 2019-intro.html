@@ -665,6 +665,19 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
             </textarea>
             </section>
 
+<section data-markdown class="fragments">
+        <textarea data-template>
+### Evaluating our model
+
+* The most important property of a model is if it generalizes well to unknown data
+* A machine learning model is of no use if it only works well on the data it has been trained on
+  * If it was, the easiest way to achieve this would be a dictionary translating from a set of inputs to the known output
+* Conceptually it is a little bit hard to optimize for something you do not know
+* So, we introduce a little trick here
+
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -736,14 +749,14 @@ Which one is better? Why?
     </section>
 
 <section>
-<h3>A different setting: this generalises well, but has another issue</h3>
+<h3>A different setting: this generalizes well, but has another issue</h3>
 
 <div style="max-width: 50%; float: left;">
     <img src='img/decision-boundaries/underfit-train.jpg' height="300">
     <small>Training Data</small>
 </div>
 <div style="max-width: 50%; float: right;">
-    <img src='img/decision-boundaries/underfit-train.jpg' height="300">
+    <img src='img/decision-boundaries/underfit-test.jpg' height="300">
     <small>Test Data</small>
     </div>
     
