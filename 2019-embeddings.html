@@ -159,20 +159,18 @@ I will also share some tricks how to stabilize embeddings when either the model 
 https://pretalx.com/euroscipy-2019/talk/QGZTDZ/            
  -->
 
-            <section data-markdown class="preparation">
+            <!-- <section data-markdown class="preparation">
                 <textarea data-template>
 ### Preparation
 
                 </textarea>
-            </section>
-
+            </section> -->
+<!-- 
             <section data-markdown class="todo">
                     <textarea data-template>
-* kürzen, 30 Folien
-* Erkenntnisse von nn-app übernehmen
 </textarea>
 </section>
-
+ -->
 <!-- <section data-markdown class="todo">
         <textarea data-template>
 Nice to have            
@@ -197,16 +195,408 @@ http://bit.ly/euroscipy-embeddings
 
 <section data-markdown>
     <textarea data-template>
-### Why I am here
+### Imagine you want to compare airlines
 
-_Do you have a problem for my solution?_
-
-* I have been intrigued by the power of Neural Embeddings
-* Want to have this method in your toolbelt
-* Maybe you have an application for this (please tell me in this case)
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
 
 </textarea>
 </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Why would you want that?
+
+_Exploration of concepts_
+
+* You probably have a different use case
+
+* Which ones are similar?
+* Which are exceptions?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Isn't that easy?
+
+* First dimension: number of passengers
+* Second dimension: similarity by typical route
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Challenge
+
+### How do you describe similarity in a single dimension?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_1.png'>
+
+            </textarea>
+        </section>
+
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_2.png'>
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_3.png'>
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png'>
+
+            </textarea>
+        </section>
+
+<section>
+    <h3>Train embedding with TensorFlow</h3>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+number_of_airlines = len(airlines) + 1
+embedding_dim = 1 # up to us
+
+model.add(Embedding(input_dim=number_of_airlines, 
+                    output_dim=embedding_dim))
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# embedding will be n-dimensional, but Dense can only handle flat input
+model.add(Flatten())
+
+# random additional layers to at least make this train
+model.add(Dense(units=50, activation='relu'))
+# ...
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# two airports in a route
+model.add(RepeatVector(2))
+model.add(SimpleRNN(units=50, return_sequences=True))
+
+# ca. 3500 airports in routes
+output_dim = len(routes_tokenizer.word_index) + 1
+model.add(Dense(units=output_dim, activation='softmax'))
+</code></pre>
+
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Make sure the model trains / loss converges
+
+<div style="float: left">
+<img src='img/embeddings/airlines-2d-loss.png' height="300px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/embeddings/airlines-2d-acc.png' height="300px"><br>
+Accuracy
+</div>
+
+<div style="clear: both">
+Curves for 2-d embedding (1-d accuracy closer to 10%)
+
+<small>        
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_5.png'>
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Extracting embedding
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+embedding_layer = model.get_layer('embedding')
+embedding_model = Model(inputs=model.input, 
+                        outputs=embedding_layer.output)
+embeddings_2d = embedding_model.predict(samples).reshape(-1, 2)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+latent_x = embeddings_2d[:, 0]
+latent_y = embeddings_2d[:, 1]
+
+plt.scatter(latent_x, latent_y)
+</code></pre>
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+
+</textarea>
+        </section>
+
+
+        
+<section data-markdown>
+    <textarea data-template>
+### Resulting Plot of Airline Embedding 
+
+<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
+<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Result: Clustering using 1d embedding
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What did we just do here?
+
+_We trained a neural embedding_
+
+* Train an embedding layer as part of a neural network
+* Each neuron in the layer serves as one dimension of embedding
+* extremely flexible setup
+* can reduce dimensions of really abstract concepts
+* can encode non-linear relationships
+
+_Embedding: Transform a high dim. vector space to a lower one_
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Every Story needs a wolf
+
+
+<img src='img/chk_wolf.jpg' height="450px" style="float: left">
+
+<img src='img/chk_rot.jpg' height="450px" style="float: right">
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Our Wolf: The Turtle Effect
+
+If the user gets used to a certain pattern to be in the model, 
+they expect it to persist and even be in the same position
+
+<img src="img/turtle.png" height="400px">
+
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
+    <textarea data-template>
+## Issue
+### You would not want the data points to move around
+
+* Might happen when model changes
+* Or new data comes in
+* or simply with each training run, even without changes
+* people do not want to see drastic changes in visualizations when just a few data points change
+
+</textarea>
+</section> -->
+
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### How to stabilize the embedding?
+
+1. _Transfer_: Use initial model as starting point and _carefully_ retrain
+* use small learning rate
+* will work only if model architecture has not changed
+1. _Force_: Train from scratch, but use difference to original embedding as part of loss function
+* Wow, sounds promising, as it should work under all circumstances
+* but: How do we do this???
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Using second model head and loss
+
+1. use old model to encode new/augmented data into embedding
+1. remember this embedding data
+1. train from scratch with new/augmented data and/or new model architecture
+1. use difference to original embedding as part of loss function
+1. calibrate how much change you desire by weight of that loss
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Functional API allows for all kinds of wiring
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# example for model changes
+
+x = Dense(units=50, ...)(x)
+# second dense layer
+x = Dense(units=50, ...)(x)
+# ...
+# less units (25 instead of 50)
+x = SimpleRNN(units=25, ...)(x)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Head 1: main_output, Head 2: embedding
+model = Model(inputs=main_input, outputs=[main_output, embedding])
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.compile(loss={ 'main_output': 'categorical_crossentropy', 
+                 'embedding': 'mae' },
+              loss_weights={'main_output': .1, 'embedding': 1.})
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.fit(x=X, y={'main_output': Y, 'embedding': original_embeddings})
+</code></pre>
+
+<small>
+
+https://keras.io/getting-started/functional-api-guide/
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+
+</small>
+</textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Model still trains well
+
+<div style="float: left">
+<img src='img/embeddings/multi-head-losses.png' height="350px"><br>
+Losses
+</div>
+<div style="float: right" >
+<img src='img/embeddings/main-output-accuracy.png' height="350px"><br>
+Accuracy on Main Head
+</div>
+
+</textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering Stabilized
+
+<img src='img/embeddings/clustering-stabelized.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+    </textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering Unstabilized
+
+<img src='img/embeddings/clsutering-same-seed.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### How to deal with additional data?
+
+* create the additional embeddings on new/augmented/updated data using old model
+* use that on the old/new/updated model architecture
+</textarea>
+</section>
+
+<section data-markdown class="fragments" style="font-size: xx-large">
+    <textarea data-template>
+### Wrap-up
+
+* Neural embeddings can be used to reduce dimensions in a semantically reasonable way
+* You can describe semantics by anything you can feed into a neural network (images, time series, etc.)
+* You can extract embeddings or use as part of complete network
+
+_Do you have a problem for my solution?_
+* I want you to have this method in your toolbelt
+* Maybe you have an application for this (please tell me in this case)
+
+<p>
+<em>The Magic of Neural Embeddings</em>
+<br>
+<small>
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+<br>
+<a href="http://bit.ly/euroscipy-embeddings">
+http://bit.ly/euroscipy-embeddings</a>
+</small>
+</p>
+
+        </textarea>
+    </section>
+<!-- 
+    <section data-markdown>
+        <textarea data-template>
+## FROM HERE ON JUST MATERIAL FROM AN OLD VERSION OF THE TALK
+    </textarea>
+    </section>
+    
 
 <section data-markdown>
     <textarea data-template>
@@ -291,7 +681,7 @@ https://projector.tensorflow.org
 
 <section data-markdown data-background='img/embeddings/pca.png'>
         <textarea data-template>
-<!-- <img src='img/embeddings/pca.png' height="600px"> -->
+<img src='img/embeddings/pca.png' height="600px">
 
             </textarea>
         </section>
@@ -317,7 +707,7 @@ https://projector.tensorflow.org
 * Each neuron in the layer serves as one dimension of embedding
 * extremely flexible setup
 * can reduce dimensions of really abstract concepts
-* can enocode non-linear relationships
+* can encode non-linear relationships
 
 </textarea>
 </section>
@@ -672,7 +1062,7 @@ Accuracy on Main Head
 
 <section data-markdown class="fragments">
         <textarea data-template>
-### Wrapup
+### Wrap-up
 
 * Data is still king
 * You will need training data carrying semantic information
@@ -695,7 +1085,7 @@ http://bit.ly/euroscipy-embeddings</a>
             </textarea>
         </section>
 
-            
+             -->
         </div>
     </div>
 
