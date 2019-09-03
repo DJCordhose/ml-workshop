@@ -202,7 +202,7 @@ http://bit.ly/euroscipy-embeddings
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="remote">
         <textarea data-template>
 ### Why would you want that?
 
@@ -230,10 +230,18 @@ _Exploration of concepts_
         <textarea data-template>
 ## Challenge
 
-### How do you describe similarity in a single dimension?
+### How do you describe such a complex similarity in a single dimension?
 
             </textarea>
         </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Neural Networks are flexible enough to help
+
+            </textarea>
+        </section>
+
 
 <section data-markdown>
         <textarea data-template>
@@ -322,6 +330,15 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </div>
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png'>
+
+        </textarea>
+    </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -1102,6 +1119,8 @@ http://bit.ly/euroscipy-embeddings</a>
                     window.location.hostname.indexOf('127.0.0.1') !== -1;
     
         if (isLocal && !printMode) {
+            // only applies to local version
+            $('.remote').remove();
         } else {
             // only applies to public version
                 $('.todo').remove();
@@ -1140,6 +1159,8 @@ http://bit.ly/euroscipy-embeddings</a>
             history: true,
             center: true,
             width: 1100,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
 
             math: {
                 mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
