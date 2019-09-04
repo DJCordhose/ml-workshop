@@ -202,16 +202,16 @@ http://bit.ly/euroscipy-embeddings
 </textarea>
 </section>
 
-<section data-markdown class="remote">
+<section data-markdown>
         <textarea data-template>
 ### Why would you want that?
 
 _Exploration of concepts_
 
-* You probably have a different use case
-
 * Which ones are similar?
 * Which are exceptions?
+
+_You probably have a different use case_
 
             </textarea>
         </section>
@@ -449,6 +449,19 @@ they expect it to persist and even be in the same position
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+## Issue
+### You would not want the data points to move around
+
+* Might happen when model changes
+* Or new data comes in
+* or simply with each training run, even without changes
+* people do not want to see drastic changes in visualizations when just a few data points change
+
+</textarea>
+</section>
+
 <section data-markdown data-transition='none'>
 <textarea data-template>
 ### Clustering original
@@ -461,27 +474,13 @@ they expect it to persist and even be in the same position
 
 <section data-markdown data-transition='none'>
 <textarea data-template>
-### Clustering Unstabilized
+### Clustering after Retraining with more data
 
 <img src='img/embeddings/clsutering-same-seed.png' height="550px">
 
     </textarea>
 </section>
 
-
-
-<!-- <section data-markdown>
-    <textarea data-template>
-## Issue
-### You would not want the data points to move around
-
-* Might happen when model changes
-* Or new data comes in
-* or simply with each training run, even without changes
-* people do not want to see drastic changes in visualizations when just a few data points change
-
-</textarea>
-</section> -->
 
 
 <section data-markdown class="fragments">
