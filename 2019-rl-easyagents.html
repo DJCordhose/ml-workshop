@@ -155,21 +155,12 @@
                 </textarea>
             </section>
              -->
-
+<!-- 
             <section data-markdown class="todo">
                     <textarea data-template>
-5 slides
-
-Orso
-RL
-TF Agents Code
-Easy Agents Code
-
-Links, ODSC
-
             </textarea>
             </section>    
-
+ -->
 
             <section data-markdown>
                     <textarea data-template>
@@ -181,633 +172,85 @@ https://djcordhose.github.io/ml-workshop/2019-rl-easyagents.html
 
 <section data-markdown>
         <textarea data-template>
-### Use when you have a lot of data 
+### Find the optimal route
 
-<img src='img/classic-vs-deep.png' height="500px">
-
-<small>
-This also implies the need for specialized hardware: at least a decent GPU    
-</small>
-    </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-## Application #1: Predicting number of accidents
-### Tabular Data with simple Fully Connected Networks 
-
-    </textarea>
-    </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Remember our sample application?
-
-<img src='img/insurance/train.png'>
-        </textarea>
-    </section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### What makes neural networks special?
-
-* highly flexible
-* but also complex
-        
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### You state your problem as an optimization
-
-* arbitrary input and output
-* freely choose hidden complexity
-* loss function determines what you are after
-* auto derivation libraries find gradients
-* based on gradients and loss they tune the parameters of your model
-        
-</textarea>
-</section>
-
-<!-- 
-<section data-markdown>
-    <textarea data-template>
-## How a Neural Network learns
-
-1. Architecture: Setup of neural network
-1. Loss between ground truth and prediction
-</textarea>
-</section>
- -->
-
-<section data-markdown>
-    <textarea data-template>
-### Architecture: Setup of neural network
-
-<img src='img/nn-architecture.png'>
-
-<small>
-Parameters are weights and biases, initially all random
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### artificial neuron, the atom of neural networks
-
-<img src='img/neuron.png'>
-
-<small>
-Parameters are weights and biases, initially all random    
-</small>
-</textarea>
-</section>
-
-
-    <section>
-<h3>Code in TensorFlow</h3>
-
-<p>Model</p>
-<pre><code contenteditable data-trim class="fragment line-numbers python">
-model.add(Dense(units=50, input_dim=number_of_features))
-model.add(Dense(units=number_of_classes, activation='softmax'))
-                    </code></pre>
-
-<p>Training</p>
-<pre><code contenteditable data-trim class="fragment line-numbers python">
-model.compile(loss='categorical_crossentropy', optimizer='adam')
-model.fit(X_train, y_train, epochs=1000, batch_size=1000)
-                    </code></pre>
-                    
-<p>Prediction</p>
-<pre><code contenteditable data-trim class="fragment line-numbers python">
-y_pred = model.predict([[100, 47, 10]])
-        </code></pre>
-
-        </section>
-
-<section data-markdown>
-    <textarea data-template>
-### How loss is computed
-
-<img src='img/computing_loss.png' height="500px">
-
-<small>
-Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Classification using Neural Networks
-
-<img src='img/insurance/all-data-classified-nn.png' height="500px">
-
-<small>
-background indicates what network predicts, the darker the more certain
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Application #2: Click Prediction
-### Using Time Series data with RNNs
-
-    </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-### Use Neural Networks when you have time series or images
-
-<img src='img/data.png' height="550px">
-    </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### Problem: Which button to click?
-
-<img src='img/ux/bad_ux.png'>
-
-http://djcordhose.github.io/ux-by-tfjs/dist
-
-</textarea>
-</section>    
-
-<section data-markdown>
-        <textarea data-template>
-### Training Data
-
-<pre><code contenteditable data-trim class="line-numbers javascript">
-[ "train-model", "save-model-to-local" ],
-[ "train-model", "show-eval", 
-  "train-model", "save-model-to-local" ],
-[ "load-local-model", "toggle-prediction" ]
-</code></pre>
-
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Challenge: Classic Dense Networks have no memory of previous events
-
-They lack capability to deal with sequential data
-            </textarea>
-            </section>
-
-<section data-markdown>
-    <textarea data-template>
-### RNNs - Networks with Loops
-
-<img src='img/colah/RNN-rolled.png' height="450px">
-
+<img src='img/rl/turf.png' height="450px">
 
 <small>
 
-http://colah.github.io/posts/2015-08-Understanding-LSTMs/
-</small>
-    </textarea>
-</section>
-    
-<section data-markdown>
-    <textarea data-template>
-### Unrolling the loop
-#### Becomes a truly deep feed-forward network!
-<img src='img/colah/RNN-unrolled.png'>
+https://opendatascience.com/bears-need-to-learn-as-well-practical-reinforcement-learning-with-tensorflow-2-0-tf-agents/
 
-<small>
-
-http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 </small>
     </textarea>
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### Options for Model architectures 
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// GRUs are great in learning history
-// learns complete paths, best evaluation in numbers
-GRU(units=50, dropout=0.1)
-</code></pre>
+<textarea data-template>
+### Reinforcement Learning: Using an Agent
 
-
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// LSTMs are similar to GRUs, but more complex
-// slower to train and worse evaluation, but really good real world performance
-LSTM(units=50, dropout=0.1)
-</code></pre>
-
-<pre><code contenteditable data-trim class="fragment line-numbers javascript">
-// trains fast, bad evaluation, but in real life does what we expect, 
-// only uses very recent history, generalizing great by proximity
-SimpleRNN(units=50, dropout=0.1)
-</code></pre>
-        
-    </textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Training Setup
-
-<a href='https://colab.research.google.com/github/DJCordhose/ux-by-tfjs/blob/master/notebooks/click-sequence-model.ipynb'>
-<img src='img/ux/click-model-setup.png' height="450">            
-</a>
-<small>
-
-https://colab.research.google.com/github/DJCordhose/ux-by-tfjs/blob/master/notebooks/click-sequence-model.ipynb
-</small>
-</textarea>
-</section>
-
-
-<section data-markdown>
-        <textarea data-template>
-### Training
-
-<img src='img/ux/click_acc.png' style="background-color: azure">            
+<img src='img/rl/rl-train-play-1.png' height="550">
 
 </textarea>
 </section>
 
 <section data-markdown>
-        <textarea data-template>
-### Evaluation
+<textarea data-template>
+### Reinforcement Learning: Training an agent
 
-<img src='img/ux/click_cm.png' style="background-color: azure" height="550px">            
+<img src='img/rl/rl-train-play-2.png' height="550">
 
 </textarea>
 </section>
 
-
 <section data-markdown>
-        <textarea data-template>
-### Prediction
+<textarea data-template>
+### Reinforcement Learning Using Easyagents
 
-<img src='img/ux/click_prediction.gif'>            
-<small>
-
-http://djcordhose.github.io/ux-by-tfjs/dist
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Application #3: Traffic Sign Recognition
-### Classifying Images using CNNs
-
-    </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### Problem: What speed limit?
-
-<img src='img/speed-limit-signs.png'>
+_Main Challenge is defining your environment / simulation_
+<img src='img/rl/easyagents-complex.jpg'>
 
 <small>
 
-https://notebooks.azure.com/djcordhose/projects/tss-workshop/html/workshop.ipynb
+https://github.com/christianhidber/easyagents
+
 </small>
-</textarea>
-</section>    
-
-<section data-markdown>
-    <textarea data-template>
-### Challenges for Images Recognition
-
-1. Feeding all pixels into Dense Layers will work, but slow and many parameters 
-1. Manual Feature extraction from images might work, but
-   * is tedious and error prone
-   * requires domain knowledge
-   * needs frequent manual updates
-1. Convolutional networks will learn feature extraction before passing few features to Dense Layer Classifiers
-
-<small>
-    
-https://towardsdatascience.com/simple-introduction-to-convolutional-neural-networks-cdf8d3077bac
-</small>
-</textarea>
-</section>
-
-<section>
-    <h3>Architectures of Convolutional Neural Networks: VGG</h3>
-        <img src="img/vgg.png" height="350px">
-        <p>
-            <small>There are a number of specialized neural network layers</small>
-        </p>
-</section>
-
-    <section>
-            <h3>MNIST - Using a model <em>already trained</em></h3>
-            <p>Exploring the different types layers together</p>
-            <a href="https://transcranial.github.io/keras-js/#/mnist-cnn" target="_blank">
-                <img src="img/keras-browser.png" height="350px">
-            </a>
-            <p><small>
-                <a href="https://transcranial.github.io/keras-js/#/mnist-cnn" target="_blank">https://transcranial.github.io/keras-js/#/mnist-cnn</a>
-            </small></p>
-        </section>
-
-    <section>
-            <h3>Keras layers</h3>
-
-            <p><small>Convolution</small></p>
-            <pre><code contenteditable data-trim class="fragment line-numbers javascript">
-    model.add(Conv2D(filters=32, activation='relu'))
-                </code></pre>
-
-                <p><small>Max Pooling</small></p>
-                <pre><code contenteditable data-trim class="fragment line-numbers javascript">
-model.add(MaxPooling2D())
-                </code></pre>
-                                    
-                <p><small>Flatten 2d to make it accessible to Dense layers</small></p>
-            <pre><code contenteditable data-trim class="fragment line-numbers javascript">
-model.add(Flatten())
-            </code></pre>
-        <p>
-            <small>
-                    <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">
-                        https://www.tensorflow.org/api_docs/python/tf/keras/layers
-                    </a>
-            </small>
-        </p>
-    </section>
-
-
-<section data-markdown>
-        <textarea data-template>
-### Network Configuration, VGG style
-
-<pre><code contenteditable data-trim class="line-numbers python">
-# input tensor for a 3-channel 64x64 image
-inputs = Input(shape=(64, 64, 3))
-
-# blocks of convolutional layers
-x = Convolution2D(8, 3, activation='relu')(inputs)
-x = Dropout(0.5)(x)
-x = MaxPooling2D(pool_size=(2, 2))(x)
-
-x = Convolution2D(16, 3, activation='relu')(x)
-x = Dropout(0.5)(x)
-x = MaxPooling2D(pool_size=(2, 2))(x)
-
-x = Convolution2D(32, 3, activation='relu')(x)
-x = Dropout(0.5)(x)
-x = MaxPooling2D(pool_size=(2, 2))(x)
-
-# classifier, just one layer
-x = Flatten()(x)
-x = Dense(32, activation='relu')(x)
-
-# softmax activation, 6 categories
-predictions = Dense(6, activation='softmax')(x)
-</code></pre>
 
 </textarea>
 </section>
 
-<section data-markdown>
-        <textarea data-template>
-### Results: Samples
-
-<img src='img/signs/signs-eval.png' height="550">
-            </textarea>
-        </section>
-        
-<section data-markdown>
-        <textarea data-template>
-### Results: Incorrect
-
-<img src='img/signs/signs-incorrect.png' height="550">
-            </textarea>
-        </section>
 
 <section data-markdown>
         <textarea data-template>
-### Results: Most Certain and Correct
-
-<img src='img/signs/signs-certain-correct.png' height="550">
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Results: Most Uncertain, but Correct
-
-<img src='img/signs/signs-uncertain-correct.png' height="550">
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-## Application #4: Similarities between Airlines
-### Smart Dimensionality Reduction
-
-Neural Networks are really flexible and can give surprisingly good results in exotic areas
-    </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### Imagine you want to compare airlines
-
-<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
-
+### Solution
+<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
+                
 </textarea>
 </section>
 
-<section data-markdown>
-        <textarea data-template>
-### Why would you want that?
+<section data-markdown
+<textarea data-template>
+### Easyagents
 
-_Exploration of concepts_
+<img src='img/rl/orso_raw.png' style="float: left;" height="300px">
 
-* You probably have a different use case
+<div style="float: right; width: 600px; font-size: xx-large">
 
-* Which ones are similar?
-* Which are exceptions?
-
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Isn't that easy?
-
-* First dimension: number of passengers
-* Second dimension: similarity by typical route
-
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-## Challenge
-
-### How do you describe similarity in a single dimension?
-
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-
-<img src='img/embeddings/embedding_1.png'>
-
-            </textarea>
-        </section>
-
-
-<section data-markdown>
-        <textarea data-template>
-
-<img src='img/embeddings/embedding_2.png'>
-
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-
-<img src='img/embeddings/embedding_3.png'>
-
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-
-<img src='img/embeddings/embedding_4.png'>
-
-            </textarea>
-        </section>
-
-<section>
-    <h3>Train embedding with TensorFlow</h3>
-
-    <pre><code contenteditable data-trim class="fragment line-numbers python">
-number_of_airlines = len(airlines) + 1
-embedding_dim = 1 # up to us
-
-model.add(Embedding(input_dim=number_of_airlines, 
-                    output_dim=embedding_dim))
-</code></pre>
-
-    <pre><code contenteditable data-trim class="fragment line-numbers python">
-# embedding will be n-dimensional, but Dense can only handle flat input
-model.add(Flatten())
-
-# random additional layers to at least make this train
-model.add(Dense(units=50, activation='relu'))
-# ...
-</code></pre>
-
-    <pre><code contenteditable data-trim class="fragment line-numbers python">
-# two airports in a route
-model.add(RepeatVector(2))
-model.add(SimpleRNN(units=50, return_sequences=True))
-
-# ca. 3500 airports in routes
-output_dim = len(routes_tokenizer.word_index) + 1
-model.add(Dense(units=output_dim, activation='softmax'))
-</code></pre>
-
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Make sure the model trains / loss converges
-
-<div style="float: left">
-<img src='img/embeddings/airlines-2d-loss.png' height="300px"><br>
-Loss
-</div>
-<div style="float: right" >
-<img src='img/embeddings/airlines-2d-acc.png' height="300px"><br>
-Accuracy
+* Abstraction over complex solutions
+* Allows you to concentrate on defining your problem
+* No need to go through the details of algorithms (we did this for you)
+* Supports TF-Agents and OpenAI (more to come)
+* Reinforce (Vanilla Policy Gradient), PPO, and DQN work out of the box
 </div>
 
-<div style="clear: both">
-Curves for 2-d embedding (1-d accuracy closer to 10%)
+<small style="clear: both">
 
-<small>        
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
-</small>
-</div>
-</textarea>
-</section>
+https://github.com/christianhidber/easyagents
 
-<section data-markdown>
-    <textarea data-template>
-
-<img src='img/embeddings/embedding_5.png'>
-
-        </textarea>
-    </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Extracting embedding
-
-<pre><code contenteditable data-trim class="fragment line-numbers python">
-embedding_layer = model.get_layer('embedding')
-embedding_model = Model(inputs=model.input, 
-                        outputs=embedding_layer.output)
-embeddings_2d = embedding_model.predict(samples).reshape(-1, 2)
-</code></pre>
-
-<pre><code contenteditable data-trim class="fragment line-numbers python">
-latent_x = embeddings_2d[:, 0]
-latent_y = embeddings_2d[:, 1]
-
-plt.scatter(latent_x, latent_y)
-</code></pre>
-<small>
-
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
 </small>
 
 </textarea>
-        </section>
-
-
-        
-<section data-markdown>
-    <textarea data-template>
-### Resulting Plot of Airline Embedding 
-
-<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
-<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
-
-    </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-### Result: Clustering using 1d embedding
-
-<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Questions / Discussion
-
-</textarea>
-</section>
 
 
     </div>
