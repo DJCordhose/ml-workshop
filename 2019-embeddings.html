@@ -309,18 +309,6 @@ model.add(Dense(units=output_dim, activation='softmax'))
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### How loss is computed
-
-<img src='img/computing_loss.png' height="500px">
-
-<small>
-Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
         <textarea data-template>
 ### Make sure the model trains / loss converges
 
@@ -342,6 +330,19 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </div>
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How loss is computed
+
+<img src='img/computing_loss.png' height="500px">
+
+<small>
+Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
+</small>
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -515,7 +516,7 @@ they expect it to persist and even be in the same position
 </textarea>
 </section>
 
-<section data-markdown class="fragments">
+<section data-markdown class="fragments remote">
 <textarea data-template>
 ### Using second model head and loss
 
@@ -645,7 +646,7 @@ Accuracy on Main Head
     </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="remote">
 <textarea data-template>
 ### How to deal with additional data?
 
