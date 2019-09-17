@@ -213,9 +213,7 @@ _What type of problem are we dealing with here?_
 
     <section data-markdown>
         <textarea data-template>
-## Shared Exercise
-
-_Sketch the Architecture of our model_
+## Architecture of our model
 
 * How does the input look like?
 * And the output?
@@ -233,6 +231,22 @@ _Key to architecture: What do we want to predict and what do we have as input?_
 
 <img src='img/insurance/data_encoding.jpg'>
 
+_For our example this is the easiest part - straight forward_
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Exercise on Paper
+
+Two questions
+1. How would you model the output layer?
+1. How do you encode the categorical output?
+
+<div></div>
+<img src='img/categorical-output.png' height="300px">
+
+_Choose or fill in your solution_
 </textarea>
 </section>
 
@@ -240,7 +254,9 @@ _Key to architecture: What do we want to predict and what do we have as input?_
         <textarea data-template>
 ### What comes out?
 
-<img src='img/insurance/encoding2.jpg'>
+<img src='img/insurance/encoding2.jpg' height="400">
+
+_The most common solution - predict probabilities, train with one-hot, use max to get category_
 
 </textarea>
 </section>
@@ -313,7 +329,8 @@ model.add(Dense(name='output', units=num_categories, activation='softmax'))
 <pre><code contenteditable data-trim class="fragment line-numbers python">
 # uses sparse instead of a one-hot-encoding    
 model.compile(loss='sparse_categorical_crossentropy',
-              optimizer='adam')
+              optimizer='adam',
+              metrics=['accuracy'])
 </code></pre>
 
 <pre><code contenteditable data-trim class="fragment line-numbers python">
@@ -321,8 +338,8 @@ model.compile(loss='sparse_categorical_crossentropy',
 model.fit(X, y)</code></pre>
         
     <small>
-            <a href="https://www.tensorflow.org/alpha/guide/keras/">
-                https://www.tensorflow.org/alpha/guide/keras/
+            <a href="https://www.tensorflow.org/beta/guide/keras">
+                https://www.tensorflow.org/beta/guide/keras
             </a>
     </small>
 </p>
