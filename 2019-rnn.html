@@ -213,10 +213,10 @@ http://colah.github.io/posts/2015-08-Understanding-LSTMs/
             <textarea data-template>
 ### Simple RNN
 
-<img src='img/seq/fchollet_rnn.png'>
+<img src='img/seq/fchollet_rnn.png' height="350">
 
 <script type="math/tex; mode=display">
-output_t = \tanh(W input_t + U output_{t-1} + b)
+output_t = activation(W input_t + U output_{t-1} + b)
 </script>
     
 <small>
@@ -254,12 +254,9 @@ _Even having a network that can deal with time sequences, how do you train it us
 </section>
 
 <section>
-    <h3>Simple Time Series Forecasting with RNNs</h3>
+    <h3>Sequence Forecasting with RNNs</h3>
         <p>The Model</p>
         <pre><code contenteditable data-trim class="fragment line-numbers python">
-n_features = 1
-n_steps = 3
-
 model.add(SimpleRNN(units=50, activation='relu', name="RNN_Input"))
 model.add(Dense(units=1, name="Linear_Output"))
 model.compile(optimizer='adam', loss='mse')
@@ -280,12 +277,13 @@ model.fit(X, y)
 
 <section data-markdown>
         <textarea data-template>
-## Exercise: Time Series Prediction
+## Exercise: Sequence Prediction
 
 _Train the model_
 
 * go through the notebook as it is
 * Try to improve the model
+  * Change the number of values used as input
   * Change activation function
   * More nodes? less nodes?
   * What else might help improving the results?
@@ -297,36 +295,16 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
         </textarea>
     </section>
     
-
-    <section data-markdown>
-            <textarea data-template>
-### Main issues with RNNs
-
-_Vanishing or exploding gradient problem:_
-
-* Each step in training applies the same weights to the output, also in back-propagation  
-* The further we move backwards, the bigger (explodes) or smaller (vanishes) the gradient becomes
-* Multiplying many numbers <1 closes in on 0 (vanshing) and the same for >1 approaches infinty (exploding)
-
-<small>
-https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
-</small>
-</textarea>
-</section>
-
 <section data-markdown>
         <textarea data-template>
-### Intuition of effect
-
+### Main issues with simple RNNs: Vanishing or exploding gradient problem
+                
 _Effectively long term memory does not work:_
 
 * there is no training, because you are either on a plateau or in front of a wall
-* RNNs experiences difficulty in memorising words from far away in the sequence
-* Predictions based on most recent words only
+* RNNs experiences difficulty in memorizing values from far away in the sequence
+* Predictions based on most recent values only
 
-<small>
-    https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
-</small>
 </textarea>
 </section>
 
@@ -335,14 +313,11 @@ _Effectively long term memory does not work:_
 ### LSTM (Long short-term memory) / GRU (Gated Recurrent Unit)
 
 _allow past information
-to be reinjected at a later time, thus fighting the vanishing-gradient problem_
+to be selectively reinjected at a later time, thus fighting the vanishing-gradient problem_
 
-<small>
+<!-- <small>
 https://en.wikipedia.org/wiki/Long_short-term_memory
 <br>            
-<a href="https://www.manning.com/books/deep-learning-with-python">
-    Deep Learning with Python, Chapter 6.2.2, François Chollet, Manning            
-</a>            
 https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be
 <br>
 <br>
@@ -354,39 +329,115 @@ https://arxiv.org/ftp/arxiv/papers/1701/1701.05923.pdf
 https://www.dlology.com/blog/how-to-deal-with-vanishingexploding-gradients-in-keras/
 <br>
 https://towardsdatascience.com/animated-rnn-lstm-and-gru-ef124d06cf45
-</small>
+</small> -->
 </textarea>
 </section>
+
+<section data-markdown>
+        <textarea data-template>
+### LSTM
+
+<img src='img/seq/fchollet_lstm.png' height="350">
+
+<small>
+<a href="https://www.manning.com/books/deep-learning-with-python">
+    Deep Learning with Python, Chapter 6.2.2, François Chollet, Manning            
+</a>            
+        
+</small>
+
+</textarea>
+</section>
+
 
 <section>
     <h3>Advanced Keras RNN Layers</h3>
 
-    <p><small>LSTM / GRU Nodes</small></p>
     <pre><code contenteditable data-trim class="fragment line-numbers python">
+# LSTM and GRU both allow for long term memory
+
 model.add(LSTM(units=rnn_units))
+# less expensive, but often as good
 model.add(GRU(units=rnn_units))
 </code></pre>
 
-<p><small>Passes all outputs of all timesteps (not only the last one) to the next layer</small></p>
     <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Passes all outputs of all timesteps (not only the last one) to the next layer
+# also allows for stacking RNN layers
+
 model.add(GRU(units=rnn_units, return_sequences=True))
         </code></pre>
 
-<p><small>Adds Dropout inside feedback loop</small></p>
     <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Adds Dropout inside feedback loop
+
 model.add(GRU(units=rnn_units, return_sequences=True, recurrent_dropout=0.2))
         </code></pre>
     </p>
     <small>
-            <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers">
-                https://www.tensorflow.org/api_docs/python/tf/keras/layers
+            <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers">
+                https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers
             </a>
                     
     </small>
 <small data-markdown>
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/time-series-advanced.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-advanced.ipynb
 </small>
+</section>
 
+<section data-markdown>
+        <textarea data-template>
+## A practical application
+### Time Series Forecasting
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-intro.ipynb
+        
+            </textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+## Open Question
+### How would you map any amount of input time steps to any amount of output time steps?
+            </textarea>
+</section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Surprising Solution: RNN Encoder-Decoder
+
+* RNN Encoder-Decoder consists of two recurrent neural networks (RNN)
+* they act as an encoder and a decoder pair
+* encoder maps a variable-length source sequence to _a fixed-length vector_, the _latent representation_
+* all the temporal information as lost in the latent representation
+* decoder maps the vector representation back to a variable-length target sequence
+
+<small>
+
+https://arxiv.org/abs/1406.1078
+<br>
+https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Example Application: Sequence to Sequence translations
+
+* could be interpreted as sequential embedding
+* fixed-length vector between decoder and encoder is the latent space
+
+<img src='img/seq/encdec.jpg'>
+
+<small>
+
+https://github.com/tensorflow/nmt
+</small>
+</textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -400,6 +451,17 @@ https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview
 </small>
     </textarea>
 </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Using an encoder/decoder architecture
+### Time Series Forecasting
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
+        
+            </textarea>
+</section>
+
 
 
         </div>
