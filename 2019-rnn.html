@@ -142,9 +142,8 @@
 
 <section data-markdown>
         <textarea data-template>
-## Block III
+## Networks for Sequences, Time Series and Texts
 
-### Netzwerke für Sequenzen und Texte (Recurrent Layers)
 </textarea>
 </section>
 
@@ -174,9 +173,11 @@ _If training vanilla neural nets is optimization over functions, training recurr
 RNNs are Turing-Complete 
 
 <small>
+
 http://karpathy.github.io/2015/05/21/rnn-effectiveness/
 <br>
 http://binds.cs.umass.edu/papers/1995_Siegelmann_Science.pdf
+
 </small>
 </textarea>
             </section>
@@ -185,9 +186,11 @@ http://binds.cs.umass.edu/papers/1995_Siegelmann_Science.pdf
     <section data-markdown>
         <textarea data-template>
 ### RNNs - Networks with Loops
-<img src='img/nlp/colah/RNN-rolled.png' height="450px">
+
+<img src='img/colah/RNN-rolled.png' height="450px">
 
 <small>
+
 http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 </small>
         </textarea>
@@ -197,9 +200,10 @@ http://colah.github.io/posts/2015-08-Understanding-LSTMs/
         <textarea data-template>
 ### Unrolling the loop
 
-<img src='img/nlp/colah/RNN-unrolled.png'>
+<img src='img/colah/RNN-unrolled.png'>
 
 <small>
+
 http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 </small>
         </textarea>
@@ -209,7 +213,7 @@ http://colah.github.io/posts/2015-08-Understanding-LSTMs/
             <textarea data-template>
 ### Simple RNN
 
-<img src='img/nlp/fchollet_rnn.png'>
+<img src='img/seq/fchollet_rnn.png'>
 
 <script type="math/tex; mode=display">
 output_t = \tanh(W input_t + U output_{t-1} + b)
@@ -286,8 +290,9 @@ _Train the model_
   * More nodes? less nodes?
   * What else might help improving the results?
                 
-<small style="font-size: large">
-https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/time-series.ipynb
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-basics.ipynb
 </small>
         </textarea>
     </section>
@@ -381,6 +386,21 @@ model.add(GRU(units=rnn_units, return_sequences=True, recurrent_dropout=0.2))
 <small data-markdown>
 https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/tf2/time-series-advanced.ipynb
 </small>
+
+
+<section data-markdown>
+    <textarea data-template>
+#### You can even describe all networks as a combination of encoder / decoder
+
+<img src='img/embeddings/encoder-decoder-everywhere.png' height="530">
+
+<small style="font-size: large">
+
+https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
+</small>
+    </textarea>
+</section>
+
 
         </div>
     </div>

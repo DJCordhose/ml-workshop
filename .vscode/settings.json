@@ -1,4 +1,4 @@
 {
     "liveServer.settings.port": 5502,
-    "python.pythonPath": "C:\\Users\\olive\\Anaconda3\\envs\\tf-2.0\\python.exe"
+    "python.pythonPath": "C:\\Users\\olive\\Anaconda3\\envs\\tf2-no-gpu\\python.exe"
 }
