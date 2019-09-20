@@ -454,6 +454,43 @@ https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview
     </textarea>
 </section>
 
+
+<section data-markdown>
+        <textarea data-template>
+### Encoder / Decoder Architectures
+
+_This is mostly about the sequence of layers_ 
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Encoder (nothing new)    
+
+model.add(Input(shape=(n_steps_in, n_features)))
+model.add(LSTM(units=ENCODER_SIZE, activation='relu'))
+                </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Latent Space (nothing new)    
+
+model.add(Dense(units=ENCODING_DIM, activation='relu'))
+model.add(Dense(units=ENCODING_DIM, activation='relu'))
+                </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Decoder    
+
+# rolls out the latent space for each of the desired output steps
+model.add(RepeatVector(n_steps_out))
+model.add(LSTM(units=DECODER_SIZE, activation='relu', return_sequences=True))
+model.add(Dense(units=1)) # just to combine
+                </code></pre>
+
+<small>
+
+https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers
+
+</small>                
+            </textarea>
+</section>
+    
 <section data-markdown>
         <textarea data-template>
 ## Using an encoder/decoder architecture
