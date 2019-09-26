@@ -140,16 +140,88 @@
     <div class="reveal">
         <div class="slides">
 
- <section data-markdown>
-        <textarea data-template>
+<section data-markdown>
+    <textarea data-template>
 ## Workshop \#2             
 ### Introduction to Neural Networks with TensorFlow 
 #### and
 ### Working on real projects
 
 These slides: http://bit.ly/workshop-ml2-nve
-    </textarea>
-    </section>
+</textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+## Practical Advice from Olli
+
+* Accuracy should be actionable
+* Overfit on a small subset
+* Have clear input and output
+* Could a human learn from that data?
+* Train/Test Split
+* Fighting overfitting
+* Is your model large enough?
+* Start small and humble
+* Make incremental changes to something that works in some way
+* Use a baseline so you know what is possible
+
+<!-- After production:
+* You are never done
+* Going into production is not the end of the story
+* Don't let your model go stale -->
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+## Practical advice from a master of his craft
+
+_Challenges of training neural nets_
+1. Neural net training is a leaky abstraction - you need to understand what is going on
+1. Neural net training fails silently - the possible error surface is large
+
+_The recipe_
+1. Understand your data
+1. Make one simple experiment after the other
+1. Make your model good / large enough to overfit on a batch
+1. Regularize on full data set
+1. Tune and scrape the barrel
+
+<small>
+
+https://karpathy.github.io/2019/04/25/recipe/    
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown style="font-size: large">
+    <textarea data-template>
+### Overview of Notebooks
+
+_Classic_
+* Regression: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/regression.ipynb
+* Classification: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/strategies.ipynb
+* Clustering: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/unsupervised/cluster-insurance.ipynb
+<!-- * Dimensionality Reduction: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/unsupervised/pca-insurance.ipynb -->
+
+_Neural Networks_
+* Regression: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-low-level.ipynb
+* Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-low-level-classifier.ipynb
+* Dense / Tabular data: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
+* Convolutional / Images: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
+* RNN / Sequences: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-basics.ipynb
+* RNN / Sequences Advanced: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-advanced.ipynb
+* Analyses of the data: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-analyses.ipynb
+<!-- * Classic Machine Learning: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-classic.ipynb -->
+* RNNs: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn.ipynb
+* Encoder/Decoder: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
+
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>        
