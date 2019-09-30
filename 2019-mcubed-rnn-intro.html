@@ -143,7 +143,7 @@
             <section data-markdown class="preparation">
                 <textarea data-template>
 ### Preparation
-* Local Server as a fallback
+* open Local Server as a fallback: http://localhost:8888/notebooks/time-series-rnn-full-predict.ipynb
                 </textarea>
             </section>
 
@@ -162,7 +162,7 @@ I will share the complete code as a Colab notebook so you can start with your ti
  -->
         <section>
         <h2>Introduction to Time Series Prediction using Recurrent Neural Networks</h2>
-        <p><a target="_blank" href="Todo">
+        <p><a target="_blank" href="https://www.mcubed.london/sessions/introduction-to-time-series-prediction-using-recurrent-neural-networks/">
             MCubed, London, October 2019
         </a></p>
         <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
@@ -182,13 +182,135 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </section>
 
 
-<section data-markdown style="font-size: xx-large">
+<section data-markdown>
+        <textarea data-template>
+#### Before you get tempted, read this
+
+<img src='img/fchollet-stock-prices.png'>
+<small>
+
+https://twitter.com/fchollet/status/1177633367472259072
+</small>
+            </textarea>
+</section>
+
+<section data-markdown class="fragments">
+        <textarea data-template>
+## Open Question
+_How would you map_
+* any number of input time steps
+* with any number of features
+* to any number of output time steps
+* with any number of features
+            </textarea>
+</section>
+    
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Surprising Solution: RNN Encoder-Decoder
+
+* RNN Encoder-Decoder consists of two recurrent neural networks (RNN)
+* they act as an encoder and a decoder pair
+* encoder maps a variable-length source sequence to _a fixed-length vector_, the _latent representation_
+* all the temporal information as lost in the latent representation
+* decoder maps the vector representation back to a variable-length target sequence
+
+<small>
+
+https://arxiv.org/abs/1406.1078
+<br>
+https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Example Application: Sequence to Sequence translations
+
+* could be interpreted as sequential embedding
+* fixed-length vector between decoder and encoder is the latent space
+
+<img src='img/seq/encdec.jpg'>
+
+<small>
+
+https://github.com/tensorflow/nmt
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### You can even describe all networks as a combination of encoder / decoder
+
+<img src='img/embeddings/encoder-decoder-everywhere.png' height="530">
+
+<small style="font-size: large">
+
+https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
+</small>
+    </textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Encoder / Decoder Architectures
+
+_This is mostly about the sequence of layers_ 
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Encoder (nothing new)    
+
+model.add(Input(shape=(n_steps_in, n_features)))
+model.add(LSTM(units=ENCODER_SIZE, activation='relu'))
+                </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Latent Space (nothing new)    
+
+model.add(Dense(units=ENCODING_DIM, activation='relu'))
+model.add(Dense(units=ENCODING_DIM, activation='relu'))
+                </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Decoder    
+
+# rolls out the latent space for each of the desired output steps
+model.add(RepeatVector(n_steps_out))
+model.add(LSTM(units=DECODER_SIZE, activation='relu', return_sequences=True))
+model.add(Dense(units=1)) # just to combine
+                </code></pre>
+
+<small>
+
+https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers
+
+</small>                
+            </textarea>
+</section>
+    
+<section data-markdown>
+        <textarea data-template>
+## Using an encoder/decoder architecture
+### Time Series Forecasting
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
+        
+            </textarea>
+</section>
+
+<section data-markdown class="fragments">
     <textarea data-template>
 ### Wrap-Up
 
 _Feel free to say "Hello" after the talk_
 
-* 
+* results look pretty good
+* no dramatic difference between training and test data
+* peaks and valleys are underestimated very often
+* encoder/decoder architectures allow to make any number of predictions from any number of past events 
 
 _Introduction to Time Series Prediction using Recurrent Neural Networks, MCubed, London, October 2019_
 
