@@ -148,14 +148,21 @@
             </section>
 
 
+<!-- 
+Processes in the world around us are not static, but evolve over time. Because of this time series data 
+is the most common kind of data when we look at real world processes. Recurrent neural networks are one of 
+the most successful tools for time series forecasts as they are able to take the 
+past into account.
 
-Based on a practical example I will lead you through the steps of how to build an RNN based
+Based on the example of Germany's energy consumption I will lead you though the process of analysing, and preparing the data, 
+and then train a model on it and see how well it performs. We will also investigate which parameters have an effect on the performance
+of the model.   
 
 I will share the complete code as a Colab notebook so you can start with your time series project right after the talk.
-
+ -->
         <section>
-        <h3>Introduction to Time Series Prediction using Recurrent Neural Networks</h3>
-        <p><a target="_blank" href="https://www.mcubed.london/sessions/leveraging-tensorflow-js-to-improve-user-experience/">
+        <h2>Introduction to Time Series Prediction using Recurrent Neural Networks</h2>
+        <p><a target="_blank" href="Todo">
             MCubed, London, October 2019
         </a></p>
         <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
@@ -165,319 +172,34 @@ I will share the complete code as a Colab notebook so you can start with your ti
         </a></small></p>
     </section>
 
-<section data-markdown style="font-size: xx-large">
-        <textarea data-template>
-### Workshop: Introduction to Deep Learning with TensorFlow 2
-
-If you are bored
-1. #wifi Name: xxx, pwd: xxx
-1. Open this slide deck: http://bit.ly/mcubed-tf2
-1. Make sure you are ready to work with Colab
-   * open http://bit.ly/mcubed-tf2-low-level in Chrome
-   * make it run using the "Run All" command from the "Runtime" menu
-   * you need to allow execution and must either have a Google login or are willing to create one
-
-
- _Talk to your neighbors or ask Olli for help_   
-    </textarea>
-    </section>
-
-<!--     
-https://www.mcubed.london/sessions/workshop-introduction-to-deep-learning-with-tensorflow-2/
-
-Workshop: Introduction to Deep Learning with TensorFlow 2
-
-We will touch on classic Neural Networks, Convolutional Neural Networks (CNNs) for image processing, and Recurrent
-Neural Networks (RNNs) for processing of texts and other sequences.
-
-We will use TensorFlow 2 with low-level and Keras-style layers and provide notebooks hosted on Google’s Colab, that
-allow them to run on GPU. Thus there will be no need for any installation, all you need is a Chrome browser. We will use
-Python as our language, so basic knowledge in object oriented programming is desirable.
-
-Required audience experience
-Basic experience in object oriented programming, machine learning and neural networks.
-
-Objective of the workshop
-Giving basic insights into what neural networks can do and how to train them using TensorFlow 2.
- -->
-
-
- <section data-markdown class="todo">
-        <textarea data-template>
- * Wifi erste Folie 
-        </textarea>
-    </section>
-
-    <!-- <section data-markdown class="todo">
-            <textarea data-template>
-
-                                </textarea>
-        </section> -->
-
-        
-            <section>
-            <br>
-            <br>
-            <h2>Workshop: Introduction to Deep Learning with TensorFlow 2</h2>
-            <br>
-            <br>
-            <p><a target="_blank" href="https://www.mcubed.london/sessions/workshop-introduction-to-deep-learning-with-tensorflow-2/">
-                MCubed, London, October 2019
-            </a></p>
-            <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
-                <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-            </h4>
-            <p><small><a href="http://bit.ly/mcubed-tf2">
-                    http://bit.ly/mcubed-tf2
-            </a></small></p>
-        </section>
-
 <section data-markdown>
-    <textarea data-template>
-## 4 parts, 60-90 min each
-
-1. Basics
-1. Tabular input
-1. Image input
-1. Sequences and time series
-</textarea>
-</section>
-
-<section data-markdown class="local">
-    <textarea data-template>
-## Questions, comments, critique are welcome at any time
-</textarea>
-</section>
-
-<section data-markdown style="font-size: x-large">
-    <textarea data-template>        
-## Post Its
-
-<img src='img/post-its.jpg' height="400">
-
-* Stick the red one to your laptop to indicate you need help (please remove after you have been helped)
-* Do the same with the blue one to indicate you are done with an exercise (please remove at the beginning of each exercise)
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>        
-## Scatchpad to share links and information
-
-On Google Drive, everyone with link can read and edit
-
-http://bit.ly/mcubed-nn-scratch
-<!-- https://docs.google.com/document/d/17jNrh-eeeCSHGIMry7xNobc8UCkqVkzUf7o2pT7e4g0/edit?usp=sharing -->
-</textarea>
-</section>
-
-<section data-markdown class="local">
         <textarea data-template>
-## Introduce yourself to your neighbors, please
+### Going through our example in a Colab Notebook
 
-* What are you working on?
-* What do you want to achieve with TensorFlow?
-* What do you already know about ML and TensorFlow?
-* If necessary please help your neighbors to get to theses slides http://bit.ly/mcubed-tf2 and make the first notebook running http://bit.ly/mcubed-tf2-low-level (described in first slide)
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb
 
-        </textarea>
-    </section>
-
-<section data-markdown class="local fragments" style="font-size: x-large">
-    <textarea data-template>
-### What is your background?
-
-Technical
-* Data Science
-* Programming
-* Classic Machine Learning
-* Neural Networks
-* What else?
-
-Tools
-* Matlab
-* R
-* Python
-* Scikit-learn
-* TensorFlow
-* Pytorch
-* What else?
 </textarea>
 </section>
 
-    <section data-markdown class='fragments'>
-        <textarea data-template>
-
-### Morning
-* Basics using Low-Level TensorFlow
-* Tabular Data: Dense Neural Networks
-
-### Afternoon: Networks using Keras API
-* Images: Convolutional Neural Networks
-* Sequences: Recurrent Neural Networks
-</textarea>
-</section>
 
 <section data-markdown style="font-size: xx-large">
     <textarea data-template>
-## Practical advice from a master of his craft
+### Wrap-Up
 
-_Challenges of training neural nets_
-1. Neural net training is a leaky abstraction - you need to understand what is going on
-1. Neural net training fails silently - the possible error surface is large
+_Feel free to say "Hello" after the talk_
 
-_The recipe_
-1. Understand your data
-1. Make one simple experiment after the other
-1. Make your model good / large enough to overfit on a batch
-1. Regularize on full data set
-1. Tune and scrape the barrel
+* 
+
+_Introduction to Time Series Prediction using Recurrent Neural Networks, MCubed, London, October 2019_
 
 <small>
-https://karpathy.github.io/2019/04/25/recipe/    
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+<br>
+Slides: http://bit.ly/rnn-mcubed
 </small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Interactive, online introduction to Neural Networks with TensorFlow
-<!-- 
-For copying
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-low-level.ipynb
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-low-level-classifier.ipynb
- -->
-1. https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-regression-from-scratch.ipynb
-1. https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier.ipynb
-<!-- 1. https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier-metrics.ipynb -->
 
 </textarea>
 </section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Networks for Tabular and Structured data
-
-<a href='2019-dense.html'>Fully Connected Layers</a>
-
-</textarea>
-</section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Networks for Images
-
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
-
-</textarea>
-</section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Networks for Sequences, Time Series and Texts
-
-<a href='2019-rnn.html'>Recurrent Neural Networks: RNNs</a>
-
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-# Finally
-    
-</textarea>
-</section>
-
-<section data-markdown style="font-size: large">
-    <textarea data-template>
-
-## Overview over all Notebooks
-
-_Basics_
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-regression-from-scratch.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier-metrics.ipynb
-
-_Dense_
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-training.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-reg.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
-
-_RNN_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series/time-series-advanced.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
-
-_Convolutional_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-
-<img src='img/nn-overview.png' height="500">        
-<small>
-https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464    
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Time for some bad news
-
-<img src='img/weird-val-accuracy.png'>
-
-</textarea>
-</section>
-
-
-<section data-markdown style="font-size: xx-large">
-        <textarea data-template>
-### The real world looks different
-
-_All the shown examples are highly idealised_
-* Training behaves much less graceful in the real world
-  * it does not train linearly
-  * sudden jumps in loss can occur any time
-  * can take forever to train
-  * might ruin your night sleep and family live (let me just quickly check on the training progress) 
-* Real world data might not match training data
-* You might not even know the real training data
-* Struggle to find/get good quality data in the first place 
-            </textarea>
-        </section>
-        
-
-<section data-markdown>
-        <textarea data-template>
-### Finding data sets to play with
-    
-* Google released a search engine for datasets
-  * Search: https://toolbox.google.com/datasetsearch
-  * Launch blog post: https://www.blog.google/products/search/making-it-easier-discover-datasets/
-* Kaggle Datasets: https://www.kaggle.com/datasets
-* TensorFlow Datasets: https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3
-* https://www.openml.org/search?type=data
-</textarea>
-</section>
-
 
 
         </div>
