@@ -173,6 +173,8 @@ Machine Learning, die heute existieren und ohne Machine Learning so nicht denkba
         <textarea data-template>
 ### Preparation
 
+* Ist Oz da? Vorstellen. Wie spricht man seinen Namen aus?
+
 * Bevor es los geht, das hier abspielen, wenn die Leute rein kommen
 
 https://www.youtube.com/watch?v=dKjCWfuvYxQ&feature=youtu.be
@@ -180,6 +182,10 @@ https://www.youtube.com/watch?v=dKjCWfuvYxQ&feature=youtu.be
 * Das hier auf machen und am Ende darauf verweisen
 
 https://ml-summit.de/workshops-ml-summit/
+
+* Fragen: 
+  * wer war schon mal da
+  * wer ist eher für den ML Summit und wer eher für den Python Summit da?
 
 
         </textarea>
@@ -486,7 +492,9 @@ y_pred = clf.predict(input)
 ### Deep Supervised Machine Learning: Forecasting time series using RNNs
 
 <small>
+
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb    
+
 </small>
     </textarea>
     </section>
@@ -501,12 +509,41 @@ _Could we do a reasonable forecast?_
 </textarea>
 </section>
 
+
 <section data-markdown>
+        <textarea data-template>
+### A baseline - rolling mean over the previous 30 days
+
+<img src='img/tsa/baseline-rolling-mean.png' height="450">
+
+<small>
+R2 around 0.2    
+</small>
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
         <textarea data-template>
 ### Statistical Decomposition of Consumption
 
 <img src='img/tsa/tsa-decomposition.png' height="450">
 
+</textarea>
+</section>
+ -->
+<section data-markdown>
+        <textarea data-template>
+### R2 Metric: a speaking metric for regression
+
+* R^2 score, the closer to 1 the better
+* loosely speaking: how much better is this than predicting the constant mean
+* 0 would mean just as good
+* 1 is perfect
+* neg. would mean even worse
+* it can become arbitrarily worse
+
+https://en.wikipedia.org/wiki/Coefficient_of_determination
 </textarea>
 </section>
 
