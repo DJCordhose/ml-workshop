@@ -203,7 +203,7 @@ _Talk to your neighbors or ask Olli for help_
 </textarea>
 </section>
 
-<section data-markdown style="font-size: x-large">
+<section data-markdown style="font-size: x-large" class="local">
     <textarea data-template>        
 ## Post Its
 
@@ -292,13 +292,6 @@ _Talk to your neighbors or ask Olli for help_
                     </textarea>
                     </section>
                     
-                    <!-- <section data-markdown>
-                        <textarea data-template>
-    ### Exploration
-    <img src='img/insurance/sns-pairplot.png' height="550px">
-                
-                    </textarea>
-                    </section> -->
     <section>
         <h3>Programmer's approach: Code Rules by Hand</h3>
         <div class="fragment">
@@ -398,7 +391,7 @@ _team up and discuss with your neighbors_
 * Manually cluster areas of different customer types on the <em>upper part</em> of the handout
 * Be sure to use a ballpen and apply pressure when drawing
 
-<a href='/exercise/2019-workshop-exercise.pdf'>Exercise as PDF</a>
+<a href='/exercise/2019-workshop-exercises.pdf'>Exercise as PDF</a>
     </textarea>
         </section>
 
@@ -536,14 +529,45 @@ _Feature Selection_
             </textarea>
             </section>
 
-    <section data-markdown class="detail">
+    <section data-markdown>
     <textarea data-template>
-### Final Check on Collected Data
+## Exploratory Data Analysis and Checking 
+
+</textarea>
+</section>
+
+    <section data-markdown>
+    <textarea data-template>
+### Basic Statistical Metrics 
 
 <img src='img/insurance/df_describe.png' height="500">
 
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Pairplot
+<img src='img/insurance/sns-pairplot.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown class="workshop exercise">
+    <textarea data-template>
+### Quick Exercise - Get familiar with your data
+
+Discuss with your neighbors to answer those questions
+
+_Considering the analysis on the previous two slides_
+1. which feature has the most predictive power and 
+1. which has the lowest?
+
+_Is there anything else you find interesting or surprising?_
+
+
+    </textarea>
+        </section>
 
 <section data-markdown class="workshop">
     <textarea data-template>
@@ -649,8 +673,8 @@ _Run your first Colab Notbook_
 
 <small>
 
-Colab basics: https://colab.research.google.com
-<br>
+<!-- Colab basics: https://colab.research.google.com
+<br> -->
 https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/dt-intro.ipynb
 
 </small>
@@ -666,7 +690,7 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 
 <section data-markdown>
         <textarea data-template>
-### Machine Learning is all about Generalization
+### Machine Learning is about Generalization
 
 <img src='img/MELLI.jpg' height="500px">
             </textarea>
@@ -676,8 +700,8 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
         <textarea data-template>
 ### Evaluating our model
 
-* The most important property of a model is if it generalizes well to unknown data
-* A machine learning model is of no use if it only works well on the data it has been trained on
+* The most important property of our model is if it generalizes well to unknown data
+* Our machine learning model is of no use if it only works well on the data it has been trained on
   * If it was, the easiest way to achieve this would be a dictionary translating from a set of inputs to the known output
 * Conceptually it is a little bit hard to optimize for something you do not know
 * So, we introduce a little trick here
@@ -699,7 +723,9 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
     <textarea data-template>
 ### Exercise on Paper #3 - How well did you generalize?
 
-* Turn the page and redraw the lines you printed through from the first page
+* Turn the page
+  * put the first page perfectly after the second
+  * redraw the lines you see through from the first page
 * Get an estimate of the misclassified samples on both diagrams
 * What do you think, is this result worse?
 * What would you have done differently if you had known this is all about generalization?
