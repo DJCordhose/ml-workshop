@@ -161,7 +161,15 @@
             </textarea>
             </section>    
  -->
- 
+
+ <section data-markdown>
+        <textarea data-template>
+### Alte Folien
+* Wie in Göteborg gemacht (neuer): https://djcordhose.github.io/ai/2019_tf_rl.html
+* Wie bei MACH gemacht (älter): https://djcordhose.github.io/ai/2019_rl.html
+</textarea>
+</section>
+
  <section data-markdown>
         <textarea data-template>
 ### Data2day Talk
@@ -181,14 +189,29 @@
 </textarea>
 </section>
      
- <section data-markdown>
+ <section data-markdown class="todo">
     <textarea data-template>
 ### Understanding PPO
 
 * https://medium.com/@jonathan_hui/rl-proximal-policy-optimization-ppo-explained-77f014ec3f12 
 * https://openai.com/blog/openai-baselines-ppo/
 * https://www.reddit.com/r/reinforcementlearning/comments/8l9hkk/d_what_is_the_actual_cost_function_for_ppo/  
-  
+</textarea>
+</section>
+
+ <section data-markdown>
+    <textarea data-template>
+### KL Divergence in PPO
+
+_we don’t want any new policy to be too different from the current one_
+
+* a measure of how difference of two probability distributions
+    * https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
+* Penalize big changes in the action distribution from policy network 
+* Adding KL Divergence as part of the loss function
+* Makes it accessible to standard first order optimizers in NN backpropagation
+  * https://medium.com/@jonathan_hui/rl-proximal-policy-optimization-ppo-explained-77f014ec3f12
+
 </textarea>
 </section>
 
