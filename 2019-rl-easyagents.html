@@ -174,15 +174,55 @@ Dann weiter mit Practiioners View
 </textarea>
 </section>
  
+
+
 <section data-markdown>
+        <textarea data-template>
+## Applying Reinforcement Learning to a problem
+
+* Is your problem approachable by Reinforcement Learning (more on that later)?
+  * Can you define what would be the agent and what the environment?
+* You can simulate your environment or are able to safely perform a large number of experiments in the real world
+* You need to be able to define your problem as a Markov Decision Process (MDP)
+* Good sanity check: Would you as a human be able to play the game based on the observation and reward you get?
+* there are different kinds of observations
+  * fully observed environment (e.g. Jump'n'Run Game)
+  * partially observed environment (e.g. Ego Shooter)
+* Choose a proper Reinforcement Learning Algorithm (more on that later)
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## MDP: Markov Decision Process in Reinforcement Learning
+
+* https://en.wikipedia.org/wiki/Markov_decision_process
+* Model your observation in a way that which actions the agent took to get to a certain state are irrelevant
+* That means all information necessary to derive a proper action need to be in a single observation
+* The agents must not be forced to also learn the sequence of observations
+* E.g. the position of the PacMan is not enough. Which path taken results in where the ghosts are and what pills have been eaten
+</textarea>
+</section>
+
+<section data-markdown style="font-size: large;">
 <textarea data-template>
 ### Notebooks
+
+Workshop
 
 https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/workshop/orso.ipynb
 http://bit.ly/easyagents-orso
 https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/workshop/easyagents_line_exercise.ipynb
 http://bit.ly/easyagents-lineworld
 
+Talk
+
+tf agents raw
+https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/tf_agents_orso.ipynb
+https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/tf_agents_orso_custom_network.ipynb
+
+easyagents
+https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/easyagents_orso.ipynb
 </textarea>
 </section>
 
