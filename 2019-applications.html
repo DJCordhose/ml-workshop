@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Applications Workshop</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                        letter-spacing: 2px;
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                color: black !important;
+             }       
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+ <section data-markdown class="preparation">
+    <textarea data-template>
+### Preparation Workshop
+
+* print `exercise/2019-applications.docx`
+* we will need pens
+</textarea>
+</section>
+
+<!-- <section data-markdown style="font-size: xx-large">
+        <textarea data-template>
+### Workshop: Grundlagen von Machine Learning
+
+_Make sure you are prepared_
+1. #wifi Name: xxx, pwd: xxx
+1. Open this slide deck: http://bit.ly/ml-summit-2019-intro
+1. Make sure you are ready to work with Colab
+   * open https://colab.research.google.com in a modern Browser (IE will not work)
+   * make it run using the "Run All" command from the "Runtime" menu
+   * you need to allow execution and must either have a Google login or are willing to create one
+   * Go through the notebook and make yourself comfortable with Colab
+
+_Talk to your neighbors or ask Olli for help_   
+    </textarea>
+    </section> -->
+
+    <section data-markdown class="local">
+            <textarea data-template>
+    <img src='img/p8vfaxqrfud31.jpg' height="600">
+    
+    <small>
+    
+    https://i.redd.it/p8vfaxqrfud31.jpg
+    </small>        
+    </textarea>
+        </section>
+    
+    
+            <section>
+            <br>
+            <br>
+            <h2>Finding Applications for Machine Learning - Hands-On</h2>
+            <br>
+            <br>
+            <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+                <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+                <a href="https://www.embarc.de/">embarc</a>
+            </h4>
+        </section>
+
+    <section data-markdown>
+        <textarea data-template>
+<img src='img/p8vfaxqrfud31.jpg' height="600">
+
+<small>
+
+https://i.redd.it/p8vfaxqrfud31.jpg
+</small>        
+</textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+## We are not feeding the hype
+### Instead we go through three working examples of the three main types of Machine Learning
+    </textarea>
+    </section>
+
+<section data-markdown class="local">
+        <textarea data-template>
+<img src='img/embarc_logo.svg' height="600">
+
+</textarea>
+</section>
+
+<section data-markdown class="local">
+    <textarea data-template>
+<img src='img/ml.jpg' height="600">
+
+</textarea>
+</section>
+
+<section data-markdown class="local">
+    <textarea data-template>
+<img src='img/livevideo-deep-learning-crash-course.png' height="600">
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: x-large" class="local">
+    <textarea data-template>        
+## Post Its
+
+<img src='img/post-its.jpg' height="400">
+
+* Stick the red one to your laptop to indicate you need help (please remove after you have been helped)
+* Do the same with the blue one to indicate you are done with an exercise (please remove at the beginning of each exercise)
+</textarea>
+</section>
+
+<section data-markdown class="local">
+        <textarea data-template>
+## Introduce yourself to your neighbors, please
+
+* What are you working on?
+* What do you want to achieve with ML?
+* What do you already know about ML?
+* If necessary please help your neighbors to get to theses slides http://bit.ly/ml-summit-2019-intro
+    and make the first notebook run (described in first slide)
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Part I
+### Supervised Learning
+    </textarea>
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+### Predicting Risk
+
+* We are CTO of a highly innovative Car Insurance Company
+* Different from other insurance companies we determine the rate by the actual number of accidents per customer
+* _Objective: how many accidents will prospective customers have?_ 
+
+<img src='img/pixabay/accident-151668_1280.png' height="300px">
+            </textarea>
+        </section>
+    
+    <section data-markdown>
+            <textarea data-template>
+    ### Three Inputs for Prediction
+    
+    <a href='html/calculator.html'>
+    <img src='img/insurance/calculator.png' height="450">
+    </a>
+    <p><small>
+        <a href='html/calculator.html' target="_blank">
+            https://djcordhose.github.io/ml-workshop/html/calculator.html</a></small>
+    </small></p>
+    </textarea>
+        </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+## How to solve this programmatically?
+            </textarea>
+            </section>
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/classic-development.jpg'>
+</textarea>
+</section>
+            
+    <section>
+        <h3>Programmer's approach: Code Rules by Hand</h3>
+        <div class="fragment">
+        <pre><code contenteditable data-trim class="line-numbers python">
+if age < 25:
+    if speed > 140:
+        return red # young people, fast cars: high risk
+    else:
+        return yellow # young people: medium risk
+            </code></pre>
+        </div>
+        <div class="fragment">
+        <pre><code contenteditable data-trim class="line-numbers python">
+if age > 75:
+    return red # old people: high risk
+            </code></pre>
+        </div>
+        <div class="fragment">
+        <pre><code contenteditable data-trim class="line-numbers python">
+if miles_per_year > 30:
+    return red # a lot of driving: high risk
+if miles_per_year > 20:
+    return yellow #  a bit of driving: medium risk
+            </code></pre>
+        </div>
+        <div class="fragment">
+        <pre><code contenteditable data-trim class="line-numbers python">
+return green # otherwise: low risk
+            </code></pre>
+        </div>
+<!-- <p><small>
+    <a href='https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb'>https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/classic-code.ipynb</a>
+</small></p> -->
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How good is this?
+
+* Is it better than guessing?
+* Are all the rules correct?
+* Are some missing?
+* How would we even know?
+
+</textarea>
+</section>                    
+
+<section>
+    <h3>Let's check with existing data</h3>
+    <img src="img/insurance/all.png" height="500px" class="fragment">
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### How good is our Rule based approach?
+
+Plotting the predictions as a background
+
+<img src='img/decision-boundaries/5-prog.png' class="fragment" height="450px">
+<br>
+<small class="fragment">approx. 43% predictions correct</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### 43% is just a value, how bad is it really?
+
+Let's compare it to guessing
+
+<img src="img/decision-boundaries/random.png" height="450px"  class="fragment">
+<small  class="fragment">still gets 33% right</small>
+</textarea>
+</section>
+
+<section>
+<h3>Different Approach</h3>
+
+<div style="max-width: 50%; float: left;">
+    <img src='img/insurance/df_head.jpg' height="450">
+</div>
+<div style="max-width: 50%; float: right;">
+
+    <br>
+    <br>
+    <br>
+    <ul>
+        <li>0 - red: many accidents</li>
+        <li>1 - green: few or no accidents</li>
+        <li>2 - yellow: in the middle</li>
+    </ul>
+    </div>
+    
+    
+<p style="clear: both;">
+    <em>
+Looking at the problem from the perspective of our data
+</em>
+</p>
+        </section>
+
+<section>
+    <h3>Let's check: Is the data we have any good?</h3>
+    <img src="img/insurance/all.png" height="500px" class="fragment">
+    <small  class="fragment">Would we able to rank me (48) for a car having 100 mph top speed, driving 10k miles per year?</small>
+</section>
+
+<section data-markdown class="workshop">
+    <textarea data-template>
+### Would we be able to separate different classes by drawing a few lines?
+
+    </textarea>
+        </section>
+
+
+<section data-markdown class="workshop exercise">
+    <textarea data-template>
+### Paper Exercise - Understanding the Supervised Learning Approach
+
+_team up and discuss with your neighbors_
+
+* Manually separate areas of different customer types
+* You can use any shape and
+* Any number of lines
+
+_bear in mind, you want to use this for prediction_
+
+<a href='exercise/2019-applications.pdf'>Exercise as PDF</a>
+    </textarea>
+        </section>
+
+<section data-markdown class="workshop">
+<textarea data-template>
+### Two Sample Solutions
+
+<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
+<small>
+Are they the same? What is the key difference?
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## A Machine can learn to draw those lines just like you
+### by learning from data samples
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/supervised-ml.jpg' height="650px">
+    </textarea>
+    </section>
+    
+    
+    <section data-markdown>
+            <textarea data-template>
+### A Decision Tree trained on our data
+
+<img src="img/dt/dt-all.png" height="500px">
+        </textarea>
+        </section>
+
+    <section>
+            <h3>Prediction with Decision Trees</h3>
+            <div>
+
+        <img src="img/decision-boundaries/dt-sweet-test.png" class="fragment">
+        <small class="fragment">Up to 70% accuracy on unknown data</small>
+        </div>
+    </section>
+
+    <section data-markdown class="fragments">
+            <textarea data-template>
+### When to apply Supervised Learning
+
+_classify categories or predict values_
+
+* you have sample data with labels (ground truth)
+* the problem at hand is hard to specify
+* solving the problem can tolerate some error or uncertainty
+* there is a clear, simple input and output
+* Decision Trees mimic hand written code and have a similar level of explainability
+        </textarea>
+        </section>
+    
+    <section data-markdown>
+            <textarea data-template>
+## Part II
+### Unsupervised Learning
+
+        </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Exercise on Paper: Clusters and Outliers
+<img src='img/unsupervised/clustering.jpg' height="550px">
+    </textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+        <textarea data-template>
+### Exercise
+
+1. Mark all clusters
+1. Mark all data points that do not belong to a cluster
+
+Discuss
+1. In which way is this very different from our first example?
+1. Do you see clusters that look suspicious?
+1. What could be on the axes? Is this important for recognizing clusters?
+1. What could a cluster mean?
+1. How could you interpret data points do not belong to a cluster?
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Apply clustering to our insurance example
+
+<img src='img/unsupervised/cluster-insurance.png' height="400">
+
+_black is an outlier, other colors symbolize cluster, no known categories used_
+</textarea>
+</section>
+
+
+    <section data-markdown class="fragments">
+            <textarea data-template>
+### When to apply Unsupervised Learning
+
+_cluster, find similarities or outliers_
+
+* Fraud Detection
+* Similarities in customers / partners
+* Detecting regularities via strage cluster shapes
+
+        </textarea>
+        </section>
+    
+
+<section data-markdown>
+        <textarea data-template>
+## Part III
+### Reinforcement Learning
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Find the optimal route
+
+<img src='img/rl/turf.png' height="450px">
+
+<small>
+
+https://opendatascience.com/bears-need-to-learn-as-well-practical-reinforcement-learning-with-tensorflow-2-0-tf-agents/
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Programmatic solution
+ 
+* best-first search
+* will find optimal solution
+* but only on small problems
+* exponential complexity
+            </textarea>
+            </section>
+
+            <section data-markdown>
+                    <textarea data-template>
+### Alternative: Machine Learning
+
+Exchanging
+* exponential time for linear time
+* perfect path for near-optimal path 
+
+                        </textarea>
+                    </section>
+
+<section data-markdown class="fragment">
+    <textarea data-template>
+### But we have no training data
+
+* It is possible to gain training data through experiments
+* You will need a simulated world to run the experiments in, though
+* Experiments are guided by saying which results are good and which are bad
+* _This is called Reinforcement Learning_
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning: Using an Agent
+
+<img src='img/rl/rl-train-play-1.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning: Training an agent
+
+<img src='img/rl/rl-train-play-2.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Solution
+<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
+                
+</textarea>
+</section>
+
+    <section data-markdown class="fragments">
+            <textarea data-template>
+### When to apply Reinforcement Learning
+
+_often your last resort_
+
+1. You have no data to train on
+1. You can simulate your environment or can make experiments in high numbers in the real world without danger (or combine both)
+1. You know what is a good and what is a bad outcome and can quantify 
+
+<!-- 
+1. Human experts can solve the problem by doing 
+    
+    
+    1. Menschen können das
+   * Menschen entscheiden 'intuitiv', ie in wenigen Sekunden. Machen keine Recherche.
+1. Kann der Experte wechseln während der Aufgabe?
+5.Du weißt was gut und schlecht ist / kannst eine Lösung mit Punkten bewerten
+6. Pluspunkt: es gibt mehr als 1 Lösung
+7. Pluspunkt: du kannst auf dem weg schon sagen was tendenziell eine gute Richtung ist
+1. Halbscherz: wenn wir Spiele Designer wären gäbe das ein tolles Spiel.
+  * ..und wir sollten es auf die playstation bringen
+
+* you can simulate -->
+
+        </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Part IV
+### Finding Applications
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Map: Finding your strategy
+
+<img src='img/ML-strategy-helper.png' height="550px">
+
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+<textarea data-template>
+### Closing Team exercise
+
+_Find the right strategy for your project_
+
+* Team up with your neighbors
+* Find one or more projects to evaluate
+* Use the map from the previous slide (ask instructor to put it up on the projector) 
+* What might be the best approach?
+* What questions do you still have about your project?
+
+</textarea>
+</section>
+    
+        
+<section style="font-size: x-large">
+    <h2>Thank you - Wrapping it up</h2>
+    
+    <img src='img/ML-strategy-helper.png' height="470">
+    <p>
+    <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a></a>
+    <br>
+    <a href="https://www.embarc.de/">Chief Visionary Officer, embarc Software Consulting GmbH</a>
+    </p>
+</section>
+
+    </div>
+
+</div>
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
