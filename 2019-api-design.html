@@ -154,42 +154,114 @@
 <div class="reveal">
     <div class="slides">
 
- <section data-markdown class="preparation">
-    <textarea data-template>
-### Preparation Workshop
-
-* print `exercise/2019-applications.docx`
-* we will need pens
-</textarea>
-</section>
-
-            <section>
-            <br>
-            <br>
-            <h2>API Design for Machine Learning</h2>
-            <br>
-            <br>
-            <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
-                <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
-            </h4>
-        </section>
-
-
     <section data-markdown>
         <textarea data-template>
-### Only for basic examples there is a right and a wrong
+## API Design for Machine Learning
 
-* A lot of requirements contradict each other at least partially
-* How to answer most topics depencs on how you want to compromise
+_So far just a collection of thoughts that went through our minds when designing the easyagents abstraction_ 
 
-http://fwdinnovations.net/whitepaper/APIDesign.pdf
+<small>
+
+Christian Hidber
+        
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+<a href="http://twitter.com/djcordhose">@DJCordhose</a>
+
+
+https://djcordhose.github.io/ml-workshop/2019-api-design.html
+
+</small>
 </textarea>
     </section>
 
+    <section data-markdown>
+            <textarea data-template>
+    
+### More questions than answers
+
+* In which way is machine learning special when it comes to API design?
+</textarea>
+</section>
+
 
     <section data-markdown>
         <textarea data-template>
-### Target Audience
+### There are only few universal dos and don'ts
+
+* A lot of requirements contradict each other at least partially
+* How to answer most topics depends on how you want to make a trade-off
+
+</textarea>
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+    
+## Only for basic examples there is a right and a wrong
+
+http://fwdinnovations.net/whitepaper/APIDesign.pdf
+
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+
+### Need to be non-specific to define general best practices 
+
+* Make input and output obvious
+* Let API match the language
+	* Fluent API in a typed language, but in untyped?
+* APIs are forever
+  * Do not make choices lightly
+</textarea>
+</section>
+
+  <section data-markdown>
+            <textarea data-template>
+    
+## Most things are trade-offs
+
+depends on 
+* requirements (what should the API do?)
+* target audience
+* general design philosophy
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### ML has a workflow, let the API mimic that
+
+sklearn, Keras, Easyagents have
+* train, fit, etc.
+* eval, score, etc.
+* predict, play, etc.
+* Why can you call predict before train?
+
+</textarea>
+</section>
+
+
+
+<section data-markdown>
+        <textarea data-template>
+
+### Target Audience - What are people trying to achieve
+
+* Implementing algorithms - scientist - Low Level
+    * Training Loop, Loss Functions, Applying Gradients
+* Using algorithms - practitioner - High Level
+    * Sequential or functional API
+    * Predefined models, transfer learning
+* Extending - backend developer - high and low level
+    * Keras Layer API, implement your own layer
+</textarea>
+</section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Which API favors which audience?
 
 _practitioner vs researcher_
 
@@ -203,6 +275,9 @@ _practitioner vs researcher_
 ### Concise vs Verbose
 
 * Eval keras vs score Easyagents dict
+* Elegance of writing vs Readability
+* How often do (other) people read the code?
+* Notebooks are not production code  
 
 </textarea>
     </section>
@@ -211,17 +286,61 @@ _practitioner vs researcher_
         <textarea data-template>
 ### Reasonable Defaults vs make everything explicit
 
-_in sklearn_ 
+* should most common options be default?
+* what is most common?
+* does everyone agree?
+* Where to begin and where to end?
+* How to be transparent about default?
+  * No warnings, no one reads them anyway
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Examples from sklearn 
+
 * How many features random forests considers by default when making splits?
 * Is there a default penalty for logistic regression?
 
 <small>
+
 https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html    
 https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
 https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
 </small>
 </textarea>
     </section>
+
+    <section data-markdown>
+            <textarea data-template>
+### Simple vs Easy
+
+_Make the API expected vs make the API what it should be_
+
+* do things the way people are used to: best for existing users
+* or how it is most intuitive: best for new users
+
+* Eval keras vs score Easyagents dict
+
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+
+### Don't break APIs, right?
+
+* Especially, do not change important defaults
+* Do not make surprising defaults
+
+But, especially in ML 
+* What are important defaults?
+* What might be surprising?
+* If you change the implementation you often get different results
+* Can you completely separate API from implementation? 
+</textarea>
+</section>
 
 
     </div>
@@ -253,7 +372,9 @@ https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticR
             // applies to all versions
             $('code').addClass('line-numbers');
     
-            $('.fragments li').addClass('fragment')
+            $('li').addClass('fragment')
+            // $('.fragments li').addClass('fragment')
+            $('.no-fragments li').removeClass('fragment')
     
             // make all links open in new tab
             $('a').attr('target', '_blank')
