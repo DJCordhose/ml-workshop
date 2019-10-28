@@ -245,7 +245,6 @@ sklearn, Keras, Easyagents have
 </section>
 
 
-
 <section data-markdown>
         <textarea data-template>
 
@@ -276,13 +275,45 @@ _practitioner vs researcher_
         <textarea data-template>
 ### Concise vs Verbose
 
-* Eval keras vs score Easyagents dict
 * Elegance of writing vs Readability
 * How often do (other) people read the code?
 * Notebooks are not production code  
 
 </textarea>
     </section>
+
+    <section>
+        <h3>Example: Concise vs Verbose</h3>
+            
+        <div class="fragment">
+                <pre><code contenteditable data-trim class="line-numbers python">
+# concise, close to idiomatic Python
+
+mean, std, min, max, _ = ppoAgent.score()
+mean, std, min, max
+        </code></pre>
+                </div>
+                    <div class="fragment">
+                            or
+                        </div>
+                        <div class="fragment">
+                                <pre><code contenteditable data-trim class="line-numbers python">
+# verbose, flexible, clearer for first time users 
+
+metrics = ppoAgent.evaluate()
+metrics['mean'], metrics['std'], metrics['min'], metrics['max']
+                                                    </code></pre>
+                                </div>
+                        
+                        
+            
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+
+</textarea>
+</section>
 
     <section data-markdown>
         <textarea data-template>
