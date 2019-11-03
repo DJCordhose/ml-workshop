@@ -172,6 +172,50 @@
 
 <section data-markdown>
     <textarea data-template>
+## Structure of Observation and Reward are crucial
+* agents can learn short cuts and unexpected behavior
+* Funny list of machines learned as opposed what the designers intended them to learn
+  * `Reward-shaping a soccer robot for touching the ball caused it to learn to get to the ball and vibrate touching it as fast as possible`
+  * `Robot hand pretending to grasp an object by moving between the camera and the object`
+  * `Simulated pancake making robot learned to throw the pancake as high in the air as possible in order to maximize time away from the ground`
+  * `Agent pauses the game indefinitely to avoid losing`
+  * `In an artificial life simulation where survival required energy but giving birth had no energy cost, one species evolved a sedentary lifestyle that consisted mostly of mating in order to produce new children which could be eaten (or used as mates to produce more edible children).`
+  * `Agent kills itself at the end of level 1 to avoid losing in level 2`
+  * `Evolved player makes invalid moves far away in the board, causing opponent players to run out of memory and crash`
+  * `Creatures exploited physics simulation bugs by twitching, which accumulated simulator errors and allowed them to travel at unrealistic speeds`
+  * `Reward-shaping a bicycle agent for not falling over & making progress towards a goal point (but not punishing for moving away) leads it to learn to circle around the goal in a physically stable loop.`
+  * `... algorithm learns to bait an opponent into following it off a cliff, which gives it enough points for an extra life, which it does forever in an infinite loop.`
+  * `The PPO algorithm discovers that it can slip through the walls of a level to move right and attain a higher score.`
+
+Source: https://vkrakovna.wordpress.com/2018/04/02/specification-gaming-examples-in-ai/
+  * https://arxiv.org/abs/1803.03453 
+  * https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml
+  * https://twitter.com/mogwai_poet/status/1060286856493813760
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# How good can you get? What is the optimum?
+
+* generally you just do not know
+* the higher the score the better
+* baselines can help in Reinforcement Learning as well
+* in our special case, there is a deterministic baseline
+  * best first search (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+  * guarentees to find optimal solution
+  * exponential complexity
+  * but works fine for our size of the problem
+  * optimal score between _.73_ and _.74_ with very low variance
+  * number of steps to pass through complete turf around _17_
+* our reinforcement learning approach trades the perfect solution for
+  * nearly perfect solution 
+  * linear time complexity
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
 ### When RL is a promising approach
 
 1. You have no data
@@ -184,6 +228,10 @@
 7. Pluspunkt: du kannst auf dem weg schon sagen was tendenziell eine gute Richtung ist
 1. Halbscherz: wenn wir Spiele Designer wären gäbe das ein tolles Spiel.
   * ..und wir sollten es auf die playstation bringen
+</textarea>
+</section>
+
+
  <section data-markdown>
         <textarea data-template>
 ### Data2day Talk
