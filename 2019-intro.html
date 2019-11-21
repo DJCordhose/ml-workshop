@@ -580,13 +580,19 @@ Plotting the predictions as a background
 <p>Training</p>
 <pre><code contenteditable data-trim class="fragment line-numbers python">
 from sklearn.tree import DecisionTreeClassifier
-clf = DecisionTreeClassifier()
+clf = DecisionTreeClassifier(max_depth=5)
+# X = [[100, 48, 10], ...]
+# y = ['low risk', ...]
 clf.fit(X_train, y_train)
+clf.score(X_test, y_test)
+# 70%
             </code></pre>
         
 <p>Prediction</p>
 <pre><code contenteditable data-trim class="fragment line-numbers python">
+# input = [[150, 30, 30], ...]
 y_pred = clf.predict(input)
+# y_pred = ['high risk', ...]
         </code></pre>
 
 <small>
@@ -596,7 +602,7 @@ y_pred = clf.predict(input)
         https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/overview.ipynb</a> -->
 </small>
         </section>
-        
+
 <!-- 
     <section data-markdown class="detail">
             <textarea data-template>
