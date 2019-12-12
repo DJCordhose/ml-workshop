@@ -1,0 +1,1280 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Neural Embeddings</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                        letter-spacing: 2px;
+                          font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                color: black;
+             }       
+
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+<!-- 
+The Magic of Neural Embeddings with TensorFlow 2
+
+Neural Embeddings are a powerful tool of turning categorical into numerical values. Given reasonable training data semantics present in the categories can be preserved in the numerical representation.
+
+Symbols, words, categories etc. need to be converted into numbers before they can be processed by neural networks or used into other ML methods like clustering or outlier detection.
+
+It is desirable to have the converted numbers represent semantics of the encoded categories. That means, numbers close to each other indicate similar semantics.
+
+In this session you will learn what you need to train a neural network for such embeddings. I will bring a complete example including code that I will share using TensorFlow 2 functional API and the Colab service.
+
+I will also share some tricks how to stabilize embeddings when either the model changes or you get more training data.
+
+30 minutes
+
+https://pretalx.com/euroscipy-2019/talk/QGZTDZ/            
+ -->
+
+            <!-- <section data-markdown class="preparation">
+                <textarea data-template>
+### Preparation
+
+                </textarea>
+            </section> -->
+<!-- 
+            <section data-markdown class="todo">
+                    <textarea data-template>
+</textarea>
+</section>
+ -->
+<!-- <section data-markdown class="todo">
+        <textarea data-template>
+Nice to have            
+[]Für Stabilisierung: https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed 
+[]https://medium.com/tensorflow/introducing-tf-text-438c8552bd5e für Vorverarbeitung der Texte
+</textarea>
+</section> -->
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### GAN Viz für den Ausblick        
+    </textarea>
+</section>
+    
+<section data-markdown class="todo">
+        <textarea data-template>
+### Use Case, Anomaly detection
+
+Autorencoder: can it reproduce after training on normal data? If loss over threshold: anomaly
+
+Gan: discriminator can already do it
+
+<img src='img/material/IMG_20191210_104055.jpg'>
+</textarea>
+    </section>
+    
+<section>
+        <h2>The Magic of Neural Embeddings</h2>
+        <h3>with TensorFlow 2</h3>
+        <p><a target="_blank" href="https://pretalx.com/euroscipy-2019/talk/QGZTDZ/">
+            EuroSciPy 2019, Bilbao, Spain
+        </a></p>
+<h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+</h4>
+<p><small>Slides: <a href="http://bit.ly/euroscipy-embeddings">
+http://bit.ly/euroscipy-embeddings
+</a></small></p>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Imagine you want to compare airlines
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Why would you want that?
+
+_Exploration of concepts_
+
+* Which ones are similar?
+* Which are exceptions?
+
+_You probably have a different use case_
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Isn't that easy?
+
+* First dimension: number of passengers
+* Second dimension: similarity by typical route
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Challenge
+
+### How do you describe such a complex similarity in a single dimension?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Neural Networks are flexible enough to help
+
+            </textarea>
+        </section>
+
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_1.png' height="650px">
+
+            </textarea>
+        </section>
+
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_2.png' height="650px">
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_3.png' height="650px">
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png' height="650px">
+
+            </textarea>
+        </section>
+
+<section>
+    <h3>Train embedding with TensorFlow</h3>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+number_of_airlines = len(airlines) + 1
+embedding_dim = 1 # up to us
+
+model.add(Embedding(input_dim=number_of_airlines, 
+                    output_dim=embedding_dim))
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# embedding will be n-dimensional, but Dense can only handle flat input
+model.add(Flatten())
+
+# random additional layers to at least make this train
+model.add(Dense(units=50, activation='relu'))
+# ...
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# two airports in a route
+model.add(RepeatVector(2))
+model.add(SimpleRNN(units=50, return_sequences=True))
+
+# ca. 3500 airports in routes
+output_dim = len(routes_tokenizer.word_index) + 1
+model.add(Dense(units=output_dim, activation='softmax'))
+</code></pre>
+
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Make sure the model trains / loss converges
+
+<div style="float: left">
+<img src='img/embeddings/airlines-2d-loss.png' height="300px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/embeddings/airlines-2d-acc.png' height="300px"><br>
+Accuracy
+</div>
+
+<div style="clear: both">
+Curves for 2-d embedding (1-d accuracy closer to 10%)
+
+<small>        
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### How loss is computed
+
+<img src='img/computing_loss.png' height="500px">
+
+<small>
+Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## What's the point?
+
+### Now we have a bad model
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+## What's the point?
+
+### It is the output of the embedding layer we are interested in
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png' height="650px">
+
+        </textarea>
+    </section>
+
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_5.png' height="650px">
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Extracting embedding
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+embedding_layer = model.get_layer('embedding')
+embedding_model = Model(inputs=model.input, 
+                        outputs=embedding_layer.output)
+embeddings_2d = embedding_model.predict(samples).reshape(-1, 2)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+latent_x = embeddings_2d[:, 0]
+latent_y = embeddings_2d[:, 1]
+
+plt.scatter(latent_x, latent_y)
+</code></pre>
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+
+</textarea>
+        </section>
+
+
+        
+<section data-markdown>
+    <textarea data-template>
+### Resulting Plot of Airline Embedding 
+
+<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
+<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Result: Clustering using 1d embedding
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### What did we just do here?
+
+_We trained a neural embedding_
+
+* Train an embedding layer as part of a neural network
+* Each neuron in the embedding layer serves as one dimension of embedding
+* extremely flexible setup
+* can reduce dimensions of really abstract concepts
+* can encode non-linear relationships
+
+_Embedding: Transform a high dim. vector space to a lower one_
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Every Story needs a wolf
+
+
+<img src='img/chk_wolf.jpg' height="450px" style="float: left">
+
+<img src='img/chk_rot.jpg' height="450px" style="float: right">
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Our Wolf: The Turtle Effect
+
+If the user gets used to a certain pattern to be in the model, 
+they expect it to persist and even be in the same position
+
+<img src="img/turtle.png" height="400px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Issue
+### You would not want the data points to move around
+
+* Might happen when model changes
+* Or new data comes in
+* or simply with each training run, even without changes
+* people do not want to see drastic changes in visualizations when just a few data points change
+
+</textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+    </textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering after Retraining with more data
+
+<img src='img/embeddings/clsutering-same-seed.png' height="550px">
+
+    </textarea>
+</section>
+
+
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### How to stabilize the embedding?
+
+1. _Transfer_: Use initial model as starting point and _carefully_ retrain
+* use small learning rate
+* will work only if model architecture has not changed
+1. _Force_: Train from scratch, but use difference to original embedding as part of loss function
+* Wow, sounds promising, as it should work under all circumstances
+* but: How do we do this???
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments remote">
+<textarea data-template>
+### Using second model head and loss
+
+1. use old model to encode new/augmented data into embedding
+1. remember this embedding data
+1. train from scratch with new/augmented data and/or new model architecture
+1. use difference to original embedding as part of loss function
+1. calibrate how much change you desire by weight of that loss
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_4.png' height="650px">
+
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+
+<img src='img/embeddings/embedding_6_loss_1.jpg' height="650px">
+    
+            </textarea>
+        </section>
+        <section data-markdown>
+            <textarea data-template>
+        
+<img src='img/embeddings/embedding_6_loss_2.jpg' height="650px">
+        
+                </textarea>
+            </section>
+            
+<section data-markdown>
+    <textarea data-template>
+### Functional API allows for all kinds of wiring
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# example for model changes
+
+x = Dense(units=50, ...)(x)
+# second dense layer
+x = Dense(units=50, ...)(x)
+# ...
+# less units (25 instead of 50)
+x = SimpleRNN(units=25, ...)(x)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Head 1: main_output, Head 2: embedding
+model = Model(inputs=main_input, outputs=[main_output, embedding])
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.compile(loss={ 'main_output': 'categorical_crossentropy', 
+                 'embedding': 'mae' },
+              loss_weights={'main_output': .1, 'embedding': 1.})
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.fit(x=X, y={'main_output': Y, 'embedding': original_embeddings})
+</code></pre>
+
+<small>
+
+https://keras.io/getting-started/functional-api-guide/
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+
+</small>
+</textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Model still trains well
+
+<div style="float: left">
+<img src='img/embeddings/multi-head-losses.png' height="350px"><br>
+Losses
+</div>
+<div style="float: right" >
+<img src='img/embeddings/main-output-accuracy.png' height="350px"><br>
+Accuracy on Main Head
+</div>
+
+</textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering Stabilized
+
+<img src='img/embeddings/clustering-stabelized.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+    </textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+<textarea data-template>
+### Clustering Unstabilized
+
+<img src='img/embeddings/clsutering-same-seed.png' height="550px">
+
+    </textarea>
+</section>
+
+<section data-markdown class="remote">
+<textarea data-template>
+### How to deal with additional data?
+
+* create the additional embeddings on new/augmented/updated data using old model
+* use that on the old/new/updated model architecture
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Wrap-up
+
+* Neural embeddings can be used to reduce dimensions in a semantically reasonable way
+* You can describe semantics by anything you can feed into a neural network (images, time series, etc.)
+* You can extract embeddings or use as part of complete network
+
+_Do you have a problem for my solution?_
+* I want you to have this method in your toolbelt
+* Maybe you have an application for this (please tell me in this case)
+
+<p>
+<em>The Magic of Neural Embeddings</em>
+<br>
+<small>
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+<br>
+These slides: <a href="http://bit.ly/euroscipy-embeddings">
+http://bit.ly/euroscipy-embeddings</a>
+<br>
+
+Code:
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+
+</small>
+</p>
+
+        </textarea>
+    </section>
+<!-- 
+    <section data-markdown>
+        <textarea data-template>
+## FROM HERE ON JUST MATERIAL FROM AN OLD VERSION OF THE TALK
+    </textarea>
+    </section>
+    
+
+<section data-markdown>
+    <textarea data-template>
+### Imagine you want to compare airlines
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Why would you want that?
+
+_Exploration of concepts_
+
+* You probably have a different use case
+
+* Which ones are similar?
+* Which are exceptions?
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Isn't that easy?
+
+* First dimension: number of passengers
+* Second dimension: similarity by typical route
+
+            </textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+## Challenge
+
+### How do you describe similarity in a single dimension?
+
+            </textarea>
+        </section>
+        
+        
+<section data-markdown>
+        <textarea data-template>
+### Example: Word Embeddings using word2vec
+
+_main assumption: words appearing in similar contexts have similar meaning_
+
+<a href='https://projector.tensorflow.org'>
+<img src="img/embeddings/embedding-projector.png" height="350px">
+</a>
+
+<small>
+
+https://projector.tensorflow.org
+</small>
+</textarea>
+</section>
+    
+<section data-markdown>
+        <textarea data-template>
+### What are Embeddings?
+
+* Embedding: Transform a high dim. vector space to a lower one
+* word/symbol Embedding: Transform sparse one hot encodings into a dense lower dim. encoding 
+
+<small>https://en.wikipedia.org/wiki/Word_embedding</small>
+            </textarea>
+        </section>
+
+<section data-background='img/embeddings/pca.png'>
+<h3 style='color:blue'>Example</h3> 
+<h2 style='color:blue'>Similarities in Bundesliga Football Players</h2>
+<br>
+<br>
+<h3 style='color:blue'>transformed down from 30+ dimensions to 2 to make them accessible for humans using PCA</h3>
+
+        </section>
+
+<section data-markdown data-background='img/embeddings/pca.png'>
+        <textarea data-template>
+<img src='img/embeddings/pca.png' height="600px">
+
+            </textarea>
+        </section>
+        
+
+<section data-markdown>
+<textarea data-template>
+### Principal Component Analysis
+
+* PCA, T-SNE and others often work really well
+* They can transform high dimensions into low dim
+* PCA: Can also explain which feature have which impact on which Principal Component
+* A single layered autoencoder with a linear activation function is very similar to PCA (https://towardsdatascience.com/autoencoders-vs-pca-when-to-use-which-73de063f5d7)
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Neural Embeddings?
+
+* Train an embedding layer as part of a neural network
+* Each neuron in the layer serves as one dimension of embedding
+* extremely flexible setup
+* can reduce dimensions of really abstract concepts
+* can encode non-linear relationships
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Back to our use case: Clustering on concepts
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### What?
+
+* You might want to reduce a complex concept to a single or two dimensions
+* This can be very helpful for
+  * Visualizations
+  * Clustering, Outliers
+* Neural Embeddings can deal with pretty much any semantic information on the concept
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How does this relate to our use case?
+
+* We want to compare airlines
+* Which ones are similar?
+* Which are exceptions?
+* We have data about with routes they provide service for
+* Now we use the pure number of airline to predict that route
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How to encode similarities into embeddings?
+
+<img src='img/embeddings/embedding-train.png'>
+
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How to extract embeddings
+
+<img src='img/embeddings/embedding-predict.png'>
+
+        </textarea>
+    </section>
+
+<section>
+    <h3>Train embedding with TensorFlow</h3>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+number_of_airlines = len(airlines) + 1
+embedding_dim = 1 # up to us
+
+model.add(Embedding(input_dim=number_of_airlines, 
+                    output_dim=embedding_dim))
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# embedding will be n-dimensional, but Dense can only handle flat input
+model.add(Flatten())
+
+# random additional layers to at least make this train
+model.add(Dense(units=50, activation='relu'))
+# ...
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# two airports in a route
+model.add(RepeatVector(2))
+model.add(SimpleRNN(units=50, return_sequences=True))
+
+# ca. 3500 airports in routes
+output_dim = len(routes_tokenizer.word_index) + 1
+model.add(Dense(units=output_dim, activation='softmax'))
+</code></pre>
+
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Make sure the model trains / loss converges
+
+<div style="float: left">
+<img src='img/embeddings/airlines-2d-loss.png' height="300px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/embeddings/airlines-2d-acc.png' height="300px"><br>
+Accuracy
+</div>
+
+<div style="clear: both">
+Curves for 2-d embedding (1-d accuracy closer to 10%)
+
+<small>        
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What are we after here?
+
+* Model should train, i.e. loss should converge
+* If it does not you might do things to hidden layers
+* Typically we do not get good accuracy
+* But this is not what we are after
+* All training needs to go through bottleneck of embedding
+* Thus we hope this will be packed with all the good semantics
+
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Extracting embedding
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+embedding_layer = model.get_layer('embedding')
+embedding_model = Model(inputs=model.input, 
+                        outputs=embedding_layer.output)
+embeddings_2d = embedding_model.predict(samples).reshape(-1, 2)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+latent_x = embeddings_2d[:, 0]
+latent_y = embeddings_2d[:, 1]
+
+plt.scatter(latent_x, latent_y)
+</code></pre>
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings.ipynb
+</small>
+
+</textarea>
+        </section>
+
+
+        
+<section data-markdown>
+    <textarea data-template>
+### Resulting Plot of Airline Embedding 
+
+<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
+<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Every Story needs a wolf
+
+
+<img src='img/chk_wolf.jpg' height="450px" style="float: left">
+
+<img src='img/chk_rot.jpg' height="450px" style="float: right">
+
+
+    </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Our Wolf: The Turtle Effect
+
+If the user expects a certain pattern to be in the model, they expect it to persist
+
+<img src="img/turtle.png" height="400px">
+
+    </textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+## Issue
+### You would not want the data points to move around
+
+* Might happen when model changes
+* Or new data comes in
+* or simply with each training run, even without changes
+* people do not want to see drastic changes in visualizations when just a few data points change
+
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### How to stabilize the embedding?
+
+1. _Transfer_: Use initial model as starting point and _carefully_ retrain
+   * use small learning rate
+   * will work only if model architecture has not changed
+1. _Force_: Train from scratch, but use difference to original latent representation as part of loss function
+   * Wow, sounds promising, as it should work under all circumstances
+   * but: How do we do this???
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Using second model head and loss
+
+1. use old model to encode new/augmented data into latent space
+1. remember those latent representations
+1. train from scratch with new/augmented data and/or new model architecture
+1. use difference to original latent representation as part of loss function
+1. calibrate how much change you desire
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Adding a second model head
+
+<img src='img/embeddings/nn-airlines-extened.jpg'>
+
+</textarea>
+</section>
+
+<section data-markdown data-transition='none'>
+    <textarea data-template>
+### Adding a second model head
+
+<img src='img/embeddings/nn-airlines-heads.jpg'>
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Functional API allows for all kinds of wiring
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# changed model
+
+x = Dense(units=50, ...)(x)
+# second dense layer
+x = Dense(units=50, ...)(x)
+# ...
+# less units (25 instead of 50)
+x = SimpleRNN(units=25, ...)(x)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Head 1: main_output, Head 2: embedding
+model = Model(inputs=main_input, outputs=[main_output, embedding])
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.compile(loss={ 'main_output': 'categorical_crossentropy', 
+                     'embedding': 'mae' },
+              loss_weights={'main_output': .1, 'embedding': 1.})
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+model.fit(x=X, y={'main_output': Y, 'embedding': original_embeddings})
+</code></pre>
+
+<small>
+
+https://keras.io/getting-started/functional-api-guide/
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/embeddings-retrain.ipynb
+
+</small>
+</textarea>
+        </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Model still trains well
+
+<div style="float: left">
+<img src='img/embeddings/multi-head-losses.png' height="350px"><br>
+Losses
+</div>
+<div style="float: right" >
+<img src='img/embeddings/main-output-accuracy.png' height="350px"><br>
+Accuracy on Main Head
+</div>
+
+</textarea>
+</section>
+
+
+<section data-markdown data-transition='none'>
+    <textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+        </textarea>
+    </section>
+
+<section data-markdown data-transition='none'>
+    <textarea data-template>
+### Clustering Stabilized
+
+<img src='img/embeddings/clustering-stabelized.png' height="550px">
+
+        </textarea>
+    </section>
+
+    <section data-markdown data-transition='none'>
+    <textarea data-template>
+### Clustering Unstabilized
+
+<img src='img/embeddings/clsutering-same-seed.png' height="550px">
+
+        </textarea>
+    </section>
+
+<section data-markdown data-transition='none'>
+    <textarea data-template>
+### Clustering original
+
+<img src='img/embeddings/cluster-original.png' height="550px">
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### How to deal with additional data?
+
+* create the additional embeddings on new/augmented/updated data using old model
+* use that on the old/new/updated model architecture
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+        <textarea data-template>
+### Wrap-up
+
+* Data is still king
+* You will need training data carrying semantic information
+* Embeddings are no silver bullet
+* They can only be one more tool in your tool box
+* Can be used to reduce dimensions in a semantically reasonable way
+* You can extract embeddings or use as part of complete network
+
+<p>
+    <em>The Magic of Neural Embeddings</em>
+<br>
+<small>
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+<br>
+<a href="http://bit.ly/euroscipy-embeddings">
+http://bit.ly/euroscipy-embeddings</a>
+</small>
+</p>
+
+            </textarea>
+        </section>
+
+             -->
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        $('section:not([data-background])').attr('data-background', "background/sky.jpg");
+
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
+            // only applies to local version
+            $('.remote').remove();
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: false,
+            history: true,
+            center: true,
+            width: 1100,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>
