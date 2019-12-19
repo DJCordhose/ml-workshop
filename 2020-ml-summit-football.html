@@ -16,10 +16,10 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
           <link rel="stylesheet" href="reveal.js/css/reveal.css">
-          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
-          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
-          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
-          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme"> -->
           <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
       
           <!-- Code syntax highlighting -->
@@ -79,7 +79,8 @@
                           font-family: 'Calibri', sans-serif;
                           /* font-family: 'Times New Roman', Times, serif; */
                           font-weight: bold;
-                          color: black;
+                          /* color: black; */
+                          color: white;
                           font-style: italic;
                           letter-spacing: -2px;
                           text-transform: none !important;
@@ -140,7 +141,8 @@
                       list-style-type: none;
                   }
                   .reveal {
-                color: black !important;
+                /* color: black !important; */
+                color: white !important;
              }       
 
           </style>
@@ -196,7 +198,6 @@ https://github.com/andrewRowlinson/mplsoccer/blob/master/mplsoccer/demo_animatio
         </textarea>
     </section>
 
-
 <section data-markdown class="preparation">
     <textarea data-template>
 
@@ -232,6 +233,24 @@ data2day, Ludwigshafen, October 2019
 ## Part I: Data Science in Football            
             </textarea>
         </section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Short Survey        
+### How often does the ball change possessions on average in professional football? 
+
+1. ~ 50
+1. ~ 200     
+1. ~ 400 <em class="fragment">richtig</em>
+1. ~ 2000
+
+<small>
+Source: The Numbers Game: Why Everything You Know About Football is Wrong    
+</small>
+</textarea>
+</section>
+
 
         <section data-markdown>
                 <textarea data-template>
@@ -279,7 +298,6 @@ Anderson, Chris; Sally, David. The Numbers Game (p. 17). Penguin Books Ltd. Kind
 * Aggregations and Statistics: https://www.bundesliga.com/en/stats/bundesliga
     </textarea>
 </section>
-
 <section data-markdown>
         <textarea data-template>
 ## Checking some hypotheses to get our hands dirty
@@ -287,6 +305,8 @@ Anderson, Chris; Sally, David. The Numbers Game (p. 17). Penguin Books Ltd. Kind
 Based on data analysis
             </textarea>
         </section>
+
+
 
 <section data-markdown>
         <textarea data-template>
@@ -850,7 +870,8 @@ I made a chart showing his peerless progress, and I’ve published the full step
             $('a').attr('target', '_blank')
 
         } );
-        $('section').attr('data-background-image', "background/street.jpg");
+        // $('section').attr('data-background-image', "background/street.jpg");
+        $('section').attr('data-background-image', "background/dark-sky.jpg");
     </script>
     
 <script>
