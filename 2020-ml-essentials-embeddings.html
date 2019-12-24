@@ -140,23 +140,34 @@
 <body>
     <div class="reveal">
         <div class="slides">
-
 <!-- 
-The Magic of Neural Embeddings with TensorFlow 2
 
-Neural Embeddings are a powerful tool of turning categorical into numerical values. Given reasonable training data semantics present in the categories can be preserved in the numerical representation.
+Neural Embeddings, Latent Spaces und Autoencoder mit TensorFlow 2	
 
-Symbols, words, categories etc. need to be converted into numbers before they can be processed by neural networks or used into other ML methods like clustering or outlier detection.
+Die Idee von Autoencodern und Embeddings ist, komplexe Daten oder Bilder in einen "Latent Space" mit deutlich weniger
+Dimensionen zu transformieren. Diese Art der Dimensionsreduktion ist deutlich flexibler als ein lineares Verfahren wie
+PCA und lässt sich auch auf nicht numerische Daten anwenden. Dies kann als eine Vorverarbeitungsstufe für Supervised
+oder Unsupervised Learning nützlich sein. Oder man nutzt den erzeugten Latent Space bei weniger als drei Dimensionen
+direkt für eine grafische Ausgabe.
 
-It is desirable to have the converted numbers represent semantics of the encoded categories. That means, numbers close to each other indicate similar semantics.
+In diesem Workshop lernst du dazu, wie
+* Autoencoder komplexe Bilder in zwei Dimensionen übersetzen können,
+* Neural Embeddings Kategorien wie Fußballspieler oder Fluglinien anhand beliebiger Eigenschaften vergleichbar machen.
 
-In this session you will learn what you need to train a neural network for such embeddings. I will bring a complete example including code that I will share using TensorFlow 2 functional API and the Colab service.
+Bei beiden Beispielen können wir sowohl Ähnlichkeiten und Gemeinsamkeiten, aber auch Ausreißer erkennen und weiter analysieren.
 
-I will also share some tricks how to stabilize embeddings when either the model changes or you get more training data.
+VORKENNTNISSE
+Dies ist ein fortgeschrittenes Training. Du solltest dich daher bereits mit TensorFlow beschäftigt haben oder zumindest verstehen, 
+wie Neuronale Netze aufgebaut sind und trainiert werden.
 
-30 minutes
+LERNZIELE
+Die Teilnehmer können erkennen, wo Embeddings oder Autoencoder sinnvoll eingesetzt werden können. Dazu erlernen sie Methoden, 
+diese mit TensorFlow 2 umzusetzen.
 
-https://pretalx.com/euroscipy-2019/talk/QGZTDZ/            
+14:15 - 17:45, 3 Std. Netto
+
+https://ml-essentials.de/lecture.php?id=10747&source=0            
+
  -->
 
             <!-- <section data-markdown class="preparation">
@@ -179,12 +190,79 @@ Nice to have
 </textarea>
 </section> -->
 
+
 <section data-markdown class="todo">
     <textarea data-template>
-### GAN Viz für den Ausblick        
-    </textarea>
+
+Agenda
+1. Intro
+    * Functional Keras API in TensorFlow 2 auf Colab Notebooks
+2. Warum Autoencoder und was sind die überhaupt?
+   * Fallbeispiel: Ähnlichkeiten von Bildern
+   * Autoencoder auf Bilddaten trainieren
+   * Extraktion und Darstellung des Latent Spaces
+3. Neural Embeddings
+   * Fallbeispiel: Ähnlichkeit von Fluglinien
+   * Netzwerk Architektur für das Fallbeispiel
+   * Training auf komplexen Daten
+   * Extraktion und Darstellung des Embeddings
+4. Ausblick: 
+  * GANs
+  * Weitere Anwendungen
+</textarea>
 </section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Plan
+
+* Airline Beispiel nehmen und auffrischen
     
+* Spezialfall: Embedding nur mittrainieren
+  * Schlecht?
+  * Dann Auxiliary loss
+    * https://stackoverflow.com/questions/39352108/does-the-inception-model-have-two-softmax-outputs
+        </textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+
+Links
+https://towardsdatascience.com/neural-network-embeddings-explained-4d028e6f0526 
+https://rakeshchada.github.io/Neural-Embedding-Animation.html
+https://github.com/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
+
+UMAP
+	* https://towardsdatascience.com/how-to-program-umap-from-scratch-e6eff67f55fe 
+	* https://towardsdatascience.com/how-exactly-umap-works-13e3040e1668 
+	* https://twitter.com/leland_mcinnes/status/1191813673322500101 
+
+
+
+GANs als Ausblick
+	* https://twitter.com/random_forests/status/1192196262499684352
+    * https://poloclub.github.io/ganlab/
+    * https://alantian.net/ganshowcase/
+
+
+Automatische Segmentierung: https://twitter.com/gevero/status/1195107315051089920
+
+Denoising documents using AutoEncoders
+* https://twitter.com/A_K_Nain/status/1192842066377596931 
+* https://colab.research.google.com/drive/1TP3ESK7U1qhSV6zikZyS4VdBqESuJNXS
+
+Notebooks von Shawn
+	* UMAP vs T-SNE: https://colab.research.google.com/drive/1etCZIQ88P_-q5iO05J9rCNpg8kdw6MfA
+	* AE vs VAE: AE vs. VAE@MNIST.ipynb
+	* Embeddings Viz: https://colab.research.google.com/drive/12uq1dCjN1tJy8OsnBnNGQ7Fjog9Z9vZL#scrollTo=OO8gDdrpVH-a
+
+
+</textarea>
+</section>
+
 <section data-markdown class="todo">
         <textarea data-template>
 ### Use Case, Anomaly detection
