@@ -142,7 +142,7 @@
         <div class="slides">
 <!-- 
 
-Neural Embeddings, Latent Spaces und Autoencoder mit TensorFlow 2	
+Neural Embeddings, Latent Spaces und Autoencoder mit TensorFlow 2
 
 Die Idee von Autoencodern und Embeddings ist, komplexe Daten oder Bilder in einen "Latent Space" mit deutlich weniger
 Dimensionen zu transformieren. Diese Art der Dimensionsreduktion ist deutlich flexibler als ein lineares Verfahren wie
@@ -168,6 +168,22 @@ diese mit TensorFlow 2 umzusetzen.
 
 https://ml-essentials.de/lecture.php?id=10747&source=0            
 
+Agenda
+1. Intro
+    * Functional Keras API in TensorFlow 2 auf Colab Notebooks
+2. Warum Autoencoder und was sind die überhaupt?
+   * Fallbeispiel: Ähnlichkeiten von Bildern
+   * Autoencoder auf Bilddaten trainieren
+   * Extraktion und Darstellung des Latent Spaces
+3. Neural Embeddings
+   * Fallbeispiel: Ähnlichkeit von Fluglinien
+   * Netzwerk Architektur für das Fallbeispiel
+   * Training auf komplexen Daten
+   * Extraktion und Darstellung des Embeddings
+4. Ausblick
+  * GAN
+  * Weitere Anwendungen
+
  -->
 
             <!-- <section data-markdown class="preparation">
@@ -189,28 +205,6 @@ Nice to have
 []https://medium.com/tensorflow/introducing-tf-text-438c8552bd5e für Vorverarbeitung der Texte
 </textarea>
 </section> -->
-
-
-<section data-markdown class="todo">
-    <textarea data-template>
-
-Agenda
-1. Intro
-    * Functional Keras API in TensorFlow 2 auf Colab Notebooks
-2. Warum Autoencoder und was sind die überhaupt?
-   * Fallbeispiel: Ähnlichkeiten von Bildern
-   * Autoencoder auf Bilddaten trainieren
-   * Extraktion und Darstellung des Latent Spaces
-3. Neural Embeddings
-   * Fallbeispiel: Ähnlichkeit von Fluglinien
-   * Netzwerk Architektur für das Fallbeispiel
-   * Training auf komplexen Daten
-   * Extraktion und Darstellung des Embeddings
-4. Ausblick: 
-  * GANs
-  * Weitere Anwendungen
-</textarea>
-</section>
 
 
 <section data-markdown class="todo">
@@ -240,12 +234,6 @@ UMAP
 	* https://towardsdatascience.com/how-exactly-umap-works-13e3040e1668 
 	* https://twitter.com/leland_mcinnes/status/1191813673322500101 
 
-
-
-GANs als Ausblick
-	* https://twitter.com/random_forests/status/1192196262499684352
-    * https://poloclub.github.io/ganlab/
-    * https://alantian.net/ganshowcase/
 
 
 Automatische Segmentierung: https://twitter.com/gevero/status/1195107315051089920
@@ -284,18 +272,360 @@ https://quantdare.com/dimensionality-reduction-method-through-autoencoders/
         </textarea>
     </section>
     
-    
+    <section data-markdown class="preparation">
+        <textarea data-template>
+### Preparation
+* 2 kinds of post its for question and done
+        </textarea>
+    </section>
+
+<section data-markdown class='local' style="font-size: xx-large">
+<textarea data-template>
+### Workshop: Neural Embeddings, Latent Spaces und Autoencoder mit TensorFlow 2
+
+_Make sure you are prepared_
+1. #wifi Name: xxx, pwd: xxx
+1. Open this slide deck: http://bit.ly/ml-essentials-embeddings
+1. Make sure you are ready to work with Colab
+* open https://colab.research.google.com/notebooks/welcome.ipynb in Chrome (IE will not work)
+* make it run using the "Run All" command from the "Runtime" menu
+* you need to allow execution and must either have a Google login or are willing to create one
+* Go through the notebook and make yourself comfortable with Colab
+
+_Talk to your neighbors or ask Olli for help_   
+</textarea>
+</section>
+
 <section>
-        <h2>The Magic of Neural Embeddings</h2>
-        <h3>with TensorFlow 2</h3>
-        <p><a target="_blank" href="https://pretalx.com/euroscipy-2019/talk/QGZTDZ/">
-            EuroSciPy 2019, Bilbao, Spain
+        <h2>Neural Embeddings, Latent Spaces und Autoencoder mit TensorFlow 2</h2>
+        <p><a target="_blank" href="https://ml-essentials.de/lecture.php?id=10747">
+            ML Essentials 2020, Heidelberg
         </a></p>
 <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
 </h4>
-<p><small>Slides: <a href="http://bit.ly/euroscipy-embeddings">
-http://bit.ly/euroscipy-embeddings
+<p><small>Slides: <a href="ml-essentials-embeddings">
+http://bit.ly/ml-essentials-embeddings
 </a></small></p>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+
+Agenda
+1. Intro: 0,5 Std
+    * Functional Keras API in TensorFlow 2 auf Colab Notebooks
+2. Warum Autoencoder und was sind die überhaupt?: 1 Std
+   * Fallbeispiel: Ähnlichkeiten von Bildern
+   * Autoencoder auf Bilddaten trainieren
+   * Extraktion und Darstellung des Latent Spaces
+3. Neural Embeddings: 1 Std
+   * Fallbeispiel: Ähnlichkeit von Fluglinien
+   * Netzwerk Architektur für das Fallbeispiel
+   * Training auf komplexen Daten
+   * Extraktion und Darstellung des Embeddings
+4. Ausblick: GANs, Autoencoders and VAEs: 0,5 Std
+  * https://pathmind.com/wiki/generative-adversarial-network-gan 
+  * GAN Viz
+  * Weitere Anwendungen
+</textarea>
+</section>
+
+<section data-markdown class="local">
+    <textarea data-template>
+## Questions, comments, critique are welcome at any time
+</textarea>
+</section>
+
+<section data-markdown style="font-size: x-large">
+    <textarea data-template>        
+## Post Its
+
+<img src='img/post-its.jpg' height="400">
+
+* Stick the red one to your laptop to indicate you need help (please remove after you have been helped)
+* Do the same with the blue one to indicate you are done with an exercise (please remove at the beginning of each exercise)
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>        
+## Scatchpad to share links and information
+
+On Google Drive, everyone with link can read and edit
+
+<!-- http://bit.ly/mcubed-nn-scratch -->
+<!-- https://docs.google.com/document/d/17jNrh-eeeCSHGIMry7xNobc8UCkqVkzUf7o2pT7e4g0/edit?usp=sharing -->
+</textarea>
+</section>
+
+<section data-markdown class="local">
+        <textarea data-template>
+## Introduce yourself to your neighbors, please
+
+* What are you working on?
+* What do you already know about the topic of the course?
+* What do you want to learn / achieve?
+* If necessary please help your neighbors to get to theses slides 
+    and make the first notebook run (described in first slide)
+
+        </textarea>
+    </section>
+
+<section data-markdown class="local fragments" style="font-size: x-large">
+    <textarea data-template>
+### What is your background?
+
+Technical
+* Data Science
+* Programming
+* Classic Machine Learning
+* Neural Networks
+* What else?
+
+Tools
+* Matlab
+* R
+* Python
+* Scikit-learn
+* TensorFlow 1/2
+* Pytorch
+* What else?
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Now is your chance if you have a question to the other participants
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Part I
+### Tools: TensorFlow 2's functional Keras API in on Colab notebooks
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Part II
+### What is an Autoencoder and why would you want one?        
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Autoencoder
+* From Hinton 2006: http://www.cs.toronto.edu/~hinton/science.pdf
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Autoencoders
+
+* reproduce an input while going through a bottleneck
+* latent representation is what you are interested in
+* works on all kinds of data, e.g. image, audio, and tabular
+
+<img src='img/unsupervised/autoencoder_schema.jpg'>
+
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Why Autoencoders
+
+* compression
+* data denoising
+* dimensionality reduction / clustering (for data visualization)
+* building an abstract representation for further use
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Part IV
+### Restricted Boltzmann Machines, VAEs, and GANs        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Restricted Boltzmann Machines (RBMs)
+
+* RBMs were founded 1986 by Geoffrey Hinton
+* interesting for historical reasons, but surpassed by more up-to-date models: AE, VAE, GANS
+* Embeddings/Latent Space/Hidden Representation originally called 'Distributed representations'
+<small>
+
+https://dl.acm.org/citation.cfm?id=104287
+http://www.cs.toronto.edu/~hinton/absps/families.pdf
+https://pathmind.com/wiki/restricted-boltzmann-machine
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Variational Auto Encoders (VAE)
+
+* VAE is a generative model
+* latent space learns a probability distribution modelling your data
+* actually learning mean and standard deviation of distribution
+* sampling from it can generate new data
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+<br>
+https://github.com/keras-team/keras/blob/master/examples/variational_autoencoder.py
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### VAE illustrated
+
+<img src='img/unsupervised/vae.png' height="500px">
+
+<small>
+https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown class="todo">
+<textarea data-template>
+### VAE
+
+* Intro: https://youtu.be/9zKuYvjFFS8
+* https://github.com/tensorflow/tensorflow/blob/r1.11/tensorflow/contrib/eager/python/examples/generative_examples/cvae.ipynb
+* Sean's Notebook: https://colab.research.google.com/drive/1f73wONMp8U2LvAmN0MNGyflqGFog0g2S
+* VAE: 
+* http://tiao.io/posts/implementing-variational-autoencoders-in-keras-beyond-the-quickstart-tutorial/
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+## GANs
+
+</textarea>
+</section>
+
+<section>
+<h3>Generating Celebreties</h3>
+<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
+<div class="fragment" style="float: left">
+<img src="img/unsupervised/gan-model-male2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female1.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-male.png" height="220">
+</div>
+<p style="clear: both">
+<small>
+<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
+<br>
+<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
+<br>
+<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
+</small>
+               
+</p>
+</section>                                
+
+<section data-markdown>
+<textarea data-template>
+### Understanding GANs
+
+<a href='https://poloclub.github.io/ganlab/'>
+<img src='img/unsupervised/gan-lab.png'>
+</a>
+    
+<small>
+
+https://twitter.com/minsukkahng/status/1037016214575505409
+https://poloclub.github.io/ganlab/
+https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+#### Fun Notebooks on Fashion MNIST about AEs, VAEs, GANs 
+
+<img src='img/unsupervised/generative-model.png' height="500px">
+
+
+<small>
+
+https://github.com/timsainb/tensorflow2-generative-models/blob/master/readme.md
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### More Resources for GANs
+
+* https://pathmind.com/wiki/generative-adversarial-network-gan    
+* https://developers.google.com/machine-learning/gan
+* https://github.com/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
+  * https://colab.research.google.com/github/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
+* https://www.tensorflow.org/tutorials/generative/cvae
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### All types of neural networks have a latent representation somewhere
+ 
+<img src='img/unsupervised/encoder-decoder-everywhere.png' height="530" class='fragment'>
+
+
+<small style="font-size: large">
+
+https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Part III
+### Neural Embeddings       
+</textarea>
 </section>
 
 <section data-markdown>
