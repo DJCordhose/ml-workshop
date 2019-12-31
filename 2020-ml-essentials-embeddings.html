@@ -470,181 +470,18 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 <section data-markdown>
     <textarea data-template>
-## Part IV
-### Restricted Boltzmann Machines, VAEs, and GANs        
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-<img src='img/NeuralNetworkZoo20042019.png' height="600">        
-<small>
-https://www.asimovinstitute.org/neural-network-zoo/    
-</small>        
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Restricted Boltzmann Machines (RBMs)
-
-* RBMs were founded 1986 by Geoffrey Hinton
-* interesting for historical reasons, but surpassed by more up-to-date models: AE, VAE, GANS
-* Embeddings/Latent Space/Hidden Representation originally called 'Distributed representations'
-<small>
-
-https://en.m.wikipedia.org/wiki/Boltzmann_machine    
-https://dl.acm.org/citation.cfm?id=104287
-http://www.cs.toronto.edu/~hinton/absps/families.pdf
-https://pathmind.com/wiki/restricted-boltzmann-machine
-https://towardsdatascience.com/restricted-boltzmann-machines-simplified-eab1e5878976
-</small>
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Variational Auto Encoders (VAE)
-
-* VAE is a generative model
-* latent space learns a probability distribution modelling your data
-* actually learning mean and standard deviation of distribution
-* sampling from it can generate new data
-
-<small>
-
-https://blog.keras.io/building-autoencoders-in-keras.html
-<br>
-https://github.com/keras-team/keras/blob/master/examples/variational_autoencoder.py
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### VAE illustrated
-
-<img src='img/unsupervised/vae.png' height="500px">
-
-<small>
-https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf
-</small>
-</textarea>
-</section>
-
-<!-- <section data-markdown class="todo">
-<textarea data-template>
-### VAE
-
-* Intro: https://youtu.be/9zKuYvjFFS8
-* https://github.com/tensorflow/tensorflow/blob/r1.11/tensorflow/contrib/eager/python/examples/generative_examples/cvae.ipynb
-* Sean's Notebook: https://colab.research.google.com/drive/1f73wONMp8U2LvAmN0MNGyflqGFog0g2S
-* VAE: 
-* http://tiao.io/posts/implementing-variational-autoencoders-in-keras-beyond-the-quickstart-tutorial/
-
-</textarea>
-</section> -->
-
-<section data-markdown>
-<textarea data-template>
-## GANs
-
-</textarea>
-</section>
-
-<section>
-<h3>Generating Celebreties</h3>
-<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
-<div class="fragment" style="float: left">
-<img src="img/unsupervised/gan-model-male2.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-female2.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-female1.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-male.png" height="220">
-</div>
-<p style="clear: both">
-<small>
-<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
-<br>
-<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
-<br>
-<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
-</small>
-               
-</p>
-</section>                                
-
-<section data-markdown>
-<textarea data-template>
-### Understanding GANs
-
-<a href='https://poloclub.github.io/ganlab/'>
-<img src='img/unsupervised/gan-lab.png'>
-</a>
-    
-<small>
-
-https://twitter.com/minsukkahng/status/1037016214575505409
-https://poloclub.github.io/ganlab/
-https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-#### Fun Notebooks on Fashion MNIST about AEs, VAEs, GANs 
-
-<img src='img/unsupervised/generative-model.png' height="500px">
-
-
-<small>
-
-https://github.com/timsainb/tensorflow2-generative-models/blob/master/readme.md
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### More Resources for GANs
-
-* https://pathmind.com/wiki/generative-adversarial-network-gan    
-* https://developers.google.com/machine-learning/gan
-* https://github.com/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
-  * https://colab.research.google.com/github/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
-* https://www.tensorflow.org/tutorials/generative/cvae
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-#### All types of neural networks have a latent representation somewhere
- 
-<img src='img/unsupervised/encoder-decoder-everywhere.png' height="530" class='fragment'>
-
-
-<small style="font-size: large">
-
-https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
-
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
 ## Part III
 ### Neural Embeddings       
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Ansatz
+
+* Folien zeigen
+* dann die Leute selbst im Notebook machen lassen bis zum Stop
+* Dann Fortgeschrittenes zeigen wie Stabilisierung
 </textarea>
 </section>
 
@@ -968,8 +805,6 @@ they expect it to persist and even be in the same position
     </textarea>
 </section>
 
-
-
 <section data-markdown class="fragments">
 <textarea data-template>
 ### How to stabilize the embedding?
@@ -1156,6 +991,193 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
         </textarea>
     </section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Part IV
+### Restricted Boltzmann Machines, VAEs, and GANs        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/NeuralNetworkZoo20042019.png' height="600">        
+<small>
+https://www.asimovinstitute.org/neural-network-zoo/    
+</small>        
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Restricted Boltzmann Machines (RBMs)
+
+* RBMs were founded 1986 by Geoffrey Hinton
+* interesting for historical reasons, but surpassed by more up-to-date models: AE, VAE, GANS
+* Embeddings/Latent Space/Hidden Representation originally called 'Distributed representations'
+<small>
+
+https://en.m.wikipedia.org/wiki/Boltzmann_machine    
+https://dl.acm.org/citation.cfm?id=104287
+http://www.cs.toronto.edu/~hinton/absps/families.pdf
+https://pathmind.com/wiki/restricted-boltzmann-machine
+https://towardsdatascience.com/restricted-boltzmann-machines-simplified-eab1e5878976
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Variational Auto Encoders (VAE)
+
+* VAE is a generative model
+* latent space learns a probability distribution modelling your data
+* actually learning mean and standard deviation of distribution
+* sampling from it can generate new data
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+<br>
+https://github.com/keras-team/keras/blob/master/examples/variational_autoencoder.py
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### VAE illustrated
+
+<img src='img/unsupervised/vae.png' height="500px">
+
+<small>
+https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown class="todo">
+<textarea data-template>
+### VAE
+
+* Intro: https://youtu.be/9zKuYvjFFS8
+* https://github.com/tensorflow/tensorflow/blob/r1.11/tensorflow/contrib/eager/python/examples/generative_examples/cvae.ipynb
+* Sean's Notebook: https://colab.research.google.com/drive/1f73wONMp8U2LvAmN0MNGyflqGFog0g2S
+* VAE: 
+* http://tiao.io/posts/implementing-variational-autoencoders-in-keras-beyond-the-quickstart-tutorial/
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+## GANs
+
+</textarea>
+</section>
+
+<section>
+<h3>Generating Celebreties</h3>
+<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
+<div class="fragment" style="float: left">
+<img src="img/unsupervised/gan-model-male2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female1.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-male.png" height="220">
+</div>
+<p style="clear: both">
+<small>
+<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
+<br>
+<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
+<br>
+<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
+</small>
+               
+</p>
+</section>                                
+
+<section data-markdown>
+<textarea data-template>
+### Understanding GANs
+
+<a href='https://poloclub.github.io/ganlab/'>
+<img src='img/unsupervised/gan-lab.png'>
+</a>
+    
+<small>
+
+https://twitter.com/minsukkahng/status/1037016214575505409
+https://poloclub.github.io/ganlab/
+https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+#### Fun Notebooks on Fashion MNIST about AEs, VAEs, GANs 
+
+<img src='img/unsupervised/generative-model.png' height="500px">
+
+
+<small>
+
+https://github.com/timsainb/tensorflow2-generative-models/blob/master/readme.md
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### More Resources for GANs
+
+* https://pathmind.com/wiki/generative-adversarial-network-gan    
+* https://developers.google.com/machine-learning/gan
+* https://github.com/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
+  * https://colab.research.google.com/github/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb
+* https://www.tensorflow.org/tutorials/generative/cvae
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### All types of neural networks have a latent representation somewhere
+ 
+<img src='img/unsupervised/encoder-decoder-everywhere.png' height="530" class='fragment'>
+
+
+<small style="font-size: large">
+
+https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+###        als Abschluss zeigen und Inspiration        
+Abschluss mit einer weiteren Anwendung (evtl. noch andere zeigen)
+
+Fussball - Embeddings
+auch Müller - Lahm etc. 
+
+</textarea>
+</section>
+
+
 <!-- 
     <section data-markdown>
         <textarea data-template>
