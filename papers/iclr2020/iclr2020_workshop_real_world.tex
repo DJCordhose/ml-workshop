@@ -9,7 +9,7 @@
 \usepackage{url}
 \usepackage{graphicx}
 
-\title{Squaring Deep Neural Networks for interpretability \\ Decision Trees as Surrogate Model for NNs}
+\title{Squaring Deep Neural Networks for interpretability \\ Decision Trees as Surrogate Models}
 
 % Authors must not appear in the submitted version. They should be hidden
 % as long as the \iclrfinalcopy macro remains commented out below.
@@ -63,69 +63,77 @@ or high accuracy (complex tree). Unfortunately, unlike Neural Networks they tend
 
 \end{abstract}
 
-
 \section{Motivation}
 
-Explainability ~\citep{rudin2018stop}.
-
-\section{Problem}
-
-Our use case is shown in figure ~\ref{fig:use_case}. From two variables we want to lean the probability class of a car accident given the age of the driver and the top speed of the car driven. 
-
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=\linewidth]{data.png}
-\end{center}
-\caption{Simple use case: Risk Prediction.}
-\label{fig:use_case}
-\end{figure}
-
-
-
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=\linewidth]{dt-reg-all.png}
+\includegraphics[width=4.0in]{dt-reg-all.png}
 \end{center}
 \caption{Decision Boundaries by regularized decision tree.}
+\label{fig:dt_reg_bad}
 \end{figure}
 
+Referring to ~\citep{rudin2018stop} deep neural networks can not be considered interpretable models, 
+
+This contribution concurs with that judgement and 
+
+Decision Trees are one type of machine learning model that allows for interpretation given the tree has little complexity. Unfortunately decision trees tend to overfit when trained on real world data. Real world data often comes from a combination of distributions that largely differ in density of samples. Some parts may be covered by a lot of samples, others just by few. Figure ~\ref{fig:dt_reg_bad} shows the classification results decision tree for our example use case. From two variables we want to lean the probability class of a car accident given the age of the driver and the top speed of the car driven. You see the test data plottet in the foreground while the decision boundaries are plottet as the background. Darker background colors indicate higher probabilities of the prediction. Even though we apply strong regularization, the decision tree overfits in a way that does not allow for a good interpretation story. Tracking the path taken for certain decisions simply will be too complicated.
+
+This contribution does not add to the state of research in the area of explainabiliy. It rather shows a very practical application derived from a real-world use case. However, it uses up-to-date results from ongoing research.
+
+\section{Problem Statement}
+
+1. What makes a model interpretable in the first place?
+1. How should a Deep Neural Network be regularized so it still performs well, but at the same time leads to a simple decision tree that approximates it well
+2. What is the process of creating a good surrogate model for the neural network
 
 \section{Approach}
 
- ~\citep{schaaf2019enhancing} propose to a special L1-Orthogonal Regularization. 
+We start with a deep neural network as our black box model and train it to high accuracy and generalization as shown in figure ~\ref{fig:nn-decision-boundaries}. To make it interpretable we replace it with a regularized decision tree as a global surrogate model. We use the black box model to generate a new training data set by feeding in an equidistant grid of samples over the domains of our input values and use the predictions as our new target variable. This is used as the new training data to approximate the predictions of a black box model.
 
-I ended up using "Self-Normalizing Neural Networks" as proposed by ~\citep{klambauer2017selfnormalizing} in combination with standard L1-Regularization on the activation level which gave the best results in terms of being reproduzed by a simple surrogate decisicion tree. Decision Boundaries of a model trained that way are shown in figure ~\ref{fig:nn-decision-boundaries}.
+It is important that we do not propose to use the deep neural network for prediction, but we only use it as a means to come up with a decision tree which can all by itself be made Interpretable. By this approach we follow ~\citep{rudin2018stop} thus do not need to pay too much attention to making our deep learning model compatible with a decision tree. So we are aware of means to such regularisations as proposed by ~\citep{schaaf2019enhancing} and also some work done by the author himself. 
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=\linewidth]{nn.png}
+\includegraphics[width=4.0in]{nn.png}
 \end{center}
 \caption{Decision Boundaries drawn by deep neural network, 72\% accuracy.}
 \label{fig:nn-decision-boundaries}
 \end{figure}
 
+As it turns out the only thing that matters for our approach is that the network is properly regularized, but not so much how this is achieved. I ended up using "Self-Normalizing Neural Networks" as proposed by ~\citep{klambauer2017selfnormalizing} in combination with standard L1-Regularization on the activation level. Decision Boundaries of a model trained that way are shown in figure ~\ref{fig:nn-decision-boundaries}.
 
 \section{Results}
 
-I tried several configurations of training a two hidden layer neural networks with respect to how well they 
+In figure ~\ref{fig:surrogate-model} you can see the predictions of the resulting surrogate decision tree. Setting the maximum depth of the tree gives us a dial between a model as accurate as the original black box model or as interpretable as the model you are seing. So, practically the findings of our work do not back up ~\citep{rudin2018stop} claim that there is no trade-off between accuracy and interpretability. Even more this work is based on the contrary belief. 
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=\linewidth]{shallow-surrogate.png}
+\includegraphics[width=4.0in]{shallow-surrogate.png}
 \end{center}
 \caption{Decision Boundaries by shallow surrogate decision tree, still 64\% accuracy.}
+\label{fig:surrogate-model}
 \end{figure}
+
+The decision tree that could replicate the blackbox model by 100\% has a maximum depth of 12, while the one that works for interpretation only has three levels and significantly less accuracy (64\% vs 72\%).
+
+\section{Conclusions}
+
+The best known way of interpreting a decision made by a decision tree is to look at the path chosen to predict a certain result based on a certain output as shown in figure ~\ref{fig:prediction-path}. The information provided for this example already is quite complex, but matches what you see in figure ~\ref{fig:surrogate-model}. People within a certain range of age are unlikely to have a lot of accidents regardless of the max speed of their cars. Looking at the distribution of the sample data at the top histogram this is backed by the overwhelming amount of low risk drivers in this range of age. Similar thoughs can be made for the other 6 leaf nodes of the tree. Speaking variables, low complexity and shallowness of the tree are a precondition to interpretation, though.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=\linewidth]{dtreeviz-prediction-path.png}
+\includegraphics[width=4.0in]{dtreeviz-prediction-path.png}
 \end{center}
-\caption{Explanation derived from shallow tree using dtreeviz.}
+\caption{Prediction path featuring all kinds of information for interpretation.}
+\label{fig:prediction-path}
 \end{figure}
 
+Practical issues arise around exactly this area of regularizing the tree to low complexity. Next to good accuracy you would also want stability of the tree. Decision trees are high variance, which means the parameters are very sensitive to small changes in the input. Since it is hard to impossible to make training of neural networks totally deterministic each training run will generate slightly differnt input data for the decision tree potentially leading to drastic changes in their split points and even overall structure. This is undeseriable as it makes interpretation much harder. Best results so far arise from manual experiments restricting both the depth and  minimum leaf size which results in stable results for this use case, but there is no evidence this will be the case for other use cases as well. Special measures to stabilize trees are proposed in ~\citep{arsov2019stability} and ~\citep{last2002stability}. 
 
-\section{Conclusions}
+\subsubsection*{Acknowledgments}
+Thanks to Terence Parr for advising on how to regularize my decision trees and providing me with the \url{https://github.com/parrt/dtreeviz} tool used to plot figure ~\ref{fig:prediction-path}. Thanks to Mikio Braun for helping me to write this short paper.
+
 \bibliography{iclr2020_conference}
 \bibliographystyle{iclr2020_conference}
 
