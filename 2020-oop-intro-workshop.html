@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Applications Workshop</title>
+    <title>OOP Intro ML</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -158,18 +158,18 @@
     <textarea data-template>
 ### Preparation Workshop
 
-* print `exercise/2020-applications.docx`
+* print `exercise/2020-intro.pdf`
 
 </textarea>
 </section>
 
-<!-- <section data-markdown style="font-size: xx-large">
+<section data-markdown style="font-size: xx-large">
         <textarea data-template>
 ### Workshop: Grundlagen von Machine Learning
 
 _Make sure you are prepared_
 1. #wifi Name: xxx, pwd: xxx
-1. Open this slide deck: http://bit.ly/ml-summit-2019-intro
+1. Open this slide deck: http://bit.ly/ml-oop-2020-intro
 1. Make sure you are ready to work with Colab
    * open https://colab.research.google.com in a modern Browser (IE will not work)
    * make it run using the "Run All" command from the "Runtime" menu
@@ -178,7 +178,7 @@ _Make sure you are prepared_
 
 _Talk to your neighbors or ask Olli for help_   
     </textarea>
-    </section> -->
+    </section>
 
     <section data-markdown class="local">
             <textarea data-template>
@@ -191,14 +191,39 @@ https://i.redd.it/p8vfaxqrfud31.jpg
     </textarea>
         </section>
 
+<!-- Was macht Machine Learning anders?
+
+In dieser Hands-On-Session bekommst Du eine Einführung in die Grundlagen von Machine Learning. Wir machen dabei
+Experimente auf Papier und erste Erfahrungen mit der Python-Bibliothek Scikit-learn. Du brauchst aber weder Erfahrung in
+Machine Learning noch in Python oder Scikit-learn.
+
+Maximale Teilnehmerzahl: 50
+
+Zielpublikum: Jeder
+Schwierigkeitsgrad: Anfänger
+Voraussetzungen:
+
+Bringen Sie einen eigenen Laptop mit, auf dem ein aktueller Chrome Browser installiert ist
+Stellen Sie sicher, dass Sie colab.research.google.com/notebooks/welcome.ipynb in Chrome öffnen können
+Lassen Sie das Notebook über den Menüpunkt "Run All" im Menü "Runtime" laufen
+Falls Sie noch kein Google-Konto haben, müssen Sie dies an dieser Stelle anlegen, andernfalls loggen Sie sich in dieses ein
+
+In diesem Workshop erforschen wir anhand eines durchgängigen Fallbeispiels den Ansatz des überwachten maschinellen
+Lernens. Dabei wird klar, was diesen Ansatz von klassischer Software-Entwicklung unterscheidet und wann er sinnvoll sein
+kann. Dabei lernen wir das Verfahren der Entscheidungsbäume anhand von lauffähigem Code kennen und lösen einige Aufgaben
+auf Papier.
+        
+https://www.oop-konferenz.de/oop2020/programm/konferenzprogramm/sessiondetails/action/detail/session/mo-5-3/title/was-macht-machine-learning-anders.html
+ -->
             <section>
-            <h2>Finding Applications for Machine Learning - Hands-On</h2>
-            <h3><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+            <h2>Was macht Machine Learning anders?</h2>
+            <h1>Eine Einführung</h1>
+            <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
                 <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
                 <a href="https://www.embarc.de/">Chief Visionary Officer, embarc Software Consulting GmbH</a>
-            </h3>
-            <p>Slides <a href="http://bit.ly/fra-apps">
-                http://bit.ly/fra-apps
+            </h4>
+            <p>Slides <a href="http://bit.ly/ml-oop-2020-intro">
+                http://bit.ly/ml-oop-2020-intro
             </a></p>
 
         </section>
@@ -279,153 +304,9 @@ Tools
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-<img src='img/p8vfaxqrfud31.jpg' height="600">
-
-<small>
-
-https://i.redd.it/p8vfaxqrfud31.jpg
-</small>        
-</textarea>
-    </section>
-
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Key to finding applications for Machine Learning (ML)
-
-- Going from requirement to saying "Can't the AI not solve this" typically leads to frustration
-- Understand what data you have or can collect
-- Know what is possible and what is not possible with ML
-- Understand when to apply which type of ML
-- From that derive your experiments 
-</textarea>
-</section>
-
-<!-- <section data-markdown class="todo">
-    <textarea data-template>
-
-- You might end up somewhere else than you expected
-- Adopting this approach might require/result in change of company culture more radical than agile
-* This has implications on how your organization needs to be structured
-* Might not seem worth the hassle, but maybe your competitors adopt and gain an advantage
-* Useful stuff does not make it to the news
-* If you read about something exciting in the mainstream media it is most likely BS
-    </textarea>
-</section>
-
-
-    <section data-markdown class="local">
-    <section>
-        <h3>There is no Artificial General Intelligence (AGI)</h3>
-        <div class='fragment' style="float: left; padding-left: 50px">
-                <img src='img/no_brain_robo.jpg' height="300">
-                <p><small><em>autonomous learning does not exist in machines</em></small>
-                </p>
-            </div>
-        <div class='fragment' style="float: right; padding-left: 50px; padding-right: 50px">
-                <img src='img/human_neq_robot_shadow.jpg' height="300">
-                <p><small><em>AI or ML are not like hyper intelligent humans<br>
-                    who never sleep and
-                    <br>
-                     do not want more money</em></small></p>
-        </div>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### Machine Learning models have no knowledge of the world
-
-* Models only "know" what you make accessible to them
-* Models have no knowledge of overall context
-
-</textarea>
-</section>
-
-
-    <section data-markdown>
-        <textarea data-template>
-### What is the relation between Artificial Intelligence (AI) and Machine Learning (ML)?
-
-* Often used interchangeably 
-* AI is more of a buzz word
-* Technically more correct, ML is a part of AI
-    </textarea>
-    </section>
-
-
-    <section data-markdown class="local">
-        <textarea data-template>
-<img src='img/ai-ml-dl.jpg'>
-
-<small>
-
-https://twitter.com/dt_science
-</small>        
-</textarea>
-    </section>
- -->
-    
-        <!-- <section data-markdown>
-                <textarea data-template>
-    <h4 class="fragment"> NY Times in 1958 after perceptrons were invented</h4>
-    <img src='img/ny-times-1958.jpg' height="500px">
-    
-    <small>https://twitter.com/genekogan/status/1055839216280588289</small>
-                    </textarea>
-                </section>
-                    
-<section>
-        <h3>Andrew Ng: Supervised Machine Learning</h3>
-        <p><em>Surprisingly, despite AI’s breadth of impact, the types of it being deployed are still extremely limited. Almost all of AI’s recent progress is through one type, in which some input data (A) is used to quickly generate some simple response (B)</em></p>
-        <p><small><a href="https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now" target="_blank">https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now</a>
-        </small></p>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-<img src='img/ng_supervised.png' height="570px">
-
-<small>
-
-https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now
-</small>
-        </textarea>
-        </section>
- -->
-
-        <!-- <section data-markdown>
-                <textarea data-template>
-## Germany Government pushes the adoption of AI
-    
-<small>
-
-https://www.bmwi.de/Redaktion/DE/Pressemitteilungen/2018/20181116-bundesregierung-beschliesst-strategie-kuenstliche-intelligenz.html
-<br>
-https://www.ki-strategie-deutschland.de/home.html
-
-</small>
-            </textarea>
-            </section>
-     -->
-
-<!-- <section data-markdown>
-        <textarea data-template>
-## We are not feeding the hype
-### But what is really possible today
-    </textarea>
-    </section>
- -->
-<section data-markdown>
-        <textarea data-template>
-## Part I
-### Supervised Learning
-    </textarea>
-    </section>
     <section data-markdown>
             <textarea data-template>
-### Predicting Risk
+### Our Scenario for today: Predicting Risk
 
 * We are CTO of a highly innovative Car Insurance Company
 * Different from other insurance companies we determine the rate by the actual number of accidents per customer
@@ -435,7 +316,7 @@ https://www.ki-strategie-deutschland.de/home.html
             </textarea>
         </section>
     
-    <section data-markdown>
+        <section data-markdown>
             <textarea data-template>
     ### Three Inputs for Prediction
     
@@ -513,8 +394,6 @@ Plotting the predictions as a background
 <img src='img/applications/rules.png' class="fragment" height="450px">
 <br>
 <small class="fragment">approx. 57% predictions correct</small>
-<!-- https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-surrogate-model.ipynb -->
-
 </textarea>
 </section>
 
@@ -538,7 +417,7 @@ Plotting the predictions as a background
 
 <section data-markdown class="workshop exercise">
     <textarea data-template>
-### Exercise \#1 - Understanding the Supervised Learning Approach
+### Paper Exercise \#1 - Understanding the Supervised Learning Approach
 
 _team up and discuss with your neighbors_
 
@@ -548,7 +427,7 @@ _team up and discuss with your neighbors_
 
 _bear in mind, you want to use this for prediction_
 
-<a href='exercise/2020-applications.pdf'>Exercise as PDF</a>
+<a href='exercise/2020-intro.pdf'>Exercise as PDF</a>
     </textarea>
         </section>
 
@@ -560,6 +439,280 @@ _bear in mind, you want to use this for prediction_
 <small>
 Are they the same? What is the key difference?
 </small>
+</textarea>
+</section>
+
+<section class="workshop">
+    <h3>Definition: Decision Boundaries</h3>
+<img src="img/decision-boundaries/decision-boundaries-4.jpg">
+</section>
+
+<section data-markdown class="workshop">
+<textarea data-template>
+## Core Question
+
+### Can we automate this process of drawing Decision Boundaries?
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/supervised-ml.jpg' height="650px">
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
+    <textarea data-template>
+### Step I
+## Data Preparation
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
+        <textarea data-template>
+### Data is King
+
+_collecting data might be the hardest part of the job_
+
+* but also the most important
+* no data, not good quality or quantity => no supervised machine learning
+* if we have a simulator, reinforcement learning might be an option
+    
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### Data and Process are king                    
+
+<img src='img/googleml/model-architecture-not-important.jpg'>
+
+<small>
+
+https://developers.google.com/machine-learning/guides/rules-of-ml/    
+</small>                    
+        </textarea>
+    </section>
+
+
+
+<section data-markdown class="workshop">
+    <textarea data-template>
+### Clean Data and Select Features
+
+<img src='img/insurance/data.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Paper Exercise \#2 - Data Cleaning and Feature Selection
+
+_Data Cleaning_
+* What errors do you find in the data? Mark on paper and describe
+* How to deal with those errors?
+
+_Feature Selection_
+* Which column would you predict? Do you like its encoding?
+* Which columns would you use as input for training?
+* Would you use all columns? If not, why?
+* Which columns have the most predictive power?
+
+<!--
+- Datendopplung Zeile 4/5 => eine löschen
+- Fehlender Wert Zeile 16 => Zeile löschen oder Durchschnitt
+- Spalte 'state' mit mehr als 50% fehlenden Werten
+- Zeile 23 Ausreißer: Zeile löschen oder auf plausiblen Wert korrigieren 
+- Zeile 24: Califorina
+-->
+
+
+    </textarea>
+        </section>
+
+
+<section data-markdown style="font-size: xx-large" class="workshop">
+        <textarea data-template>
+### Results: Data Cleaning und Feature Selection
+
+_Data Cleaning_
+* Typos: Califorina
+* Outliers: Delete line or replace with decent value
+* Doubles: Delete
+* Missing Value: Delete line or replace with imputed value
+
+_Feature Selection_
+* Make sure which value to predict
+* Row missing more than 50% of values: do not use
+* Explore dependencies to decide what to use for training input
+            </textarea>
+            </section>
+
+    <section data-markdown>
+    <textarea data-template>
+## Exploratory Data Analysis and Checking 
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Pairplot
+<img src='img/applications/scatter.png' height="550px">
+
+</textarea>
+</section>
+
+
+    <section data-markdown>
+    <textarea data-template>
+### Basic Statistical Metrics 
+
+<img src='img/insurance/df_describe.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Linear correlations
+
+<img src='img/insurance/cm.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown class="workshop exercise">
+    <textarea data-template>
+### Discussion
+
+1. which feature has the most predictive power and 
+1. which has the lowest?
+1. which features shall we use for training?
+
+_Is there anything else you find interesting or surprising?_
+
+
+    </textarea>
+        </section>
+
+
+<section data-markdown class="workshop">
+    <textarea data-template>
+### Step II
+## Training
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Revisiting our Rule based approach
+
+Plotting the predictions as a background
+
+<img src='img/applications/rules.png' class="fragment" height="450px">
+<br>
+<small class="fragment">approx. 56% predictions correct</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Do we really have to write those rules by hand?
+</textarea>
+</section>
+
+    <section data-markdown>
+            <textarea data-template>
+### Decision Trees can learn such rules
+
+<img src="img/applications/tree_interp.png">
+        </textarea>
+        </section>
+    <section>
+<h3>Code in Scikit-learn</h3>
+
+<p>Training</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X_train, y_train)
+            </code></pre>
+        
+<p>Prediction</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+y_pred = clf.predict(input)
+        </code></pre>
+
+<small>
+    <a href='https://scikit-learn.org/stable/modules/classes.html'>https://scikit-learn.org/stable/modules/classes.html</a>
+    <!-- <br>
+    <a href='https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/overview.ipynb'>
+        https://colab.research.google.com/github/djcordhose/ai/blob/master/notebooks/sklearn/overview.ipynb</a> -->
+</small>
+        </section>
+        
+<!-- 
+    <section data-markdown class="detail">
+            <textarea data-template>
+### How do they learn?
+
+<img src="img/dt/cart.png" height="500px">
+
+<small>
+
+http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart
+</small>
+        
+        
+        </textarea>
+        </section>
+ -->
+    <section>
+            <h3>Decision Trees</h3>
+            <div>
+
+        <img src="img/applications/dt-test.png">
+        <small>Up to 70% accuracy on unknown data</small>
+        </div>
+    </section>
+
+
+
+    <!-- <section data-markdown>
+        <textarea data-template>
+### Working with Colab Notebooks
+
+https://colab.research.google.com
+        </textarea>
+    </section> -->
+
+<section data-markdown>
+<textarea data-template>
+### Hands-On
+_Run your first Colab Notbook_
+
+* In a first pass we will go through the notebook together
+* Open the notebook containing the training code 
+* Sign into your Google account or register a new one 
+* Execute cells until the notebook tells you to stop
+* Train the model and see how it would classify yourself
+* Save your notebook in your Google Drive (or on Github if you want to)
+
+<small>
+
+Notebook: http://bit.ly/ml-dt-intro
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
+    <textarea data-template>
+### Step III
+## Evaluation
 </textarea>
 </section>
 
@@ -600,7 +753,7 @@ Are they the same? What is the key difference?
 
 <section data-markdown class="workshop exercise">
     <textarea data-template>
-### Exercise \#2 - How well did you generalize?
+### Paper Exercise \#3 - How well did you generalize?
 
 * Turn the page and redraw the lines you printed through from the first page
 * Get an estimate of the misclassified samples on both diagrams
@@ -610,283 +763,183 @@ Are they the same? What is the key difference?
     </textarea>
         </section>
 
+<section data-markdown class="workshop">
+<textarea data-template>
+### Remember the two sample solutions?
+
+<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
+<small>
+Are they the same? What is the key difference?
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
+<textarea data-template>
+### Now on test data
+
+<img src='img/decision-boundaries/decision-boundaries-test.jpg'>
+<small>
+Which one is better? Why?
+</small>
+</textarea>
+</section>
+
+<section id='overfitting'>
+        <h3>The Issue: Overfitting</h2>
+    <div>
+    <div style="float: left">
+        <img src="img/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
+        <p>
+            <small><em>Training Score</em></small>
+        </p>
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='5'>
+        <img src="img/elements/down.jpg" height="200">
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='4'>
+        <img src="img/elements/up.jpg" height="200">
+    </div>
+    <div style="float: left">
+            <img src="img/elements/70_percent.jpg" height="225"  class="fragment" data-fragment-index='2'>
+            <p>
+                <small><em>Test Score</em></small>
+            </p>
+    </div>
+    </div>
+    <p style="clear: both" class="fragment" data-fragment-index='3'><em>Training and test scores clearly divert</em></p>
+
+    </section>
+
+<section>
+<h3>A different setting: this generalizes well, but has another issue</h3>
+
+<div style="max-width: 50%; float: left;">
+    <img src='img/decision-boundaries/underfit-train.jpg' height="300">
+    <small>Training Data</small>
+</div>
+<div style="max-width: 50%; float: right;">
+    <img src='img/decision-boundaries/underfit-test.jpg' height="300">
+    <small>Test Data</small>
+    </div>
+    
+    
+<p style="clear: both;" class="fragment">
+    <em>
+If both test and training is pretty bad, this is called <em>underfitting</em>
+</em>
+</p>
+        </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Regularization
+
+_Process to counter overfitting_
+
+Each ML strategy has its own means of Regularization, e.g.
+* KNN: more neighbors
+* Decision Trees: reduce depth, use ensembles
+* NN: Dropout, Batch Normalization, Reduced Capacity, Reduced Training Time
+            </textarea>
+            </section>
+
+<!-- <section data-markdown>
+<textarea data-template>
+
+<img src='img/sklearn-flow.png' height="600px">
+<small>
+
+http://ogrisel.github.io/decks/2017_intro_sklearn    
+
+</small>
+</textarea>
+</section>
+ -->
 <section data-markdown>
+<textarea data-template>
+### Hands-On: Colab Notebook Part II
+
+_Regularize your Decision tree_
+
+* Continue with your notebook from where you stopped
+* Execute the rest of the notebook
+* Change the maximum depth, maximum number of leaves, and minimum samples per leaf of the decision tree to fight overfitting
+* What is your best depth?
+* How do the decision boundaries change?
+* What are your best scores? 
+
+<small>
+
+Notebook: http://bit.ly/ml-dt-intro
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="workshop">
     <textarea data-template>
-## A Machine can learn to draw those lines just like you
-### by learning from data samples while generalizing well
+### Step IV
+## Full Circle back to code and interpretation
 </textarea>
 </section>
 
 <section data-markdown>
     <textarea data-template>
-<img src='img/supervised-ml.jpg' height="650px">
-    </textarea>
-    </section>
-    
-    
-    <section data-markdown>
-            <textarea data-template>
-### A Decision Tree trained on our data
+### Our tree can generate back code        
+<img src='papers/iclr2020/tree.png'>
+</textarea>
+</section>
 
-<img src="img/applications/tree_deep.png">
-        </textarea>
+<section data-markdown>
+    <textarea data-template>
+### Code equivalent to tree
+
+<img src='papers/iclr2020/code.png'>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Decision path for age=20, speed=110
+
+<img src='papers/iclr2020/dtreeviz-prediction-path-fancy.png' height="600">
+</textarea>
+</section>
+
+<section data-markdown class="workshop exercise">
+    <textarea data-template>
+### Paper Exercise \#4 - Prediction of your risk class
+
+* Find the decision path for your age and top speed of your car (or anyone else you know)
+* Can you explain the path?
+* Would you be ok with this as an explanation for your risk class when you are applying for an insurance?
+
+    </textarea>
         </section>
 
-    <section>
-            <h3>Prediction with Decision Trees</h3>
-            <div>
 
-        <img src="img/applications/dt-test.png" class="fragment">
-        <small class="fragment">More than 70% accuracy on unknown data</small>
-        </div>
-    </section>
-
-    <section data-markdown class="fragments">
-            <textarea data-template>
-### When to apply Supervised Learning
-
-_classify categories or predict values_
+    <section data-markdown class="fragments" style="font-size: xx-large">
+        <textarea data-template>
+## Thank you - Wrapping it up
+### Apply Supervised Learning to classify categories or predict values
 
 * you have sample data with labels (ground truth)
 * the problem at hand is hard to specify
 * solving the problem can tolerate some error or uncertainty
 * there is a clear, simple input and output
-* Decision Trees mimic hand written code and have a similar level of explainability
+* Decision Trees mimic hand written code and have a similar level of interpretability
 
-_what we see applied most of the time_
+<div></div>
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+<br>
+<a href="https://www.embarc.de/">Chief Visionary Officer, embarc Software Consulting GmbH</a>
+<br>
+Slides:     <a href="http://bit.ly/ml-oop-2020-intro">http://bit.ly/ml-oop-2020-intro</a>
         </textarea>
         </section>
     
-    <section data-markdown>
-            <textarea data-template>
-## Part II
-### Unsupervised Learning
-
-        </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Exercise \#3: Clusters and Outliers
-<img src='img/unsupervised/clustering.jpg' height="550px">
-    </textarea>
-</section>
-
-<section data-markdown style="font-size: xx-large;">
-        <textarea data-template>
-### Exercise
-
-1. Mark all clusters
-1. Mark all data points that do not belong to a cluster
-
-Discuss
-1. In which way is this very different from our first example?
-1. Do you see clusters that look suspicious?
-1. What could be on the axes? Is this important for recognizing clusters?
-1. What could a cluster mean?
-1. How could you interpret data points do not belong to a cluster?
-    </textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Apply clustering to our insurance example
-
-<img src='img/unsupervised/cluster-insurance.png' height="400">
-
-_black is an outlier, other colors symbolize cluster, no known categories used_
-</textarea>
-</section>
-
-
-    <section data-markdown class="fragments">
-            <textarea data-template>
-### When to apply Unsupervised Learning
-
-_cluster, find similarities or outliers_
-
-* Fraud Detection
-* Similarities in customers / partners
-* Detecting regularities via strage cluster shapes
-
-_often in addition or a first step to supervised learning_
-
-        </textarea>
-        </section>
-    
-
-<section data-markdown>
-        <textarea data-template>
-## Part III
-### Reinforcement Learning
-
-    </textarea>
-    </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Find the optimal route
-
-<img src='img/rl/turf.png' height="450px">
-
-<small>
-
-https://opendatascience.com/bears-need-to-learn-as-well-practical-reinforcement-learning-with-tensorflow-2-0-tf-agents/
-
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Programmatic solution
- 
-* best-first search
-* will find optimal solution
-* but only on small problems
-* exponential complexity
-            </textarea>
-            </section>
-
-            <section data-markdown>
-                    <textarea data-template>
-### Alternative: Machine Learning
-
-Exchanging
-* exponential time for linear time
-* perfect path for near-optimal path 
-
-                        </textarea>
-                    </section>
-
-<section data-markdown class="fragment">
-    <textarea data-template>
-### But we have no training data
-
-* It is possible to gain training data through experiments
-* You will need a simulated world to run the experiments in, though
-* Experiments are guided by saying which results are good and which are bad
-* _This is called Reinforcement Learning_
-
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Reinforcement Learning: Using an Agent
-
-<img src='img/rl/rl-train-play-1.png' height="550">
-
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Reinforcement Learning: Training an agent
-
-<img src='img/rl/rl-train-play-2.png' height="550">
-
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Solution
-<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
-                
-</textarea>
-</section>
-
-    <section data-markdown class="fragments">
-            <textarea data-template>
-### When to apply Reinforcement Learning
-
-_magic when there is no training data_
-
-1. You have no data to train on
-1. You can simulate your environment or can make experiments in high numbers in the real world without danger (or combine both)
-1. You know what is a good and what is a bad outcome and can quantify 
-
-_often your last resort_
-
-<!-- 
-1. Human experts can solve the problem by doing 
-    
-    
-    1. Menschen können das
-   * Menschen entscheiden 'intuitiv', ie in wenigen Sekunden. Machen keine Recherche.
-1. Kann der Experte wechseln während der Aufgabe?
-5.Du weißt was gut und schlecht ist / kannst eine Lösung mit Punkten bewerten
-6. Pluspunkt: es gibt mehr als 1 Lösung
-7. Pluspunkt: du kannst auf dem weg schon sagen was tendenziell eine gute Richtung ist
-1. Halbscherz: wenn wir Spiele Designer wären gäbe das ein tolles Spiel.
-  * ..und wir sollten es auf die playstation bringen
-
-* you can simulate -->
-
-        </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
-## Part IV
-### Finding Applications
-
-    </textarea>
-    </section>
-
-<section data-markdown>
-        <textarea data-template>
-### Map: Finding your strategy
-
-<img src='img/ML-strategy-helper.png' height="550px">
-
-
-        </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-### Applications with known ML solutions
-
-1. Detecting tuberculosis from X-Rays
-3. Teaching a robot to pick up objects
-4. Which two football players are similar to each other?
-5. Optimize Chemical reactions
-6. Deciding risk class of potential customers for loans
-7. Learn how to control traffic lights
-8. Detecting credit card fraud
-9. News Recommendation
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Exercise \#4 - How to apply machine learning
-
-_Find the right strategy for your project (or one of the given ones)_
-
-* Team up with your neighbors
-* Find one or more projects to evaluate
-* Use the map from the previous slide (ask instructor to put it up on the projector) 
-* What might be the best approach?
-* What questions do you still have about your project?
-
-</textarea>
-</section>
-    
-        
-<section style="font-size: x-large">
-    <h2>Thank you - Wrapping it up</h2>
-    
-    <img src='img/ML-strategy-helper.png' height="470">
-    <p>
-    <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a></a>
-    <br>
-    <a href="https://www.embarc.de/">Chief Visionary Officer, embarc Software Consulting GmbH</a>
-    </p>
-</section>
-
     </div>
 
 </div>
