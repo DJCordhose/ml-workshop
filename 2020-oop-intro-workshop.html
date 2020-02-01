@@ -260,13 +260,10 @@ https://www.oop-konferenz.de/oop2020/programm/konferenzprogramm/sessiondetails/a
 1. What do you want to learn / achieve?
 1. Something astonishing about you
 
-If necessary please help your neighbors to get to theses slides 
-and make the first notebook run (described in first slide)
-
     </textarea>
 </section>
 
-<section data-markdown class="local fragments" style="font-size: x-large">
+<!-- <section data-markdown class="local fragments" style="font-size: x-large">
 <textarea data-template>
 ### What is your background?
 
@@ -287,7 +284,7 @@ Tools
 * What else?
 
 </textarea>
-</section>
+</section> -->
 
 <section data-markdown class="local">
 <textarea data-template>
@@ -318,7 +315,7 @@ Tools
             </textarea>
         </section>
     
-        <section data-markdown>
+        <!-- <section data-markdown>
             <textarea data-template>
     ### Three Inputs for Prediction
     
@@ -331,91 +328,11 @@ Tools
     </small></p>
     </textarea>
         </section>
-    
-    <section data-markdown>
-        <textarea data-template>
-## How to solve this programmatically?
-            </textarea>
-            </section>
-
-<section data-markdown>
-<textarea data-template>
-<img src='img/classic-development.jpg'>
-</textarea>
-</section>
-            
-    <section>
-        <h3>Programmer's approach: Code Rules by Hand</h3>
-        <div class="fragment">
-        <pre><code contenteditable data-trim class="line-numbers python">
-def calculate_risk(age, speed):
-    if age < 25:
-        if speed > 110:
-            return high  # young people, fast cars
-        else:
-            return medium # young people
-            </code></pre>
-        </div>
-        <div class="fragment">
-        <pre><code contenteditable class="line-numbers python">    if age > 70:
-        return high # seniors</code></pre>
-        </div>
-        <div class="fragment">
-        <pre><code contenteditable class="line-numbers python">    if speed > 145:
-        return high # fast cars in general</code></pre>
-        </div>
-        <div class="fragment">
-        <pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
-    return low # otherwise</code></pre>
-        </div>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### How good is this?
-
-* Is it better than guessing?
-* Are all the rules correct?
-* Are some missing?
-* How would we even know?
-
-</textarea>
-</section>                    
-
+ -->
 <section>
-    <h3>Let's check with existing data</h3>
-    <img src="img/applications/all.png" height="500px" class="fragment">
+<h3>Classification based on known data</h3>
+<img src="img/applications/all.png" height="500px" class="fragment">
 </section>
-
-<section data-markdown>
-    <textarea data-template>
-### How good is our Rule based approach?
-
-Plotting the predictions as a background
-
-<img src='img/applications/rules.png' class="fragment" height="450px">
-<br>
-<small class="fragment">approx. 57% predictions correct</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Baseline to understand if 57% is good
-
-<img src="img/applications/random.png" height="450px"  class="fragment">
-
-<small  class="fragment">only gets 33% right</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Would we be able to separate different classes by drawing a few lines ourselfes?
-
-    </textarea>
-        </section>
-
 
 <section data-markdown class="workshop exercise">
     <textarea data-template>
@@ -456,7 +373,84 @@ Are they the same? What is the key difference?
 ### Can we automate this process of drawing Decision Boundaries?
 </textarea>
 </section>
+    
+<section data-markdown>
+    <textarea data-template>
+## How to solve this programmatically?
+        </textarea>
+        </section>
 
+<section data-markdown>
+<textarea data-template>
+<img src='img/classic-development.jpg'>
+</textarea>
+</section>
+        
+<section>
+    <h3>Programmer's approach: Code Rules by Hand</h3>
+    <div class="fragment">
+    <pre><code contenteditable data-trim class="line-numbers python">
+def calculate_risk(age, speed):
+if age < 25:
+    if speed > 110:
+        return high  # young people, fast cars
+    else:
+        return medium # young people
+        </code></pre>
+    </div>
+    <div class="fragment">
+    <pre><code contenteditable class="line-numbers python">    if age > 70:
+    return high # seniors</code></pre>
+    </div>
+    <div class="fragment">
+    <pre><code contenteditable class="line-numbers python">    if speed > 145:
+    return high # fast cars in general</code></pre>
+    </div>
+    <div class="fragment">
+    <pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
+return low # otherwise</code></pre>
+    </div>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### How good is this?
+
+* Is it better than guessing?
+* Are all the rules correct?
+* Are some missing?
+* How would we even know?
+
+</textarea>
+</section>                    
+
+<section data-markdown>
+<textarea data-template>
+### How good is our Rule based approach?
+
+Plotting the predictions as a background
+
+<img src='img/applications/rules.png' class="fragment" height="450px">
+<br>
+<small class="fragment">approx. 57% predictions correct</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Baseline to understand if 57% is good
+
+<img src="img/applications/random.png" height="450px"  class="fragment">
+
+<small  class="fragment">only gets 33% right</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Do we really have to write those rules by hand?
+</textarea>
+</section>
 
 <section data-markdown>
 <textarea data-template>
@@ -617,12 +611,6 @@ Plotting the predictions as a background
 <img src='img/applications/rules.png' class="fragment" height="450px">
 <br>
 <small class="fragment">approx. 56% predictions correct</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Do we really have to write those rules by hand?
 </textarea>
 </section>
 
@@ -900,13 +888,13 @@ Notebook: http://bit.ly/ml-dt-intro
 </textarea>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 #### Decision path for age=20, speed=110
 
 <img src='papers/iclr2020/dtreeviz-prediction-path-fancy.png' height="600">
 </textarea>
-</section>
+</section> -->
 
 <section data-markdown class="workshop exercise">
     <textarea data-template>
