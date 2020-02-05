@@ -32,6 +32,15 @@
                   /*color: #000000 !important;*/
               /*}*/
       
+              @font-face {
+                font-family: Sunrise;
+                src: url("sunrise.otf") format("opentype");
+            }
+
+            @font-face {
+                font-family: TwCenMTStd;
+                src: url("TWCENMT/TwCenMTStd.otf") format("opentype");
+            }
               .right-img {
                   margin-left: 10px !important;
                   float: right;
@@ -59,55 +68,22 @@
                   -ms-touch-action: auto !important;
                   touch-action: auto !important;
                       }
-      
-                      .reveal h2,
-                      .reveal h3,
-                      .reveal h4 {
-                        letter-spacing: 2px;
-                        font-family: 'Calibri', sans-serif;
+
+                .reveal h1,
+                .reveal h2,
+                .reveal h3 {
+                        /* letter-spacing: 2px; */
+                        font-family: 'Sunrise', 'Calibri', sans-serif;
                           /* font-family: 'Times New Roman', Times, serif; */
-                          font-weight: bold;
+                          /* font-weight: bold; */
                           color: black;
-                          font-style: italic;
-                          letter-spacing: -2px;
-                          text-transform: none !important;
+                          /* font-style: italic; */
+                          /* letter-spacing: -2px;
+                          text-transform: none !important; */
                       }
       
                       .reveal em {
                           font-weight: bold;
-                      }
-      
-                      .reveal .step-subtitle h1 {
-                          letter-spacing: 1px;
-                      }
-                      .reveal .step-subtitle h2,
-                      .reveal .step-subtitle h3 {
-                          text-transform: none;
-                          font-style: italic;
-                          font-weight: normal;
-                          /* font-weight: 400; */
-                          /* font-family: 'Amiri', serif; */
-                          font-family: 'Lobster', serif;
-                          letter-spacing: 1px;
-                          color: #2aa198;
-                          text-decoration: underline;
-                      }
-      
-                      .reveal .front-page h1,
-                      .reveal .front-page h2 {
-                          font-family: "League Gothic";
-                          font-style: normal;
-                          text-transform: uppercase !important;
-                          letter-spacing: 1px;
-                      }
-      
-                      .reveal .front-page h1 {
-                          font-size: 2.5em !important;
-                      }
-      
-                      .reveal .highlight {
-                          background-color: #D3337B;
-                          color: white;
                       }
       
               .reveal section img {
@@ -128,7 +104,9 @@
                       list-style-type: none;
                   }
 
-            .reveal {
+            .reveal,
+            .reveal, h4 {
+                font-family: 'TwCenMTStd', 'Calibri';
                 color: black !important;
              }
 
@@ -241,15 +219,6 @@ Bereich des Machine Learnings freuen uns aber über Mitmachen und kritisches Fra
 
 -->
  
- <section data-markdown class="todo">
-    <textarea data-template>
-1,5 Std. Intro
-1 Std. Anwendungen finden
-* http://www.liberatingstructures.com/
-* Das am Ende mitgeben https://www.louisdorard.com/machine-learning-canvas
-</textarea>
-</section>
-
             <section>
             <h2>Machine Learning im eigenen Projekt anwenden</h2>
             <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
@@ -439,11 +408,11 @@ Are they the same? What is the key difference?
     <div class="fragment">
     <pre><code contenteditable data-trim class="line-numbers python">
 def calculate_risk(age, speed):
-if age < 25:
-    if speed > 110:
-        return high  # young people, fast cars
-    else:
-        return medium # young people
+    if age < 25:
+        if speed > 110:
+            return high  # young people, fast cars
+        else:
+            return medium # young people
         </code></pre>
     </div>
     <div class="fragment">
@@ -456,7 +425,7 @@ if age < 25:
     </div>
     <div class="fragment">
     <pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
-return low # otherwise</code></pre>
+    return low # otherwise</code></pre>
     </div>
 </section>
 
