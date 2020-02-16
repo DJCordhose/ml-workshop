@@ -349,16 +349,14 @@ Original Agenda
 </textarea>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>        
 ## Scatchpad to share links and information
 
 On Google Drive, everyone with link can read and edit
 
-<!-- http://bit.ly/mcubed-nn-scratch -->
-<!-- https://docs.google.com/document/d/17jNrh-eeeCSHGIMry7xNobc8UCkqVkzUf7o2pT7e4g0/edit?usp=sharing -->
 </textarea>
-</section>
+</section> -->
 
 <section data-markdown class="local">
         <textarea data-template>
@@ -488,9 +486,10 @@ https://www.springer.com/gp/book/9789401539968
 
 <section data-markdown>
     <textarea data-template>
-### Demo Anomagram 
-
+### Demo: Anomagram 
+<a href='https://victordibia.github.io/anomagram/#/'>
 <img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
 <br>
 <small>
 
@@ -507,8 +506,8 @@ https://victordibia.github.io/anomagram/#/
 
 * Train with normal data to low reconstruction loss
 * Abnormal data will not be reproduced well, i.e. will have high reconstruction loss
-* Set a threshold on loss by maximizing a metric
-* Does not need abnormal data for training
+* Set a threshold on loss by maximizing a metric (accuracy)
+* Does not need abnormal data for training (but can tolerate some abnormal data)
 * Can do without any labelling
 
 </textarea>
@@ -516,13 +515,14 @@ https://victordibia.github.io/anomagram/#/
 
 <section data-markdown>
     <textarea data-template>
-### Exercise Train your first Autoencoder 
+### Exercise: Train your first Autoencoder 
 
+<a href='https://victordibia.github.io/anomagram/#/train'>
 <img src='img/embeddings/anomagram-training.gif' height="450">
 <br>
 <small>
 
-https://victordibia.github.io/anomagram/#/train    
+https://victordibia.github.io/anomagram/#/train  
 </small>
 </textarea>
 </section>
@@ -547,9 +547,9 @@ https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
 </textarea>
 </section>
 
-<section data-markdown class="backup">
+<section data-markdown>
     <textarea data-template>
-## Part I
+## Optional Part Ib
 ### Tools: TensorFlow 2's functional Keras API in on Colab notebooks
 
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-api.ipynb
@@ -741,9 +741,6 @@ Accuracy
 <div style="clear: both">
 Curves for 2-d embedding (1-d accuracy closer to 10%)
 
-<small>        
-https://github.com/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-embeddings.ipynb
-</small>
 </div>
 </textarea>
 </section>
@@ -800,11 +797,6 @@ latent_y = embeddings_2d[:, 1]
 
 plt.scatter(latent_x, latent_y)
 </code></pre>
-<small>
-
-https://github.com/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-embeddings.ipynb
-</small>
-
 </textarea>
         </section>
 
@@ -840,7 +832,11 @@ _We trained a neural embedding_
 * can encode non-linear relationships
 
 _Embedding: Transform a high dim. vector space to a lower one_
+<small>
 
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-embeddings.ipynb
+
+</small>
 </textarea>
 </section>
 
@@ -1141,6 +1137,33 @@ VAE / GAN: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/
 </textarea>
 </section> -->
 
+<section>
+<h3>Generating Celebreties</h3>
+<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
+<div class="fragment" style="float: left">
+<img src="img/unsupervised/gan-model-male2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female1.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-male.png" height="220">
+</div>
+<p style="clear: both">
+<small>
+<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
+<br>
+<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
+<br>
+<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
+</small>
+               
+</p>
+</section>                                
+
 <section data-markdown>
 <textarea data-template>
 ## GANs
@@ -1229,33 +1252,6 @@ https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview
 ### More Applications        
 </textarea>
 </section>
-
-<section>
-<h3>Generating Celebreties</h3>
-<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
-<div class="fragment" style="float: left">
-<img src="img/unsupervised/gan-model-male2.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-female2.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-female1.png" height="220">
-</div>
-<div class="fragment" style="float: left; padding-left: 25px">
-    <img src="img/unsupervised/gan-model-male.png" height="220">
-</div>
-<p style="clear: both">
-<small>
-<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
-<br>
-<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
-<br>
-<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
-</small>
-               
-</p>
-</section>                                
 
 <section data-markdown>
     <textarea data-template>
