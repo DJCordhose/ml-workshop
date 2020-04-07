@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Autoencoder Anomaly Detection</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                        letter-spacing: 2px;
+                          font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                color: black;
+             }       
+
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-markdown>
+                <textarea data-template>
+                    <h2>Understanding Autoencoders</h2>
+<h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a></h4>
+
+https://djcordhose.github.io/ml-workshop/2020-ae-anomaly.html
+
+<small>
+
+https://www.meetup.com/en-AU/AI-JavaScript-London/events/269662931/
+https://anomagram.fastforwardlabs.com
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Questions welcome at any time
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### One Question from my side
+
+_Who already has come experience in machine learning?_
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Autoencoders
+
+* neural network trained in unsupervised manner
+* reproduces input while going through a low-dim bottleneck
+* works on all kinds of data, e.g. image, audio, and tabular
+
+<img src='img/unsupervised/autoencoder_schema.jpg'>
+
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### The brain might map out ideas like spaces
+
+<img src='img/embeddings/brain-abstract-knowledge.jpg' height="450">
+
+<small>
+
+https://twitter.com/PhilosophyMttrs/status/1085242776688775169
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Why Autoencoders
+
+* compression
+* data denoising
+* dimensionality reduction
+* building an abstract representation for further use
+* clustering (for data visualization)
+* outlier detection
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Example Application: Outlier Detection
+
+An anomaly (outlier, abnormality) is defined as “an observation which deviates so much from other observations as to
+arouse suspicions that it was generated by a different mechanism” - Hawkins 1980.
+
+https://www.springer.com/gp/book/9789401539968
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Detecting Anomalies in electrocardiograms (ECG) 
+
+* Train autoencoder with (mostly) normal data to low reconstruction loss
+* Abnormal data (not used for training) will not be reproduced well, i.e. will have high reconstruction loss
+* Set a threshold on loss by maximizing a metric (accuracy)
+* Can do without any labelling
+* Does not need abnormal data for training (but can tolerate some abnormal data)
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Demo: Anomagram 
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Data 
+
+* https://github.com/victordibia/anomagram/#dataset
+* http://www.timeseriesclassification.com/description.php?Dataset=ECG5000
+* https://archive.physionet.org/cgi-bin/atm/ATM
+* https://archive.physionet.org/physiobank/database/chfdb/
+
+</textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Metrics
+
+* _Precision_: percentage of positive predictions that are correct
+    * true positive / true positive + false positive (predicted as true, but is false)
+* _Recall_ (aka hit rate): proportion of actual positives that were correctly predicted
+    * true positive / true positive + false negative (predicted as false, but is true)
+* low enough threshold will yield excellent recall but reduced precision
+* F1 score is the harmonic mean of the precision and recall
+
+<small>
+
+https://zackakil.github.io/precision-recall-playground/
+<br>
+https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
+<br>
+https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise: Train your first Autoencoder 
+
+<a href='https://victordibia.github.io/anomagram/#/train'>
+<img src='img/embeddings/anomagram-training.gif' height="450">
+</a>
+<br>
+<small>
+(only turn on Composer, Metrics, and Histogram)
+
+https://victordibia.github.io/anomagram/#/train  
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Code
+
+1. Code Level: https://github.com/victordibia/anomagram
+1. yarn start
+1. http://localhost:3000/#/train
+2. React Tools, Components
+3. https://github.com/DJCordhose/anomagram/blob/100496e167067b708ab990e77a665cdde9df98cd/app/src/components/train/Train.jsx#L349
+
+
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments" style="font-size: xx-large">
+    <textarea data-template>
+## Thank you - Wrapping it up
+
+* Autoencoders reproduce an input while going through a low-dim bottleneck
+* They are a special kind of neural network trained in unsupervised manner
+* Applications include 
+    * preprocessing / dimensionality reduction
+    * anomaly detection
+    * denoising
+    * generating near-realistic data
+
+<div></div>
+<a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+    </textarea>
+    </section>
+
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        $('section:not([data-background])').attr('data-background', "background/sky.jpg");
+
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        $('.backup').remove();
+        if (isLocal && !printMode) {
+            // only applies to local version
+            $('.remote').remove();
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: false,
+            history: true,
+            center: true,
+            width: 1100,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>
