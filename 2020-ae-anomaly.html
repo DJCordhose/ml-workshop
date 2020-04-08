@@ -233,13 +233,17 @@ https://www.springer.com/gp/book/9789401539968
 
 <section data-markdown class="fragments">
     <textarea data-template>
-### Detecting Anomalies in electrocardiograms (ECG) 
+### Detecting Anomalies in electrocardiograms 
+
 
 * Train autoencoder with (mostly) normal data to low reconstruction loss
 * Abnormal data (not used for training) will not be reproduced well, i.e. will have high reconstruction loss
 * Set a threshold on loss by maximizing a metric (accuracy)
 * Can do without any labelling
 * Does not need abnormal data for training (but can tolerate some abnormal data)
+
+<img src='img/ecg.png'>
+
 
 </textarea>
 </section>
