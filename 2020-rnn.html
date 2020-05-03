@@ -140,7 +140,7 @@
     <div class="reveal">
         <div class="slides">
 
-<section data-markdown class="todo">
+<section data-markdown class="todo hide">
         <textarea data-template>
 
 * SVM Baseline für Time Series Data ableiten:  https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-classic.ipynb
@@ -159,6 +159,7 @@ in den Intro Teil umziehen
         <textarea data-template>
 ## Networks for Sequences, Time Series and Texts
 
+https://djcordhose.github.io/ml-workshop/2020-rnn.html
 </textarea>
 </section>
 
@@ -389,15 +390,11 @@ model.add(GRU(units=rnn_units, return_sequences=True))
 model.add(GRU(units=rnn_units, return_sequences=True, recurrent_dropout=0.2))
         </code></pre>
     </p>
-    <small>
-            <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers">
-                https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/keras/layers
-            </a>
-                    
-    </small>
+    
 <small data-markdown>
+https://www.tensorflow.org/api_docs/python/tf/keras/layers
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf/intro/2020-01-rnn-advanced.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-advanced.ipynb
 </small>
 </section>
 
@@ -406,7 +403,8 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 ## A practical application
 ### Time Series Forecasting
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-time-series.ipynb
+
 <!-- 
 * Analyses of the data: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-analyses.ipynb
 * Classic Machine Learning: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-classic.ipynb
