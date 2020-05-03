@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>TF2 Workshop</title>
+    <title>Deep Learning TF2 Workshop</title>
 
     <link rel="stylesheet" href="reveal.js/css/reset.css">
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
@@ -166,12 +166,11 @@ _Talk to your neighbors or ask Olli for help_
     </section>
 
 
- <section data-markdown class="todo">
+ <section data-markdown class="todo hide">
         <textarea data-template>
  * Wifi erste Folie 
  * bit.ly link
  * Drive File
- * Als möglicher nächster Schritt für Time Series Data: https://facebook.github.io/prophet/
         </textarea>
     </section>
 
@@ -185,12 +184,12 @@ _Talk to your neighbors or ask Olli for help_
             <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
                 <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </h4>
-            <p><small><a href="http://bit.ly/nn-tf2-2019">
-                http://bit.ly/nn-tf2-2019
+            <p><small><a href="XXX">
+                http://bit.ly/XXX
             </a></small></p>
         </section>
 
-<section data-markdown>
+<section data-markdown class="hide">
     <textarea data-template>
 ## Up to 4 parts, half a day each
 
@@ -201,13 +200,13 @@ _Talk to your neighbors or ask Olli for help_
 </textarea>
 </section>
 
-<section data-markdown class="local">
+<section data-markdown class="local hide">
     <textarea data-template>
 ## Questions, comments, critique are welcome at any time
 </textarea>
 </section>
 
-<section data-markdown style="font-size: x-large">
+<section data-markdown  class="hide" style="font-size: x-large">
     <textarea data-template>        
 ## Post Its
 
@@ -218,7 +217,7 @@ _Talk to your neighbors or ask Olli for help_
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="hide">
     <textarea data-template>        
 ## Scatchpad to share links and information
 
@@ -229,7 +228,7 @@ On Google Drive, everyone with link can read and edit
 </textarea>
 </section>
 
-<section data-markdown class="local">
+<section data-markdown class="local hide">
         <textarea data-template>
 ## Introduce yourself to your neighbors, please
 
@@ -242,7 +241,7 @@ On Google Drive, everyone with link can read and edit
         </textarea>
     </section>
 
-<section data-markdown class="local fragments" style="font-size: x-large">
+<section data-markdown class="local hide fragments" style="font-size: x-large">
     <textarea data-template>
 ### What is your background?
 
@@ -347,13 +346,13 @@ François Chollet in [Deep Learning with Python (Manning Publications)](https://
 </section>
 
 
-<section data-markdown>
+<section data-markdown style="font-size: xx-large;">
         <textarea data-template>
 ### Interactive, online introduction to Neural Networks with TensorFlow
 
-1. Regression: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-basics-regression.ipynb
-1. Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-basics-classification.ipynb
-
+1. Regression: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regression.ipynb
+1. Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-classification.ipynb
+1. Regularization (optional, also covered in more conceptual detail in tabular data): https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regularization.ipynb
 </textarea>
 </section>
 
@@ -375,7 +374,7 @@ https://twitter.com/fchollet/status/1231285340335267840
 
 <section data-markdown>
     <textarea data-template>
-### Building
+### Building    
 
 <img src='img/keras-abstractions-builidng.jpg'>
 </textarea>
@@ -398,29 +397,20 @@ https://twitter.com/fchollet/status/1231285340335267840
         <textarea data-template>
 ## Networks for Tabular and Structured data
 
-<a href='2019-dense.html'>Fully Connected Layers</a>
+<a href='2020-tabular.html'>Fully Connected Layers</a>
 
 </textarea>
 </section>
-
 
 <section>
     <img src='img/data.png'>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Für CNN Notebook: Visualizaion MNIST Classification 
-https://twitter.com/Reza_Zadeh/status/1209194637715374080
-https://youtu.be/WQYCK1YpsjE
-</textarea>
 </section>
 
 <section data-markdown>
         <textarea data-template>
 ## Networks for Images
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-images.ipynb
 
 </textarea>
 </section>
@@ -433,7 +423,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
         <textarea data-template>
 ## Networks for Sequences, Time Series and Texts
 
-<a href='2019-rnn.html'>Recurrent Neural Networks: RNNs</a>
+<a href='2020-rnn.html'>Recurrent Neural Networks: RNNs</a>
 
 </textarea>
 </section>
@@ -448,34 +438,34 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 <section data-markdown style="font-size: large">
     <textarea data-template>
 
-## Overview over all Notebooks
+## Overview of Notebooks
 
 _Basics_
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-regression-from-scratch.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/tf-keras-classifier-metrics.ipynb
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regression.ipynb
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-classification.ipynb
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regularization.ipynb
 
-_Dense_
+_Tabular Data / Dense Networks_
 * https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
 * https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-training.ipynb
 * https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-reg.ipynb
 * https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
 * https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/strategies.ipynb
 
-_RNN_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-basics.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/seq-advanced.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
+_Sequential Data / RNN_
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-basics.ipynb
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-advanced.ipynb
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-time-series.ipynb
+<!-- * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb -->
 
-_Convolutional_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
+_Image Data / Convolutional Networks_
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-images.ipynb
 
 </textarea>
 </section>
 
-<section data-markdown>
-        <textarea data-template>
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
 ### More Teaching Resources
 
 * Fundamentals of Machine Learning and Deep Learning in Python using Scikit-Learn, Keras and TensorFlow 2: https://github.com/ageron/handson-ml2
@@ -501,7 +491,7 @@ _Convolutional_
 </textarea>
 </section>
 
-<!-- <section data-markdown>
+<section data-markdown>
     <textarea data-template>
 
 <img src='img/nn-overview.png' height="500">        
@@ -510,8 +500,8 @@ https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-expl
 </small>
 </textarea>
 </section>
- -->
-<!-- <section data-markdown>
+
+<section data-markdown>
         <textarea data-template>
 ### Time for some bad news
 
@@ -519,7 +509,6 @@ https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-expl
 
 </textarea>
 </section>
-
 
 <section data-markdown style="font-size: xx-large">
         <textarea data-template>
@@ -532,14 +521,37 @@ _All the shown examples are highly idealised_
   * can take forever to train
   * might ruin your night sleep and family live (let me just quickly check on the training progress) 
 * Real world data might not match training data
-* You might not even know the real training data
+* You might not even know the real data
 * Struggle to find/get good quality data in the first place 
             </textarea>
         </section>
-         -->
+        
+<section data-markdown>
+    <textarea data-template>
+### Typically you don't have a lot of data
+
+<img src='img/data-and-the-world.jpg' height="550px">
+    </textarea>
+</section>
 
 <section data-markdown>
-        <textarea data-template>
+    <textarea data-template>
+#### Even seemingly simple tasks are so far unsolved
+
+recognizing digits and numbers in natural scene images
+
+<img src='img/house_numbers.png' height="450px">
+
+<small>
+
+http://ufldl.stanford.edu/housenumbers/
+</small>
+    </textarea>
+</section>
+
+
+         <section data-markdown style="font-size: xx-large;">
+            <textarea data-template>
 ### Finding data sets to play with
     
 * Google released a search engine for datasets
@@ -566,7 +578,9 @@ _All the shown examples are highly idealised_
     <script>
         const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
                     window.location.hostname.indexOf('127.0.0.1') !== -1;
-    
+
+        $('.hide').remove();
+
         if (isLocal && !printMode) {
         } else {
             // only applies to public version

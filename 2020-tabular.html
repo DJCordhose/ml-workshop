@@ -1,0 +1,952 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dense</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+
+        .todo:before {
+            content: 'TODO: ';
+        }
+
+        .todo {
+            color: red !important;
+        }
+
+        code span.line-number {
+            color: lightcoral;
+        }
+
+        .reveal pre code {
+            max-height: 1000px !important;
+        }
+
+        img {
+            border: 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .reveal {
+            -ms-touch-action: auto !important;
+            touch-action: auto !important;
+        }
+
+        .reveal h2,
+        .reveal h3,
+        .reveal h4 {
+            letter-spacing: 2px;
+            font-family: 'Amiri', serif;
+            /* font-family: 'Times New Roman', Times, serif; */
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: -2px;
+            text-transform: none !important;
+        }
+
+        .reveal em {
+            font-weight: bold;
+        }
+
+        .reveal .step-subtitle h1 {
+            letter-spacing: 1px;
+        }
+
+        .reveal .step-subtitle h2,
+        .reveal .step-subtitle h3 {
+            text-transform: none;
+            font-style: italic;
+            font-weight: normal;
+            /* font-weight: 400; */
+            /* font-family: 'Amiri', serif; */
+            font-family: 'Lobster', serif;
+            letter-spacing: 1px;
+            color: #2aa198;
+            text-decoration: underline;
+        }
+
+        .reveal .front-page h1,
+        .reveal .front-page h2 {
+            font-family: "League Gothic";
+            font-style: normal;
+            text-transform: uppercase !important;
+            letter-spacing: 1px;
+        }
+
+        .reveal .front-page h1 {
+            font-size: 2.5em !important;
+        }
+
+        .reveal .highlight {
+            background-color: #D3337B;
+            color: white;
+        }
+
+        .reveal section img {
+            background: none;
+        }
+
+        .reveal img.with-border {
+            border: 1px solid #586e75 !important;
+            box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .reveal li {
+            margin-bottom: 8px;
+        }
+
+        /* For li's that use FontAwesome icons as bullet-point */
+        .reveal ul.fa-ul li {
+            list-style-type: none;
+        }
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+<!-- <section data-markdown class="todo">
+        <textarea data-template>
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+        <textarea data-template>
+
+## Networks for Tabular and Structured data
+### Fully Connected layers
+
+</textarea>
+</section>
+
+<section>
+        <h3>Example: Customer Data - Risk of Accidents</h3>
+        <img src="img/insurance/all.png" height="400px" class="fragment">
+        <p class="fragment">
+            <small>How would you rank me (48) for a car having 100 mph top speed, driving 10k miles per year?</small>
+        </p>
+    </section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Sample Data
+
+<div style="max-width: 50%; float: left;">
+    <img src='img/insurance/df_head.jpg' height="450">
+</div>
+<div style="max-width: 50%; float: right;">
+
+<br>
+<br>
+<br>
+<ul>
+    <li>0 - red: many accidents</li>
+    <li>1 - green: few or no accidents</li>
+    <li>2 - yellow: in the middle</li>
+</ul>
+</div>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Classification vs Regression
+
+_Regressions predict a quantity, and classifications predict a label_
+
+1. Regression: Fitting a line through data points
+2. Classification: What category can be derived from data
+
+<img src="img/classification.jpg" height="300px">
+
+<small>
+
+_What type of problem are we dealing with here?_
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### You state your problem as an optimization
+
+* arbitrary input and output
+* freely choose hidden complexity
+* auto derivation libraries find gradients
+* loss function determines what you are after
+* based on gradients and loss they tune the parameters of your model
+        
+</textarea>
+</section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+## Architecture of our model
+
+* How does the input look like?
+* And the output?
+* How to to connect them?
+* How to encode our data to match the network structure?
+
+_Key to architecture: What do we want to predict and what do we have as input?_
+    </textarea>
+    </section>
+
+ 
+<section data-markdown>
+        <textarea data-template>
+### What goes in?
+
+<img src='img/insurance/data_encoding.jpg'>
+
+_For our example this is the easiest part - straight forward_
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Exercise on Paper
+
+_Discuss with your neighbors_
+
+Two questions
+1. How would you model the output layer?
+1. How do you encode the categorical output?
+
+<div></div>
+<img src='img/categorical-output.png' height="300px">
+
+_Choose or fill in your solution_
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### What comes out?
+
+<img src='img/insurance/encoding2.jpg' height="400">
+
+_The most common solution - predict probabilities, train with one-hot, use max to get category_
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Role of the Hidden Layer(s)
+
+<img src='img/insurance/encoding3.jpg'>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### How loss is computed
+
+<img src='img/computing_loss.png' height="500px">
+
+<small>
+Dependencies to parameters are tracked and parameters tweaked by optimizer to bring loss down
+</small>
+</textarea>
+</section>
+
+<section data-markdown style='font-size: xx-large'>
+    <textarea data-template>
+### Local minima?
+
+* local optimal points in the objective landscape almost always lay in saddle-points or plateaus rather than valleys
+* there is always a subset of dimensions containing paths to leave local optima and keep on exploring
+
+<img src='img/optimization-landscape-shape.png'>  
+
+<small>
+
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
+https://arxiv.org/abs/1406.2572
+<br>
+https://www.offconvex.org/2016/03/22/saddlepoints/
+
+</small>
+    </textarea>
+</section>
+
+<section data-markdown style='font-size: x-large'>
+    <textarea data-template>
+### Intuition for the learning process
+
+_network stretches and folds the paper until it can find a line to separate red from blue_
+
+<img src='img/layers.gif' height="450">
+<!-- <img src='img/layer-linear.jpg' height="450"> -->
+
+<small>
+
+https://twitter.com/random_forests/status/1084618439602298881
+<br>
+http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
+<br>
+https://cs.stanford.edu/people/karpathy/convnetjs/
+<br>
+https://brohrer.github.io/what_nns_learn.html
+</small>
+</textarea>
+</section>
+
+<section>
+    <h3>Next step: Encode this with Keras Layers</h3>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Sequential Model        
+model = keras.Sequential()
+        </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# Input Layer        
+model.add(Input(name='input', shape=(num_features,)))
+</code></pre>
+                
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Fully Connected Hidden Layer        
+model.add(Dense(name='hidden', units=500, activation='relu'))
+</code></pre>
+
+        <pre><code contenteditable data-trim class="fragment line-numbers python">
+# Softmax Output Layer            
+model.add(Dense(name='output', units=num_categories, activation='softmax'))
+        </code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# uses sparse instead of a one-hot-encoding    
+model.compile(loss='sparse_categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# train the model    
+model.fit(X, y)</code></pre>
+        
+    <small>
+            <a href="https://www.tensorflow.org/beta/guide/keras">
+                https://www.tensorflow.org/beta/guide/keras
+            </a>
+    </small>
+</p>
+</section>
+
+<!-- <section data-markdown>
+        <textarea data-template>
+<h3>What does the neural network learn?</h3>
+<p>Optimal values of weights (+biases) for all neurons</p>
+<pre><code contenteditable data-trim class="line-numbers python">
+model.summary()</code></pre>
+<pre><code contenteditable data-trim class="line-numbers python">
+_________________________________________________________________
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+hidden1 (Dense)              (None, 50)                200       
+_________________________________________________________________
+softmax (Dense)              (None, 3)                 153       
+=================================================================
+Total params: 353
+Trainable params: 353
+Non-trainable params: 0
+_________________________________________________________________</code></pre>
+
+</textarea>
+</section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Loss over time while training
+
+<img src='img/insurance/loss.png'>
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Evaluation Metrics: Accuracy
+
+<script type="math/tex; mode=display">
+accuracy = {\frac {correct\;predictions}{number\;of\;samples}}
+</script>
+
+_often given for training and test data separately_
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Accuracy over time while training
+
+<img src='img/insurance/accuracy.png'>
+
+    </textarea>
+    </section> -->
+
+
+<section data-markdown>
+        <textarea data-template>
+## Exercise
+
+_Create the TensorFlow model and at make it train_
+
+* We will start with the notebook provided and go though it step by step
+* Write down a model that trains at least a bit
+* Make sense of the trainable parameters of your model
+* How many hidden layers?
+* How many neurons per layer?
+* How good can you get?
+
+<small>
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
+
+</small>
+    </textarea>
+    </section>
+
+<section data-markdown style='font-size: xx-large'>
+    <textarea data-template>
+### How big should your network be?
+
+* Universal Approximation Theorem: 
+one hidden layer containing a finite number of neurons can approximate any continuous functions to arbitrary accuracy
+  * does not guarantee whether the model can be trained or generalizes properly
+* There exists a two-layer neural network with ReLU activations 
+and _2n+d_ weights that can represent any function on a sample of _size n_ in _d dimensions_
+  * can learn unstructured random noise perfectly
+* these are theoretical insights
+  * what really works needs to be shown by experiment
+  * more layers might reduce overall number of neurons
+  * 2-3 hidden layers is a good rule of thumb
+
+<small>
+
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
+https://arxiv.org/abs/1611.03530
+
+</small>
+    </textarea>
+</section>
+    
+<section data-markdown>
+        <textarea data-template>
+### Generalization
+#### how are algorithms able to learn predictors from a training sample to make accurate predictions out-of-sample
+
+_We do not have any idea how well our model performs in the real world, yet_
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Supervised Learning Process Flow
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Training
+
+<img src='img/flow-train.jpg'>
+
+    </textarea>
+    </section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Use some training data for validation
+
+<img class='fragment' src='img/insurance/generalization1.jpg'>
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Prediction
+
+<img src='img/flow-prediction.jpg' height="500">
+
+    </textarea>
+    </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Splitting data sets
+
+<pre><code contenteditable data-trim class="line-numbers python">
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = 
+    train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+</code></pre>
+
+<small>
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-training.ipynb
+
+</small>
+
+<small>
+In the real world, test and training often are split anyway and come from different sources    
+</small>
+    </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+## Regularization
+    </textarea>
+</section>
+
+<section id='overfitting'>
+        <h3>The Issue: Overfitting</h2>
+    <div>
+    <div style="float: left">
+        <img src="img/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
+        <p>
+            <small><em>Training Score</em></small>
+        </p>
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='5'>
+        <img src="img/elements/down.jpg" height="200">
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='4'>
+        <img src="img/elements/up.jpg" height="200">
+    </div>
+    <div style="float: left">
+            <img src="img/elements/70_percent.jpg" height="200"  class="fragment" data-fragment-index='2'>
+            <p>
+                <small><em>Test Score</em></small>
+            </p>
+    </div>
+    </div>
+    <p style="clear: both" class="fragment" data-fragment-index='3'><em>Training and test scores clearly divert</em></p>
+
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Regularization
+
+_Process to counter overfitting_
+
+* When there are more variables than data points, 
+the problem may not have a unique solution 
+* There may be multiple (perhaps infinitely many) solutions that fit the data equally well
+* The existence of more variables than data points, 
+the existence of multiple solutions, and overfitting often coincide
+
+<small>
+
+https://stats.stackexchange.com/questions/223486/modelling-with-more-variables-than-data-points/223517#223517
+
+</small>
+            </textarea>
+            </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### First measure: Train for fewer epochs
+
+<img src='img/accuracy.png'>
+
+_Watch where training and validation accuracy diverge and stop training there_
+
+<small>
+Early stopping possible: 
+<br>
+
+https://keras.io/callbacks/#earlystopping
+<br>
+https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping
+
+</small>    
+
+            </textarea>
+            </section>
+    
+<section id='overfitting-capacity'>
+        <h3>Second measure: Reduce capacity of model</h2>
+    <div style="float: left; width: 400px" class="fragment" data-fragment-index='1'>
+        <img src="img/elements/model-large.jpg" height="200">
+        <p>
+            <small><em>Original model</em></small>
+        </p>
+    </div>
+    <div style="float: left; width: 200px" class="fragment" data-fragment-index='2'>
+        <br>
+        <img src="img/elements/right.jpg">
+        <br>
+    </div>
+    <div style="float: left; width: 500px"   class="fragment" data-fragment-index='3'>
+            <br>
+            <img src="img/elements/model-small.jpg" height="100">
+            <br>
+            <br>
+            <p>
+                <small><em>Smaller model</em><br>less hidden layers, less neurons per layer</small>
+            </p>
+    </div>
+    <p style="clear: both" class="fragment" data-fragment-index='4'><em>Intuition: Give model less capacity to simply memorize data</em></p>
+    </section>
+
+<section id='overfitting-dropout'>
+        <h3>Third measure: Use Dropout</h2>
+            <p><em>Dropouts only train a certain percentage of neurons per batch</em></p>
+    <div style="float: left; width: 400px" class="fragment" data-fragment-index='1'>
+        <img src="img/elements/model-large.jpg" height="225">
+        <p>
+            <small><em>Original model</em></small>
+        </p>
+    </div>
+    <div style="float: left; width: 200px" class="fragment" data-fragment-index='2'>
+        <br>
+        <img src="img/elements/right.jpg">
+        <br>
+    </div>
+    <div style="float: left; width: 500px"   class="fragment" data-fragment-index='3'>
+            <br>
+            <img src="img/elements/model-emsemble.jpg" height="100">
+            <br>
+            <br>
+            <p>
+                <small><em>Ensemble of small models</em> (each one overfits on its specific batch)<br></small>
+            </p>
+    </div>
+    <p style="clear: both" class="fragment" data-fragment-index='4'><em>Intuition: Combination of models makes result more robust</em></p>
+    </section>
+
+    <section data-markdown id='overfitting-bn'>
+            <textarea data-template>
+### Fourth measure: Batch Normalization
+
+* Subtracts batch mean
+* Multiplies by standard deviation     
+    
+_Intuition: Makes model robust by adding noise_
+
+_Bonus:_ Lets model train faster by fighting vanishing gradients</small>
+<small>
+
+http://gradsci.org/batchnorm
+<br>
+https://www.youtube.com/watch?v=ZOabsYbmBRM
+<br>
+Batch Norm is often frowned upon, because it is brittle magic and a small change in implementation can cause a big effect: https://twitter.com/martin_wicke/status/1092217017396953088
+</small>
+                </textarea>
+                </section>
+
+        <!-- <section data-markdown style="font-size: xx-large">
+            <textarea data-template>
+### Fifth approach: L1/L2 weight Regularization
+
+* make model less complex by forcing low values for weights (less complexity, more regular)
+* adds penalty term to loss function
+* L1 (Lasso Regression): penalty is proportional to the absolute value of the weights coefficients
+  * helps drive the weights of irrelevant or barely relevant features to exactly 0
+* L2 ( Ridge Regression): penalty is proportional to the square of value of the weights coefficients
+  * heavily penalizes especially large coefficients
+
+<small style="font-size: large">
+
+https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/overfit_and_underfit.ipynb#scrollTo=4rHoVWcswFLa
+<br>
+https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c    
+</small>
+                </textarea>
+                </section> -->
+
+        <!-- <section data-markdown>
+            <textarea data-template>
+### There is more
+
+_L1/L2 weight Regularization_
+
+<small style="font-size: large">
+
+https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/overfit_and_underfit.ipynb#scrollTo=4rHoVWcswFLa
+<br>
+https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c    
+</small>
+
+_Batch Size in Combination with Learning Rate_
+
+<small>
+Is there a comprehensive review on the effect of SGD batchsize on generalization?
+
+I've seen papers arguing that large batch GD does not generalise, and also papers that argue the opposite or say the generalisation gap is not all that bad for large-batch SGD. So which one is it?
+(https://twitter.com/fhuszar/status/1161932346947489794?s=03)
+</small>
+
+              </textarea>
+                </section> -->
+                
+
+    <section data-markdown>
+            <textarea data-template>
+### New School of Generalization
+
+<img src='img/Bias-Variance-Tradeoff.png'>
+
+<small>
+
+https://arxiv.org/abs/1812.11118
+<br>
+https://twitter.com/IanOsband/status/1164900840106274817
+</small>
+                </textarea>
+            </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Typically you don't have a lot of data
+
+<img src='img/data-and-the-world.jpg' height="550px">
+    </textarea>
+</section>
+
+                <section data-markdown>
+            <textarea data-template>
+### Final measure: Get more training data
+
+_if you can_
+
+if not
+* try augmenting existing data
+* use transfer learning
+              </textarea>
+                </section>
+
+<section data-markdown>
+        <textarea data-template>
+### This is how overfitting looks like
+
+<div style="float: left">
+<img src='img/insurance/overfit-loss.png' height="300px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/insurance/overfit-accuracy.png' height="300px"><br>
+Accuracy
+</div>
+
+</textarea>
+</section>
+
+<section data-markdown class="smaller">
+        <textarea data-template>
+## Exercise
+
+_Regularize your model_
+
+* Find out how to apply those regularizations from the notebooks supplied
+* You can just as well start with this notebook
+* Make sure you are optimizing for test, not for train score
+* How good can you get?
+<!-- * Advanced: 
+  1. Add Early Stopping Callback
+  1. Add L1/L2 weight Regularization to your model
+     * Run notebook from previous slide to see how this works -->
+
+<small>
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-reg.ipynb
+
+</small>
+    </textarea>
+    </section>
+
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Best known model using 3 dimensions
+
+Up to 80% of accuracy
+
+<small>
+
+https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
+
+</small>
+</textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Is 80% good?
+
+_you need to understand the business problem to decide_
+
+* How accurate does my model really need to be? What kind of false positive rate is acceptable?
+* What data can I use? If you’re predicting flight days tomorrow, you can look at weather data, but if someone is buying a flight a month from now then you’ll have no clue.
+<small>
+
+https://jvns.ca/blog/2014/06/19/machine-learning-isnt-kaggle-competitions/    
+https://towardsdatascience.com/measuring-model-goodness-part-1-a24ed4d62f71
+</small>
+    
+</textarea>
+    </section>
+
+    
+<section data-markdown style="font-size: xx-large" class="fragments">
+    <textarea data-template>
+## Practical Advice from Olli
+
+* Accuracy should be actionable
+* Overfit on a small subset
+* Have clear input and output
+* Could a human learn from that data?
+* Train/Test Split
+* Fight overfitting
+* Start small and humble
+* Make incremental changes to something that works in some way
+* Use a baseline so you know what is possible
+* Once you have anything working, save it as a copy
+
+<!-- After production:
+* You are never done
+* Going into production is not the end of the story
+* Don't let your model go stale -->
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Words from François Chollet
+
+<img src='img/fcholett-acc.png' height="500">
+
+<small>
+
+https://twitter.com/fchollet/status/1176625911036145666
+    </small>
+</textarea>
+</section>
+
+
+
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+    
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: false,
+            history: true,
+            center: true,
+            width: 1100,
+
+            transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>
