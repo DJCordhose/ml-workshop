@@ -429,6 +429,134 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </section>
 
 <section data-markdown>
+    <textarea data-template>
+# General Concepts
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Generalization
+
+<img src='img/data-and-the-world.jpg' height="500px">
+
+<small>
+
+https://twitter.com/DJCordhose/status/1256950659653480448
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Even seemingly simple tasks are so far unsolved
+
+recognizing digits and numbers in natural scene images
+
+<img src='img/house_numbers.png' height="450px">
+
+<small>
+
+http://ufldl.stanford.edu/housenumbers/
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Concepts: Metrics        
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Regression Metric
+
+R2
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Basic Classification Metric
+
+<script type="math/tex; mode=display">
+accuracy = {\frac {correct\;predictions}{number\;of\;samples}}
+</script>
+
+_often given for training and test data separately_
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Demo: Anomagram 
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragment">
+    <textarea data-template>
+### What would you rather have?
+
+1. Attest a heart anomaly to someone who has none (aka Precision)
+1. Miss an actual anomaly (aka Recall, hit-rate)
+
+    </textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Reference: Metrics
+
+* _Precision_: percentage of positive predictions that are correct
+    * true positive / true positive + _false positive (predicted as true, but is false)_
+* _Recall_ (aka hit rate): proportion of actual positives that were correctly predicted
+    * true positive / true positive + _false negative (predicted as false, but is true)_
+* low enough threshold will yield excellent recall but reduced precision
+* F1 score is the harmonic mean of the precision and recall
+
+<small>
+
+https://zackakil.github.io/precision-recall-playground/
+<br>
+https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
+<br>
+https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Experiment with Metrics  
+
+<a href='https://zackakil.github.io/precision-recall-playground/'>
+<img src='img/metrics.png' height="400">
+</a>
+<small>
+
+https://zackakil.github.io/precision-recall-playground/
+</small>
+</textarea>
+</section>
+
+
+
+<section data-markdown>
         <textarea data-template>
 # Finally
     
@@ -482,36 +610,6 @@ _All the shown examples are highly idealised_
 * Struggle to find/get good quality data in the first place 
             </textarea>
         </section>
-        
-<section data-markdown>
-    <textarea data-template>
-### Typically you don't have a lot of data
-
-<img src='img/data-and-the-world.jpg' height="500px">
-
-<small>
-
-https://twitter.com/DJCordhose/status/1256950659653480448
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-#### Even seemingly simple tasks are so far unsolved
-
-recognizing digits and numbers in natural scene images
-
-<img src='img/house_numbers.png' height="450px">
-
-<small>
-
-http://ufldl.stanford.edu/housenumbers/
-</small>
-    </textarea>
-</section>
-
-
 
 <section data-markdown style="font-size: large">
     <textarea data-template>
@@ -591,7 +689,7 @@ _Image Data / Convolutional Networks_
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ### More great stuff
 
