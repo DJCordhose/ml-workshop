@@ -263,89 +263,6 @@ Tools
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-### What is Deep Learning?
-
-_Yann LeCun:_
-* DL is constructing networks of parameterized functional modules & training them from examples using gradient-based optimization
-* A multi-layer neural net trained with backprop is, of course, a special instance of DL. 
-Although, a NN with only one hidden layer is a little too simple to deserve the  adjective "deep".
-
-<small>
-
-https://twitter.com/ylecun/status/1209497021398343680
-https://twitter.com/ylecun/status/1209621242652844032
-https://www.facebook.com/722677142/posts/10156463919392143/
-https://www.facebook.com/yann.lecun/posts/10155003011462143    
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### What is Deep Learning?
-
-_François Chollet:_
-* DL is the idea of doing representation learning via a chain of learned feature extractors
-* It's all about describing some input data via *deep hierarchies of features*, where features are *learned*
-* It does not need to use gradient-based optimization
-
-<small>
-
-https://twitter.com/fchollet/status/1210031900695449600
-https://twitter.com/fchollet/status/1210126376101130241
-
-</small>
-</textarea>
-</section>
-
-
-<section data-markdown style="font-size: xx-large">
-    <textarea data-template>
-## Practical advice from a master of his craft
-
-_Challenges of training neural nets_
-1. Neural net training is a leaky abstraction - you need to understand what is going on
-1. Neural net training fails silently - the possible error surface is large
-
-_The recipe_
-1. Understand your data
-1. Make one simple experiment after the other
-1. Make your model good / large enough to overfit on a batch
-1. Regularize on full data set
-1. Tune and scrape the barrel
-
-<small>
-
-https://karpathy.github.io/2019/04/25/recipe/    
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Challenges of Deep Learning
-
-* deep learning is more an art than a science
-* we can provide guidelines as to what is likely to work or not
-* ultimately every problem is unique 
-* you will have to try and evaluate different strategies empirically
-* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
-* You must try and iterate
-
-<small>
-
-François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
-
-</small>
-
-</textarea>
-</section>
-
-
 <section data-markdown style="font-size: xx-large;">
         <textarea data-template>
 ### Interactive, online introduction to Neural Networks with TensorFlow
@@ -434,6 +351,31 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 </textarea>
 </section>
+
+<section data-markdown class="hide">
+    <textarea data-template>
+### Time for some bad news
+
+<img src='img/weird-val-accuracy.png'>
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large" class="hide">
+    <textarea data-template>
+### The real world looks different
+
+_All the shown examples are highly idealised_
+* Training often behaves much less graceful in the real world
+* it does not train linearly
+* sudden jumps in loss can occur any time
+* can take forever to train
+* might ruin your night sleep and family live (let me just quickly check on the training progress) 
+* Real world data might not match training data
+* You might not even know the real data
+* Struggle to find/get good quality data in the first place 
+        </textarea>
+    </section>
 
 <section data-markdown>
     <textarea data-template>
@@ -554,6 +496,87 @@ https://zackakil.github.io/precision-recall-playground/
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### What is Deep Learning?
+
+_Yann LeCun:_
+* DL is constructing networks of parameterized functional modules & training them from examples using gradient-based optimization
+* A multi-layer neural net trained with backprop is, of course, a special instance of DL. 
+Although, a NN with only one hidden layer is a little too simple to deserve the  adjective "deep".
+
+<small>
+
+https://twitter.com/ylecun/status/1209497021398343680
+https://twitter.com/ylecun/status/1209621242652844032
+https://www.facebook.com/722677142/posts/10156463919392143/
+https://www.facebook.com/yann.lecun/posts/10155003011462143    
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What is Deep Learning?
+
+_François Chollet:_
+* DL is the idea of doing representation learning via a chain of learned feature extractors
+* It's all about describing some input data via *deep hierarchies of features*, where features are *learned*
+* It does not need to use gradient-based optimization
+
+<small>
+
+https://twitter.com/fchollet/status/1210031900695449600
+https://twitter.com/fchollet/status/1210126376101130241
+
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+## Practical advice from a master of his craft
+
+_Challenges of training neural nets_
+1. Neural net training is a leaky abstraction - you need to understand what is going on
+1. Neural net training fails silently - the possible error surface is large
+
+_The recipe_
+1. Understand your data
+1. Make one simple experiment after the other
+1. Make your model good / large enough to overfit on a batch
+1. Regularize on full data set
+1. Tune and scrape the barrel
+
+<small>
+
+https://karpathy.github.io/2019/04/25/recipe/    
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Challenges of Deep Learning
+
+* deep learning is more an art than a science
+* we can provide guidelines as to what is likely to work or not
+* ultimately every problem is unique 
+* you will have to try and evaluate different strategies empirically
+* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
+* You must try and iterate
+
+<small>
+
+François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
+
+</small>
+
+</textarea>
+</section>
 
 
 <section data-markdown>
@@ -586,31 +609,6 @@ https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-expl
 </textarea>
 </section>
 
-<section data-markdown class="hide">
-        <textarea data-template>
-### Time for some bad news
-
-<img src='img/weird-val-accuracy.png'>
-
-</textarea>
-</section>
-
-<section data-markdown style="font-size: xx-large" class="hide">
-        <textarea data-template>
-### The real world looks different
-
-_All the shown examples are highly idealised_
-* Training often behaves much less graceful in the real world
-  * it does not train linearly
-  * sudden jumps in loss can occur any time
-  * can take forever to train
-  * might ruin your night sleep and family live (let me just quickly check on the training progress) 
-* Real world data might not match training data
-* You might not even know the real data
-* Struggle to find/get good quality data in the first place 
-            </textarea>
-        </section>
-
 <section data-markdown style="font-size: large">
     <textarea data-template>
 
@@ -632,7 +630,7 @@ _Sequential Data / RNN_
 * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-basics.ipynb
 * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-advanced.ipynb
 * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-time-series.ipynb
-<!-- * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb -->
+* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
 
 _Image Data / Convolutional Networks_
 * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-images.ipynb
