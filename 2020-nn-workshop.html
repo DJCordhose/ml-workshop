@@ -440,16 +440,45 @@ https://twitter.com/mikiobraun/status/1260115051417124869
 <section data-markdown>
     <textarea data-template>
 ## Concepts: Metrics        
+
+* Loss functions need to be differentiable
+* This often restricts how speaking they are in terms of business value
+* Metrics do not have that restriction, but take the same parameters
+
     </textarea>
 </section>
 
-<section data-markdown class="todo">
+<section data-markdown>
     <textarea data-template>
-### Regression Metric
+### Regression Metric: R<sup>2</sup>
 
-R2
+_loosely speaking: how much better is this than predicting the constant mean_
+
+* 0 would mean just as good
+* 1 is perfect
+* neg. would mean even worse
+* it can become arbitrarily worse
+
+<small>
+
+https://en.wikipedia.org/wiki/Coefficient_of_determination
+</small>
     </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Understanding R<sup>2</sup>
+
+<img src='img/r2.png' height="450">
+
+<small>
+    
+CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg
+</small>
+    </textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
