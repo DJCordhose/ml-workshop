@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Workshop Grundlagen von KI</title>
+
+    <meta name="description" content="Workshop Grundlagen von KI">
+    <meta name="author" content="Oliver Zeigermann">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                        letter-spacing: 2px;
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                color: black !important;
+             }       
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+ <section data-markdown class="todo">
+    <textarea data-template>
+- notebook links auf dieses Repo und Notebooks anpassen
+- Übung 2 in Mural umbauen
+- bit.ly-Link
+- Mural Raum kopieren und URL anpassen 
+    </textarea>
+</section>
+
+<section>
+    <h2>Einführung in Machine Learning</h2>
+    <h3>Für Software-Entwickler</h3>
+    <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+        <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+    </h4>
+    <p>Slides <a href="http://bit.ly/ml-oop-2020-intro">
+        http://bit.ly/ml-oop-2020-intro
+    </a></p>
+
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Our Scenario for today: Predicting Risk
+
+* We are CTO of a highly innovative Car Insurance Company
+* Different from other insurance companies we determine the rate by the actual number of accidents per customer
+* _Objective: how many accidents will prospective customers have?_ 
+
+<img src='img/pixabay/accident-151668_1280.png' height="300px">
+    </textarea>
+</section>
+
+<section>
+<h3>Classification based on known data</h3>
+<img src="img/applications/all.png" height="500px" class="fragment">
+</section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Exercise \#1 : Manually separate areas of different customer types
+
+_team up and discuss with your team_
+
+* <a id='ex1-gr1'>Team 1</a>
+* <a id='ex1-gr2'>Team 2</a> 
+* <a id='ex1-gr3'>Team 3</a> 
+* <a id='ex1-gr4'>Team 4</a> 
+
+_Exercise in Mural App_
+
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Exercise I Understanding the Supervised Learning Approach
+
+
+_bear in mind, you want to use this for prediction_
+
+<a href='exercise/2020-applications.pdf'>Exercise as PDF</a>
+</textarea>
+    </section> -->
+
+<section data-markdown >
+<textarea data-template>
+### Two Sample Solutions
+
+<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
+<small>
+Are they the same? What is the key difference?
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown id='supervised-2'>
+<textarea data-template>
+## Core Question
+
+### Can we automate this process of drawing Decision Boundaries?
+</textarea>
+</section>
+ -->
+<section data-markdown>
+<textarea data-template>
+## How to solve this programmatically?
+    </textarea>
+    </section>
+
+    <!-- <section data-markdown id='supervised-2'>
+        <textarea data-template>
+    <img src='img/classic-development.jpg'>
+        </textarea>
+        </section> -->
+    
+    
+<section style="font-size: larger;">
+<h3>Programmer's approach: Code Rules by Hand</h3>
+<div class="fragment">
+<pre><code contenteditable data-trim class="line-numbers python">
+def calculate_risk(age, speed):
+    if age < 25:
+        if speed > 110:
+            return high  # young people, fast cars
+        else:
+            return medium # young people
+    </code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    if age > 70:
+        return high # seniors</code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    if speed > 145:
+        return high # fast cars in general</code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
+    return low # otherwise</code></pre>
+</div>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### How good is this?
+
+* Is it better than guessing?
+* Are all the rules correct?
+* Are some missing?
+* How would we even know?
+
+</textarea>
+</section>                    
+
+<section data-markdown>
+<textarea data-template>
+### How good is our Rule based approach?
+
+Plotting the predictions as a background
+
+<img src='img/applications/rules.png' class="fragment" height="450px">
+<br>
+<small class="fragment">approx. 57% predictions correct</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Baseline to understand if our score is good
+
+<img src="img/applications/random.png" height="450px"  class="fragment">
+
+<small  class="fragment">only gets 33% right</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Do we really have to write those rules by hand?
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/supervised-ml.jpg' height="650px">
+</textarea>
+</section>
+
+<section data-markdown >
+    <textarea data-template>
+### Step I
+## Data Preparation
+</textarea>
+</section>
+
+<section data-markdown >
+        <textarea data-template>
+### Data is King
+
+_collecting data might be the hardest part of the job_
+
+* but also the most important
+* no data, not good quality or quantity => no supervised machine learning
+* if we have a simulator, reinforcement learning might be an option
+    
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### Data and Process are king                    
+
+<img src='img/googleml/model-architecture-not-important.jpg'>
+
+<small>
+
+https://developers.google.com/machine-learning/guides/rules-of-ml/    
+</small>                    
+        </textarea>
+    </section>
+
+
+
+<section data-markdown >
+    <textarea data-template>
+### Clean Data and Select Features
+
+<img src='img/insurance/data.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Exercise \#2 - Data Cleaning and Feature Selection
+
+_Data Cleaning_
+* What errors do you find in the data? Mark on paper and describe
+* How to deal with those errors?
+
+_Feature Selection_
+* Which column would you predict? Do you like its encoding?
+* Which columns would you use as input for training?
+* Would you use all columns? If not, why?
+* Which columns have the most predictive power?
+
+<!--
+- Datendopplung Zeile 4/5 => eine löschen
+- Fehlender Wert Zeile 16 => Zeile löschen oder Durchschnitt
+- Spalte 'state' mit mehr als 50% fehlenden Werten
+- Zeile 23 Ausreißer: Zeile löschen oder auf plausiblen Wert korrigieren 
+- Zeile 24: Califorina
+-->
+
+
+    </textarea>
+        </section>
+
+
+<section data-markdown style="font-size: xx-large" >
+        <textarea data-template>
+### Results: Data Cleaning und Feature Selection
+
+_Data Cleaning_
+* Typos: Califorina
+* Outliers: Delete line or replace with decent value
+* Doubles: Delete
+* Missing Value: Delete line or replace with imputed value
+
+_Feature Selection_
+* Make sure which value to predict
+* Row missing more than 50% of values: do not use
+* Explore dependencies to decide what to use for training input
+            </textarea>
+            </section>
+
+<section data-markdown >
+    <textarea data-template>
+### Step II
+## Exploratory Data Analysis and Checking 
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Pairplot
+<img src='img/applications/scatter.png' height="550px">
+
+</textarea>
+</section>
+
+    <section data-markdown>
+    <textarea data-template>
+### Basic Statistical Metrics 
+
+<img src='img/insurance/df_describe.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Linear correlations
+
+<img src='img/insurance/cm.png' height="550px">
+
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Working with Colab Notebooks
+
+https://colab.research.google.com
+    </textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+### Exercise \#3: Run your first Colab Notbook
+
+* In a first pass we will go through the notebook together
+* Open the notebook and sign into your Google account or register a new one 
+* Execute the analysis above in the notebook
+* Save your notebook in your Google Drive (or on Github if you want to)
+
+<small>Notebook: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Discussion
+
+1. which feature has the most predictive power and 
+1. which has the lowest?
+1. which features shall we use for training?
+
+_Is there anything else you find interesting or surprising?_
+
+
+    </textarea>
+        </section>
+
+<section data-markdown >
+    <textarea data-template>
+### Step III
+## Training
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Revisiting our Rule based approach
+
+Plotting the predictions as a background
+
+<img src='img/applications/rules.png' height="450px">
+<br>
+<small>approx. 56% predictions correct</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Decision Trees can learn such rules (simplified)
+
+<img src="img/applications/tree_interp.png">
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### How is the Decision Tree being Constructed?
+
+We are using the CART algorithm:
+* top-down split the set of examples into two new sets
+* choose a variable and a value at each step that best splits our customer example
+* terminal node when no further gain possible or regularization kicks in 
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What is the best split?
+
+* choose a feature to split on (either random or best)
+* assign a category to each node containing a certain set of samples
+* use a metric (Gini or Entropy) to decide how good a node would be based on that category
+* sum up weighted metric for both child nodes
+* optimize the split for that summed metric
+
+<small>
+
+https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
+
+</small>
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+### How is the Decision Tree being Constructed?
+
+<img src="img/cart.png" height=500>
+
+<small>
+    
+http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart
+</small>
+</textarea>
+</section>
+
+
+<section>
+<h3>Decision Boundaries for our Decision Tree</h3>
+<div>
+
+<img src="img/applications/dt-test.png">
+<small>Up to 70% accuracy on unknown data</small>
+</div>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Complete tree for plot on previous slide
+
+<img src="img/applications/tree_shallow.png">
+</textarea>
+</section>
+
+<section style="font-size: larger;">
+<h3>Code in Scikit-learn</h3>
+
+<p>Training</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X, y)
+        </code></pre>
+    
+<p>Prediction</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+y_pred = clf.predict(input)
+    </code></pre>
+
+<small>
+<a href='https://scikit-learn.org/stable/modules/classes.html'>https://scikit-learn.org/stable/modules/classes.html</a>
+<br>
+<br>
+<a href='https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb'>
+    https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</a>
+</small>
+    </section>
+
+    <section data-markdown>
+<textarea data-template>
+### Exercise \#4: Train a Decision Tree
+
+* Stay in the same notebook as before
+* Execute more cells until the notebook tells you to stop
+* Train the model and see how it would classify yourself
+* Save your notebook in your Google Drive (or on Github if you want to)
+
+<small>Notebook: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## coup de theatre
+### sudden sensational turn in a play
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Step IV
+## Evaluation
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Machine Learning is all about Generalization
+
+1. Learn from known data
+1. _Make predictions on unknown data_
+
+
+            </textarea>
+            </section>
+
+<section data-markdown>
+<textarea data-template>
+### Data and the Real World
+
+<img src='img/data-and-the-world.jpg' height="550px">
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### So Supervised Machine Learning is all about the data you have not seen, yet
+## How to make sure your classification works well on unseen data?
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### The trick: Split known data
+
+<img class='fragment' src='img/generalization.jpg' height="550px">
+
+</textarea>
+</section>
+
+<!-- 
+- Unlock all
+
+For each group
+- Ungroup
+- Delect, Select first
+- Delete
+ -->
+
+     <section data-markdown>
+<textarea data-template>
+### Exercise \#5 (shared): How well did you generalize?
+
+* <a id='ex1b-gr1'>Team 1</a>
+* <a id='ex1b-gr2'>Team 2</a> 
+* <a id='ex1b-gr3'>Team 3</a> 
+* <a id='ex1b-gr4'>Team 4</a> 
+
+_What would you have done differently if you had known this is all about generalization?_
+
+<small>
+Olli muss folgendes für jede Gruppe tun: unlock, ungroup, deselect, select first, delete    
+</small>
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Gemeinsame Übung Ib: Wie gut haben wir generalisiert?
+
+* <a id='ex1b-gr1'>Gruppe 1</a>
+* <a id='ex1b-gr2'>Gruppe 2</a> 
+* <a id='ex1b-gr3'>Gruppe 3</a> 
+* <a id='ex1b-gr4'>Gruppe 4</a> 
+
+_Hättest du etwas anders gemacht wenn du von vorn herein gewusst hättest, dass es um Generalisierung geht?_
+
+<small>
+Olli muss folgendes für jede Gruppe tun: unlock, ungroup, deselect, select first, delete    
+</small>
+</textarea>
+</section> -->
+
+
+<section data-markdown >
+<textarea data-template>
+### Remember the two sample solutions?
+
+<img src='img/decision-boundaries/decision-boundaries-train.jpg'>
+<small>
+Are they the same? What is the key difference?
+</small>
+</textarea>
+</section>
+
+<section data-markdown >
+<textarea data-template>
+### Now on test data
+
+<img src='img/decision-boundaries/decision-boundaries-test.jpg'>
+<small>
+Which one is better? Why?
+</small>
+</textarea>
+</section>
+
+<section id='overfitting'>
+        <h3>The Issue: Overfitting</h2>
+    <div>
+    <div style="float: left">
+        <img src="img/elements/80_percent.jpg" height="200" class="fragment" data-fragment-index='1'>
+        <p>
+            <small><em>Training Score</em></small>
+        </p>
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='5'>
+        <img src="img/elements/down.jpg" height="200">
+    </div>
+    <div style="float: left" class="fragment" data-fragment-index='4'>
+        <img src="img/elements/up.jpg" height="200">
+    </div>
+    <div style="float: left">
+            <img src="img/elements/70_percent.jpg" height="225"  class="fragment" data-fragment-index='2'>
+            <p>
+                <small><em>Test Score</em></small>
+            </p>
+    </div>
+    </div>
+    <p style="clear: both" class="fragment" data-fragment-index='3'><em>Training and test scores clearly divert</em></p>
+
+    </section>
+
+<section>
+<h3>A different setting: this generalizes well, but has another issue</h3>
+
+<div style="max-width: 50%; float: left;">
+    <img src='img/decision-boundaries/underfit-train.jpg' height="300">
+    <small>Training Data</small>
+</div>
+<div style="max-width: 50%; float: right;">
+    <img src='img/decision-boundaries/underfit-test.jpg' height="300">
+    <small>Test Data</small>
+    </div>
+    
+    
+<p style="clear: both;" class="fragment">
+    <em>
+If both test and training are pretty bad, this is called <em>underfitting</em>
+</em>
+</p>
+        </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Regularization
+
+_Process to counter overfitting_
+
+Each ML strategy has its own means of Regularization, e.g.
+* KNN: more neighbors
+* Decision Trees: reduce depth, use ensembles
+* NN: Dropout, Batch Normalization, Reduced Capacity, Reduced Training Time
+            </textarea>
+            </section>
+
+<section data-markdown>
+<textarea data-template>
+### Example: Regularization on complex decision tree
+
+<img src="img/applications/tree_deep.png">
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Reduced depth
+
+<img src="img/applications/tree_shallow.png">
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Exercise \#5: Regularize your Decision tree
+
+* Continue with your notebook from where you stopped
+* Execute the rest of the notebook
+* Change the maximum depth, maximum number of leaves, and minimum samples per leaf of the decision tree to fight overfitting
+* What is your best depth?
+* How do the decision boundaries change?
+* What are your best scores? 
+* Save your notebook in your Google Drive (or on Github if you want to)
+
+<small>Notebook: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Supervised Learning Process Flow
+
+<img src='img/flow-train.jpg'>
+
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+        <textarea data-template>
+### When to apply Supervised Learning
+
+_classify categories or predict values_
+
+* you have matching pairs of input and output and want the model to generate output for unknown input
+* the solution to the problem at hand is unknown or hard to specify
+* solving the problem can tolerate some error or uncertainty
+* there is a clear, simple input and output
+
+_what we see applied most of the time_
+    </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Step V
+## Full Circle back to code and interpretation
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Our tree can generate back code        
+<img src='papers/iclr2020/tree.png'>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Code equivalent to tree
+
+<img src='papers/iclr2020/code.png'>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Decision path for age=20, speed=110
+
+<img src='papers/iclr2020/dtreeviz-prediction-path-fancy.png' height="600">
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise \#6: Prediction of your risk class
+
+* Find the decision path for your age and top speed of your car (or anyone else you know)
+* Can you explain the path?
+* Would you be ok with this as an explanation for your risk class when you are applying for an insurance?
+
+    </textarea>
+        </section>
+
+
+    <section>
+        <h2>Vielen Dank</h2>
+        <h3>Grundlagen von Machine Learning</h3>
+
+        <p>Bleibt gern in Kontakt</p>
+    
+        <!-- <img src='img/ML-strategy-helper.png' height="470"> -->
+        <p><a href="mailto:oliver@zeigermann.de">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+            <a href="https://www.linkedin.com/in/oliver-zeigermann-34989773">https://www.linkedin.com/in/oliver-zeigermann-34989773</a>
+        <br>
+        </p>
+        <p>Diese Folien:
+            <a href='https://bit.ly/todo'>https://bit.ly/todo</a>
+        </p>
+
+    </section>
+</div>
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        $('section:not([data-background])').attr('data-background', "background/sky.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/magnolia.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/street.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        $('.hide').remove();
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+            setMuralLinks();
+    
+        } );
+
+        function setMuralLinks() {
+
+            // Master Raum: https://app.mural.co/t/embarcagila3904/r/1587223731576
+            // Kopie https://app.mural.co/t/embarcagila3904/r/1595147626220
+
+            // Übung 1
+            const mural1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626264/964320cc0f5436dfc197675b1172fd7a22d23711`;
+            document.querySelector('#ex1-gr1').href = `${mural1}?wid=0-1587547827533`
+            document.querySelector('#ex1-gr2').href = `${mural1}?wid=0-1587548254726`
+            document.querySelector('#ex1-gr3').href = `${mural1}?wid=0-1587548196936`
+            document.querySelector('#ex1-gr4').href = `${mural1}?wid=0-1587548228170`
+
+            document.querySelector('#ex1b-gr1').href = `${mural1}?wid=0-1587547827533`
+            document.querySelector('#ex1b-gr2').href = `${mural1}?wid=0-1587548254726`
+            document.querySelector('#ex1b-gr3').href = `${mural1}?wid=0-1587548196936`
+            document.querySelector('#ex1b-gr4').href = `${mural1}?wid=0-1587548228170`
+
+            // Übung 2
+            const mural2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626289/3462f9511290ba4ec617442017429bec908cd646`;
+            document.querySelector('#ex2-gr1').href = `${mural2}?wid=0-1585142997532`
+            document.querySelector('#ex2-gr2').href = `${mural2}?wid=0-1585142936738`
+            document.querySelector('#ex2-gr3').href = `${mural2}?wid=0-1585142831779`
+            document.querySelector('#ex2-gr4').href = `${mural2}?wid=0-1585142916069`
+
+            // Übung 3: RL nur in den Folien
+
+            // Übung 4: Anwendungen finden
+            const mural4 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626260/69f70eac1c81c6c9d106d1d648dff9a8c8be4f6f`
+            document.querySelector('#ex4').href = `${mural4}`
+         
+            // Übung 5: Qualitätsmerkmale (dasselbe Mural weiter gebaut)
+            document.querySelector('#ex5').href = `${mural4}`
+
+            // Übung 5: Entscheidungsbaum Lernstrategie
+            // const mural5 = `https://app.mural.co/t/embarcagila3904/m/mlapps4048/1587223731618/db06e5986ed6e43bb9cf11e8fc7ad5d8a1c288b2`
+            // document.querySelector('#ex5-gr1').href = `${mural5}?wid=0-1586613178736`
+            // document.querySelector('#ex5-gr2').href = `${mural5}?wid=0-1586613302069`
+            // document.querySelector('#ex5-gr3').href = `${mural5}?wid=0-1586613301378`
+            // document.querySelector('#ex5-gr4').href = `${mural5}?wid=0-1586613300790`
+        }
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+        slideNumber: true,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+
+        ]
+    });
+
+</script>
+
+</body>
+</html>
