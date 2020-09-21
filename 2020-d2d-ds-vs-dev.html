@@ -142,12 +142,12 @@
 <div class="reveal">
     <div class="slides">
 
- <section data-markdown class="todo">
+ <!-- <section data-markdown class="todo">
     <textarea data-template>
 - als PDF mit Download link
 - bit.ly Link
     </textarea>
-</section>
+</section> -->
 
 <!-- 
 
@@ -172,19 +172,33 @@ zu schaffen, um in Zukunft mit mehr Spaß und Erfolg komplexe Data Science Proje
 
  -->
 
-
  <section>
     <h1>Data Scientists vs Developers?</h1>
 </section>
 
-<!-- <section data-markdown class="todo">
+ <section data-markdown style="font-size: x-large;">
     <textarea data-template>
-### Past das?
+Titel: Data Scientists vs Developers?
+Art des Vortrags: Vortrag (45 Minuten)
+Niveau: Grundlagen
+Stichwörter | Key words: Firmenkultur, Zusammenarbeit, Projektmanagement
 
-I see. Yes! Ironically, being an expert means to constantly learn and expose yourself to new stuff, so struggling is part of what the role is about. Not sure people are aware.
-(https://twitter.com/mikiobraun/status/1273260977363042305?s=09)
-</textarea>
-</section> -->
+Abstract:
+Es gibt eine erstaunliche Spannung im Bereich der Zusammenarbeit zwischen Data Scientists und Software-Entwicklern. Sie
+ist teilweise als misstrauisch, teilweise als neidisch, teilweise als verachtend zu charakterisieren. In diesem Talk
+reden Mikio und Oliver Klartext und sprechen davon was für Schwierigkeiten und Ängste sich bei der Zusammenarbeit von
+Data Scientists und Software Developern ergeben. Wo unterscheidet sich die Arbeitsweise und die Prozesse? Wo die
+Werkzeuge? Welchen sozialen Herausforderungen muss man begegnen?
+
+Vorkenntnisse | Previous knowledge:
+Selbst mal an einem Data Science Projekt beteiligt gewesen zu sein hilft sicher.
+
+Lernziele | learning objectives:
+Wir hoffen, dieser Talk hilft ein bisschen gegenseitiges Verständnis bei Data Scientists, Entwicklern und deren Managern
+zu schaffen, um in Zukunft mit mehr Spaß und Erfolg komplexe Data Science Projekte angehen zu können.
+
+    </textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -203,6 +217,57 @@ Mindsets
 </section>
 
 
+
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### Past das?
+
+I see. Yes! Ironically, being an expert means to constantly learn and expose yourself to new stuff, so struggling is part of what the role is about. Not sure people are aware.
+(https://twitter.com/mikiobraun/status/1273260977363042305?s=09)
+</textarea>
+</section> -->
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Intro
+Hand heben
+
+* Wer ist DS?
+* Wer Dev? 
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
+
+* Code von Data Scientist ist wirrer Wahnsinn
+  * Welche Dev glaubt das? (seid ehrlich)
+* Devs sind Prinzipien-Reiter
+  * Welche DS glaubt das? (seid ehrlich)
+* Alles dauert ewig
+  * Welche DS glaubt das? (seid ehrlich)
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Struktur        
+- Vorurteile
+- Ansätze
+- Process and Mindset
+- Agile and Roles
+- Synthese
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# Vorurteile
+</textarea>
+</section>
+
 <section data-markdown>
     <textarea data-template>
 ### Abspecken angesagt? Dicke Torwärte halten weniger Bälle  
@@ -215,9 +280,9 @@ Mindsets
     <textarea data-template>
 ### Üble Nachrede  
 
-Keine Daten
-Gehacke
-Schwache Aussagen
+* Keine Daten
+* Gehacke
+* Schwache Aussagen
 </textarea>
 </section>
 
@@ -241,14 +306,66 @@ _Machine Learning Projekt? Dann setze ich schonmal den Kubernetes Cluster auf!_
 <section data-markdown>
     <textarea data-template>
 
-<img src='img/logo/docker.png'>
-<img src='img/logo/jenkins.png'>
-<img src='img/logo/kubernetes.png'>
+<img src='img/logo/docker.png' height="200">
+<img src='img/logo/jenkins.png' height="200">
+<img src='img/logo/kubernetes.png' height="200">
 
 https://github.com/kubernetes/kubernetes/tree/master/logo
 https://www.docker.com/company/newsroom/media-resources
 https://wiki.jenkins.io/display/JENKINS/Logo;
 </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# Ansätze
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Maschinelles Lernen vs. Software-Entwicklung
+
+_ML_
+* POC & Forschung
+* Experimentieren
+* Hohes Risiko, hohe Belohnung
+
+_Software-Entwicklung_
+* Langlebige Produkte
+* Instandhaltung
+* Zuverlässigkeit
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Machine Learning vs Software Development
+
+_ML_
+* POC & Research
+* Experimentation
+* High Risk, High Reward
+
+_Software Development_
+* Long Living Products
+* Maintenance
+* Reliability
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Machine Learning in Projects
+
+* Data Science and Machine Learning can be experiments that fail often
+* Success of experiment can be precondition to starting a software project
+* ML experiment work rather feels like PO work
+* Some ML work rather is engineering, though
+* Can be part of an agile team
+
+    </textarea>
 </section>
 
 
@@ -264,35 +381,18 @@ https://wiki.jenkins.io/display/JENKINS/Logo;
         </textarea>
         </section>
         
-
 <section data-markdown>
     <textarea data-template>
 ### Was macht DS aus
 
-<img src='img/skizze/ds-brunton.png'>
+<img src='img/skizze/ds-brunton.png' height="400">
 
 QUelle: https://youtu.be/FsSrzmRawUg
 Ganze Playlist dazu: https://www.youtube.com/playlist?list=PLMrJAkhIeNNQV7wi9r7Kut8liLFMWQOXn
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-
-Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Intro
-    
-* Wer ist DS, Hand heben?
-* Wer Dev? 
-</textarea>
-</section>
-
-    <section data-markdown>
+    <!-- <section data-markdown>
         <textarea data-template>
     Dieser Bereich: https://ades-framework.netlify.app/ades-framework/empirical-process-control/ ist für eine Arbeit im
     Bereich ML notwendig und Beschreibt ziemlich gut auch das Vorgehen bei ML Projekten. D.h. ein Unternehmen, das ML machen
@@ -302,33 +402,17 @@ Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
 
     https://ades-framework.netlify.app/ades-framework/empirical-process-control/
     </textarea>
-    </section>
+    </section> -->
 
 <section data-markdown>
     <textarea data-template>
-### Intro
-
-* Wer ist DS, Hand heben?
-* Wer Dev? 
+# Process, Roles, and Mindset
 </textarea>
 </section>
 
 <section data-markdown>
     <textarea data-template>
-### Vorurteile am Anfang
-
-* Code von Data Scientist ist wirrer Wahnsinn
-  * Welche Dev glaubt das? (seid ehrlich)
-* Devs sind Prinzipien-Reiter
-  * Welche DS glaubt das? (seid ehrlich)
-* Alles dauert ewig
-  * Welche DS glaubt das? (seid ehrlich)
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Überblick
+### Wieso müssen Devs und DSs überhaupt zusammen arbeiten?
 
 <img src='img/skizze/ds-vs-dev.png' height="550">
 
@@ -336,14 +420,14 @@ Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
     </section>
 
 
-    <section data-markdown>
-        <textarea data-template>
-    ### Überblick 2
-    
-    <img src='img/skizze/ds-vs-dev-2.png' height="550">
-    
-    </textarea>
-        </section>
+<section data-markdown>
+<textarea data-template>
+### Und wo tauchen da die Probleme auf?
+
+<img src='img/skizze/ds-vs-dev-2.png' height="550">
+
+</textarea>
+</section>
     
 <section data-markdown>
     <textarea data-template>
@@ -384,22 +468,6 @@ Wenn DS und Dev dasselbe Programmiersprache/Framework teilen
 
 <section data-markdown>
     <textarea data-template>
-### Maschinelles Lernen vs. Software-Entwicklung
-
-_ML_
-* POC & Forschung
-* Experimentieren
-* Hohes Risiko, hohe Belohnung
-
-_Software-Entwicklung_
-* Langlebige Produkte
-* Instandhaltung
-* Zuverlässigkeit
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
 ### Wie gehen Software-Projekte im allgemeinen?
 <img src='img/architektur.png'>
 </textarea>
@@ -422,109 +490,11 @@ _Software-Entwicklung_
 </textarea>
 </section>
 
-
 <section data-markdown>
     <textarea data-template>
-        <img src='img/skizze/mikio-ml-patterns.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-ml-systems.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-    </section>
-    
-    
-<section data-markdown>
-    <textarea data-template>
-# Process, Roles, and Mindset
-
+# Agile and Roles
 </textarea>
 </section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-ds-orga.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-ds.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-ds-vs-dev.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-ds-dev-collab.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# ML-Ops and Production
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-<img src='img/skizze/mikio-serve.png'>
-<small>
-
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# Integration
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-        <img src='img/skizze/mikio-integration-role.png'>
-<small>
-    
-https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
-</small>
-    </textarea>
-</section>
-
 
 <section data-markdown>
     <textarea data-template>
@@ -581,226 +551,9 @@ If you want to adopt Machine Learning in your Company
 
 <section data-markdown>
     <textarea data-template>
-# ML-Ops and Production
-
+# Synthese
 </textarea>
 </section>
-
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Development Cycle
-
-
-* Dev vs Prod
-* different for three main types of ML
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### ML needs to solve challenges for production
-
-<img src='img/ng-process.jpg' height="500">
-
-<small>
-
-https://twitter.com/AndrewYNg/status/1080886439380869122    
-</small>
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### What’s your ML Test Score? A rubric for ML production systems
-
-<small>
-https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf
-</small>
-
-Präsentiert auf der NIPS 2016
-
-https://nips.cc/Conferences/2016/Schedule?showEvent=6255
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### When is it ready for production?
-
-Question for machine learning people in industry: what does it mean for your work to be “in production” what qualifies your models to be “production ready”? See this a lot and I think the meanings change across different domains pretty quickly.
-
-Denny Britz (@dennybritz) tweeted at 6:37 AM on Tue, Mar 03, 2020:
-1. Callable via API, and ideally with high throughput / low latency (SLA)
-2. Metrics are monitored. This includes input distribution shift, feature distributions, output distributions, etc
-3. Versioning
-(https://twitter.com/dennybritz/status/1234714538454335488?s=03)
-
-https://research.google/pubs/pub46555/
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### ML-Ops
-
-<img src='img/skizze/ml-ops.jpg'>
-
-<small>
-
-* https://en.m.wikipedia.org/wiki/MLOps
-* https://github.com/microsoft/MLOps/blob/master/README.md
-* https://aws.amazon.com/sagemaker/
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Stability
-        
-<img src='img/skizze/ml-stability.png'>
-    </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-# Integration
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### How to integrate into existing software?
-
-_Challenge_
-* Machine Learning Models are often trained in Python
-* Need a Python Server or other specialized servers
-* Sometimes even need a GPU to perform properly
-
-_Measures_
-* Use dedicated server and REST calls
-* REST overhead for fine grained calls too much overhead: consider custom implementations in host language 
-
-    </textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Documentation
-
-
-* Since the model is developed using iterations each experiment and new direction needs to be documented properly
-* code alone can only tell a fraction of the story (ie. who, what, when — never WHY)
-
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Typical Quality Attributes for ML
-
-ML specific
-* Interpretability / Explainability
-* Accuracy of prediction, what is adequate accuracy (AA) for MVP 
-  * could influence safety when AA is lacking
-* freedom from unwanted bias
-* Stability of results (when retraining on same data / additional data / when model changes)
-  
-Traditional
-* Data Protection (model must not allow getting out original data)
-* UX, new ways of including ML into UI to improve UX
-* Speed of prediction / training
-* Scalability of prediction / training (GPUs don't scale well, some algorithms do not scale well)
-* Security
-  * where can we host the model? Public facing? API Gateway in between? What could an attacker do?
-  * against influencing prediction
-
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Which parts of your code can you replace with Machine Learning?
-
-* the problem at hand is hard to specify
-* solving the problem can tolerate some error or uncertainty
-* you have sample data with labels (ground truth) or can simulate your environment
-* there is a clear, simple input and output
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-
-### Accuracy is king for applications of Machine Learning
-
-* applications have vastly different requirements on adequate accuracy (AA)
-* 60% or 70% of accuracy are not good or bad values or by themselves
-* only very few with more than 85% accuracy at http://scaledml.org/2020/
-
-Recommendation
-* either find out what you can do with a given AA 
-* or see if there is a way to get to the AA you need for a specific application
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Be clear about which level of explainability you need
-
-* probably has an impact on what kind of ML you can use (or no ML at all)
-* Neural Networks typically are black boxes, but very powerful
-* Decision Trees (especially when shallow) can be understood, but are often not as powerful
-* This might turn out to be a compromise between adequate accuracy and explainability
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Advice: Clarify Quality Goals
-
-Successful companies have very clear statements
-
-* Amazon
-* Netflix
-* Spotify
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Choosing an Approach
-
-From high to low
-* Degree of freedom
-* Knowledge needed
-* Effort needed
-
-
-Implementation
-* from scratch using all purpose language or CUDA on GPU
-* Low Level Neural Networks with Backpropagation using custom training loop, layer definitions and loss functions, e.g. TensorFlow, Pytorch
-* High Level Neural Networks using declarative API (e.g. Keras)
-* High Level Implementation
-	* using classic Machine Learning libraries like Scikit-Learn or
-	* predefined NN Architectures (like MobilNet or 3 Level Fully Connected)     HOSTED SERVICES START HERE
-* Generic, pre-trained models, like Image-Net or Bert models
-	* allow to be re-trained and adapted to your domain
-	* trained and maintained by other people, remain generic
-
-</textarea>
-</section>
-
-
 <section data-markdown>
     <textarea data-template>
 ## Traditional Development and Machine Learning melt into one        
@@ -836,102 +589,146 @@ https://youtu.be/hx7BXih7zx8
 
 <section data-markdown>
     <textarea data-template>
-### From Software 1.0 to 2.0
-
-Composition
-* One system having many prediction heads and many inputs
-* Large number of small ML systems connected by conventional software
-
-Scope of ML / What part of the solution is covered by ML
-	1. End-To-End: ML imitates what people do more or less directly, like clicking buttons, emulate impulses for steering wheel / pedals (Imitation Learning, Behavioral Cloning)
-		1. Example car: inputs (video camera, radar) wired to wheels , pedals
-	2. Mediated Perception: Conventional Software uses inputs from 1-n ML systems and uses them in processes that are not data driven, but done by deliberate programming
-		1. Multiple sensors deliver tracking data, predictions, etc. classic software makes decision like below
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Migrating from Software 1.0 (Classic Code) to 2.0 (Machine Learning)
-
-![from code 1.0 to 2.0](https://github.com/DJCordhose/ml-workshop/blob/master/notebooks/interp/tesla-karpathy-sw-2.jpg?raw=1)
-
-Andrej Karpathy (https://twitter.com/karpathy) at http://scaledml.org/2020/
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Machine Learning vs Software Development
-
-_ML_
-* POC & Research
-* Experimentation
-* High Risk, High Reward
-
-_Software Development_
-* Long Living Products
-* Maintenance
-* Reliability
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Machine Learning in Projects
-
-* Data Science and Machine Learning can be experiments that fail often
-* Success of experiment can be precondition to starting a software project
-* ML experiment work rather feels like PO work
-* Some ML work rather is engineering, though
-* Can be part of an agile team
+## What DS can learn from dev
 
     </textarea>
 </section>
 
-<section data-markdown style="font-size: xx-large">
+
+<section data-markdown>
     <textarea data-template>
-### Agile Machine Learning Projects?
+### ML needs to solve challenges for production
 
-_ML projects have uncertainty over both timeframe and outcomes_
-
-approaches
-1. control
-- “distributional” approach to project management
-- assign priors and utilities to various outcomes 
-1. agile
-- work in very short time-boxed iterations 1 day to 1 week
-- at the end of iteration present results
-- be honest and open about them
-- decide if it makes sense to enter next time box
+<img src='img/ng-process.jpg' height="500">
 
 <small>
-<br>
-https://twitter.com/dennybritz/status/1090139019973775360
-<br>
-https://twitter.com/l2k/status/1089988137424629760
+
+https://twitter.com/AndrewYNg/status/1080886439380869122    
 </small>
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What’s your ML Test Score? A rubric for ML production systems
+
+<small>
+https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf
+</small>
+
+Präsentiert auf der NIPS 2016
+
+https://nips.cc/Conferences/2016/Schedule?showEvent=6255
+
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+# Mikios vielleicht passende Sachen
+
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ml-patterns.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ml-systems.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+    </section>
+    
+    
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ds-orga.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ds.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ds-vs-dev.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-ds-dev-collab.png' height="600">
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+# ML-Ops and Production
+
 </textarea>
 </section>
 
 <section data-markdown>
-<textarea data-template>
-### What does this mean for you?
+    <textarea data-template>
+<img src='img/skizze/mikio-serve.png'>
+<small>
 
-If you want to adopt Machine Learning in your Company
-* Success can not guaranteed
-* Rather experiment within time boxes
-* Expect and clearly communicate failures
-* Bring models into production as quickly as possible
-* Do not optimize for the last few percentages
-* Quality of the data matters more than your approach
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section> -->
+
+<!-- <section data-markdown>
+    <textarea data-template>
+# Integration
 
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+        <img src='img/skizze/mikio-integration-role.png'>
+<small>
+    
+https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-amld-2020
+</small>
+    </textarea>
+</section> -->
 
 
 </div>
