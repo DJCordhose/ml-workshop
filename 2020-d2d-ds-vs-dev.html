@@ -290,9 +290,9 @@ https://twitter.com/sh_reya/status/1308793212656652288
 </section>
 
 <section>
-    <h1>This is bad code, no?</h>
+    <h1>This is bad code, no?</h1>
 
-<pre class="fragment" ><code contenteditable data-trim class="line-numbers python">
+<pre class="fragment"  style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
 def input_output_mapping(output):
     # if indicator is on
     return (output[0][1])
@@ -300,6 +300,27 @@ def input_output_mapping(output):
 #     return (output[0][0])
 
 </code></pre>        
+<p class="fragment">Especially, when you have to comment in/out depending on other parts of the code?</p>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+# Code != Code
+
+Depending on context quality of code is determined differently
+
+* _ML_
+    * POC & Research
+    * Experimentation
+    * High Risk, High Reward
+
+* _Software Development_
+    * Long Living Products
+    * Maintenance
+    * Reliability
+
+
+</textarea>
 </section>
 
 <section data-markdown>
@@ -309,70 +330,6 @@ def input_output_mapping(output):
 </textarea>
 </section>
 
-
-<section data-markdown>
-    <textarea data-template>
-
-Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
-
-* Code von Data Scientist ist wirrer Wahnsinn
-  * Welche Dev glaubt das? (seid ehrlich)
-* Devs sind Prinzipien-Reiter
-  * Welche DS glaubt das? (seid ehrlich)
-* Alles dauert ewig
-  * Welche DS glaubt das? (seid ehrlich)
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Struktur        
-- Vorurteile
-- Ansätze
-- Process and Mindset
-- Agile and Roles
-- Synthese
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# Ansätze
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Maschinelles Lernen vs. Software-Entwicklung
-
-_ML_
-* POC & Forschung
-* Experimentieren
-* Hohes Risiko, hohe Belohnung
-
-_Software-Entwicklung_
-* Langlebige Produkte
-* Instandhaltung
-* Zuverlässigkeit
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Machine Learning vs Software Development
-
-_ML_
-* POC & Research
-* Experimentation
-* High Risk, High Reward
-
-_Software Development_
-* Long Living Products
-* Maintenance
-* Reliability
-
-</textarea>
-</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -386,29 +343,6 @@ _Software Development_
         </textarea>
         </section>
         
-<section data-markdown>
-    <textarea data-template>
-### Was macht DS aus
-
-<img src='img/skizze/ds-brunton.png' height="400">
-
-QUelle: https://youtu.be/FsSrzmRawUg
-Ganze Playlist dazu: https://www.youtube.com/playlist?list=PLMrJAkhIeNNQV7wi9r7Kut8liLFMWQOXn
-</textarea>
-</section>
-
-    <!-- <section data-markdown>
-        <textarea data-template>
-    Dieser Bereich: https://ades-framework.netlify.app/ades-framework/empirical-process-control/ ist für eine Arbeit im
-    Bereich ML notwendig und Beschreibt ziemlich gut auch das Vorgehen bei ML Projekten. D.h. ein Unternehmen, das ML machen
-    will, muss in diesem Bereich stark sein. Im Text wird von Hypothesen gesprochen, die validiert werden sollten, aber nicht wie das gehen soll.
-    Ist in der Tat nicht trivial, und deutet auf einen wissenschaftlichen Ansatz mit seinen eigenen Komplexitäten hin. Also, entweder klären 
-    wie die Validerung gehen soll oder weg lassen?
-
-    https://ades-framework.netlify.app/ades-framework/empirical-process-control/
-    </textarea>
-    </section> -->
-
 <section data-markdown>
     <textarea data-template>
 # Process, Roles, and Mindset
@@ -789,7 +723,7 @@ https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-
                 Reveal.configure({ controls: false });
             } else {
                 // only applies to public version
-                $('.fragment').removeClass('fragment');
+                // $('.fragment').removeClass('fragment');
             }
         } );
 
