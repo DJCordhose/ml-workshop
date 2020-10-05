@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Data2Day DS vs Dev</title>
+    <title>Data2Day: DS vs Dev</title>
 
-    <meta name="description" content="Workshop Grundlagen von KI">
-    <meta name="author" content="embarc">
+    <meta name="description" content="Data2Day: DS vs Dev">
+    <meta name="author" content="Mikio Braun, Oliver Zeigermann">
 	<link rel="shortcut icon" href="/img/favicon.ico" >
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -17,16 +17,16 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
           <link rel="stylesheet" href="reveal.js/css/reveal.css">
-          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
           <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
           <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
           <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
-          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme"> -->
       
           <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
 
-          <!-- Code syntax highlighting -->
-          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+            <!-- Theme used for syntax highlighting of code -->
+            <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
           <style>
               /*pre code {*/
                   /*display: block;*/
@@ -73,13 +73,13 @@
                 .reveal h3,
                 .reveal h4  {
                         /* letter-spacing: 2px; */
-                        font-family: 'Sunrise', 'Calibri', sans-serif;
+                        font-family: 'Calibri', sans-serif;
                           /* font-family: 'Times New Roman', Times, serif; */
                           /* font-weight: bold; */
                           color: black;
                           /* font-style: italic; */
-                          /* letter-spacing: -2px;
-                          text-transform: none !important; */
+                          /* letter-spacing: -2px; */
+                          text-transform: none !important;
                       }
       
                       .reveal em {
@@ -105,21 +105,12 @@
                   }
 
             .reveal {
-                font-family: 'Work Sans', 'Calibri';
-                /* font-family: 'Calibri'; */
+                /* font-family: 'Work Sans', 'Calibri'; */
+                font-family: 'Calibri';
                 color: black !important;
                 font-size: xx-large;
              }
 
-             body:after {
-                content: url(img/embarc_logo.svg) ;
-                position: fixed;
-                bottom: -40px;
-                left: -130px;
-                transform: scale(.3);
-                /* height: 30px; */
-                /* box-shadow: 5px 5px 10px #000;  */
-            }
           </style>
       
     <!-- Printing and PDF exports -->
@@ -137,7 +128,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background-color: whitesmoke;">
 
 <div class="reveal">
     <div class="slides">
@@ -173,15 +164,8 @@ zu schaffen, um in Zukunft mit mehr Spaß und Erfolg komplexe Data Science Proje
 https://www.data2day.de/lecture.php?id=12301
  -->
 
- <section data-markdown>
-    <textarea data-template>
-# Data Scientists vs Developers?
-
-https://djcordhose.github.io/ml-workshop/2020-d2d-ds-vs-dev.html
-</textarea>
-</section>
-
- <section data-markdown style="font-size: x-large;">
+ 
+<section data-markdown style="font-size: x-large;" class="local">
     <textarea data-template>
 Titel: Data Scientists vs Developers?
 Art des Vortrags: Vortrag (45 Minuten)
@@ -206,7 +190,7 @@ https://www.data2day.de/lecture.php?id=12301
     </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="local">
     <textarea data-template>
 
 Ziel
@@ -222,7 +206,7 @@ Mindsets
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="local">
     <textarea data-template>
 ### Form
 * Alles in 15-20 Grafiken möglich?
@@ -231,25 +215,100 @@ Mindsets
 </textarea>
 </section>
 
-
-<!-- <section data-markdown class="todo">
+<section data-markdown class="local">
     <textarea data-template>
-### Past das?
+1. What Am I Really Trying To Say 
+2. Why Should People Care 
+3. What Is The Most Important Point 
+4. What Is The Easiest Way To Understand The Most Important Point 
+5. How Do I Want The Reader To Feel 
+6. What Should The Reader Do Next
 
-I see. Yes! Ironically, being an expert means to constantly learn and expose yourself to new stuff, so struggling is part of what the role is about. Not sure people are aware.
-(https://twitter.com/mikiobraun/status/1273260977363042305?s=09)
 </textarea>
-</section> -->
+</section>
+
+ 
+<section data-markdown>
+    <textarea data-template>
+# Data Scientists vs Developers?
+
+https://www.data2day.de/lecture.php?id=12301
+
+Mikio Braun und Oliver Zeigermann
+
+https://djcordhose.github.io/ml-workshop/2020-d2d-ds-vs-dev.html
+</textarea>
+</section>
 
 <section data-markdown class="fragments">
     <textarea data-template>
-### Intro
-Hand heben
+## Please Raise Your Hand
 
-* Wer ist DS?
-* Wer Dev? 
+Would you call yourself
+
+1. Data Scientist?
+1. Developer? 
+1. Both?
+1. None?
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+
+# Dev == Decrease Velocity?
+
+<img src='img/logo/docker.png' height="300" class="fragment">
+<img src='img/logo/jenkins.png' height="300" class="fragment">
+<img src='img/logo/kubernetes.png' height="300" class="fragment">
+
+<small class="fragment">
+
+https://github.com/kubernetes/kubernetes/tree/master/logo
+<br>
+https://www.docker.com/company/newsroom/media-resources
+<br>
+https://wiki.jenkins.io/display/JENKINS/Logo;
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# DS == Diva/Star?
+
+<img src='img/ds-diva.png' class="fragment">
+
+<small class="fragment">
+https://twitter.com/sh_reya/status/1308793212656652288
+</small>
+
+
+</textarea>
+</section>
+
+<section>
+    <h1>This is bad code, no?</h>
+
+<pre class="fragment" ><code contenteditable data-trim class="line-numbers python">
+def input_output_mapping(output):
+    # if indicator is on
+    return (output[0][1])
+    # if indicator is off
+#     return (output[0][0])
+
+</code></pre>        
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+# From here on just material
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -273,71 +332,6 @@ Devs wissen nicht was sie tun und Data Scientists kommen nicht zu Potte
 - Process and Mindset
 - Agile and Roles
 - Synthese
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# Vorurteile
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Abspecken angesagt? Dicke Torwärte halten weniger Bälle  
-
-<img src='img/fat-goalies.png'>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Üble Nachrede  
-
-* Keine Daten
-* Gehacke (P-Value Hacking und Harking)
-* Schwache Aussagen
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### DS == Diva?
-
-<img src='img/ds-diva.png'>
-
-https://twitter.com/sh_reya/status/1308793212656652288
-
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Versus  
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Developers  
-
-_Machine Learning Projekt? Dann setze ich schonmal den Kubernetes Cluster auf!_
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-
-<img src='img/logo/docker.png' height="200">
-<img src='img/logo/jenkins.png' height="200">
-<img src='img/logo/kubernetes.png' height="200">
-
-https://github.com/kubernetes/kubernetes/tree/master/logo
-https://www.docker.com/company/newsroom/media-resources
-https://wiki.jenkins.io/display/JENKINS/Logo;
 </textarea>
 </section>
 
@@ -763,9 +757,6 @@ https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-
 
 <script>
         // $('section:not([data-background])').attr('data-background', "background/white.jpg");
-        $('section:not([data-background])').attr('data-background', "background/embarc-logo-blass.png");
-        // $('section:not([data-background])').attr('data-background', "background/magnolia.jpg");
-        // $('section:not([data-background])').attr('data-background', "background/embarc.jpg");
         // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
         // $('section:not([data-background])').attr('data-background', "background/street.jpg");
         // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
