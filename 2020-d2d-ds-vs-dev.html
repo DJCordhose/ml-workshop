@@ -342,153 +342,8 @@ def input_output_mapping(output):
 
 <section data-markdown>
     <textarea data-template>
-### Why do Data Scientists and Developers have to collaborate in the first place?
 
-<img src='img/skizze/ds-vs-dev.png' height="550">
-
-</textarea>
-    </section>
-
-    <section data-markdown class="fragments">
-    <textarea data-template>
-# Code != Code
-
-Depending on context quality of code is determined differently
-
-* _ML_
-    * POC & Research
-    * Experimentation
-    * High Risk, High Reward
-
-* _Software Development_
-    * Long Living Products
-    * Maintenance
-    * Reliability
-
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### DS vs Dev
-
-* Was ist eine Version?
-  * Kopie eines Notebooks
-  * Artefakt in github
-* Wie geht Code-Reuse
-  * Copy-Paste
-  * Lib
-* Was ist guter Code?
-  * anpassbar an viele Beispiele, macht tolle Sachen  
-  * Wartbar, Korrekt
-
-</textarea>
-</section>
-
-
-
-<section data-markdown>
-    <textarea data-template>
-# Solutions
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## What Olli proposes for collaboration
-
-Disclaimer: Olli typically kicks off new machine learning projects
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### From Exploration to Production
-
-1. DS Notebooks aufräumen
-   1. Quatsch raus
-   1. Thematisch aufteilen in mehrere Notebooks falls sinnvoll
-   1. Auskommentierung als if-then soll raus
-   1. Minimale Version
-
-Wenn DS und Dev dasselbe Programmiersprache/Framework teilen   
-1. DS und Dev zusammen   
-   1. Was ist nicht spezifisch für das Notebook? Auslagern
-   1. Diese neuen Notebooks sind nun die Basis für die nächste Iteration
-   1. Wenn man die lib anders braucht, nicht direkt daran ändern, entkoppeln durch Copy-Paste
-
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Sharing Code when Iterating
-
-<img src='img/skizze/ds-vs-dev-2.png' height="550">
-
-</textarea>
-</section>
-    
-    
-
-<section data-markdown>
-    <textarea data-template>
-
-# From here on just material
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-    <img src='img/trad-dev.png'>
-    </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-        <img src='img/ml-dev.png'>
-        </textarea>
-        </section>
-        
-<section data-markdown>
-    <textarea data-template>
-# Process, Roles, and Mindset
-</textarea>
-</section>
-
-
-
-<section data-markdown>
-    <textarea data-template>
-### Anatomie von ML-Projekten
-<img src='img/anatomy.png'>
-</textarea>
-</section>
-
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### Wie gehen Software-Projekte im allgemeinen?
-<img src='img/architektur.png'>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Architektur-Arbeit bei ML-Projekten
-* häufig bekommt bei Software-Architektur der Implementierungsteil unterschätzt
-* bei ML ist es der der Vision
-* häufig kann eine Vision nicht oder nur angepasst umgesetzt werden
-* dies ist Teil der Architektur-Arbeit
-</textarea>
-</section> -->
-
-<section data-markdown>
-    <textarea data-template>
-# Agile and Roles
+## Why do Data Scientists and Developers have to collaborate in the first place?
 </textarea>
 </section>
 
@@ -547,23 +402,74 @@ If you want to adopt Machine Learning in your Company
 
 <section data-markdown>
     <textarea data-template>
-# Synthese
+### This boils down to such a process
+
+<img src='img/skizze/ds-vs-dev.png' height="550">
+
+</textarea>
+    </section>
+
+    <section data-markdown class="fragments">
+    <textarea data-template>
+# Code != Code
+
+Depending on context quality of code is determined differently
+
+* _ML_
+    * POC & Research
+    * Experimentation
+    * High Risk, High Reward
+
+* _Software Development_
+    * Long Living Products
+    * Maintenance
+    * Reliability
+
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### DS vs Dev
+
+* Was ist eine Version?
+  * Kopie eines Notebooks
+  * Artefakt in github
+* Wie geht Code-Reuse
+  * Copy-Paste
+  * Lib
+* Was ist guter Code?
+  * anpassbar an viele Beispiele, macht tolle Sachen  
+  * Wartbar, Korrekt
+
 </textarea>
 </section>
 
 
-<section data-markdown class='fragments'>
+<section data-markdown>
     <textarea data-template>
-### Es gibt nicht DEN Entwickler und DEN Data Scientist
-* Entwickler
-  * Framework/Infrastruktur
-  * Dev-Op
-  * Anwendungsentwickler
-* Data Scientist        
-  * ML
-  * Statistiker
-  * Data Viz
+## Role Models I: Google
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What’s your ML Test Score? A rubric for ML production systems
+
+<small>https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf</small>
+
+Präsentiert auf der NIPS 2016
+
+https://nips.cc/Conferences/2016/Schedule?showEvent=6255
+
     </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Role Models II: Tesla
+</textarea>
 </section>
 
 <section data-markdown>
@@ -601,7 +507,64 @@ https://youtu.be/hx7BXih7zx8
 
 <section data-markdown>
     <textarea data-template>
-## What DS can learn from dev
+# Solutions and Insights
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## What Olli proposes for collaboration
+
+Disclaimer: Olli typically kicks off new machine learning projects
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### From Exploration to Production
+
+1. DS Notebooks aufräumen
+   1. Quatsch raus
+   1. Thematisch aufteilen in mehrere Notebooks falls sinnvoll
+   1. Auskommentierung als if-then soll raus
+   1. Minimale Version
+
+Wenn DS und Dev dasselbe Programmiersprache/Framework teilen   
+1. DS und Dev zusammen   
+   1. Was ist nicht spezifisch für das Notebook? Auslagern
+   1. Diese neuen Notebooks sind nun die Basis für die nächste Iteration
+   1. Wenn man die lib anders braucht, nicht direkt daran ändern, entkoppeln durch Copy-Paste
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Sharing Code when Iterating
+
+<img src='img/skizze/ds-vs-dev-2.png' height="550">
+
+</textarea>
+</section>
+    
+<section data-markdown class='fragments'>
+    <textarea data-template>
+### Es gibt nicht DEN Entwickler und DEN Data Scientist
+* Entwickler
+  * Framework/Infrastruktur
+  * Dev-Op
+  * Anwendungsentwickler
+* Data Scientist        
+  * ML
+  * Statistiker
+  * Data Viz
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# DS can learn from Devs and the other way round
 
     </textarea>
 </section>
@@ -617,19 +580,6 @@ https://youtu.be/hx7BXih7zx8
 
 https://twitter.com/AndrewYNg/status/1080886439380869122    
 </small>
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### What’s your ML Test Score? A rubric for ML production systems
-
-<small>https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf</small>
-
-Präsentiert auf der NIPS 2016
-
-https://nips.cc/Conferences/2016/Schedule?showEvent=6255
 
     </textarea>
 </section>
