@@ -249,6 +249,7 @@ https://djcordhose.github.io/ml-workshop/2020-d2d-ds-vs-dev.html
 </textarea>
 </section>
 
+
 <section data-markdown class="fragments">
     <textarea data-template>
 ## Please Raise Your Hand
@@ -259,8 +260,9 @@ Would you call yourself
 1. Developer? 
 1. Both?
 1. None?
-</textarea>
+    </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -270,8 +272,9 @@ Would you call yourself
 <img src='img/d2d/mikio.jpg' height="400">
 <img src='img/d2d/mikio-symbol.jpg' height="400">
 
-</textarea>
+    </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -284,6 +287,7 @@ Would you call yourself
 </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
 
@@ -294,17 +298,13 @@ Would you call yourself
 <img src='img/logo/kubernetes.png' height="300" class="fragment">
 
 <small class="fragment">
-
-https://github.com/kubernetes/kubernetes/tree/master/logo
-<br>
-https://www.docker.com/company/newsroom/media-resources
-<br>
+https://github.com/kubernetes/kubernetes/tree/master/logo<br/>
+https://www.docker.com/company/newsroom/media-resources<br/>
 https://wiki.jenkins.io/display/JENKINS/Logo;
-
 </small>
-
-</textarea>
+    </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -315,10 +315,9 @@ https://wiki.jenkins.io/display/JENKINS/Logo;
 <small class="fragment">
 https://twitter.com/sh_reya/status/1308793212656652288
 </small>
-
-
-</textarea>
+    </textarea>
 </section>
+
 
 <section>
     <h1>This is bad code, no?</h1>
@@ -334,137 +333,140 @@ def input_output_mapping(output):
 <p class="fragment">Especially, when you have to comment in/out depending on other parts of the code?</p>
 </section>
 
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
 <section data-markdown>
     <textarea data-template>
-# Topics
+# Machine Learning in Practice
 </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
+## Data Science Work
 
-## Why do Data Scientists and Developers have to collaborate in the first place?
-</textarea>
+(Learn a model from example data that performs well on future data)
+    </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
-### Machine Learning in Projects
+## Data Science Workflow
+    
+(Fig: data science workflow)
 
-* Data Science and Machine Learning can be experiments that fail often
-* Success of experiment can be precondition to starting a software project
-* ML experiment work rather feels like PO work
-* Some ML work rather is engineering, though
-* Can be part of an agile team
+You need experimentation because you don't know from the data.
 
     </textarea>
 </section>
 
-<section data-markdown style="font-size: xx-large">
-    <textarea data-template>
-### Agile Machine Learning Projects?
-
-_ML projects have uncertainty over both timeframe and outcomes_
-
-approaches
-
-1. control
-    - “distributional” approach to project management
-    - assign priors and utilities to various outcomes 
-
-1. agile
-   - work in very short time-boxed iterations 1 day to 1 week
-    - at the end of iteration present results
-    - be honest and open about them
-    - decide if it makes sense to enter next time box
-
-<small>https://twitter.com/dennybritz/status/1090139019973775360
-    https://twitter.com/l2k/status/1089988137424629760
-</small>
-
-</textarea>
-</section>
-
+    
 <section data-markdown>
-<textarea data-template>
-### What does this mean for you?
+    <textarea data-template>
+## Machine Learning Projects
 
-If you want to adopt Machine Learning in your Company
-* Success can not guaranteed
-* Rather experiment within time boxes
-* Expect and clearly communicate failures
-* Bring models into production as quickly as possible
-* Do not optimize for the last few percentages
-* Quality of the data matters more than your approach
+(Fig: go from experimentation to actually building something)
 
-</textarea>
+- Initially higher risk than pure engineering projects.
+- Need to actively manage risk.
+- Projects shift from experimentation to building services.
+
+    </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
-### This boils down to such a process
+## From Data Scientist to Engineering Work
 
 <img src='img/skizze/ds-vs-dev.png' height="550">
 
-</textarea>
-    </section>
+    </textarea>
+</section>
 
-    <section data-markdown class="fragments">
+
+<section data-markdown class="fragments">
     <textarea data-template>
 # Code != Code
 
 Depending on context quality of code is determined differently
 
-* _ML_
-    * POC & Research
+* _Data Scientists_
+    * Proof-of-Concept and research
     * Experimentation
-    * High Risk, High Reward
+    * High risk, high reward
 
 * _Software Development_
-    * Long Living Products
+    * Long living products
     * Maintenance
     * Reliability
 
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Same Words Mean Different Things
+
+* What is a _version_?
+  * Copy of a notebook
+  * Commit in github
+* What is _code reuse_?
+  * Copy and paste
+  * Code extracted into a library
+* What is _good code_?
+  * can be adapted to many examples, does something cool
+  * maintainability, correctness, robustness, ...
 
 </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
-### DS vs Dev
+## Data Scientist and Developers, revisited
 
-* Was ist eine Version?
-  * Kopie eines Notebooks
-  * Artefakt in github
-* Wie geht Code-Reuse
-  * Copy-Paste
-  * Lib
-* Was ist guter Code?
-  * anpassbar an viele Beispiele, macht tolle Sachen  
-  * Wartbar, Korrekt
+- _Goals of work_ are pretty different
+  - Data scientists: exploration to find something that works
+  - Developers: building something that works and can be maintained
+- _Different ideas of similar concepts_ like "what is a version"
+- Projects shift from _exploration to building_.
+    </textarea>
+</section>
 
-</textarea>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<section data-markdown>
+    <textarea data-template>
+# Solutions and Insights
+    </textarea>
 </section>
 
 
 <section data-markdown>
     <textarea data-template>
 ## Role Models I: Google
-</textarea>
+    </textarea>
 </section>
 
 <section data-markdown>
     <textarea data-template>
 ### What’s your ML Test Score? A rubric for ML production systems
 
-<small>https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf</small>
+(Fig: ML Test Score)
 
-Präsentiert auf der NIPS 2016
-
-https://nips.cc/Conferences/2016/Schedule?showEvent=6255
+<small>Presented at NIPS 2016, <br/>
+    https://nips.cc/Conferences/2016/Schedule?showEvent=6255, <br/>
+    link to 
+    https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45742.pdf
+</small>
 
     </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -475,16 +477,11 @@ https://nips.cc/Conferences/2016/Schedule?showEvent=6255
 <section data-markdown>
     <textarea data-template>
 ## Traditional Development and Machine Learning melt into one        
-    </textarea>
-</section>
 
-<section data-markdown>
-    <textarea data-template>
-### Role Model: Tesla        
-
-https://www.youtube.com/playlist?list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0
+<small>https://www.youtube.com/playlist?list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0<br/>
 https://youtu.be/hx7BXih7zx8
-    </textarea>
+</small>
+</textarea>
 </section>
 
 <section data-markdown>
@@ -505,11 +502,57 @@ https://youtu.be/hx7BXih7zx8
     </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
-# Solutions and Insights
+### Expectation Management for ML projects
+
+If you want to adopt Machine Learning in your Company
+* Success is not guaranteed
+* Success of experiment can be precondition to starting a software project
+* Data Science and Machine Learning can be experiments that fail often
+* ML experiment work rather feels like product development work
+* Expect and clearly communicate failures
+* Quality of the data matters more than your approach
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Recommendations for ML in Projects
+
+* Rather experiment within time boxes
+* Bring models into production as quickly as possible
+* Do not optimize for the last few percentages
+* Some Data Science work rather is engineering, though
+* Can be part of an agile team
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Agile Machine Learning Projects?
+
+_ML projects have uncertainty over both timeframe and outcomes_
+
+1. Control approach
+    - “Distributional” approach to project management
+    - Assign priors and utilities to various outcomes 
+
+1. Agile approach
+   - Work in very short time-boxed iterations 1 day to 1 week
+    - At the end of iteration present results
+    - Be honest and open about them
+    - Decide if it makes sense to enter next time box
+
+<small>https://twitter.com/dennybritz/status/1090139019973775360
+    https://twitter.com/l2k/status/1089988137424629760
+</small>
 </textarea>
 </section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -545,6 +588,7 @@ Wenn DS und Dev dasselbe Programmiersprache/Framework teilen
 
 <img src='img/skizze/ds-vs-dev-2.png' height="550">
 
+(Fig: Prettier version of this)
 </textarea>
 </section>
     
@@ -562,17 +606,47 @@ Wenn DS und Dev dasselbe Programmiersprache/Framework teilen
     </textarea>
 </section>
 
+
 <section data-markdown>
     <textarea data-template>
-# DS can learn from Devs and the other way round
+## What Mikio Proposes for Collaboration
 
+Disclaimer: Mikio worked in bigger companies.
     </textarea>
 </section>
 
 
 <section data-markdown>
     <textarea data-template>
-### ML needs to solve challenges for production
+## Different Ways to Organize Teams
+
+(Fig: team organization)
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Architectural Patterns for ML Production Systems
+
+(Fig: Architecture Patterns)
+    </textarea>
+</section>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<section data-markdown>
+    <textarea data-template>
+## DS and Devs Can Learn from One Another:
+
+- Developers: how to deal with uncertainty, experiment and reduce risk.
+- Data Scientists: learn more tools and procedures.
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## ML Needs to Solve Challenges for Production
 
 <img src='img/ng-process.jpg' height="500">
 
@@ -580,10 +654,18 @@ Wenn DS und Dev dasselbe Programmiersprache/Framework teilen
 
 https://twitter.com/AndrewYNg/status/1080886439380869122    
 </small>
-
     </textarea>
 </section>
 
+
+<section data-markdown>
+    <textarea data-template>
+# Thank you
+    </textarea>
+</section>
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
 
 <section data-markdown>
     <textarea data-template>
@@ -701,8 +783,9 @@ https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-
         // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
         // $('section:not([data-background])').attr('data-background', "background/street.jpg");
         // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
-    </script>
-    <script>
+</script>
+
+<script>
         const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
                     window.location.hostname.indexOf('127.0.0.1') !== -1;
 
@@ -738,7 +821,7 @@ https://www.slideshare.net/mikiobraun/bringing-ml-to-production-what-is-missing-
 
         } );
 
-    </script>
+</script>
     
 <script>
 
