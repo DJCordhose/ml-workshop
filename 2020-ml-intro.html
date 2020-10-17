@@ -149,7 +149,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background-color: whitesmoke;">
 
 <div class="reveal">
     <div class="slides">
@@ -504,7 +504,8 @@ _Idee implemented in so called "notebooks"_
 
 * In a first pass we will go through the notebook together
 * Open the notebook and sign into your Google account or register a new one 
-* Execute the analysis above in the notebook
+* Execute the analysis above in the notebook until it tells you to stop
+* Try to answer the questions on the next slide
 * Save your notebook in your Google Drive (or on Github if you want to)
 
 <small>Notebook: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</small>
@@ -528,19 +529,137 @@ _Is there anything else you find interesting or surprising?_
 <section data-markdown >
     <textarea data-template>
 ### Step III
-## Training
+## Training from Data
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown >
     <textarea data-template>
-### Revisiting our Rule based approach
+#### Training from Data, but how?
 
-Plotting the predictions as a background
+<img src='img/abstractness.png'>
+</textarea>
+</section>
 
-<img src='img/applications/rules.png' height="450px">
-<br>
-<small>approx. 56% predictions correct</small>
+  <section data-markdown>
+<textarea data-template>
+### Use ready made model over API
+
+<img src='img/google-nlp-api.png' height="500">
+
+<small>https://cloud.google.com/natural-language</small>
+
+</textarea>
+</section>
+
+<section>
+    <h4>Use Off-the shelf Neuronal Network (fully trained)</h4>
+
+<img src='img/cat-bonkers.png' height="300">
+
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="python">
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
+model = MobileNetV2(weights='imagenet', input_shape=(224, 224, 3))
+
+prediction = model.predict(img)
+> ('n02124075', 'Egyptian_cat', 0.43944412)
+</code></pre>        
+<small>MobileNet on Imagenet data with Keras</small>
+</section>
+
+<section>
+    <h3>Train Off-the shelf Neuronal Network (structure only)</h3>
+
+<p>Training</p>
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="python">
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
+model = MobileNetV2(classes=num_classes, weights=None, 
+                    input_shape=(1920, 1080, 3))
+
+model.compile(loss='sparse_categorical_crossentropy',
+             optimizer='adam')
+model.fit(X, y)                            
+    </code></pre>    
+    
+<p>Prediction</p>
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
+prediction = model.predict(img)
+> ('n02124075', 'Egyptian_cat', 0.43944412)
+        </code></pre>
+    
+<small>untrained MobileNet with Keras</small>
+</section>
+
+<section>
+    <h3>Train traditionell ML Algorithm</h3>
+
+<p>Training</p>
+<pre  style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X, y)
+        </code></pre>
+    
+<p>Prediction</p>
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
+y_pred = clf.predict(input)
+    </code></pre>
+
+<small>Decision Tree mit Sklearn</small>
+</section>
+
+<section>
+    <h4>Create and Train custom Neuronal Network (standard Architecture)</h4>
+
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
+model = tf.keras.Sequential()
+
+model.add(Conv2D(filters=32, activation='relu') 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=2))
+model.add(Dropout(dropout))
+
+model.add(Conv2D(filters=64, activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=2))
+model.add(Dropout(dropout))
+
+model.add(Flatten())
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(dropout))
+model.add(Dense(num_classes, activation='softmax'))
+  </code></pre>        
+<small>VGG in TensorFlow</small>
+</section>
+
+<section>
+    <h3>Do whatever on tensor level</h3>
+
+<pre style="font-size: xx-large;"><code contenteditable data-trim class="line-numbers python">
+init W, U, V
+for i in range(0, len(X)):
+    x = X[i]
+
+    h = torch.zeros(nhidden, 1)
+    for t in range(len(x)):
+        h = W@h + U@onehot(x[t])
+        h = torch.relu(h)
+    o = V@h
+    o = softmax(o)
+
+    loss = cross_entropy(o, y[i])
+    update W,U,V towards lower loss
+    </code></pre>        
+<small>BOW in Pytorch <br><a href='https://explained.ai/rnn/implementation.html#sec:1.5'>https://explained.ai/rnn/implementation.html#sec:1.5</a></small>
+
+</section>
+
+<section data-markdown >
+    <textarea data-template>
+#### Choosing the middle
+
+<img src='img/abstractness.png'  height="500px">
+<small>There is no standard NN architecture and custom NNs might be overkill</small>
 </textarea>
 </section>
 
@@ -597,14 +716,26 @@ http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-a
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Decision Boundaries for our Decision Tree
 
-<section>
-<h3>Decision Boundaries for our Decision Tree</h3>
-<div>
+Plotting the predictions as a background
 
-<img src="img/applications/dt-test.png">
+<img src="img/applications/dt-test.png" height="450px">
+<br>
 <small>Up to 70% accuracy on unknown data</small>
-</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Comparing to our Rule based approach
+
+<img src='img/applications/rules.png' height="450px">
+<br>
+<small>approx. 56% predictions correct</small>
+</textarea>
 </section>
 
 <section data-markdown>
@@ -679,15 +810,6 @@ y_pred = clf.predict(input)
             </section>
 
 <section data-markdown>
-<textarea data-template>
-### Data and the Real World
-
-<img src='img/data-and-the-world.jpg' height="550px">
-</textarea>
-</section>
-
-
-<section data-markdown>
     <textarea data-template>
 ### So Supervised Machine Learning is all about the data you have not seen, yet
 ## How to make sure your classification works well on unseen data?
@@ -704,6 +826,14 @@ y_pred = clf.predict(input)
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+    ### Data and the Real World
+    
+    <img src='img/data-and-the-world.jpg' height="550px">
+    </textarea>
+    </section>
+    
 <!-- 
 - Unlock all
 
@@ -889,6 +1019,15 @@ _what we see applied most of the time_
     </textarea>
     </section>
 
+
+<section data-markdown>
+    <textarea data-template>
+#### There is more than Supervised Learning
+
+<img src='img/ML-strategy-helper.png' height="600">
+</textarea>
+</section>
+    
 <section data-markdown>
     <textarea data-template>
 ### Step V
@@ -954,7 +1093,7 @@ _what we see applied most of the time_
 
 <script>
         // $('section:not([data-background])').attr('data-background', "background/white.jpg");
-        $('section:not([data-background])').attr('data-background', "background/sky.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/sky.jpg");
         // $('section:not([data-background])').attr('data-background', "background/magnolia.jpg");
         // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
         // $('section:not([data-background])').attr('data-background', "background/street.jpg");
