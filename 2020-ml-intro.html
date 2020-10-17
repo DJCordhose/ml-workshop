@@ -154,15 +154,12 @@
 <div class="reveal">
     <div class="slides">
 
- <section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
-- Übung 2 in Mural umbauen (4 Gruppen mit einfach nur der Grafik drin)
-- Mural Raum kopieren und URL anpassen 
     </textarea>
-</section>
+</section> -->
 
-
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 ### Abschluss-Übung
 
@@ -173,22 +170,7 @@
 
 https://drawdata.xyz/
 </textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-Für den Prep Teil: 
-
-Want to hear a secret?
-
-Regardless of your experience, here is an area of Machine Learning where you can have a huge impact:
-
-White small square Feature Engineering White small square
-
-It sounds fancy because people love to complicate things, but let's make it simple:        
-https://twitter.com/svpino/status/1313678930134667264?s=20
-    </textarea>
-</section>
+</section> -->
 
 <section>
     <h2>Einführung in Machine Learning</h2>
@@ -352,7 +334,7 @@ Plotting the predictions as a background
 
 <section data-markdown >
     <textarea data-template>
-### Step I
+### Step I (optional for us, but certainly not for a real project)
 ## Data Preparation
 </textarea>
 </section>
@@ -383,8 +365,6 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
         </textarea>
     </section>
 
-
-
 <section data-markdown >
     <textarea data-template>
 ### Clean Data and Select Features
@@ -396,7 +376,7 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
 
 <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
-### Exercise \#2 - Data Cleaning and Feature Selection
+### Questions
 
 _Data Cleaning_
 * What errors do you find in the data? Mark on paper and describe
@@ -419,6 +399,22 @@ _Feature Selection_
 
     </textarea>
         </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Exercise \#2 - Data Cleaning and Feature Selection
+
+_team up and discuss with your team_
+
+* <a id='ex2-gr1'>Team 1</a>
+* <a id='ex2-gr2'>Team 2</a> 
+* <a id='ex2-gr3'>Team 3</a> 
+* <a id='ex2-gr4'>Team 4</a> 
+
+_Exercise in Mural App_
+
+</textarea>
+</section>
 
 
 <section data-markdown style="font-size: xx-large" >
@@ -511,6 +507,17 @@ _Idee implemented in so called "notebooks"_
 <small>Notebook: https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</small>
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/feature-engineering.png' height="600">
+
+<small>https://twitter.com/svpino/status/1313678930134667264</small>
+    </textarea>
+</section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -1136,10 +1143,10 @@ _what we see applied most of the time_
         function setMuralLinks() {
 
             // Master Raum: https://app.mural.co/t/embarcagila3904/r/1587223731576
-            // Kopie https://app.mural.co/t/embarcagila3904/r/1595147626220
+            // Kopie https://app.mural.co/t/embarcagila3904/r/1602956067082
 
             // Übung 1
-            const mural1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626264/964320cc0f5436dfc197675b1172fd7a22d23711`;
+            const mural1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1602956067390/fbe57217c57bfbfea04fe952eef97137709ca072`;
             document.querySelector('#ex1-gr1').href = `${mural1}?wid=0-1587547827533`
             document.querySelector('#ex1-gr2').href = `${mural1}?wid=0-1587548254726`
             document.querySelector('#ex1-gr3').href = `${mural1}?wid=0-1587548196936`
@@ -1151,27 +1158,11 @@ _what we see applied most of the time_
             document.querySelector('#ex1b-gr4').href = `${mural1}?wid=0-1587548228170`
 
             // Übung 2
-            const mural2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626289/3462f9511290ba4ec617442017429bec908cd646`;
-            document.querySelector('#ex2-gr1').href = `${mural2}?wid=0-1585142997532`
-            document.querySelector('#ex2-gr2').href = `${mural2}?wid=0-1585142936738`
-            document.querySelector('#ex2-gr3').href = `${mural2}?wid=0-1585142831779`
-            document.querySelector('#ex2-gr4').href = `${mural2}?wid=0-1585142916069`
-
-            // Übung 3: RL nur in den Folien
-
-            // Übung 4: Anwendungen finden
-            const mural4 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1595147626260/69f70eac1c81c6c9d106d1d648dff9a8c8be4f6f`
-            document.querySelector('#ex4').href = `${mural4}`
-         
-            // Übung 5: Qualitätsmerkmale (dasselbe Mural weiter gebaut)
-            document.querySelector('#ex5').href = `${mural4}`
-
-            // Übung 5: Entscheidungsbaum Lernstrategie
-            // const mural5 = `https://app.mural.co/t/embarcagila3904/m/mlapps4048/1587223731618/db06e5986ed6e43bb9cf11e8fc7ad5d8a1c288b2`
-            // document.querySelector('#ex5-gr1').href = `${mural5}?wid=0-1586613178736`
-            // document.querySelector('#ex5-gr2').href = `${mural5}?wid=0-1586613302069`
-            // document.querySelector('#ex5-gr3').href = `${mural5}?wid=0-1586613301378`
-            // document.querySelector('#ex5-gr4').href = `${mural5}?wid=0-1586613300790`
+            const mural2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1602956067381/045cbdffeeab45e169863e452cfb4fb9f938781e`;
+            document.querySelector('#ex2-gr1').href = `${mural2}?wid=0-1602955006276&outline=close`
+            document.querySelector('#ex2-gr2').href = `${mural2}?wid=0-1602955119855&outline=close`
+            document.querySelector('#ex2-gr3').href = `${mural2}?wid=0-1602955060431&outline=close`
+            document.querySelector('#ex2-gr4').href = `${mural2}?wid=0-1602955006276&outline=close`
         }
     </script>
     
