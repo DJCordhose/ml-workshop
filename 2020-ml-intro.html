@@ -496,7 +496,7 @@ _Idee implemented in so called "notebooks"_
 
 <section data-markdown>
 <textarea data-template>
-### Exercise \#3: Run your first Colab Notbook
+### Exercise \#3: Run your first Colab Notebook
 
 * In a first pass we will go through the notebook together
 * Open the notebook and sign into your Google account or register a new one 
@@ -663,7 +663,7 @@ for i in range(0, len(X)):
 
 <section data-markdown >
     <textarea data-template>
-#### Choosing the middle
+#### Choosing the middle - Decision Tree (Traditional ML)
 
 <img src='img/abstractness.png'  height="500px">
 <small>There is no standard NN architecture and custom NNs might be overkill</small>
@@ -679,49 +679,6 @@ for i in range(0, len(X)):
 </textarea>
 </section>
 
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### How is the Decision Tree being Constructed?
-
-We are using the CART algorithm:
-* top-down split the set of examples into two new sets
-* choose a variable and a value at each step that best splits our customer example
-* terminal node when no further gain possible or regularization kicks in 
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### What is the best split?
-
-* choose a feature to split on (either random or best)
-* assign a category to each node containing a certain set of samples
-* use a metric (Gini or Entropy) to decide how good a node would be based on that category
-* sum up weighted metric for both child nodes
-* optimize the split for that summed metric
-
-<small>
-
-https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
-
-</small>
-
-</textarea>
-</section> -->
-
-<section data-markdown>
-    <textarea data-template>
-### How is the Decision Tree being Constructed?
-
-<img src="img/cart.png" height=500>
-
-<small>
-    
-http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart
-</small>
-</textarea>
-</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -776,6 +733,49 @@ y_pred = clf.predict(input)
     https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/intro/supervised.ipynb</a>
 </small>
     </section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### How is the Decision Tree being Constructed?
+
+We are using the CART algorithm:
+* top-down split the set of examples into two new sets
+* choose a variable and a value at each step that best splits our customer example
+* terminal node when no further gain possible or regularization kicks in 
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### What is the best split?
+
+* choose a feature to split on (either random or best)
+* assign a category to each node containing a certain set of samples
+* use a metric (Gini or Entropy) to decide how good a node would be based on that category
+* sum up weighted metric for both child nodes
+* optimize the split for that summed metric
+
+<small>
+
+https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
+
+</small>
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+### How is the Decision Tree being Constructed?
+
+<img src="img/cart.png" height=500>
+
+<small>
+    
+http://scikit-learn.org/stable/modules/tree.html#tree-algorithms-id3-c4-5-c5-0-and-cart
+</small>
+</textarea>
+</section>
 
     <section data-markdown>
 <textarea data-template>
@@ -833,13 +833,6 @@ y_pred = clf.predict(input)
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-    ### Data and the Real World
-    
-    <img src='img/data-and-the-world.jpg' height="550px">
-    </textarea>
-    </section>
     
 <!-- 
 - Unlock all
@@ -976,7 +969,6 @@ Each ML strategy has its own means of Regularization, e.g.
 </textarea>
 </section>
 
-
 <section data-markdown>
 <textarea data-template>
 ### Reduced depth
@@ -1003,13 +995,20 @@ Each ML strategy has its own means of Regularization, e.g.
 
 <section data-markdown>
     <textarea data-template>
-### Supervised Learning Process Flow
+### Overview: Supervised Learning Process Flow
 
 <img src='img/flow-train.jpg'>
 
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Be Careful: Good Test Score is no Guarantee
+    
+<img src='img/data-and-the-world.jpg' height="550px">
+    </textarea>
+    </section>
 
 <section data-markdown class="fragments">
         <textarea data-template>
