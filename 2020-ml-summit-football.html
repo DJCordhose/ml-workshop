@@ -341,7 +341,7 @@ ML-Summit, October 2020
         </section>
 
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
     <textarea data-template>
 ## Short Survey        
 ### How often does the ball change possessions on average in professional football? 
@@ -380,7 +380,7 @@ Source: The Numbers Game: Why Everything You Know About Football is Wrong
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
     <textarea data-template>
 ### Had a great impact on the way football has been played in the Premier League
 
@@ -451,7 +451,7 @@ https://www.bundesliga.com/en/bundesliga/news/soccer-positions-explained-names-n
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
         <textarea data-template>
 ### Verdict: no 
 
@@ -490,7 +490,7 @@ _defense plays foul the least of all field positions per player_
             </textarea>
         </section>
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
         <textarea data-template>
 ### Verdict: yes 
 
@@ -521,7 +521,7 @@ _defense wins the most air duels, but not by a super high margin_
             </textarea>
         </section>
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
         <textarea data-template>
 ### Verdict: yes and no
  
@@ -552,7 +552,7 @@ https://twitter.com/minimal1023/status/1180556700891455490
 </textarea>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 ### Possible scenarios?
 
@@ -561,7 +561,7 @@ https://twitter.com/minimal1023/status/1180556700891455490
 * Data Journalism: which player is interesting or different (outlier)? How can you compare two players? 
 
 </textarea>
-</section>
+</section> -->
 
 <section data-markdown>
     <textarea data-template>
@@ -573,7 +573,7 @@ https://twitter.com/minimal1023/status/1180556700891455490
         </textarea>
     </section>
 
-    <section data-markdown>
+    <!-- <section data-markdown>
             <textarea data-template>
 ### How to compute similarities of players?
 
@@ -583,11 +583,11 @@ https://twitter.com/minimal1023/status/1180556700891455490
 * PCA gives horrible results
 
 </textarea>
-</section>
+</section> -->
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
         <textarea data-template>
-### Solution: Neural Embeddings
+### Neural Embeddings
 
 * Use all the data you have for a player
 * Train a neural network predict all that data from just two variables
@@ -727,7 +727,7 @@ plt.scatter(latent_x, latent_y)
         </textarea>
     </section>
 
-<section>
+<!-- <section>
 <h3>The plot is really crowded - but we can find the closest players algorithmically</h3>
 
 <pre><code contenteditable data-trim class="line-numbers python fragment">
@@ -739,7 +739,7 @@ distances,
   indices = nbrs.kneighbors(embeddings_2d[player_index], n_neighbors=5)
 </code></pre>
         
-    </section>
+    </section> -->
 
 
 <section data-markdown>
@@ -847,7 +847,7 @@ https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-0000ZV/tobias-strobl/sta
 </section> -->
 
 
-<section data-markdown>
+<section data-markdown class="no-fragments">
         <textarea data-template>
 ### More ideas
   * Predict position from features: 
@@ -1019,7 +1019,8 @@ I made a chart showing his peerless progress, and I’ve published the full step
         }
         Reveal.addEventListener( 'ready', function( event ) {
             // do we want this???
-            // $('li').addClass('fragment')
+            $('li').addClass('fragment')
+            $('.no-fragments li').removeClass('fragment')
 
             if (isLocal && !printMode) {
                 // only applies to presentation version
