@@ -72,6 +72,7 @@
                   touch-action: auto !important;
                       }
       
+                      .reveal h1,
                       .reveal h2,
                       .reveal h3,
                       .reveal h4 {
@@ -79,8 +80,8 @@
                           font-family: 'Calibri', sans-serif;
                           /* font-family: 'Times New Roman', Times, serif; */
                           font-weight: bold;
-                          /* color: black; */
-                          color: white;
+                          color: black;
+                          /* color: white; */
                           font-style: italic;
                           letter-spacing: -2px;
                           text-transform: none !important;
@@ -120,7 +121,7 @@
       
                       .reveal .highlight {
                           background-color: #D3337B;
-                          color: white;
+                          /* color: white; */
                       }
       
               .reveal section img {
@@ -141,9 +142,11 @@
                       list-style-type: none;
                   }
                   .reveal {
-                /* color: black !important; */
-                color: white !important;
-             }       
+                /* font-family: 'Work Sans', 'Calibri'; */
+                /* font-family: 'Calibri'; */
+                color: black !important;
+                /* font-size: xx-large; */
+             }
 
           </style>
       
@@ -162,7 +165,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background-color: whitesmoke;">
 
 
 <div class="reveal">
@@ -185,30 +188,15 @@ welchen anderen ersetzen könnte. Beispiele für eure eigene Lieblingsmannschaft
 https://djcordhose.github.io/ml-workshop/2020-ml-summit-football.html
 -->
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 ### Alternative Datenquellen
 
 https://www.jokecamp.com/blog/guide-to-football-and-soccer-data-and-apis/
 </textarea>
-</section>
+</section> -->
 
-<section data-markdown class="todo">
-    <textarea data-template>
-## Gladbach
-### Wieso Unterschied Strobl und Kramer?
-
-https://www.bundesliga.com/de/spieler/2019-2020/DFL-OBJ-00003L/christoph-kramer/statistiken
-https://www.bundesliga.com/de/spieler/2019-2020/DFL-OBJ-0000ZV/tobias-strobl/statistiken
-
-- Torschüsse
-- Einsätze
-- Kopfballquote
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 ### Auch Intro
 
@@ -217,15 +205,15 @@ Daten und Datenanalyse im Fußball wie der FC Midtjylland | deinfussballtrainer.
 http://www.deinfussballtrainer.de/daten-und-datenanalyse-im-fussball-wie-der-fc-midtjylland/
 
 </textarea>
-</section>
-<section data-markdown class="todo">
+</section> -->
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 ### Auch zeigen?
 https://aws.amazon.com/de/sports/bundesliga/
 </textarea>
-</section>
+</section> -->
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 observable notebook
 
@@ -236,9 +224,9 @@ observable notebook
     [] https://observablehq.com/@mbostock/scrubber
 []https://observablehq.com/@d3/color-legend
 </textarea>
-</section>
+</section> -->
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 Sourcen sind hier https://github.com/DJCordhose/football
         </textarea>
@@ -302,9 +290,9 @@ Made with #reactjs, #threejs, react-three-fiber https://t.co/guGam3NqsP
 
 https://www.optasportspro.com/news-analysis/guest-blog-identifying-patterns-in-build-up-play-using-clustering/
 </textarea>
-</section>
+</section> -->
 
-<section data-markdown class="preparation">
+<!-- <section data-markdown class="preparation">
     <textarea data-template>
 
 Unterhaltungsvideo am Anfang
@@ -312,6 +300,19 @@ Unterhaltungsvideo am Anfang
 * Zidane https://t.co/uqnr3mZZ6l
 * 20 Football Tricks and the Players Who Invented Them https://bleacherreport.com/articles/1856678-20-football-tricks-and-the-players-who-invented-them
 * Tor nach Druck: https://twitter.com/GR8Coaching/status/1180758186170691585
+</textarea>
+</section> -->
+
+<section data-markdown class="preparation">
+    <textarea data-template>
+* Notebook starten
+  * (tf-2.3) C:\Users\olive\Development\football\2020>
+  * http://localhost:8888/notebooks/embeddings.ipynb
+  * Run All
+
+* Observable auf machen: https://observablehq.com/d/30228aa2264114ca
+* Aufmachen, damit man den aktuellen Stand sieht (auch Tore und so): https://www.kicker.de/bundesliga/tabelle  
+
 </textarea>
 </section>
 
@@ -353,6 +354,7 @@ ML-Summit, October 2020
 <small>
 Source: The Numbers Game: Why Everything You Know About Football is Wrong
 </small>
+
 </textarea>
 </section>
 
@@ -393,7 +395,7 @@ Anderson, Chris; Sally, David. The Numbers Game (p. 17). Penguin Books Ltd. Kind
 </textarea>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 ### Data for Bundesliga
 
@@ -402,12 +404,14 @@ Anderson, Chris; Sally, David. The Numbers Game (p. 17). Penguin Books Ltd. Kind
 * STATS, OPTA: https://www.datenjournalist.de/fusball-statistiken-tracking-der-spieler-per-kamera-und-per-hand/
 * Aggregations and Statistics: https://www.bundesliga.com/en/stats/bundesliga
     </textarea>
-</section>
+</section> -->
 <section data-markdown>
         <textarea data-template>
 ## Checking some hypotheses to get our hands dirty
 
-Based on data analysis
+Based on analysis of Bundesliga Data
+
+_Bundesliga season 2018/2019_
             </textarea>
         </section>
 
@@ -420,11 +424,6 @@ Based on data analysis
 
 #### Method of investigation: Just basic statistics / counting
 
-            </textarea>
-        </section>
-
-<section data-markdown>
-        <textarea data-template>
             </textarea>
         </section>
 
@@ -468,7 +467,7 @@ _defense plays foul the least of all field positions per player_
 <section data-markdown>
         <textarea data-template>
 ### Hypothesis 
-## Defense wins most of their air duels, offense looses most
+## Defense wins most of their air duels, offense loses most
 
 #### Method of investigation: Just basic statistics / counting
 
@@ -599,7 +598,7 @@ https://twitter.com/minimal1023/status/1180556700891455490
 </textarea>
 </section>
 
-<section>
+<!-- <section>
     <h3>Train embedding with TensorFlow</h3>
 
     <pre><code contenteditable data-trim class="fragment line-numbers python">
@@ -662,7 +661,7 @@ latent_y = embeddings_2d[:, 1]
 plt.scatter(latent_x, latent_y)
 </code></pre>
 </textarea>
-        </section>
+        </section> -->
 
     <section data-markdown>
         <textarea data-template>
@@ -722,16 +721,6 @@ plt.scatter(latent_x, latent_y)
 
 <section data-markdown>
     <textarea data-template>
-### Explorative Journalism
-## What makes the player represented as outliers special? 
-
-* Filip Kostić: incredible amount of crosses (https://www.transfermarkt.com/filip-kostic/profil/spieler/161011)
-* Francisco Alcacer Garcia: Joker (https://www.transfermarkt.com/paco-alcacer/profil/spieler/126716)
-        </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
 ### Selection example III
 ## You need to sell Müller, who can not be replaced from within the team, is there anyone from Bundesliga can replace him? 
 
@@ -785,6 +774,79 @@ https://twitter.com/ChristianHelms/status/1148299349660708865
 </section>
  -->
 
+ <section data-markdown>
+    <textarea data-template>
+## Part III: Exploration            
+        </textarea>
+    </section>
+
+ <section data-markdown>
+    <textarea data-template>
+### Explorative Journalism
+## What makes the player represented as outliers special? 
+
+* Filip Kostić: incredible amount of crosses (https://www.transfermarkt.com/filip-kostic/profil/spieler/161011)
+* Francisco Alcacer Garcia: Joker (https://www.transfermarkt.com/paco-alcacer/profil/spieler/126716)
+        </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Interactive Dataviz can reval new perspectives
+
+<a href="https://twitter.com/Creatuluw/status/749151998415634432">
+<img src="img/football/dataviz-cat.jpeg" height="500px">
+</a>
+
+<small>https://twitter.com/Creatuluw/status/749151998415634432</small>
+</textarea>
+</section>
+
+ <section data-markdown>
+    <textarea data-template>
+### Interactive Analysis using Observable and D3
+
+<a href='https://observablehq.com/d/30228aa2264114ca'>
+<img src='img/football/interaction.png' height="550">
+</a>
+        </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+## Part IV: Expert Round            
+            </textarea>
+        </section>
+    
+ <section data-background-image='img/football/gladbach.jpg'>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<h2 style="color: white !important">Expert Round 2020/2021</h2>
+<h1 style="color: white !important">Gladbach</h1>
+</section>
+
+
+ <!-- <section data-markdown>
+    <textarea data-template>
+## Gladbach
+### Wieso Unterschied Strobl und Kramer?
+
+https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-00003L/christoph-kramer/statistiken
+https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-0000ZV/tobias-strobl/statistiken
+
+- Torschüsse
+- Einsätze
+- Kopfballquote
+
+</textarea>
+</section> -->
+
+
 <section data-markdown>
         <textarea data-template>
 ### More ideas
@@ -797,7 +859,7 @@ https://twitter.com/ChristianHelms/status/1148299349660708865
 </textarea>
 </section>
 
-<section data-markdown style="font-size: xx-large;">
+<!-- <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ### More Fun stuff
 * top goal-scorers: https://johnburnmurdoch.github.io/projects/goal-lines/all-comps/ 
@@ -806,7 +868,7 @@ https://twitter.com/ChristianHelms/status/1148299349660708865
 * What will players do next using VAEs: https://statsweb-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/Where-Will-They-Go-Predicting-Fine-Grained-Adversarial-Multi-Agent-Motion-using-Conditional-Variational-Autoencoders.pdf
 * Playing football using Reinforcement Learning: https://ai.googleblog.com/2019/06/introducing-google-research-football.html
 </textarea>
-</section>
+</section> -->
 
 <section>
     <h2>Wrap Up</h2>
@@ -818,12 +880,10 @@ https://twitter.com/ChristianHelms/status/1148299349660708865
         <li class="fragment">many more 
                     </ul>
     <p>
-            <em>Data Science in Football, data2day, Ludwigshafen, October 2019</em>
+            <em>Data Science in Football, ML-Summit, October 2020</em>
         <br>
         <br>
         <small>
-Stefan Kühn
-<br>
     <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
         <br>
 </small>
@@ -959,7 +1019,7 @@ I made a chart showing his peerless progress, and I’ve published the full step
         }
         Reveal.addEventListener( 'ready', function( event ) {
             // do we want this???
-            $('li').addClass('fragment')
+            // $('li').addClass('fragment')
 
             if (isLocal && !printMode) {
                 // only applies to presentation version
@@ -976,7 +1036,7 @@ I made a chart showing his peerless progress, and I’ve published the full step
 
         } );
         // $('section').attr('data-background-image', "background/street.jpg");
-        $('section').attr('data-background-image', "background/dark-sky.jpg");
+        // $('section').attr('data-background-image', "background/dark-sky.jpg");
     </script>
     
 <script>
