@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>DS in Football</title>
+
+    <meta name="description" content="Manning Course Material">
+    <meta name="author" content="Oliver Zeigermann">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme"> -->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme"> -->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              .beginning:before {
+                  content: 'BEGINNING';
+              }
+              .beginning {
+                color: red !important;
+              }
+              .end:before {
+                  content: 'END';
+              }
+              .end {
+                color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h1,
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                          letter-spacing: 2px;
+                          font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          /* color: white; */
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          /* color: white; */
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+                  .reveal {
+                /* font-family: 'Work Sans', 'Calibri'; */
+                /* font-family: 'Calibri'; */
+                color: black !important;
+                /* font-size: xx-large; */
+             }
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body style="background-color: whitesmoke;">
+
+
+<div class="reveal">
+    <div class="slides">
+<!-- 
+
+
+
+https://ml-summit.de/machine-learing/data-science-im-fussball/    
+
+Data Science im Fußball
+
+45 Minutes
+
+Data Science im Fußball: In diesem unterhaltsamen Abendvortrag wird Oliver über den Einsatz von Data Science und Machine
+Learning in der Fußball-Analyse berichten. Da werden wir mit gängigen Vorurteilen aufräumen und sehen, welcher Spieler
+welchen anderen ersetzen könnte. Beispiele für eure eigene Lieblingsmannschaft sind auf Wunsch möglich.
+
+
+https://djcordhose.github.io/ml-workshop/2020-ml-summit-football.html
+-->
+
+<section data-markdown class="todo">
+    <textarea data-template>
+Ted Knutson (@mixedknuts) twitterte um 9:28 PM on So., Okt. 25, 2020:
+Granit Xhaka left-footed vs right-footed passes this season.
+
+Right completes at 97%, but basically never goes forward. https://t.co/SX9S5yvGkN
+(https://twitter.com/mixedknuts/status/1320462155477561346?s=03)
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+StatsBomb (@StatsBomb) twitterte um 0:02 PM on Fr., Okt. 23, 2020:
+Another @Spielvrlagerung x @StatsBomb collab, as @cc_eckner takes a look at Borussia Dortmund's buildup:
+https://t.co/y619zyOK4t
+(https://twitter.com/StatsBomb/status/1319579856485732352?s=03)        
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+* https://www.google.com/search?q=barschart&tbm=isch
+* https://www.google.com/search?q=pieschart&tbm=isch        
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Alternative Datenquellen
+
+https://www.jokecamp.com/blog/guide-to-football-and-soccer-data-and-apis/
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Auch Intro
+
+Daten und Datenanalyse im Fußball wie der FC Midtjylland | deinfussballtrainer.de
+
+http://www.deinfussballtrainer.de/daten-und-datenanalyse-im-fussball-wie-der-fc-midtjylland/
+
+</textarea>
+</section>
+<section data-markdown class="todo">
+    <textarea data-template>
+### Auch zeigen?
+https://aws.amazon.com/de/sports/bundesliga/
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+observable notebook
+
+[]Zoom in/out reinbauen    
+[] Jeden Spieltag neue Daten ziehen, dann wenn genug da sind
+    [] Saison 2020/2021 Properties pro Spieler als Rennen
+    [] https://observablehq.com/@d3/bar-chart-race
+    [] https://observablehq.com/@mbostock/scrubber
+[]https://observablehq.com/@d3/color-legend
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+Sourcen sind hier https://github.com/DJCordhose/football
+        </textarea>
+    </section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+*     Embeddings auf Embeddings für Mannschaften?    
+
+        </textarea>
+    </section>
+
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+### Embeddings auf 2019/2020
+
+Headline: Süle ausgefallen, wen nun?
+  * https://www.sportbuzzer.de/artikel/niklas-sule-fc-bayern-diagnose-verletzung-saison-aus-uli-hoeness-dfb-hummels/
+  * https://www.ran.de/amp/fussball/bundesliga/news/fc-bayern-verdacht-auf-kreuzbandriss-bei-niklas-suele-136016
+* Eigene Mannschaft, andere Mannschaft auf BL?
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Tolle Darstellung und Animation eines Fußballfelds
+
+https://twitter.com/numberstorm/status/1204838755980460032
+https://github.com/andrewRowlinson/mplsoccer/blob/master/mplsoccer/demo_animation.ipynb        
+        </textarea>
+    </section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Arithmetik auf Fußballspielern
+
+Müller - Neuer + Nübel
+Wieder mit nerast neighbor suchen
+
+        </textarea>
+    </section>
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+Peter Beshai (@pbesh) tweeted at 5:57 PM on Wed, Jan 01, 2020:
+Experimented a bit more with 3D #dataviz in the browser: here's every #NBA player since 1950.
+
+Try it out here: https://t.co/LQZW5LGyjv
+
+Made with #reactjs, #threejs, react-three-fiber https://t.co/guGam3NqsP
+(https://twitter.com/pbesh/status/1212417635280928769?s=03)
+        </textarea>
+        </section>
+    
+    
+
+    <section data-markdown class="todo">
+        <textarea data-template>    
+### Clustering von Pässen im Premier League   
+
+https://www.optasportspro.com/news-analysis/guest-blog-identifying-patterns-in-build-up-play-using-clustering/
+</textarea>
+</section>
+
+<section data-markdown class="preparation">
+    <textarea data-template>
+
+Unterhaltungsvideo am Anfang
+        
+* Zidane https://t.co/uqnr3mZZ6l
+* 20 Football Tricks and the Players Who Invented Them https://bleacherreport.com/articles/1856678-20-football-tricks-and-the-players-who-invented-them
+* Tor nach Druck: https://twitter.com/GR8Coaching/status/1180758186170691585
+</textarea>
+</section>
+
+<section data-markdown class="preparation">
+    <textarea data-template>
+* Notebook starten
+  * (tf-2.3) C:\Users\olive\Development\football\2020>
+  * http://localhost:8888/notebooks/embeddings.ipynb
+  * Run All
+
+* Observable auf machen: https://observablehq.com/d/30228aa2264114ca
+* Aufmachen, damit man den aktuellen Stand sieht (auch Tore und so): https://www.kicker.de/bundesliga/tabelle  
+
+</textarea>
+</section>
+
+<section>
+    <h2>Data Science in Football</h2>
+<p><a target="_blank" href="https://www.data2day.de/lecture.php?id=9417&source=0">
+ML-Summit, October 2020
+</a></p>
+<h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a></h4>
+<h4>Lars</h4>
+</section>
+
+<!-- <section data-markdown>
+        <textarea data-template>
+## Parts
+
+1. Data Science in Football
+1. Player Selection
+1. Strategy
+            </textarea>
+        </section>
+ -->
+        <section data-markdown>
+        <textarea data-template>
+## Part I: Data Science in Football            
+
+<img src='img/football/pie-chart2.jpg' height="550">
+            </textarea>
+        </section>
+
+
+<section data-markdown class="no-fragments">
+    <textarea data-template>
+## Short Survey        
+### How often does the ball change possessions on average in professional football? 
+
+1. ~ 50
+1. ~ 200     
+1. ~ 400 <em class="fragment">right</em>
+1. ~ 2000
+
+<small>
+Source: The Numbers Game: Why Everything You Know About Football is Wrong
+</small>
+
+</textarea>
+</section>
+
+
+        <section data-markdown>
+                <textarea data-template>
+        
+<img src='img/football/football-daten.jpg' height="600">        
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Beginning of Data Science in European Football
+
+<img src='img/football/passes.png' height="400px">
+
+<small>
+‘Skill and Chance in Association Football’ – Reep and Benjamin (1968)
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown class="no-fragments">
+    <textarea data-template>
+### Had a great impact on the way football has been played in the Premier League
+
+* Reep recorded games on rolls of wall paper
+* Their conclusion: a single pass is most promising 
+* Foundation of Kick and Rush
+* Believe in corners
+
+<small>
+Anderson, Chris; Sally, David. The Numbers Game (p. 17). Penguin Books Ltd. Kindle Edition. 
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Data for Bundesliga
+
+* https://www.deltatre.com/ ex Impire: https://www.hna.de/sport/fussball/millionen-daten-spiel-werden-fussball-statistiken-erfasst-4483893.html
+* SAP: https://www.faz.net/aktuell/sport/fussball/bundesliga/fussball-auf-dem-weg-zum-daten-spiel-15344638.html
+* STATS, OPTA: https://www.datenjournalist.de/fusball-statistiken-tracking-der-spieler-per-kamera-und-per-hand/
+* Aggregations and Statistics: https://www.bundesliga.com/en/stats/bundesliga
+    </textarea>
+</section> -->
+<section data-markdown>
+        <textarea data-template>
+## Checking some hypotheses to get our hands dirty
+
+Based on analysis of Bundesliga Data
+
+_Bundesliga season 2018/2019_
+            </textarea>
+        </section>
+
+
+
+<section data-markdown>
+        <textarea data-template>
+### Hypothesis 
+## Defense plays more foul than other positions
+
+#### Method of investigation: Just basic statistics / counting
+
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+<img src='img/football/süle.jpg' height="600">
+    
+                </textarea>
+            </section>
+    
+            <section data-markdown>
+                <textarea data-template>
+    <img src='img/football/Ondrej-Duda-endlich-in-Berlin-angekommen-770x470.jpg' height="600">
+        
+                    </textarea>
+                </section>
+    
+        <section data-markdown>
+            <textarea data-template>
+<img src='img/football/volland.jpg' height="600">
+    
+                </textarea>
+            </section>
+        
+            <section data-markdown>
+        <textarea data-template>
+### Fouls grouped by Position 
+
+<img src='img/football/fouls-by-position.png' class="fragment">
+            </textarea>
+        </section>
+
+        <section data-markdown>
+                <textarea data-template>
+#### Süle averaged just half a foul per game in the Bundesliga season 2018/2019
+
+<img src='img/football/süle.jpg' height="400px">
+
+<small>
+
+https://www.transfermarkt.com/niklas-sule/profil/spieler/166601
+<br>
+https://www.bundesliga.com/en/bundesliga/news/soccer-positions-explained-names-numbers-what-they-do-2579-786
+
+    </small>
+</textarea>
+</section>
+
+<section data-markdown class="no-fragments">
+        <textarea data-template>
+### Verdict: no 
+
+_defense plays foul the least of all field positions per player_
+
+* midfield are the bad boys
+* player committing the most fouls (70 in 2574 minutes of play) is a 10er and barely weights over 60kg
+* even that is just a little bit more than once per half time
+* goal keepers do not foul much at all
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Hypothesis 
+## Defense wins most of their air duels, offense loses most
+
+#### Method of investigation: Just basic statistics / counting
+
+            </textarea>
+        </section>
+
+        <section data-markdown>
+        <textarea data-template>
+### Air Duels SUM grouped by Position 
+
+<img src='img/football/air-duels.png' class="fragment">
+            </textarea>
+        </section>
+
+        <section data-markdown>
+        <textarea data-template>
+### Air Duels RATIO WON grouped by Position 
+
+<img src='img/football/air-duels-won.png' class="fragment">
+            </textarea>
+        </section>
+
+<section data-markdown class="no-fragments">
+        <textarea data-template>
+### Verdict: yes 
+
+_defense wins the most air duels, but not by a super high margin_
+
+* offense has more direct fights
+* only wins ~35%
+* defense wins ~55%
+* goalkeepers do not have many air duels, but if they have, they'd better win them (and mostly do)
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Hypothesis 
+## taller players score more head goals, heavier players are better at ground tackles
+
+#### Method of investigation: Computing correlations
+
+            </textarea>
+        </section>
+
+        <section data-markdown>
+        <textarea data-template>
+### Linear Correlations for Height and Weight            
+<img src='img/football/corr-height-weight.png' >
+            </textarea>
+        </section>
+
+<section data-markdown class="no-fragments">
+        <textarea data-template>
+### Verdict: yes and no
+ 
+_taller players score more head goals, but heavier players as well_
+
+* weight and height are correlated, though
+* taller players are better in air tackles
+* however, smaller players are better in ground tackles
+* no correlation between goals and body sizes        
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Part II: Player Selection
+
+_choose your players wisely_
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+<img src='img/football/platini-maradona.png' height="600">        
+<small>
+https://twitter.com/minimal1023/status/1180556700891455490    
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Possible scenarios?
+
+* One of your players can't play, who do bring as a replacement?
+* You sell a player, who do you buy as a replacement?            
+* Data Journalism: which player is interesting or different (outlier)? How can you compare two players? 
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+### Selection
+## You are the coach of the BVB and Reus is sick, who do you bring in as a replacement? 
+
+#### Method of investigation: Finding Similarities by Embeddings
+
+        </textarea>
+    </section>
+
+    <!-- <section data-markdown>
+            <textarea data-template>
+### How to compute similarities of players?
+
+* We can use statistics, but which one?
+* Which might be the most telling?
+* How do weight in different statistics?
+* PCA gives horrible results
+
+</textarea>
+</section> -->
+
+<section data-markdown class="no-fragments">
+        <textarea data-template>
+### Neural Embeddings
+
+* Use all the data you have for a player
+* Train a neural network predict all that data from just two variables
+* Use those two variables as the encoding of the player
+* Plot all encodings
+* Done
+
+</textarea>
+</section>
+
+<!-- <section>
+    <h3>Train embedding with TensorFlow</h3>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+embedding_dim = 2
+input_dim = max_player_index + 1
+            
+# takes the ordinal number of a player as input        
+model.add(Embedding(name='embedding',
+                    input_dim=input_dim, 
+                    output_dim=embedding_dim, 
+                    input_length=1))
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# random additional layers to at least make this train
+model.add(Dense(units=10, name='hidden1', activation='tanh'))
+# ...
+</code></pre>
+
+    <pre><code contenteditable data-trim class="fragment line-numbers python">
+# prediction of all features        
+model.add(Dense(units=n_features, name='output', activation='linear'))
+
+# r2 metric gives as an idea of how well this works
+model.compile(optimizer='adam', loss='mse', metrics=[r2_metric])
+</code></pre>
+
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Make sure the model trains / loss converges
+
+<div style="float: left">
+<img src='img/football/loss.png' height="220px"><br>
+Loss
+</div>
+<div style="float: right" >
+<img src='img/football/r2.png' height="220px"><br>
+R2 Score
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Extracting embedding
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+embedding_layer = model.get_layer('embedding')
+embedding_model = Model(inputs=model.input, 
+                        outputs=embedding_layer.output)
+embeddings_2d = embedding_model.predict(samples)
+</code></pre>
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+latent_x = embeddings_2d[:, 0]
+latent_y = embeddings_2d[:, 1]
+
+plt.scatter(latent_x, latent_y)
+</code></pre>
+</textarea>
+        </section> -->
+
+    <section data-markdown>
+        <textarea data-template>
+#### Similarities in the team of BVB 2018/2019            
+<img src='img/football/embedding-bvb.png' height="800" style="position: relative; top: -100px">            
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Players closest to Reus
+
+1. Jadon Malik Sancho
+1. Thorgan Ganael Francis Hazard
+1. Julian Brandt
+1. Mario Götze
+
+        </textarea>
+    </section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Selection example II
+## You are the coach of Bayern Munich and Boateng gets injured, who do you bring in as a replacement? 
+
+#### Method of investigation: Finding Similarities by Embeddings
+
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+#### Similarities in the team of Bayern Munich 2018/2019            
+<img src='img/football/embedding-bayern.png' height="800" style="position: relative; top: -100px">            
+        </textarea>
+    </section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Players closest to Boateng
+
+1. Benjamin Pavard
+1. Manuel Peter Neuer
+1. Niklas Süle
+1. Javier Martínez Aguinaga
+
+        </textarea>
+    </section>
+
+ <section data-markdown>
+        <textarea data-template>
+#### Similarities of all Bundesliga Players 2018/2019            
+<img src='img/football/embedding-all.png' height="800" style="position: relative; top: -100px">            
+        </textarea>
+    </section> -->
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Selection example III
+## You need to sell Müller, who can not be replaced from within the team, is there anyone from Bundesliga can replace him? 
+
+        </textarea>
+    </section> -->
+
+<!-- <section>
+<h3>The plot is really crowded - but we can find the closest players algorithmically</h3>
+
+<pre><code contenteditable data-trim class="line-numbers python fragment">
+from sklearn.neighbors import NearestNeighbors
+nbrs = NearestNeighbors(n_neighbors=1, algorithm='brute').fit(embeddings_2d)
+</code></pre>
+<pre><code contenteditable data-trim class="line-numbers python fragment">
+distances, 
+  indices = nbrs.kneighbors(embeddings_2d[player_index], n_neighbors=5)
+</code></pre>
+        
+    </section> -->
+
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Players from all Bundesliga closest to Müller
+
+1. Julian Brandt
+1. Marcel Sabitzer
+1. Michael Gregoritsch
+1. Kerem Demirbay
+        </textarea>
+    </section> -->
+
+
+<!-- 
+<section data-markdown>
+    <textarea data-template>
+## Part III: Strategy
+
+_looking at teams as whole_
+        </textarea>
+    </section>
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/football/cow-football-strategy.png' height="600px">
+<small>
+https://twitter.com/ChristianHelms/status/1148299349660708865
+
+</small>
+</textarea>
+</section>
+ -->
+
+ <section data-markdown>
+    <textarea data-template>
+## Part III: Exploration            
+        </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+#### Similarities of all Bundesliga Players 2018/2019            
+<img src='img/football/embedding-all.png' height="800" style="position: relative; top: -100px">            
+        </textarea>
+    </section>
+
+ <section data-markdown>
+    <textarea data-template>
+### Explorative Journalism
+## What makes the player represented as outliers special? 
+
+* Filip Kostić: incredible amount of crosses (https://www.transfermarkt.com/filip-kostic/profil/spieler/161011)
+* Francisco Alcacer Garcia: Joker (https://www.transfermarkt.com/paco-alcacer/profil/spieler/126716)
+        </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Interactive Dataviz can reval new perspectives
+
+<a href="https://twitter.com/Creatuluw/status/749151998415634432">
+<img src="img/football/dataviz-cat.jpeg" height="500px">
+</a>
+
+<small>https://twitter.com/Creatuluw/status/749151998415634432</small>
+</textarea>
+</section>
+
+ <section data-markdown>
+    <textarea data-template>
+### Interactive Analysis using Observable and D3
+
+<a href='https://observablehq.com/d/30228aa2264114ca'>
+<img src='img/football/interaction.png' height="550">
+</a>
+        </textarea>
+    </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+## Part IV: Expert Round            
+<img src='img/football/lars-expert.jpeg' height="550">
+
+            </textarea>
+        </section>
+    
+ <section data-background-image='img/football/gladbach.jpg'>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<h2 style="color: white !important">Expert Round 2020/2021</h2>
+<h1 style="color: white !important">Gladbach</h1>
+</section>
+
+
+ <!-- <section data-markdown>
+    <textarea data-template>
+## Gladbach
+### Wieso Unterschied Strobl und Kramer?
+
+https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-00003L/christoph-kramer/statistiken
+https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-0000ZV/tobias-strobl/statistiken
+DFL-OBJ-0000OE/tony-jantschke
+
+- Torschüsse
+- Einsätze
+- Kopfballquote
+
+- https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-0000ZS/matthias-lukas-ginter/statistiken
+- https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-0000OE/tony-jantschke/statistiken
+- https://www.bundesliga.com/de/spieler/2020-2021/DFL-OBJ-00003L/christoph-kramer/statistiken
+
+</textarea>
+</section> -->
+
+
+<section data-markdown class="no-fragments">
+        <textarea data-template>
+### More ideas
+  * Predict position from features: 
+    * is a player on the best position possible?   
+  * Embeddings for teams - which teams are similar
+    * How do I play against another team?
+  * Changes over time per player
+    * Who will be the next Messi?           
+</textarea>
+</section>
+
+<!-- <section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### More Fun stuff
+* top goal-scorers: https://johnburnmurdoch.github.io/projects/goal-lines/all-comps/ 
+* Control of space: https://twitter.com/jburnmurdoch/status/1057908503476662272
+* embedding of NBA players using UMAP: https://twitter.com/abresler/status/1097261244355174400
+* What will players do next using VAEs: https://statsweb-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/Where-Will-They-Go-Predicting-Fine-Grained-Adversarial-Multi-Agent-Motion-using-Conditional-Variational-Autoencoders.pdf
+* Playing football using Reinforcement Learning: https://ai.googleblog.com/2019/06/introducing-google-research-football.html
+</textarea>
+</section> -->
+
+<section>
+    <h2>Wrap Up</h2>
+    <em>Data Science in Football can help us with</em>
+    <ul>
+        <li class="fragment">validating hypotheses "we all know are true" (but really?)
+        <li class="fragment">Which players are exceptional? 
+        <li class="fragment">How can we replace a player? 
+        <li class="fragment">many more 
+                    </ul>
+    <p>
+            <em>Data Science in Football, ML-Summit, October 2020</em>
+        <br>
+        <br>
+        <small>
+    <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+        <br>
+</small>
+    </p>
+</section>
+
+<!-- 
+<section data-markdown class="todo" style="font-size: large">
+        <textarea data-template>
+
+### Story: what makes a good striker
+
+1. Ask audience: number of goals?
+1. But, are all goals equally important?
+* Not all goals matter the same
+
+second goal is most important, you need someone who can score the important goals
+
+<img src='img/football/IMG_20190711_190837.jpg' height="200px">
+
+means "increase in points when going from 1 to 2, 2 to 3 etc."
+
+<img src='img/football/IMG_20190711_190822.jpg' height="200px">
+
+</textarea>
+</section>
+
+<section data-markdown class="todo" style="font-size: large">
+        <textarea data-template>
+
+### Story: Lewandowski equals Eggestein
+
+
+<img src='img/football/embedding1d.png' height="200px">
+<img src='img/football/embedding2d.png' height="200px">
+
+Close enough: you only get as good as the data is
+
+<img src='img/football/lotte-eggestein-vs-lewandowski.jpg' height="200px">
+
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Quelle
+
+<img src='img/the number game.jpg'>
+    </textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### It is hard to concentrate on something that does not happen
+
+Fehlerhafte Daten Analyse
+
+Stam hat weniger Tackles gemacht
+
+Allerdings hätte sich Wenger auf das konzentrieren sollen, was nicht passiert ist
+
+Tackling is the last resort when something goes horribly wrong
+
+Wenn man als Verteidiger weniger Zweikämpfe führt, heißt das oft dass man besser, nicht schlechter ist
+
+
+<img src='img/IMG_20190816_101842.jpg'>
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Measuring something that's not there
+
+* Clean sheets score 2.5 points on average
+* Zero goals conceded is more valuable than a single goal scored
+
+<img src='img/IMG_20190816_103849.jpg'>
+    </textarea>
+</section>
+
+
+ -->
+<!-- 
+<section data-markdown class="todo">
+    <textarea data-template>
+https://medium.com/@cxbxmxcx/reinforcement-learning-for-sports-6a96987f9ca5
+
+
+
+
+
+
+
+Tobias Escher (@TobiasEscher) tweeted at 9:40 PM on Fri, Jan 25, 2019:
+Was Dortmund dem Rest der Liga voraushat in einer simplen Grafik. https://t.co/FcqX7sPUQe
+(https://twitter.com/TobiasEscher/status/1088899486607388674?s=03)
+
+Get the official Twitter app at https://twitter.com/download?s=13
+
+
+
+John Burn-Murdoch (@jburnmurdoch) tweeted at 10:21 PM on Sat, Mar 02, 2019:
+Today Roger Federer won his 100th ATP tournament — the first player ever to do so.
+
+I made a chart showing his peerless progress, and I’ve published the full step-by-step process for going from the #rstats #ggplot2 defaults to the end product https://t.co/6F0Bcqdmk3 #dataviz https://t.co/UmrwjmM1hY
+(https://twitter.com/jburnmurdoch/status/1101955617533685760?s=03)
+
+        
+</textarea>
+</section>
+ -->
+
+    </div>
+
+</div>
+
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+            $('.todo').remove();
+            $('.preparation').remove();
+            $('.local').remove();
+        }
+        Reveal.addEventListener( 'ready', function( event ) {
+            // do we want this???
+            $('li').addClass('fragment')
+            $('.no-fragments li').removeClass('fragment')
+
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+            // applies to all versions
+            $('code').addClass('line-numbers');
+
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+
+        } );
+        // $('section').attr('data-background-image', "background/street.jpg");
+        // $('section').attr('data-background-image', "background/dark-sky.jpg");
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: false,
+        history: true,
+        center: true,
+        width: 1100,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+            mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
