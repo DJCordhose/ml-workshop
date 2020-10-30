@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Deep Learning TF2 Workshop</title>
+    <title>SSH - Machine Learning</title>
 
     <link rel="stylesheet" href="reveal.js/css/reset.css">
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
@@ -140,84 +140,6 @@
     <div class="reveal">
         <div class="slides">
 
-            <section data-markdown class="preparation">
-                <textarea data-template>
-### Preparation
-* Output layer exercise as paper
-* 2 kinds of post its for question and done
-                </textarea>
-            </section>
-
-<section data-markdown class='local' style="font-size: xx-large">
-        <textarea data-template>
-### Workshop: Introduction to Deep Learning with TensorFlow 2
-
-_Make sure you are prepared_
-1. #wifi Name: xxx, pwd: xxx
-1. Open this slide deck: XXX
-1. Make sure you are ready to work with Colab
-   * open https://colab.research.google.com/notebooks/welcome.ipynb in Chrome (IE will not work)
-   * make it run using the "Run All" command from the "Runtime" menu
-   * you need to allow execution and must either have a Google login or are willing to create one
-   * Go through the notebook and make yourself comfortable with Colab
-
-_Talk to your neighbors or ask Olli for help_   
-    </textarea>
-    </section>
-
-
- <section data-markdown class="todo hide">
-        <textarea data-template>
- * Wifi erste Folie 
- * bit.ly link
- * Drive File
-        </textarea>
-    </section>
-
-    <section data-markdown class="todo">
-        <textarea data-template>
-* Neurungen aus SSH nehmen
-  * Notebook 
-  * Folien-Satz           
-</textarea>
-</section>
-
-    <section data-markdown class="todo">
-        <textarea data-template>
-* Auf neueste Notebooks umstellen
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-01-regression.ipynb            
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-02-classification.ipynb            
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb            
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-04-images.ipynb            
-* neueste Version von TF und Train Viz und Ter lib
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Abschluss-Übungen nach 01, 02 und 03
-
-- Male deinen eigenen Datensatz und versuche ihn zu fitten
-- Entweder Line Chart für 01 oder Scatter Plot für 02
-- Generalisierung sicher stellen (wie in 03 gelernt)
-- Code vorgeben, der das Laden kann
-
-https://drawdata.xyz/
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-Story für Image CNN
-
-Wie hat man vor ML Strukturen in Bildern erkannt?
-- Filter-Kernel
-- Idee: diese nehmen, um auch Strukturen in Bildern zu isolieren
-- Parameter sind trainierbar
-- Erste Schichten machen Feature Extraktion 
-</textarea>
-</section>
-
 <section data-markdown class="todo">
     <textarea data-template>
 Sparsity aus den folgenden Folien für CNN einbauen
@@ -274,196 +196,115 @@ https://twitter.com/DeepMind/status/1309438464497266688?s=09
 </textarea>
 </section>
 
-    <section data-markdown class="todo">
-        <textarea data-template>
-### Custom Loss Function
-
-https://twitter.com/fchollet/status/1296292123768025090?s=09
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Hardware Lotterie: warum erst jetzt DL
-
-https://arxiv.org/abs/2009.06489?s=09
-</textarea>
-</section>
-
-
-    <section data-markdown class="todo">
-        <textarea data-template>
-### TF 2.3    
-
-https://blog.tensorflow.org/2020/07/whats-new-in-tensorflow-2-3.html
-
-* https://twitter.com/TensorFlow/status/1287832408947978240?s=09
-
-*    Ludwig Stumpp (@ludwig_stumpp) tweeted at 3:11 pm on Sun, Jul 26, 2020:
-Starting with #Tensorflow 2.3, this is all it needs to train a simple and fast classificator with 90% validation accuracy using #transferLearning.
-
-Model includes preprocessing steps thanks to the latest #keras features in the preprocessing module. https://t.co/PLdt7FJHiu
-(https://twitter.com/ludwig_stumpp/status/1287374973397602305?s=09)
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-## Training für GANs
-https://keras.io/guides/customizing_what_happens_in_fit/
-</textarea>
-</section>
-
             <section>
             <br>
             <br>
-            <h2>Introduction to Deep Learning with TensorFlow 2</h2>
-            <!-- <h3>1-2 day workshop</h3> -->
+            <h2>Machine Learning Crash Course</h2>
             <br>
             <br>
             <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
                 <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </h4>
-            <p><small><a href="https://djcordhose.github.io/ml-workshop/2020-nn-workshop.html">
-                https://djcordhose.github.io/ml-workshop/2020-nn-workshop.html
-            </a></small></p>
         </section>
 
+        <section data-markdown>
+            <textarea data-template>
 
-<section data-markdown class="hide">
+<section data-markdown>
     <textarea data-template>
-## Up to 4 parts, half a day each
+## Schedule
 
-1. Basics
-1. Tabular input
-1. Image input
-1. Sequences and time series
+* Day 1: Introduction to Machine Learning
+* Day 2: Introduction to Neural Networks with TensorFlow 2
+* Day 3: Image Recognition
+
 </textarea>
 </section>
-
-<section data-markdown class="local hide">
+                
+<section data-markdown class="todo">
     <textarea data-template>
-## Questions, comments, critique are welcome at any time
+## Day 1: Introduction to Machine Learning
+
+1. Applications of ML
+2. Getting your hands dirty with Supervised Learning
 </textarea>
 </section>
 
-<section data-markdown  class="hide" style="font-size: x-large">
-    <textarea data-template>        
-## Post Its
-
-<img src='img/post-its.jpg' height="400">
-
-* Stick the red one to your laptop to indicate you need help (please remove after you have been helped)
-* Do the same with the blue one to indicate you are done with an exercise (please remove at the beginning of each exercise)
-</textarea>
-</section>
-
-<section data-markdown class="hide">
-    <textarea data-template>        
-## Scatchpad to share links and information
-
-On Google Drive, everyone with link can read and edit
-
-<!-- http://bit.ly/mcubed-nn-scratch -->
-<!-- https://docs.google.com/document/d/17jNrh-eeeCSHGIMry7xNobc8UCkqVkzUf7o2pT7e4g0/edit?usp=sharing -->
-</textarea>
-</section>
-
-<section data-markdown class="local hide">
-        <textarea data-template>
-## Introduce yourself to your neighbors, please
-
-* What are you working on?
-* What do you want to achieve with TensorFlow?
-* What do you already know about ML and TensorFlow?
-* If necessary please help your neighbors to get to theses slides 
-    and make the first notebook run (described in first slide)
-
-        </textarea>
-    </section>
-
-<section data-markdown class="local hide fragments" style="font-size: x-large">
+<section data-markdown class="todo">
     <textarea data-template>
-### What is your background?
+### Day 2 teaches you what day 3 needs as prerequisits
 
-Technical
-* Data Science
-* Programming
-* Classic Machine Learning
-* Neural Networks
-* What else?
+* Networks have predefined structures/architectures
+* NN training loop
+* loss functions
+	* crossentropy
+* optimizers
+* training in batches
+* evaluation methods
+  * overfitting/generalization
+  * training / test / validation split
+  * confusion matrices
+* basics of regularization for neural networks
+* Dense Layers
+* Relu
 
-Tools
-* Matlab
-* R
-* Python
-* Scikit-learn
-* TensorFlow 1/2
-* Pytorch
-* What else?
 </textarea>
 </section>
 
 <section data-markdown style="font-size: xx-large;">
         <textarea data-template>
-### Interactive, online introduction to Neural Networks with TensorFlow
+### Day 2: Interactive, online introduction to Neural Networks with TensorFlow
 
-1. Regression: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-02-basics-regression.ipynb
-1. Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-classification.ipynb
-1. Regularization (optional, also covered in more conceptual detail in tabular data): https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regularization.ipynb
+1. Regression: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-01-regression.ipynb
+1. Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-02-classification.ipynb
+1. Regularization: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb
 </textarea>
 </section>
 
-
-<section data-markdown>
+<section data-markdown style="font-size: xx-large">
     <textarea data-template>
-### Progressive disclosure of complexity in the Keras API
+## Practical advice from a master of his craft
 
-<img src='img/fchollet-keras-progressive-disclosure.png'>
+_Challenges of training neural nets_
+1. Neural net training is a leaky abstraction - you need to understand what is going on
+1. Neural net training fails silently - the possible error surface is large
+
+_The recipe_
+1. Understand your data
+1. Make one simple experiment after the other
+1. Make your model good / large enough to overfit on a batch
+1. Regularize on full data set
+1. Tune and scrape the barrel
 
 <small>
 
-https://twitter.com/fchollet/status/1231285340335267840 
+https://karpathy.github.io/2019/04/25/recipe/    
 
 </small>
 </textarea>
 </section>
 
-
 <section data-markdown>
     <textarea data-template>
-### Building    
+## Challenges of Deep Learning
 
-<img src='img/keras-abstractions-builidng.jpg'>
+* deep learning is more an art than a science
+* we can provide guidelines as to what is likely to work or not
+* ultimately every problem is unique 
+* you will have to try and evaluate different strategies empirically
+* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
+* You must try and iterate
+
+<small>
+
+François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
+
+</small>
+
 </textarea>
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### Training
-
-<img src='img/keras-abstractions-training.jpg'>
-
-</textarea>
-</section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Networks for Tabular and Structured data
-
-<a href='2020-tabular.html'>Fully Connected Layers</a>
-
-</textarea>
-</section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
 <section data-markdown>
     <textarea data-template>
 ### Understanding CNNs  
@@ -485,20 +326,7 @@ https://poloclub.github.io/cnn-explainer/
         <textarea data-template>
 ## Networks for Images
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-images.ipynb
-
-</textarea>
-</section>
-
-<section>
-    <img src='img/data.png'>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-## Networks for Sequences, Time Series and Texts
-
-<a href='2020-rnn.html'>Recurrent Neural Networks: RNNs</a>
+SSH Notebook
 
 </textarea>
 </section>
@@ -508,44 +336,6 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 # General Concepts
 
 </textarea>
-</section>
-
-<section data-markdown class="hide">
-    <textarea data-template>
-### Time for some bad news
-
-<img src='img/weird-val-accuracy.png'>
-
-</textarea>
-</section>
-
-<section data-markdown style="font-size: xx-large" class="hide">
-    <textarea data-template>
-### The real world looks different
-
-_All the shown examples are highly idealised_
-* Training often behaves much less graceful in the real world
-* it does not train linearly
-* sudden jumps in loss can occur any time
-* can take forever to train
-* might ruin your night sleep and family live (let me just quickly check on the training progress) 
-* Real world data might not match training data
-* You might not even know the real data
-* Struggle to find/get good quality data in the first place 
-        </textarea>
-    </section>
-
-<section data-markdown>
-    <textarea data-template>
-### Generalization
-
-<img src='img/data-and-the-world.jpg' height="500px">
-
-<small>
-
-https://twitter.com/DJCordhose/status/1256950659653480448
-</small>
-    </textarea>
 </section>
 
 <section data-markdown>
@@ -576,7 +366,6 @@ https://twitter.com/jacobmenick/status/1260658763687538688
 </small>
     </textarea>
 </section>
-
 
 <section data-markdown>
     <textarea data-template>
@@ -714,145 +503,9 @@ https://zackakil.github.io/precision-recall-playground/
 </section>
 
 <section data-markdown>
-    <textarea data-template>
-### What is Deep Learning?
-
-_Yann LeCun:_
-* DL is constructing networks of parameterized functional modules & training them from examples using gradient-based optimization
-* A multi-layer neural net trained with backprop is, of course, a special instance of DL. 
-Although, a NN with only one hidden layer is a little too simple to deserve the  adjective "deep".
-
-<small>
-
-https://twitter.com/ylecun/status/1209497021398343680
-https://twitter.com/ylecun/status/1209621242652844032
-https://www.facebook.com/722677142/posts/10156463919392143/
-https://www.facebook.com/yann.lecun/posts/10155003011462143    
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### What is Deep Learning?
-
-_François Chollet:_
-* DL is the idea of doing representation learning via a chain of learned feature extractors
-* It's all about describing some input data via *deep hierarchies of features*, where features are *learned*
-* It does not need to use gradient-based optimization
-
-<small>
-
-https://twitter.com/fchollet/status/1210031900695449600
-https://twitter.com/fchollet/status/1210126376101130241
-
-</small>
-</textarea>
-</section>
-
-
-<section data-markdown style="font-size: xx-large">
-    <textarea data-template>
-## Practical advice from a master of his craft
-
-_Challenges of training neural nets_
-1. Neural net training is a leaky abstraction - you need to understand what is going on
-1. Neural net training fails silently - the possible error surface is large
-
-_The recipe_
-1. Understand your data
-1. Make one simple experiment after the other
-1. Make your model good / large enough to overfit on a batch
-1. Regularize on full data set
-1. Tune and scrape the barrel
-
-<small>
-
-https://karpathy.github.io/2019/04/25/recipe/    
-
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Challenges of Deep Learning
-
-* deep learning is more an art than a science
-* we can provide guidelines as to what is likely to work or not
-* ultimately every problem is unique 
-* you will have to try and evaluate different strategies empirically
-* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
-* You must try and iterate
-
-<small>
-
-François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
-
-</small>
-
-</textarea>
-</section>
-
-
-<section data-markdown>
         <textarea data-template>
 # Finally
     
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Bringing TensorFlow to the Edge
-
-* https://www.tensorflow.org/lite
-  * Works for Android: https://www.tensorflow.org/lite/guide/android
-  * And iOS: https://www.tensorflow.org/lite/guide/ios
-  * How to deploy Keras models on Android via TFLite: https://medium.com/@margaretmz/e2e-tfkeras-tflite-android-273acde6588
-* https://www.tensorflow.org/js/
-  * Works on any modern browser using the GPU via WebGL
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-
-<img src='img/nn-overview.png' height="500">        
-<small>
-https://towardsdatascience.com/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464    
-</small>
-</textarea>
-</section>
-
-<section data-markdown style="font-size: large">
-    <textarea data-template>
-
-## Overview of Notebooks
-
-_Basics_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-02-basics-regression.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-classification.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-basics-regularization.ipynb
-
-_Tabular Data / Dense Networks_
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-model.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-training.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-reg.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/tf2/tf-dense-insurance-final.ipynb
-* https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/notebooks/classic/strategies.ipynb
-
-_Sequential Data / RNN_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-basics.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-rnn-advanced.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-time-series.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-encoder-decoder.ipynb
-
-_Image Data / Convolutional Networks_
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-images.ipynb
-* https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
-
 </textarea>
 </section>
 
@@ -879,7 +532,7 @@ _Image Data / Convolutional Networks_
     <textarea data-template>
 ## More Teaching Resources
 
-* Short and very practical introduction to data science: https://github.com/rasbt/data-science-tutorial
+* Short and practical introduction to data science: https://github.com/rasbt/data-science-tutorial
 * Fundamentals of Machine Learning and Deep Learning in Python using Scikit-Learn, Keras and TensorFlow 2: https://github.com/ageron/handson-ml2
 * CS231n: Convolutional Neural Networks for Visual Recognition: http://cs231n.stanford.edu/
 * CS224n: Natural Language Processing with Deep Learning: http://web.stanford.edu/class/cs224n/index.html#schedule
@@ -902,17 +555,22 @@ _Image Data / Convolutional Networks_
 </textarea>
 </section>
 
-<section data-markdown style="font-size: xx-large;">
-    <textarea data-template>
-### More great stuff
+<section>
+    <h2>Vielen Dank</h2>
+    <h3>Grundlagen von Machine Learning</h3>
 
-* Depth estimation for monocular video: https://twitter.com/Reza_Zadeh/status/1256102964365680640
-* Challenges when model should work for more than one customer: https://twitter.com/sh_reya/status/1254551364845240321
+    <p>Bleibt gern in Kontakt</p>
 
-</textarea>
+    <!-- <img src='img/ML-strategy-helper.png' height="470"> -->
+    <p><a href="mailto:oliver@zeigermann.de">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+        <a href="https://www.linkedin.com/in/oliver-zeigermann-34989773">https://www.linkedin.com/in/oliver-zeigermann-34989773</a>
+    <br>
+    </p>
+    <p>Diese Folien:
+        <a href='https://bit.ly/2020-ml-intro'>https://bit.ly/2020-ml-intro</a>
+    </p>
+
 </section>
-
-
 
         </div>
     </div>

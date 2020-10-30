@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Workshop ML Apps</title>
+
+    <meta name="description" content="Workshop ML Apps">
+    <meta name="author" content="Oliver Zeigermann">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+      
+          <!-- Code syntax highlighting -->
+          <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+      
+                      .reveal h2,
+                      .reveal h3,
+                      .reveal h4 {
+                        letter-spacing: 2px;
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+                      .reveal .step-subtitle h1 {
+                          letter-spacing: 1px;
+                      }
+                      .reveal .step-subtitle h2,
+                      .reveal .step-subtitle h3 {
+                          text-transform: none;
+                          font-style: italic;
+                          font-weight: normal;
+                          /* font-weight: 400; */
+                          /* font-family: 'Amiri', serif; */
+                          font-family: 'Lobster', serif;
+                          letter-spacing: 1px;
+                          color: #2aa198;
+                          text-decoration: underline;
+                      }
+      
+                      .reveal .front-page h1,
+                      .reveal .front-page h2 {
+                          font-family: "League Gothic";
+                          font-style: normal;
+                          text-transform: uppercase !important;
+                          letter-spacing: 1px;
+                      }
+      
+                      .reveal .front-page h1 {
+                          font-size: 2.5em !important;
+                      }
+      
+                      .reveal .highlight {
+                          background-color: #D3337B;
+                          color: white;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                color: black !important;
+             }       
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body style="background-color: whitesmoke;">
+
+<div class="reveal">
+    <div class="slides">
+
+<section>
+    <h2>Workshop Machine Learning Applications</h2>
+    <h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+        <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+    </h4>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+# Agenda
+
+Finding candidates for machine learning applications by
+
+1. looking at Case Studies introducing different types of Machine Learning
+2. investigating what data is available and what business opportunities can be derived from it 
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+# Part I
+
+## Case Studies
+
+
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+## Application #1
+
+### Classic Supervised Machine Learning: Learning from tabular data
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Car Insurance: Predicting Crash Risk for prospective customers
+
+<a href='html/calculator.html'>
+<img src='img/insurance/calculator.png' height="400">
+</a>
+<p><small>
+<a href='html/calculator.html' target="_blank">
+    https://djcordhose.github.io/ai/html/calculator.html</a></small>
+</small></p>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## How to solve this programmatically?
+</textarea>
+</section>
+
+<section data-markdown id='supervised-2'>
+    <textarea data-template>
+<img src='img/classic-development.jpg'>
+    </textarea>
+    </section>
+
+
+<section>
+<h3>Programmer's approach: Code Rules by Hand</h3>
+<div class="fragment">
+<pre><code contenteditable data-trim class="line-numbers python">
+def calculate_risk(age, speed):
+    if age < 25:
+        if speed > 110:
+            return high  # young people, fast cars
+        else:
+            return medium # young people
+</code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    if age > 70:
+        return high # seniors</code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    if speed > 145:
+        return high # fast cars in general</code></pre>
+</div>
+<div class="fragment">
+<pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
+    return low # otherwise</code></pre>
+</div>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### How good is this?
+
+* Is it better than guessing?
+* Are all the rules correct?
+* Are some missing?
+* How would we even know?
+* How do we react when the market changes?
+* Sometimes a change is not even obvious, but just creeping in 
+
+</textarea>
+</section>                    
+
+<!-- <section data-markdown>
+<textarea data-template>
+### How good is our Rule based approach?
+
+Plotting the predictions as a background
+
+<img src='img/applications/rules.png' class="fragment" height="450px">
+<br>
+<small class="fragment">approx. 57% predictions correct</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Baseline to understand if our score is good
+
+<img src="img/applications/random.png" height="450px"  class="fragment">
+
+<small  class="fragment">only gets 33% right</small>
+</textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+## Do we really have to write those rules by hand?
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/supervised-ml.jpg' height="650px">
+</textarea>
+</section>
+
+<section>
+<h3>Classification based on known data</h3>
+<img src="img/applications/all.png" height="500px" class="fragment">
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Decision Trees can learn such rules
+
+<img src="img/applications/tree_interp.png">
+</textarea>
+</section>
+
+<!-- <section>
+<h3>Decision Trees</h3>
+<div>
+
+<img src="img/applications/dt-test.png">
+<small>Up to 70% accuracy on unknown data</small>
+</div>
+</section>
+ -->
+<section data-markdown class="fragments">
+    <textarea data-template>
+### When to apply Supervised Learning
+
+_classify categories or predict values_
+
+* you have matching pairs of input and output and want the model to generate output for unknown input
+* the solution to the problem at hand is unknown or hard to specify
+* solving the problem can tolerate some error or uncertainty
+* there is a clear, simple input and output
+
+_what we see applied most of the time_
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Application #2
+### Deep Supervised Machine Learning: Forecasting time series using RNNs
+
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/time-series-rnn-full-predict.ipynb    
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Germany's Consumption of Energy over time
+
+<img src='img/tsa/consumption-overview.png' height="450">
+
+_Could we do a reasonable forecast?_
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### A baseline - rolling mean over the previous 30 days
+
+<img src='img/tsa/baseline-rolling-mean.png' height="450">
+
+<small>
+R2 around 0.2    
+</small>
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Statistical Decomposition of Consumption
+
+<img src='img/tsa/tsa-decomposition.png' height="450">
+
+</textarea>
+</section>
+-->
+<section data-markdown>
+<textarea data-template>
+### R2 Metric: a speaking metric for regression
+
+* R^2 score, the closer to 1 the better
+* loosely speaking: how much better is this than predicting the constant mean
+* 0 would mean just as good
+* 1 is perfect
+* neg. would mean even worse
+* it can become arbitrarily worse
+
+https://en.wikipedia.org/wiki/Coefficient_of_determination
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### RNNs - Networks with Loops
+
+<img src='img/colah/RNN-rolled.png' height="450px">
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Unrolling the loop
+
+<img src='img/colah/RNN-unrolled.png'>
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+</textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+### Results on Test data`
+
+<img src='img/tsa/test-eval.png' height="450">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+#### Before you get tempted, read this
+
+<img src='img/fchollet-stock-prices.png'>
+<small>
+
+https://twitter.com/fchollet/status/1177633367472259072
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Observations
+
+* r2 score over 0.8 is pretty promising
+* definitely improved over baseline
+* no domain knowledge necessary
+* peaks and valleys are underestimated very often
+* but often the most interesting part
+* common problem in time series prediction
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Lessons Learned
+
+* Neural Networks are a different style of machine learning
+* Recurrent Neural Networks can learn from sequences of data
+* Neural Networks are very powerful and might outperform hand written heuristics
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Application #3: Traffic Sign Recognition
+### Classifying Images using CNNs
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Problem: What speed limit?
+
+<img src='img/speed-limit-signs.png'>
+
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
+</small>
+</textarea>
+</section>    
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Challenges for Images Recognition
+
+1. Feeding all pixels into Dense Layers will work, but slow and many parameters 
+1. Manual Feature extraction from images might work, but
+* is tedious and error prone
+* requires domain knowledge
+* needs frequent manual updates
+1. Convolutional networks will learn feature extraction before passing few features to Dense Layer Classifiers
+
+<small>
+
+https://towardsdatascience.com/simple-introduction-to-convolutional-neural-networks-cdf8d3077bac
+</small>
+</textarea>
+</section> -->
+
+<section>
+<h3>Architectures of Convolutional Neural Networks: VGG</h3>
+<img src="img/vgg.png" height="350px">
+<p>
+    <small>There are a number of specialized neural network layers</small>
+</p>
+</section>
+
+<section>
+    <h3>MNIST - Using a model <em>already trained</em></h3>
+    <p>Exploring the different types layers together</p>
+    <a href="https://transcranial.github.io/keras-js/#/mnist-cnn" target="_blank">
+        <img src="img/keras-browser.png" height="350px">
+    </a>
+    <p><small>
+        <a href="https://transcranial.github.io/keras-js/#/mnist-cnn" target="_blank">https://transcranial.github.io/keras-js/#/mnist-cnn</a>
+    </small></p>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Results: Samples
+
+<img src='img/signs/signs-eval.png' height="550">
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Results: Incorrect
+
+<img src='img/signs/signs-incorrect.png' height="550">
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Results: Most Certain and Correct
+
+<img src='img/signs/signs-certain-correct.png' height="550">
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Results: Most Uncertain, but Correct
+
+<img src='img/signs/signs-uncertain-correct.png' height="550">
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Application #4
+
+### Deep Unsupervised Learning: Finding similar airlines and outliers`
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+#### Which airlines are similar, which are exceptions?
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Approach
+
+* First dimension: number of passengers
+* Second dimension: similarity by typical route
+* Cluster airlines
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+## First Challenge
+
+### How to automatically cluster?
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Shared Exercise: Clusters and Outliers
+
+<div style="display: flex;">
+    <div style="flex: 50%;">
+        <img src='img/unsupervised/clustering.jpg'>
+    </div>
+    <div style="flex: 50%; font-size: x-large;">
+
+1. Mark all clusters
+1. Mark all data points that do not belong to a cluster
+
+Discuss
+1. In which way is this very different from our first example?
+1. Do you see clusters that look suspicious?
+1. What could be on the axes? Is this important for recognizing clusters?
+1. What could a cluster mean?
+1. How could you interpret data points do not belong to a cluster?
+
+</div>
+</div>
+</textarea>
+</section>
+
+
+<section data-markdown id='unsupervised-2'>
+    <textarea data-template>
+### DBSCAN
+
+<img src="img/unsupervised/800px-DBSCAN-Illustration.svg.png" height="450px">
+
+<small>
+
+Density-Based Spatial Clustering: 
+https://en.wikipedia.org/wiki/DBSCAN
+</small>
+        </textarea>
+    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### Demo Cluster
+<img src="img/unsupervised/dbscan-demo.png" height="550px">
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Second Challenge
+
+### How do you describe similarity in a single dimension?
+
+        </textarea>
+    </section>
+
+<section data-markdown>
+    <textarea data-template>
+
+<img src='img/embeddings/embedding_5.png'>
+
+        </textarea>
+    </section>
+<section data-markdown>
+<textarea data-template>
+### Resulting Plot of Airline Embedding 
+
+<img src='img/embeddings/2d_embedding_airlines.png' class='with-border' style="float: left" height="350px">
+<img src='img/embeddings/1d_embedding_airlines.png' class='with-border' style="float: right" height="350px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Result: Clustering using 1d embedding
+
+<img src='img/embeddings/airline-embedded-cluster.png' height="550px">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Lessons Learned
+
+* embeddings can be extremely useful and efficient representations
+* you can turn categories, symbols, words into numbers of any dimension
+* you can do this by training a neural network
+* if successful results will preserve semantics
+* main factor of success is a dataset that contains semantic information
+* the lines between classic programming and machine learning are already blurred here
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### When to apply Unsupervised Learning
+
+_cluster, find similarities or outliers_
+
+* you have sample data but no labels
+* clusters and outliers must be clearly separable
+
+e.g.
+* Fraud Detection
+* Similarities in customers / partners
+* Anomaly Detection
+
+_often in addition or a first step to supervised learning_
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Scenario #5
+
+### Deep Reinforcement Learning: graph data for route planning
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Find the optimal route
+
+<img src='img/rl/turf.png' height="450px">
+
+<small>
+
+https://opendatascience.com/bears-need-to-learn-as-well-practical-reinforcement-learning-with-tensorflow-2-0-tf-agents/
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+## Programmatic solution
+
+* best-first search
+* will find optimal solution
+* but only on small problem
+* exponential complexity
+    </textarea>
+    </section>
+
+    <section data-markdown>
+            <textarea data-template>
+### Alternative: Machine Learning
+
+Swapping
+* exponential time for linear time
+* perfect path for near-optimal path 
+
+                </textarea>
+            </section>
+
+<section data-markdown>
+<textarea data-template>
+### But we have no training data
+
+* It is possible to gain training data through experiments
+* You will need a simulated world to run the experiments in, though
+* Experiments are guided by saying which results are good and which are bad
+
+_This is called Reinforcement Learning_
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning: Using an Agent
+
+<img src='img/rl/rl-train-play-1.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning: Training an agent
+
+<img src='img/rl/rl-train-play-2.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Solution
+<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
+        
+</textarea>
+</section>
+
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Learning in a simulated world
+<video controls src="video/knocked-over-stand-up.mp4"  muted type="video/mp4" height="500"></video>
+        
+<small>
+https://blog.openai.com/openai-baselines-ppo/
+</small>
+</textarea>
+</section> -->
+
+<!-- <section data-markdown>
+<textarea data-template>
+### OpenAI Platforms
+
+<img src='img/rl/openai.jpg' height="500px">
+
+<small>
+https://openai.com/systems/
+</small>
+</textarea>
+</section> -->
+
+<!-- <section data-markdown>
+<textarea data-template>
+### Modelling our world
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# what can the agent do?
+
+self.map = {
+'S': [('A', 300), ('B', 100), ('C', 200 )],
+'A': [('S', 300), ('B', 100), ('E', 100 ), ('D', 100 )],
+'B': [('S', 100), ('A', 100), ('C', 50 ), ('K', 200 )],
+'C': [('S', 200), ('B', 50), ('M', 100 ), ('L', 200 )],
+'D': [('A', 100), ('F', 50)],
+...
+}
+max_paths = 4
+self.action_space = spaces.Discrete(max_paths)
+</code></pre>
+
+
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+# what does the agent see?
+
+# observations: position, reward of all 4 local paths, 
+# rest reward of all locations
+low = # pos0, -1000 reward for missing path, 0 for rest rewards
+high = # last pos, 1000 max reward, 1000 for rest rewards
+self.observation_space = spaces.Box(low=low, high=high)
+
+</code></pre>
+
+<small>
+https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/rl/berater-v11.ipynb
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Rewards while training
+
+<img src='img/rl/berater/v11-learning-curve.png'>
+
+Average Reward at end of training: ~ .73 (optimum .73 - .74)
+<br>
+Average length of path: ~ 15
+
+<small>
+https://colab.research.google.com/github/DJCordhose/ai/blob/master/notebooks/rl/berater-v11.ipynb
+</small>
+    </textarea>
+</section> -->
+
+<!-- <section data-markdown>
+        <textarea data-template>
+### Alternative Solution
+
+* OracleNet uses Recurrent Neural Networks
+* generating near-optimal paths in a single, iterative, end-to-end roll-out
+* generally has fixed-time execution regardless of the configuration space complexity while 
+* outperforming popular pathfinding algorithms in complex environments and higher dimensions
+
+<small>
+https://arxiv.org/abs/1904.11102
+</small>
+</textarea>
+</section> -->
+
+<section data-markdown>
+<textarea data-template>
+## Lessons Learned
+
+* If you have no training data Reinforcement Learning might be an option
+* You will need a simulator for your problem, though 
+* Agent will learn by being rewarded in a simulated world
+* Modelling that simulated world might be the hardest part of the job
+*  serious applications include operations research, robotics, planning, and configuration 
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### ML@Netflix
+
+<img src='img/ml_at_netflix.jpg'>
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+# Part II
+
+## Data and business opportunities
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### 1. zentrale Frage 
+## Motivation: Geschäftsnutzen 
+
+1. Verbesserung
+   - welches Ziel soll erreicht oder - konkreter - welche Geschäfts-Metrik verbessert soll 
+   - Z.B. „Anteil junger Kunden erhöhen“, „Bearbeitungszeit pro Vorgang verkürzen“, „Welches Produkt würden meine Kunden noch haben wollen“?
+2. komplette Innovation
+   - was können Menschen bisher nicht?
+
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Geschäftsprozesse durch Machine Learning erschließen
+## Rationalisierung (inkrementell)
+_Menschen beherrschen diese Tätigkeit in ausreichender Qualität_
+* bisher nicht lohnenswert, da menschlicher Aufwand hoch
+* Machine Learning kann es nicht notwendigerweise besser, aber gut genug und effizient
+* Beispiele
+    * automatische Erkennung problematischer Tweets bei Twitter
+    * Routenplanung 
+    * Auswirkung von Marketing in so ziemlich jedem Unternehmen
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Geschäftsprozesse durch Machine Learning erschließen
+## Innovation, Paradigmenwechsel (bahnbrechend)
+_Menschen können dies nicht gut genug_
+* lernende Machinen können dies ausreichend gut
+* seltener und schwieriger zu finden und umzusetzen, dann aber bahnbrechend
+* Beispiele
+    * welche Seite wollen die Leute wirklich sehen und welche Werbung passt hier bei Google
+    * Empfehlung von Inhalten bei Netflix oder Spotify anhand von bereits Gehörtem oder Gesehenem
+    </textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+### Hands-On 2a: Anwendungen identifizieren
+
+_Beschreibe 2-3 mögliche Anwendungen_
+
+1. Beschreibe deine Anwendungsideen und wie im Beispiel anhand der gesehenen Kriterien
+1. Das Problem verstehen: Beschreibe das Problem ohne die Worte ML oder KI zu nutzen
+1. Was ist der Geschäftsnutzen?
+1. Denke noch nicht über Machbarkeit nach
+1. So noch nicht kritisch
+1. Lass die Learn-Strategie oder andere Kategorien die noch nicht klar sind vorerst aus
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Teams
+
+* <a id='ex2_1'>Team 1</a>
+* <a id='ex2_2'>Team 2</a>
+* <a id='ex2_3'>Team 3</a>
+* <a id='ex2_4'>Team 4</a>
+* <a id='ex2_5'>Team 5</a>
+* <a id='ex2_6'>Team 6</a>
+
+<small>Alle Elemente mit Copy-Paste kopieren</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# Fragen?
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### 2. zentrale Frage 
+## Welche Daten gibt es? 
+
+- Gibt es überhaupt Daten? 
+- Gibt es Daten in ausreichender Menge?
+- Abschätzung: Decken die Daten alle Fälle ab?
+    - Unter 30 Datensätze pro Kategorie gelten in der Statistik in jedem Fall als "klein"
+    - Meist bracht man sehr viel mehr Datensätze
+    - Entscheidend: Wie ist die Qualität und Varianz der Daten?
+    - Bei Bilddaten bracht man typischerweise eher zehntausende Beispiele, besser deutlich mehr
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### ML Models are restricted by their training data
+
+<img src='img/ml-view-on-data.png' height="350px">
+
+<small>
+
+https://twitter.com/jacobmenick/status/1260658763687538688
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Shared Exercise: Which Learning Strategy?    
+
+<div style="display: flex;">
+    <div style="flex: 50%;">
+        <img src='img/ML-strategy-helper.png'>
+    </div>
+    <div style="flex: 50%; font-size: x-large;">
+
+1. Detecting tuberculosis from X-Rays 
+1. Teaching a robot to pick up objects
+1. Finding a good set of hyperparameters in deep learning
+1. Optimal pricing for flight tickets
+1. Deciding risk class of potential customers for insurance
+1. Learn how to control traffic lights
+1. Detecting credit card fraud 
+1. Which football players are similar?
+1. News Recommendation
+1. Predicting when a machine needs maintenance
+
+</div>
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Hands-On 2b: Anwendungen konkretisieren
+
+1. Arbeite in dem bestehenden Mural weiter
+1. Füge die Learn-Strategie wie eben gesehen hinzu
+1. Füge deinen Anwendungsideen geschätzten Umsetzungsaufwand hinzu
+1. Sortiere deine möglichen Anwendungen anhand von Nützlichkeit und Umsetzungsaufwand
+1. Stelle die attraktivste Anwendung vor
+
+<img src='img/exercise-app-2.png' height="250">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Vorstellung attraktivste Anwendung
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Kind of Prediction
+
+<img src='img/diskret-vs-kontinuierlich.png'>
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Some general advice
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### ML is research and a bit of engineering rather than a craft
+<img src='img/ml_is_not_programming.jpg' height="400px">
+
+*Machine Learning = Lab Work*
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+
+### Accuracy is king for applications of Machine Learning
+
+* applications have vastly different requirements on adequate accuracy (AA)
+* 60% or 70% of accuracy are not good or bad values or by themselves
+* only very few with more than 85% accuracy at http://scaledml.org/2020/
+
+Recommendation
+* either find out what you can do with a given AA 
+* or see if there is a way to get to the AA you need for a specific application
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### The clear about which level of explainability you need
+
+* probably has an impact on what kind of ML you can use (or no ML at all)
+* Neural Networks typically are black boxes, but very powerful
+* Decision Trees (especially when shallow) can be understood, but are often not as powerful
+* This might turn out to be a compromise between adequate accuracy and explainability
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### You might end up somewhere else than you expected
+
+* Adopting this approach might require/result in change of company culture more radical than agile
+* This has implications on how your organization needs to be structured
+* Might not seem worth the hassle, but maybe your competitors adopt and gain an advantage
+* Useful stuff does not make it to the news
+* If you read about something exciting in the mainstream media it is most likely BS
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Styropor had been invented accidentally
+
+you want coating for cables and get a new synthetic material 
+
+<img src='img/erdal.jpg' height="420">
+
+
+<small>
+
+https://airpop.de/home/die-geschichte    
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Exercise V - Applications
+
+<a href='https://app.mural.co/t/mlapps4048/m/mlapps4048/1586768438142/0ec1a3b5596e06e5d81011fd86693991016604ec'>
+<img src='img/exercise-apps.png' height="600">
+</a>
+
+</textarea>
+</section>
+
+
+
+</div>
+</div>
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/sky.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/magnolia.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/street.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        $('.hide').remove();
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+            setMuralLinks();
+    
+        } );
+
+        function setMuralLinks() {
+
+            // Master Raum: https://app.mural.co/t/embarcagila3904/r/1587223731576
+            // Kopie https://app.mural.co/t/embarcagila3904/r/1602956067082
+
+            // Übung 1
+            const mural1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1602956067390/fbe57217c57bfbfea04fe952eef97137709ca072`;
+            document.querySelector('#ex1-gr1').href = `${mural1}?wid=0-1587547827533`
+            document.querySelector('#ex1-gr2').href = `${mural1}?wid=0-1587548254726`
+            document.querySelector('#ex1-gr3').href = `${mural1}?wid=0-1587548196936`
+            document.querySelector('#ex1-gr4').href = `${mural1}?wid=0-1587548228170`
+
+            document.querySelector('#ex1b-gr1').href = `${mural1}?wid=0-1587547827533`
+            document.querySelector('#ex1b-gr2').href = `${mural1}?wid=0-1587548254726`
+            document.querySelector('#ex1b-gr3').href = `${mural1}?wid=0-1587548196936`
+            document.querySelector('#ex1b-gr4').href = `${mural1}?wid=0-1587548228170`
+
+            // Übung 2
+            const mural2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1602956067381/045cbdffeeab45e169863e452cfb4fb9f938781e`;
+            document.querySelector('#ex2-gr1').href = `${mural2}?wid=0-1602955006276&outline=close`
+            document.querySelector('#ex2-gr2').href = `${mural2}?wid=0-1602955119855&outline=close`
+            document.querySelector('#ex2-gr3').href = `${mural2}?wid=0-1602955060431&outline=close`
+            document.querySelector('#ex2-gr4').href = `${mural2}?wid=0-1602955006276&outline=close`
+        }
+    </script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+        slideNumber: true,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+
+        ]
+    });
+
+</script>
+
+</body>
+</html>
