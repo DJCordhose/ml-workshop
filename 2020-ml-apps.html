@@ -128,9 +128,12 @@
                       list-style-type: none;
                   }
 
-            .reveal {
+             .reveal {
+                font-family: 'Calibri';
                 color: black !important;
-             }       
+                /* font-size: xx-large; */
+             }
+
 
           </style>
       
@@ -173,37 +176,57 @@ Teil II
 </section>
 
 <section data-markdown>
-<textarea data-template>
-# Agenda
+    <textarea data-template>
+#### Role Models I: ML@Netflix
 
-Finding candidates for machine learning applications by
-
-1. looking at Case Studies introducing different types of Machine Learning
-2. investigating what data is available and what business opportunities can be derived from it 
-</textarea>
-</section>
-
-
-<section data-markdown>
-<textarea data-template>
-# Part I
-
-## Case Studies
-
+<img src='img/ml_at_netflix.jpg'>
 
 </textarea>
 </section>
 
 <section data-markdown>
-        <textarea data-template>
-## Application #1
+    <textarea data-template>
+## Role Models II: Tesla
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Traditional Development and Machine Learning melt into one        
+
+<small>https://www.youtube.com/playlist?list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0<br/>
+https://youtu.be/hx7BXih7zx8
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-from-1-to-2.png' height="600">        
+    </textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-hydranet.png' height="600">        
+    </textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-new-feature.png' height="600">        
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
 
 ### Classic Supervised Machine Learning: Learning from tabular data
 </textarea>
 </section>
 
 <section data-markdown>
-    <textarea data-template>
+<textarea data-template>
 ### Car Insurance: Predicting Crash Risk for prospective customers
 
 <a href='html/calculator.html'>
@@ -211,7 +234,7 @@ Finding candidates for machine learning applications by
 </a>
 <p><small>
 <a href='html/calculator.html' target="_blank">
-    https://djcordhose.github.io/ai/html/calculator.html</a></small>
+https://djcordhose.github.io/ai/html/calculator.html</a></small>
 </small></p>
 </textarea>
 </section>
@@ -223,10 +246,10 @@ Finding candidates for machine learning applications by
 </section>
 
 <section data-markdown id='supervised-2'>
-    <textarea data-template>
+<textarea data-template>
 <img src='img/classic-development.jpg'>
-    </textarea>
-    </section>
+</textarea>
+</section>
 
 
 <section>
@@ -234,24 +257,24 @@ Finding candidates for machine learning applications by
 <div class="fragment">
 <pre><code contenteditable data-trim class="line-numbers python">
 def calculate_risk(age, speed):
-    if age < 25:
-        if speed > 110:
-            return high  # young people, fast cars
-        else:
-            return medium # young people
+if age < 25:
+    if speed > 110:
+        return high  # young people, fast cars
+    else:
+        return medium # young people
 </code></pre>
 </div>
 <div class="fragment">
 <pre><code contenteditable class="line-numbers python">    if age > 70:
-        return high # seniors</code></pre>
+    return high # seniors</code></pre>
 </div>
 <div class="fragment">
 <pre><code contenteditable class="line-numbers python">    if speed > 145:
-        return high # fast cars in general</code></pre>
+    return high # fast cars in general</code></pre>
 </div>
 <div class="fragment">
 <pre><code contenteditable class="line-numbers python">    # this default vastly simplifies rule set    
-    return low # otherwise</code></pre>
+return low # otherwise</code></pre>
 </div>
 </section>
 
@@ -316,17 +339,200 @@ Plotting the predictions as a background
 </textarea>
 </section>
 
-<!-- <section>
-<h3>Decision Trees</h3>
-<div>
 
-<img src="img/applications/dt-test.png">
-<small>Up to 70% accuracy on unknown data</small>
-</div>
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+    
+## Finding applications for machine learning        
+### Two approaches
+
+1. What data is available or can be obtained?
+   * Data is of central importance in machine learning
+   * On the basis of the available data one can derive possible directions for experiments
+   * investigating what data is available and what business opportunities can be derived from it
+1. Looking at Case Studies introducing different types of Machine Learning
+   * What works for others may work for us
+   * Companies with similar business models are particularly attractive
+</textarea>
 </section>
- -->
+
+
+<section data-markdown>
+<textarea data-template>
+# Part I
+
+## Data and business opportunities
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### 1st central question 
+## Motivation: Business benefit 
+
+1. improvement
+   - which goal should be achieved or - more concretely - which business metric should be improved 
+   - E.g. "Increase share of young customers", "Reduce processing time per transaction", "Which product would my customers still want?
+2. Complete innovation
+   - what can people not do so far?
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Develop business processes through machine learning
+## Rationalization (incremental)
+_People master this activity in sufficient quality_
+* so far not worthwhile, because of high human effort
+* Machine Learning can do it not necessarily better, but good enough and efficient
+* Examples
+    * automatic detection of problematic tweets on Twitter
+    * Route planning 
+    * Impact of marketing in just about every company
+    </textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Develop business processes through machine learning
+## Innovation, paradigm shift (groundbreaking)
+_humans cannot do this well enough_
+* learning machines can do this sufficiently well
+* less often and more difficult to find and implement, but then groundbreaking
+* Examples
+    * which page people really want to see and which advertisement fits here at Google
+    * Recommend content to Netflix or Spotify based on what you've heard or seen
+    </textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Hands-On: Identify candidates for applications
+
+_Describe 2-3 possible applications_
+
+1. describe your application ideas and, as in the example, on the basis of the criteria seen
+1. understand the problem: Describe the problem without using the words ML or AI
+1. what is the business benefit?
+1. do not yet think about feasibility
+1. not yet critical
+1. leave out the learn strategy or other categories that are not yet clear
+        
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Teams
+
+* <a id='ex2_1'>Team 1</a>
+* <a id='ex2_2'>Team 2</a>
+* <a id='ex2_3'>Team 3</a>
+* <a id='ex2_4'>Team 4</a>
+* <a id='ex2_5'>Team 5</a>
+* <a id='ex2_6'>Team 6</a>
+
+<small>Alle Elemente mit Copy-Paste kopieren</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# Questions?
+
+    </textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### 2nd central question 
+## What data is there? 
+
+- Is there any data at all? 
+- Is there data in sufficient quantity?
+- Estimation: Do the data cover all cases?
+    - Less than 30 records per category are considered "small" in the statistics in any case
+    - Usually you need much more data sets
+    - Crucial: What is the quality and variance of the data?
+    - With image data, you typically need tens of thousands of examples, or better significantly more
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### ML Models are restricted by their training data
+
+<img src='img/ml-view-on-data.png' height="350px">
+
+<small>
+
+https://twitter.com/jacobmenick/status/1260658763687538688
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Data determines what kind of learning strategy is applicable 
+
+There are different Learning Strategies
+
+</textarea>
+</section>
+
 <section data-markdown class="fragments">
     <textarea data-template>
+### Bert QNA
+
+_Supervised Learning_
+
+<img src='img/bert-sample.png' height="400">
+
+<small>
+
+https://storage.googleapis.com/tfjs-models/demos/mobilebert-qna/index.html
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Bert QNA
+
+_Stanford Question Answering Dataset_
+
+SQuAD2.0 combines the 100,000 questions in SQuAD1.1 with over 50,000 unanswerable questions written adversarially
+    by crowdworkers to look similar to answerable ones. To do well on SQuAD2.0, systems must not only answer questions
+    when possible, but also determine when no answer is supported by the paragraph and abstain from answering.
+
+<small>
+
+https://rajpurkar.github.io/SQuAD-explorer/
+https://github.com/tensorflow/tfjs-models/tree/master/qna
+https://github.com/google-research/bert#what-is-bert
+
+</small>
+
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Supervised Learning 
+
+* The system has learned from matching pairs of question and answer 
+* It can then implement our specifications in a generalized manner
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
 ### When to apply Supervised Learning
 
 _classify categories or predict values_
@@ -340,9 +546,340 @@ _what we see applied most of the time_
 </textarea>
 </section>
 
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Detecting Anomalies in electrocardiograms 
+
+* Train autoencoder with (mostly) normal data to low reconstruction loss
+* Abnormal data (not used for training) will not be reproduced well, i.e. will have high reconstruction loss
+* Set a threshold on loss by maximizing a metric (accuracy)
+* Can do without any labelling
+* Does not need abnormal data for training (but can tolerate some abnormal data)
+
+<img src='img/ecg.png'>
+
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Outlier Detection: Anomagram 
+
+_Unsupervised Learning_
+
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/anomagram-inference.gif' height="400">
+</a>
+<small>
+
+https://github.com/victordibia/anomagram        
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Shared Exercise: Clusters and Outliers
+
+<div style="display: flex;">
+    <div style="flex: 50%;">
+        <img src='img/unsupervised/clustering.jpg'>
+    </div>
+    <div style="flex: 50%; font-size: x-large;">
+
+1. Mark all clusters
+1. Mark all data points that do not belong to a cluster
+
+Discuss
+1. In which way is this very different from our first example?
+1. Do you see clusters that look suspicious?
+1. What could be on the axes? Is this important for recognizing clusters?
+1. What could a cluster mean?
+1. How could you interpret data points do not belong to a cluster?
+
+</div>
+</div>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### When to apply Unsupervised Learning
+
+_cluster, find similarities or outliers_
+
+* you have sample data but no labels
+* clusters and outliers must be clearly separable
+
+e.g.
+* Fraud Detection
+* Similarities in customers / partners
+* Anomaly Detection
+
+_often in addition or a first step to supervised learning_
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### LC Zero Chess
+
+_Reinforcement Learning_
+
+<img src='img/lczero.png' height="400">
+
+<small>
+
+https://frpays.github.io/lc0-js/engine.html
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### AlphaZero: Foundation of LCZero   
+
+* Algorithm knows only the rules of the game (newer version doesn't even need them)
+* Learning by playing against yourself
+* "holistic" evaluation of a position is done by CNN (neural network for image processing) 
+* Whether a position is good is tested during training by a Monte Carlo experiment (MCTS)
+
+<small>
+
+https://arxiv.org/pdf/1712.01815.pdf
+</small>
+    </textarea>
+    </section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+### Monte Carlo Experiment
+
+_Approximation durch Stichproben_
+
+<img src='img/Pi_30K.gif' height="400px" class="fragment">
+
+<br>
+
+<small>
+
+https://en.wikipedia.org/wiki/Monte_Carlo_method
+https://en.wikipedia.org/wiki/Monte_Carlo_method#/media/File:Pi_30K.gif
+
+</small>
+
+</textarea>
+</section> -->
+
 <section data-markdown>
 <textarea data-template>
-## Application #2
+### When to apply Reinforcement Learning
+
+* If you have no training data Reinforcement Learning might be an option
+* You will need a simulator for your problem, though 
+* Agent will learn by being rewarded in a simulated world
+* Modelling that simulated world might be the hardest part of the job
+*  serious applications include operations research, robotics, planning, and configuration 
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+
+### Once again for comparison 
+* Ask questions to texts
+   * _Supervised Learning_
+   * Predict sequence of categories (words)
+   * Neural network with TensorFlow
+* Detect anomalies in heartbeats
+  * _Unsupervised Learning_
+  * Predict Boolean category
+  * Autoencoder (neural network) with TensorFlow
+* Playing chess
+  * _Reinforcement Learning_ / Monte Carlo Tree Search
+  * Predict category (train)
+  * Policy (Neural Network) with TensorFlow
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Shared Exercise: Which Learning Strategy?    
+
+<div style="display: flex;">
+    <div style="flex: 50%;">
+        <img src='img/ML-strategy-helper.png'>
+    </div>
+    <div style="flex: 50%; font-size: x-large;">
+
+1. Detecting tuberculosis from X-Rays 
+1. Teaching a robot to pick up objects
+1. Finding a good set of hyperparameters in deep learning
+1. Optimal pricing for flight tickets
+1. Deciding risk class of potential customers for insurance
+1. Learn how to control traffic lights
+1. Detecting credit card fraud 
+1. Which football players are similar?
+1. News Recommendation
+1. Predicting when a machine needs maintenance
+
+</div>
+</div>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### 3nd central question 
+## What are the important properties 
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+
+### Accuracy is king for applications of Machine Learning
+
+* applications have vastly different requirements on adequate accuracy (AA)
+* 60% or 70% of accuracy are not good or bad values or by themselves
+* only very few with more than 85% accuracy at http://scaledml.org/2020/
+
+Recommendation
+* either find out what you can do with a given AA 
+* or see if there is a way to get to the AA you need for a specific application
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Be clear about which level of explainability you need
+
+* probably has an impact on what kind of ML you can use (or no ML at all)
+* Neural Networks typically are black boxes, but very powerful
+* Decision Trees (especially when shallow) can be understood, but are often not as powerful
+* This might turn out to be a compromise between adequate accuracy and explainability
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Poll: What do you prefer?
+
+1. a human doctor, who is 80% correct with his diagnosis and can explain to you how he comes up with it or 
+1. an ML doctor, who is 95% correct, but cannot explain anything because of superhuman thought processes
+
+    </textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Performance
+
+* latency and throughput
+   * both for training and prediction
+* will you need a GPU?   
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Level of flexibility needed
+
+<img src='img/abstractness.png'>
+</textarea>
+</section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Kind of Prediction
+
+<img src='img/kind-of-prediction.png'>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Hands-On 2b: Concretizing applications
+
+1. continue working on your exercise
+1. add the learn strategy as seen before
+1. add estimated implementation effort to your application ideas
+1. add relevant properties
+1. sort your possible applications by usefulness and implementation effort
+1. present the most attractive application
+        
+<img src='img/exercise-app-2.png' height="250">
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Presentation of most attractive application
+
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### ML is research and a bit of engineering rather than a craft
+<img src='img/ml_is_not_programming.jpg' height="400px">
+
+*Machine Learning = Lab Work*
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Styropor had been invented accidentally
+
+you want coating for cables and get a new synthetic material 
+
+<img src='img/erdal.jpg' height="420">
+
+
+<small>
+
+https://airpop.de/home/die-geschichte    
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Procedure in a machine learning project
+
+- this resembles less a software development process than a research project
+- the chosen approach may therefore not be target-oriented or Machine Learning may not be applicable at all
+- whether the approach is suitable should be found out as quickly as possible
+- Procedure is similar to an agile process
+- determine in short iterations as quickly as possible whether a further procedure makes sense and if so, what it should look like
+- a first stress test of the idea is possible as a thought experiment or game
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+# Part II
+
+## Case Studies
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+## Application #1
 ### Deep Supervised Machine Learning: Forecasting time series using RNNs
 
 <small>
@@ -473,7 +1010,8 @@ https://twitter.com/fchollet/status/1177633367472259072
 
 <section data-markdown>
 <textarea data-template>
-## Application #3: Traffic Sign Recognition
+
+## Application #2: Traffic Sign Recognition
 ### Classifying Images using CNNs
 
 </textarea>
@@ -563,7 +1101,7 @@ https://towardsdatascience.com/simple-introduction-to-convolutional-neural-netwo
 
 <section data-markdown>
     <textarea data-template>
-## Application #4
+## Application #3
 
 ### Deep Unsupervised Learning: Finding similar airlines and outliers`
 </textarea>
@@ -598,32 +1136,6 @@ https://towardsdatascience.com/simple-introduction-to-convolutional-neural-netwo
         </textarea>
     </section>
 
-<section data-markdown>
-    <textarea data-template>
-### Shared Exercise: Clusters and Outliers
-
-<div style="display: flex;">
-    <div style="flex: 50%;">
-        <img src='img/unsupervised/clustering.jpg'>
-    </div>
-    <div style="flex: 50%; font-size: x-large;">
-
-1. Mark all clusters
-1. Mark all data points that do not belong to a cluster
-
-Discuss
-1. In which way is this very different from our first example?
-1. Do you see clusters that look suspicious?
-1. What could be on the axes? Is this important for recognizing clusters?
-1. What could a cluster mean?
-1. How could you interpret data points do not belong to a cluster?
-
-</div>
-</div>
-</textarea>
-</section>
-
-
 <section data-markdown id='unsupervised-2'>
     <textarea data-template>
 ### DBSCAN
@@ -646,7 +1158,6 @@ https://en.wikipedia.org/wiki/DBSCAN
 
 </textarea>
 </section>
-
 
 <section data-markdown>
     <textarea data-template>
@@ -683,7 +1194,7 @@ https://en.wikipedia.org/wiki/DBSCAN
 </textarea>
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 ## Lessons Learned
 
@@ -694,30 +1205,11 @@ https://en.wikipedia.org/wiki/DBSCAN
 * main factor of success is a dataset that contains semantic information
 * the lines between classic programming and machine learning are already blurred here
 </textarea>
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### When to apply Unsupervised Learning
-
-_cluster, find similarities or outliers_
-
-* you have sample data but no labels
-* clusters and outliers must be clearly separable
-
-e.g.
-* Fraud Detection
-* Similarities in customers / partners
-* Anomaly Detection
-
-_often in addition or a first step to supervised learning_
-
-</textarea>
-</section>
+</section> -->
 
 <section data-markdown>
 <textarea data-template>
-## Scenario #5
+## Application #4
 
 ### Deep Reinforcement Learning: graph data for route planning
 </textarea>
@@ -889,285 +1381,6 @@ https://arxiv.org/abs/1904.11102
 </small>
 </textarea>
 </section> -->
-
-<section data-markdown>
-<textarea data-template>
-## Lessons Learned
-
-* If you have no training data Reinforcement Learning might be an option
-* You will need a simulator for your problem, though 
-* Agent will learn by being rewarded in a simulated world
-* Modelling that simulated world might be the hardest part of the job
-*  serious applications include operations research, robotics, planning, and configuration 
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-#### ML@Netflix
-
-<img src='img/ml_at_netflix.jpg'>
-
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-# Part II
-
-## Data and business opportunities
-
-
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### 1. zentrale Frage 
-## Motivation: Geschäftsnutzen 
-
-1. Verbesserung
-   - welches Ziel soll erreicht oder - konkreter - welche Geschäfts-Metrik verbessert soll 
-   - Z.B. „Anteil junger Kunden erhöhen“, „Bearbeitungszeit pro Vorgang verkürzen“, „Welches Produkt würden meine Kunden noch haben wollen“?
-2. komplette Innovation
-   - was können Menschen bisher nicht?
-
-</textarea>
-</section>
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### Geschäftsprozesse durch Machine Learning erschließen
-## Rationalisierung (inkrementell)
-_Menschen beherrschen diese Tätigkeit in ausreichender Qualität_
-* bisher nicht lohnenswert, da menschlicher Aufwand hoch
-* Machine Learning kann es nicht notwendigerweise besser, aber gut genug und effizient
-* Beispiele
-    * automatische Erkennung problematischer Tweets bei Twitter
-    * Routenplanung 
-    * Auswirkung von Marketing in so ziemlich jedem Unternehmen
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Geschäftsprozesse durch Machine Learning erschließen
-## Innovation, Paradigmenwechsel (bahnbrechend)
-_Menschen können dies nicht gut genug_
-* lernende Machinen können dies ausreichend gut
-* seltener und schwieriger zu finden und umzusetzen, dann aber bahnbrechend
-* Beispiele
-    * welche Seite wollen die Leute wirklich sehen und welche Werbung passt hier bei Google
-    * Empfehlung von Inhalten bei Netflix oder Spotify anhand von bereits Gehörtem oder Gesehenem
-    </textarea>
-</section> -->
-
-<section data-markdown>
-    <textarea data-template>
-### Hands-On 2a: Anwendungen identifizieren
-
-_Beschreibe 2-3 mögliche Anwendungen_
-
-1. Beschreibe deine Anwendungsideen und wie im Beispiel anhand der gesehenen Kriterien
-1. Das Problem verstehen: Beschreibe das Problem ohne die Worte ML oder KI zu nutzen
-1. Was ist der Geschäftsnutzen?
-1. Denke noch nicht über Machbarkeit nach
-1. So noch nicht kritisch
-1. Lass die Learn-Strategie oder andere Kategorien die noch nicht klar sind vorerst aus
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Teams
-
-* <a id='ex2_1'>Team 1</a>
-* <a id='ex2_2'>Team 2</a>
-* <a id='ex2_3'>Team 3</a>
-* <a id='ex2_4'>Team 4</a>
-* <a id='ex2_5'>Team 5</a>
-* <a id='ex2_6'>Team 6</a>
-
-<small>Alle Elemente mit Copy-Paste kopieren</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# Fragen?
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### 2. zentrale Frage 
-## Welche Daten gibt es? 
-
-- Gibt es überhaupt Daten? 
-- Gibt es Daten in ausreichender Menge?
-- Abschätzung: Decken die Daten alle Fälle ab?
-    - Unter 30 Datensätze pro Kategorie gelten in der Statistik in jedem Fall als "klein"
-    - Meist bracht man sehr viel mehr Datensätze
-    - Entscheidend: Wie ist die Qualität und Varianz der Daten?
-    - Bei Bilddaten bracht man typischerweise eher zehntausende Beispiele, besser deutlich mehr
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### ML Models are restricted by their training data
-
-<img src='img/ml-view-on-data.png' height="350px">
-
-<small>
-
-https://twitter.com/jacobmenick/status/1260658763687538688
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Shared Exercise: Which Learning Strategy?    
-
-<div style="display: flex;">
-    <div style="flex: 50%;">
-        <img src='img/ML-strategy-helper.png'>
-    </div>
-    <div style="flex: 50%; font-size: x-large;">
-
-1. Detecting tuberculosis from X-Rays 
-1. Teaching a robot to pick up objects
-1. Finding a good set of hyperparameters in deep learning
-1. Optimal pricing for flight tickets
-1. Deciding risk class of potential customers for insurance
-1. Learn how to control traffic lights
-1. Detecting credit card fraud 
-1. Which football players are similar?
-1. News Recommendation
-1. Predicting when a machine needs maintenance
-
-</div>
-</div>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Hands-On 2b: Anwendungen konkretisieren
-
-1. Arbeite in dem bestehenden Mural weiter
-1. Füge die Learn-Strategie wie eben gesehen hinzu
-1. Füge deinen Anwendungsideen geschätzten Umsetzungsaufwand hinzu
-1. Sortiere deine möglichen Anwendungen anhand von Nützlichkeit und Umsetzungsaufwand
-1. Stelle die attraktivste Anwendung vor
-
-<img src='img/exercise-app-2.png' height="250">
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Vorstellung attraktivste Anwendung
-
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Kind of Prediction
-
-<img src='img/diskret-vs-kontinuierlich.png'>
-
-</textarea>
-</section>
-
-
-<section data-markdown>
-<textarea data-template>
-### Some general advice
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### ML is research and a bit of engineering rather than a craft
-<img src='img/ml_is_not_programming.jpg' height="400px">
-
-*Machine Learning = Lab Work*
-
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-<textarea data-template>
-
-### Accuracy is king for applications of Machine Learning
-
-* applications have vastly different requirements on adequate accuracy (AA)
-* 60% or 70% of accuracy are not good or bad values or by themselves
-* only very few with more than 85% accuracy at http://scaledml.org/2020/
-
-Recommendation
-* either find out what you can do with a given AA 
-* or see if there is a way to get to the AA you need for a specific application
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-<textarea data-template>
-### The clear about which level of explainability you need
-
-* probably has an impact on what kind of ML you can use (or no ML at all)
-* Neural Networks typically are black boxes, but very powerful
-* Decision Trees (especially when shallow) can be understood, but are often not as powerful
-* This might turn out to be a compromise between adequate accuracy and explainability
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-<textarea data-template>
-### You might end up somewhere else than you expected
-
-* Adopting this approach might require/result in change of company culture more radical than agile
-* This has implications on how your organization needs to be structured
-* Might not seem worth the hassle, but maybe your competitors adopt and gain an advantage
-* Useful stuff does not make it to the news
-* If you read about something exciting in the mainstream media it is most likely BS
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Styropor had been invented accidentally
-
-you want coating for cables and get a new synthetic material 
-
-<img src='img/erdal.jpg' height="420">
-
-
-<small>
-
-https://airpop.de/home/die-geschichte    
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Exercise V - Applications
-
-<a href='https://app.mural.co/t/mlapps4048/m/mlapps4048/1586768438142/0ec1a3b5596e06e5d81011fd86693991016604ec'>
-<img src='img/exercise-apps.png' height="600">
-</a>
-
-</textarea>
-</section>
-
 
 
 </div>
