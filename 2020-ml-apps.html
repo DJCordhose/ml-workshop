@@ -169,7 +169,7 @@
     </h4>
 </section>
 
-<section data-markdown style="font-size: xx-large;">
+<!-- <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
     
 ## Finding applications for machine learning        
@@ -194,57 +194,7 @@
 
 </textarea>
 </section>
-
-
-<section data-markdown>
-    <textarea data-template>
-#### Role Models I: ML@Netflix
-
-<img src='img/ml_at_netflix.jpg'>
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Role Models II: Tesla
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Traditional Development and Machine Learning melt into one        
-
-<small>https://www.youtube.com/playlist?list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0<br/>
-https://youtu.be/hx7BXih7zx8
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-<img src='img/d2d/tesla-from-1-to-2.png' height="600">        
-    </textarea>
-</section>
-
-<!-- <section data-markdown>
-    <textarea data-template>
-<img src='img/d2d/tesla-hydranet.png' height="600">        
-    </textarea>
-</section> -->
-
-<section data-markdown>
-    <textarea data-template>
-<img src='img/d2d/tesla-new-feature.png' height="600">        
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### The real world is still tough, though        
-https://www.linkedin.com/feed/update/urn:li:activity:6726521616223784960/
-    </textarea>
-</section>
+ -->
 
 <section data-markdown>
     <textarea data-template>
@@ -370,12 +320,62 @@ Plotting the predictions as a background
 
 <section data-markdown>
 <textarea data-template>
-# Part I
+<!-- # Part I -->
 
 ## Data and business opportunities
 
 
 </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Role Models I: ML@Netflix
+
+<img src='img/ml_at_netflix.jpg'>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Role Models II: Tesla
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Traditional Development and Machine Learning melt into one        
+
+<small>https://www.youtube.com/playlist?list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0<br/>
+https://youtu.be/hx7BXih7zx8
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-from-1-to-2.png' height="600">        
+    </textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-hydranet.png' height="600">        
+    </textarea>
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/d2d/tesla-new-feature.png' height="600">        
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### The real world is still tough, though        
+https://www.linkedin.com/feed/update/urn:li:activity:6726521616223784960/
+    </textarea>
 </section>
 
 <section data-markdown>
@@ -442,14 +442,16 @@ _humans cannot do this well enough_
     <textarea data-template>
 ### Hands-On: Identify candidates for applications
 
-_Describe 2-3 possible applications_
+_Describe 3-4 possible applications_
 
-1. describe your application ideas and, as in the example, on the basis of the criteria seen
-1. understand the problem: Describe the problem without using the words ML or AI
-1. what is the business benefit?
-1. do not yet think about feasibility
-1. not yet critical
-1. leave out the learn strategy or other categories that are not yet clear
+1. Describe the idea without using the words ML or AI
+1. do not think about feasibility, yet
+
+Only describe
+1. idea
+1. business benefit
+1. is the idea groundbreaking or incremental?
+1. type of data (if already have an idea)
         
     </textarea>
 </section>
@@ -573,6 +575,13 @@ _what we see applied most of the time_
 </textarea>
 </section>
 
+<section data-markdown id='rl'>
+    <textarea data-template>
+## Unsupervised Learning
+
+</textarea>
+</section>
+
 <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ### Detecting Anomalies in electrocardiograms 
@@ -649,58 +658,117 @@ _often in addition or a first step to supervised learning_
 </textarea>
 </section>
 
-<section data-markdown class="fragments">
+<section data-markdown id='rl'>
     <textarea data-template>
-### LC Zero Chess
-
-_Reinforcement Learning_
-
-<img src='img/lczero.png' height="400">
-
-<small>
-
-https://frpays.github.io/lc0-js/engine.html
-</small>
+## Reinforcement Learning
 
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Finding the optimal route
+
+<img src='img/rl/turf.png' height="450px">
+    
+    
+<small>
+the bear has to collect all the honey along the paths and return to where he started, how much will it cost the animal?
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Programmatic solution
+
+* search on graphs
+* can find optimal solutions (or at least good ones)
+* but only on small problems
+* exponential complexity
+        </textarea>
+        </section>
+
+        <section data-markdown>
+                <textarea data-template>
+### Alternative: Machine Learning
+
+Can we exchange?
+* _exponential time_ for _linear time_
+* _perfect path_ for _near-optimal path_ 
+* _always works for small problems_ for _often works for all sizes of problem_ 
+
+                    </textarea>
+                </section>
+
 <section data-markdown class="fragments">
-    <textarea data-template>
-### AlphaZero: Foundation of LCZero   
+<textarea data-template>
+### But we have no training data
 
-* Algorithm knows only the rules of the game (newer version doesn't even need them)
-* Learning by playing against yourself
-* "holistic" evaluation of a position is done by CNN (neural network for image processing) 
-* Whether a position is good is tested during training by a Monte Carlo experiment (MCTS)
-
-<small>
-
-https://arxiv.org/pdf/1712.01815.pdf
-</small>
-    </textarea>
-    </section>
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### Monte Carlo Experiment
-
-_Approximation durch Stichproben_
-
-<img src='img/Pi_30K.gif' height="400px" class="fragment">
-
-<br>
-
-<small>
-
-https://en.wikipedia.org/wiki/Monte_Carlo_method
-https://en.wikipedia.org/wiki/Monte_Carlo_method#/media/File:Pi_30K.gif
-
-</small>
+* It is possible to gain training data through experiments
+* You will need a simulated world to run the experiments in, though
+* Experiments are guided by saying which results are good and which are bad
+* _This is called Reinforcement Learning_
 
 </textarea>
-</section> -->
+</section>
 
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning in Production
+
+<img src='img/rl/rl-train-play-1.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Reinforcement Learning in Development
+
+<img src='img/rl/rl-train-play-2.png' height="550">
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Training a Model using Reinforcement Learning 
+
+<video controls src="img/rl/training.mp4"  muted type="video/mp4" height="450"></video>
+
+<small style="font-size: large;">https://colab.research.google.com/github/christianhidber/easyagents/blob/master/jupyter_notebooks/workshop/orso.ipynb?hl=en</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Solution
+<video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
+        
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments" style="font-size: xx-large">
+    <textarea data-template>
+### Structure of Observation and Reward are crucial
+
+agents can learn short cuts and unexpected behavior
+
+1. Robot hand pretending to grasp an object by moving between the camera and the object
+1. Agent pauses the game indefinitely to avoid losing
+1. Agent kills itself at the end of level 1 to avoid losing in level 2
+
+<small>
+
+https://twitter.com/mogwai_poet/status/1060286856493813760    
+</small>
+    
+    </textarea>
+    </section>
+        
 <section data-markdown>
 <textarea data-template>
 ### When to apply Reinforcement Learning
@@ -709,12 +777,12 @@ https://en.wikipedia.org/wiki/Monte_Carlo_method#/media/File:Pi_30K.gif
 * You will need a simulator for your problem, though 
 * Agent will learn by being rewarded in a simulated world
 * Modelling that simulated world might be the hardest part of the job
-*  serious applications include operations research, robotics, planning, and configuration 
+* serious applications include operations research, robotics, planning, and configuration 
 </textarea>
 </section>
 
 
-<section data-markdown>
+<section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 
 ### Once again for comparison 
@@ -825,7 +893,7 @@ Recommendation
 
 <section data-markdown>
     <textarea data-template>
-the tool is almost irrelevant, much more important are data and conceptual considerations         
+### the tool is mostly irrelevant, much more important are data and conceptual considerations         
 </textarea>
 </section>
 
@@ -846,24 +914,25 @@ the tool is almost irrelevant, much more important are data and conceptual consi
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ### Hands-On: Concretizing applications
 
-1. continue working on your exercise
-1. add the learning strategy
-1. add kind of prediction
-1. add relevant properties
-1. add estimated implementation effort to your application ideas
-1. sort your possible applications by usefulness and implementation effort
-1. present the most attractive application
+_sort your possible applications by subjective attractiveness, for the most promising ones add_
+1. the learning strategy
+1. kind of prediction
+1. relevant properties (describe in more detail)
+1. estimated implementation effort
+1. type of data (if done yet or changed because of new insights)
+
+ _prepare to present the most attractive application_
         
     </textarea>
 </section>
 
 <section data-markdown>
     <textarea data-template>
-## Presentation of most attractive application
+## Presentation and discussion of most attractive application per team
 
     </textarea>
 </section>
@@ -894,7 +963,7 @@ https://airpop.de/home/die-geschichte
 </textarea>
 </section>
 
-<section data-markdown class="fragments">
+<section data-markdown style="font-size: xx-large;">
 <textarea data-template>
 ### Procedure in a machine learning project
 
@@ -909,10 +978,8 @@ https://airpop.de/home/die-geschichte
 
 <section data-markdown>
 <textarea data-template>
-# Part II
-
-## Case Studies
-
+# Appendix
+## Assorted Case Studies
 
 </textarea>
 </section>
@@ -1247,7 +1314,7 @@ https://en.wikipedia.org/wiki/DBSCAN
 * the lines between classic programming and machine learning are already blurred here
 </textarea>
 </section> -->
-
+<!-- 
 <section data-markdown>
 <textarea data-template>
 ## Application #4
@@ -1329,7 +1396,7 @@ _This is called Reinforcement Learning_
 <video controls src="img/rl/orso-sample-path.mp4"  muted type="video/mp4" height="500"></video>
         
 </textarea>
-</section>
+</section> -->
 
 
 <!-- <section data-markdown>
