@@ -196,16 +196,21 @@ https://drawdata.xyz/
 <img src="img/applications/all.png" height="500px" class="fragment">
 </section>
 
-    <section data-markdown>
-        <textarea data-template>
+
+<section data-markdown>
+    <textarea data-template>
 ### Exercise : Manually separate areas of different customer types
 
 _team up and discuss with your team_
 
-* <a id='ex1-gr1'>Team 1</a>
-* <a id='ex1-gr2'>Team 2</a> 
-* <a id='ex1-gr3'>Team 3</a> 
-* <a id='ex1-gr4'>Team 4</a> 
+<div style="font-size: large;">
+
+* <a data-ex='ex1-gr1'>Team 1</a>: <span data-ex='ex1-gr1'>broken</span>
+* <a data-ex='ex1-gr2'>Team 2</a>: <span data-ex='ex1-gr2'>broken</span>
+* <a data-ex='ex1-gr3'>Team 3</a>: <span data-ex='ex1-gr3'>broken</span>
+* <a data-ex='ex1-gr4'>Team 4</a>: <span data-ex='ex1-gr4'>broken</span>
+
+</div>
 
 _Exercise in Mural App_
 
@@ -329,7 +334,7 @@ Plotting the predictions as a background
 
 <section data-markdown >
     <textarea data-template>
-### Step I (optional for us, but certainly not for a real project)
+### Step I
 ## Data Preparation
 </textarea>
 </section>
@@ -362,7 +367,7 @@ https://developers.google.com/machine-learning/guides/rules-of-ml/
 
 <section data-markdown >
     <textarea data-template>
-### Clean Data and Select Features
+### Shared Exercise: Clean Data and Select Features
 
 <img src='img/insurance/data.png' height="500">
 
@@ -395,7 +400,7 @@ _Feature Selection_
     </textarea>
         </section>
 
-    <section data-markdown>
+    <!-- <section data-markdown>
         <textarea data-template>
 ### Exercise - Data Cleaning and Feature Selection
 
@@ -410,7 +415,7 @@ _Exercise in Mural App_
 
 </textarea>
 </section>
-
+ -->
 
 <section data-markdown style="font-size: xx-large" >
         <textarea data-template>
@@ -845,10 +850,14 @@ For each group
 <textarea data-template>
 ### Exercise (shared): How well did you generalize?
 
-* <a id='ex1b-gr1'>Team 1</a>
-* <a id='ex1b-gr2'>Team 2</a> 
-* <a id='ex1b-gr3'>Team 3</a> 
-* <a id='ex1b-gr4'>Team 4</a> 
+<div style="font-size: large;">
+
+* <a data-ex='ex1-gr1'>Team 1</a>: <span data-ex='ex1-gr1'>broken</span>
+* <a data-ex='ex1-gr2'>Team 2</a>: <span data-ex='ex1-gr2'>broken</span>
+* <a data-ex='ex1-gr3'>Team 3</a>: <span data-ex='ex1-gr3'>broken</span>
+* <a data-ex='ex1-gr4'>Team 4</a>: <span data-ex='ex1-gr4'>broken</span>
+
+</div>
 
 _What would you have done differently if you had known this is all about generalization?_
 
@@ -857,25 +866,6 @@ Olli muss folgendes für jede Gruppe tun: unlock, ungroup, deselect, select firs
 </small>
 </textarea>
 </section>
-
-
-<!-- <section data-markdown>
-    <textarea data-template>
-### Gemeinsame Übung Ib: Wie gut haben wir generalisiert?
-
-* <a id='ex1b-gr1'>Gruppe 1</a>
-* <a id='ex1b-gr2'>Gruppe 2</a> 
-* <a id='ex1b-gr3'>Gruppe 3</a> 
-* <a id='ex1b-gr4'>Gruppe 4</a> 
-
-_Hättest du etwas anders gemacht wenn du von vorn herein gewusst hättest, dass es um Generalisierung geht?_
-
-<small>
-Olli muss folgendes für jede Gruppe tun: unlock, ungroup, deselect, select first, delete    
-</small>
-</textarea>
-</section> -->
-
 
 <section data-markdown >
 <textarea data-template>
@@ -1146,28 +1136,23 @@ https://colab.research.google.com/github/djcordhose/ml-workshop/blob/master/note
 
         function setMuralLinks() {
 
-            // Master Raum: https://app.mural.co/t/embarcagila3904/r/1587223731576
-            // Kopie https://app.mural.co/t/embarcagila3904/r/1602956067082
+            // Master: https://app.mural.co/t/embarcagila3904/r/1604142232228
+            // Copy: https://app.mural.co/t/workshop8572/r/1604826183354
 
             // Übung 1
-            const mural1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604144556104/b3b3d7cce61eafcd190b81a3b6dc88a239cee8df`;
-            document.querySelector('#ex1-gr1').href = `${mural1}?wid=0-1587547827533`
-            document.querySelector('#ex1-gr2').href = `${mural1}?wid=0-1587548254726`
-            document.querySelector('#ex1-gr3').href = `${mural1}?wid=0-1587548196936`
-            document.querySelector('#ex1-gr4').href = `${mural1}?wid=0-1587548228170`
+            const mural1 = `https://app.mural.co/t/workshop8572/m/workshop8572/1604826183407/0bc0b6d96e82d0b9a90a1f9baaefce5fcebe7b01`;
+            fillExercise('ex1-gr1', `${mural1}?wid=0-1587547827533`);
+            fillExercise('ex1-gr2', `${mural1}?wid=0-1587548254726`);
+            fillExercise('ex1-gr3', `${mural1}?wid=0-1587548196936`);
+            fillExercise('ex1-gr4', `${mural1}?wid=0-1587548228170`);
 
-            document.querySelector('#ex1b-gr1').href = `${mural1}?wid=0-1587547827533`
-            document.querySelector('#ex1b-gr2').href = `${mural1}?wid=0-1587548254726`
-            document.querySelector('#ex1b-gr3').href = `${mural1}?wid=0-1587548196936`
-            document.querySelector('#ex1b-gr4').href = `${mural1}?wid=0-1587548228170`
-
-            // Übung 2
-            const mural2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604145100114/30e73f9ab7cd33c33ebb189896e43fcf481d6c4a`;
-            document.querySelector('#ex2-gr1').href = `${mural2}?wid=0-1602955006276&outline=close`
-            document.querySelector('#ex2-gr2').href = `${mural2}?wid=0-1602955119855&outline=close`
-            document.querySelector('#ex2-gr3').href = `${mural2}?wid=0-1602955060431&outline=close`
-            document.querySelector('#ex2-gr4').href = `${mural2}?wid=0-1602955006276&outline=close`
         }
+
+        function fillExercise(id, mural) {
+            document.querySelectorAll(`a[data-ex="${id}"]`).forEach(el => el.href = mural)
+            document.querySelectorAll(`:not(a)[data-ex="${id}"]`).forEach(el => el.innerText = mural)
+        }
+
     </script>
     
 <script>

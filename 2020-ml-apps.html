@@ -460,12 +460,15 @@ Only describe
     <textarea data-template>
 ### Teams
 
-* <a id='ex2_1'>Team 1</a>
-* <a id='ex2_2'>Team 2</a>
-* <a id='ex2_3'>Team 3</a>
-* <a id='ex2_4'>Team 4</a>
+<div style="font-size: large;">
 
-<small>Copy-Paste all elements</small>
+* <a data-ex='ex-applications-1'>Team 1</a>: <span data-ex='ex-applications-1'>broken</span>
+* <a data-ex='ex-applications-2'>Team 2</a>: <span data-ex='ex-applications-2'>broken</span>
+* <a data-ex='ex-applications-3'>Team 3</a>: <span data-ex='ex-applications-3'>broken</span>
+* <a data-ex='ex-applications-4'>Team 4</a>: <span data-ex='ex-applications-4'>broken</span>
+
+</div>
+Copy-Paste all elements
     </textarea>
 </section>
 
@@ -1541,15 +1544,22 @@ https://arxiv.org/abs/1904.11102
 
         function setMuralLinks() {
             // Master: https://app.mural.co/t/embarcagila3904/r/1604142232228
+            // Copy: https://app.mural.co/t/workshop8572/r/1604826183354
 
-            const mural2_1 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604142232271/bff8d63d8050c4fd6661ca039577062258860fb2`
-            const mural2_2 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604143388782/ac9358716c1cbc923e4b8c8000d6fcc1283d9e01`
-            const mural2_3 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604143415582/9e0db8ca81896e869c90318b80a30028ab98c0c5`
-            const mural2_4 = `https://app.mural.co/t/embarcagila3904/m/embarcagila3904/1604143441634/a71f8e2a5372f8370f1cf28eed6be20fd575afde`
-            document.querySelector('#ex2_1').href = `${mural2_1}`
-            document.querySelector('#ex2_2').href = `${mural2_2}`
-            document.querySelector('#ex2_3').href = `${mural2_3}`
-            document.querySelector('#ex2_4').href = `${mural2_4}`
+            const mural_apps_1 = `https://app.mural.co/t/workshop8572/m/workshop8572/1604826183397/377f12d799f0e4bf80c75d3e63b547cd683117f4`
+            const mural_apps_2 = `https://app.mural.co/t/workshop8572/m/workshop8572/1604826183400/7325670a605d1924de5853c68d6ae1aa0a818dd3`
+            const mural_apps_3 = `https://app.mural.co/t/workshop8572/m/workshop8572/1604826183403/250f895f1b670130af35b497f4ba1673ac305132`
+            const mural_apps_4 = `https://app.mural.co/t/workshop8572/m/workshop8572/1604826183405/2988cbbb9019426f61771ab2936c3356a876a43c`
+
+            fillExercise('ex-applications-1', mural_apps_1);
+            fillExercise('ex-applications-2', mural_apps_2);
+            fillExercise('ex-applications-3', mural_apps_3);
+            fillExercise('ex-applications-4', mural_apps_4);
+        }
+
+        function fillExercise(id, mural) {
+            document.querySelectorAll(`a[data-ex="${id}"]`).forEach(el => el.href = mural)
+            document.querySelectorAll(`:not(a)[data-ex="${id}"]`).forEach(el => el.innerText = mural)
         }
     </script>
     
