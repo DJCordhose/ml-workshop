@@ -309,9 +309,26 @@ Plotting the predictions as a background
 <img src="img/applications/all.png" height="500px" class="fragment">
 </section>
 
+<section style="font-size: larger;">
+<h3>Decision Trees can learn such rules</h3>
+
+<p>Training</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X, y)
+        </code></pre>
+    
+<p>Prediction</p>
+<pre><code contenteditable data-trim class="fragment line-numbers python">
+y_pred = clf.predict(input)
+    </code></pre>
+
+    </section>
+
 <section data-markdown>
 <textarea data-template>
-### Decision Trees can learn such rules
+### Decision Trees mimic if-then rules
 
 <img src="img/applications/tree_interp.png">
 </textarea>
@@ -339,7 +356,85 @@ Plotting the predictions as a background
 
 <section data-markdown>
     <textarea data-template>
-## Role Models II: Tesla
+## Role Models II: Google
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Enterprise AI @Google
+
+Source: Rich Dutton, Head of Machine Learning for Corporate Engineering, https://www.linkedin.com/in/duttonrichard/
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Facility Management
+
+Requires the collection of data in your buildings
+- Device anomaly detection: Does one device behave like all others of the same type?
+- Building automation and optimization: The effect of heating and air conditioning is delayed. 
+Why not bring rooms to the right temperature only when needed?
+- Forecasting demand in the cafeteria: What do people like and when do they come?
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Communication
+
+- Document Classification
+- Information Extraction
+- Similarities, clustering and deduplication of documents
+    </textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### HR
+
+- Suggest Peer Reviewer for performance reviews
+- Suggest courses, mentors, etc.
+- Suggest internal roles
+    </textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Support
+
+- Ticket routing
+- Automatic ticket resolution through knowledge databases and chat bots
+- Real-Time Ticket Trend Analysis
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Cool AI @Google
+
+<img src='img/ml_at_google_1.jpg' height="500">
+
+<small>https://ai.googleblog.com/2018/05/duplex-ai-system-for-natural-conversation.html</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Cool AI @Google
+
+<img src='img/ml_at_google_2.jpg' height="500">
+
+<small>https://ai.googleblog.com/2019/02/using-global-localization-to-improve.html</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Role Models III: Tesla
 </textarea>
 </section>
 
