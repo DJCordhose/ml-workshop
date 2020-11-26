@@ -316,6 +316,62 @@ https://keras.io/guides/customizing_what_happens_in_fit/
 </textarea>
 </section>
 
+<section data-markdown class="todo">
+    <textarea data-template>
+## Best Practices
+
+Alles Hidden ReLU außer es trainiert dann nicht
+
+3 Layers
+500 Neuronen
+VGG Untermenge mit Dropout
+GRU
+für letzten Layer passt zur Predition  und Loss wiederum dazu
+
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+## Losses
+
+* regression: linear (or any other activation if the range of values is limited) and MSE 
+* multi class: softmax with cross entropy
+* multi-label output would be sigmoid on final layer with binary cross entropy, each output node would encode an hypothesis of its own
+
+https://stats.stackexchange.com/questions/260505/should-i-use-a-categorical-cross-entropy-or-binary-cross-entropy-loss-for-binary
+
+1. Binary classification: two exclusive classes
+2. Multi-class classification: more than two exclusive classes
+3. Multi-label classification: just non-exclusive classes
+Here, we can say
+
+1. In the case of (1), you need to use binary cross entropy.
+2. In the case of (2), you need to use categorical cross entropy.
+3. In the case of (3), you need to use binary cross entropy.
+
+https://gombru.github.io/2018/05/23/cross_entropy_loss/
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
+https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
+https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
+https://www.youtube.com/watch?v=ErfnhcEV1O8
+
+Allgemeine Beschreinung Cross-Entropie: https://github.com/parrt/fundamentals-of-deep-learning/blob/main/lectures/intro.pptx
+
+Bisschen Spielcode mit Losses: https://colab.research.google.com/drive/1v5zHdY7ezAV22Svthz75WhNlrZOkZaDm?hl=en#scrollTo=cyAbtZKaAtzg
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+## Basics/Intro von Goofs Slides klauen
+
+https://github.com/parrt/fundamentals-of-deep-learning/blob/main/lectures/intro.pptx
+
+</textarea>
+</section>
+
             <section>
             <br>
             <br>
@@ -342,6 +398,15 @@ https://keras.io/guides/customizing_what_happens_in_fit/
 1. Sequences and time series
 </textarea>
 </section>
+
+
+<section data-markdown>
+    <textarea data-template>
+# Basics
+</textarea>
+</section>
+
+
 
 <section data-markdown class="local hide">
     <textarea data-template>
