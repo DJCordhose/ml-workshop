@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>M3 2021: Mathe für ML?</title>
+
+    <meta name="description" content="M3 2021: Mathe für ML?">
+    <meta name="author" content="Mikio Braun, Oliver Zeigermann">
+	<link rel="shortcut icon" href="/img/favicon.ico" >
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme"> -->
+      
+          <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+
+            <!-- Theme used for syntax highlighting of code -->
+            <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+            @font-face {
+                font-family: Sunrise;
+                src: url("Sunrise International_special.ttf") format("opentype");
+            }
+
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+
+                .reveal h1,
+                .reveal h2,
+                .reveal h3,
+                .reveal h4  {
+                        /* letter-spacing: 2px; */
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          /* font-weight: bold; */
+                          color: black;
+                          /* font-style: italic; */
+                          /* letter-spacing: -2px; */
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                /* font-family: 'Work Sans', 'Calibri'; */
+                font-family: 'Calibri';
+                color: black !important;
+                font-size: xx-large;
+             }
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body style="background-color: whitesmoke;">
+
+<div class="reveal">
+    <div class="slides">
+
+ <!-- <section data-markdown class="todo">
+    <textarea data-template>
+- als PDF mit Download link
+- bit.ly Link
+    </textarea>
+</section> -->
+
+<!-- 
+
+
+Titel: Das M in ML steht nicht für Mathematik
+Art des Vortrags: Vortrag (45 Minuten)
+Niveau: Grundlagen
+
+Abstract:
+Es gibt eine erstaunliche Spannung im Bereich der Zusammenarbeit zwischen Data Scientists und Software-Entwicklern. Sie
+ist teilweise als misstrauisch, teilweise als neidisch, teilweise als verachtend zu charakterisieren. In diesem Talk
+reden Mikio und Oliver Klartext und sprechen davon was für Schwierigkeiten und Ängste sich bei der Zusammenarbeit von
+Data Scientists und Software Developern ergeben. Wo unterscheidet sich die Arbeitsweise und die Prozesse? Wo die
+Werkzeuge? Welchen sozialen Herausforderungen muss man begegnen?
+
+Vorkenntnisse | Previous knowledge:
+%
+
+Lernziele | learning objectives:
+Wir hoffen, dieser Talk hilft ein bisschen gegenseitiges Verständnis bei Data Scientists, Entwicklern und deren Managern
+zu schaffen, um in Zukunft mit mehr Spaß und Erfolg komplexe Data Science Projekte angehen zu können.
+
+https://www.m3-konferenz.de/lecture.php?id=12766
+
+-->
+
+
+<section data-markdown class="preparation">  
+### Öffnen
+
+https://www.mentimeter.com/s/bc96b6de8264bd94707ff2ecc9aa87ad/e7b1741f5a59/edit
+</section>
+    
+<section data-markdown class="todo">
+- bit.ly-Link erstellen
+</section>
+    
+<section data-markdown>
+    <textarea data-template>
+# Das M in ML steht nicht für Mathematik
+
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12766
+
+Mikio Braun (<a href='https://twitter.com/mikiobraun'>@mikiobraun</a>), Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
+
+Diese Folien: http://bit.ly/m3-mathe
+</textarea>
+</section>
+
+<section data-markdown>
+# Olli
+</section>
+
+
+<section data-markdown>
+## Eine kleine Umfrage zu Beginn
+
+https://www.menti.com/rfyyz36t9g
+</section>
+    
+    
+<section data-markdown>
+    <textarea data-template>
+# Vielen Dank
+
+Das M in ML steht nicht für Mathematik
+
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12766
+
+Bleibt gern im Kontakt
+
+Mikio Braun (<a href='https://twitter.com/mikiobraun'>@mikiobraun</a>), Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
+
+Slides: http://bit.ly/m3-mathe
+
+    </textarea>
+</section>
+
+
+
+</div>
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/street.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+</script>
+
+<script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        $('.hide').remove();
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                // $('.fragment').removeClass('fragment');
+            }
+
+            // we do not like fragments
+            $('.fragment').removeClass('fragment');
+
+        } );
+
+</script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+        slideNumber: true,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+
+        ]
+    });
+
+</script>
+
+</body>
+</html>
