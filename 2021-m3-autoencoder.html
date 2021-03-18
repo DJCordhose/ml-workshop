@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>M3 2021: Mathe für ML?</title>
+    <title>M3 2021: Visuelle Regressionstests mit Autoencodern</title>
 
-    <meta name="description" content="M3 2021: Mathe für ML?">
-    <meta name="author" content="Mikio Braun, Oliver Zeigermann">
+    <meta name="description" content="M3 2021: Visuelle Regressionstests mit Autoencodern">
+    <meta name="author" content="Oliver Zeigermann">
 	<link rel="shortcut icon" href="/img/favicon.ico" >
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -143,36 +143,33 @@
 <!-- 
 
 
-Titel: Das M in ML steht nicht für Mathematik
+Titel: Visuelle Regressionstests mit Autoencodern
 Art des Vortrags: Vortrag (45 Minuten)
 Niveau: Grundlagen
 
 Abstract:
-Im universitären Umfeld werden immer noch hauptsächlich mathematische Grundlagen gelehrt. Aber ist das für den Praktiker
-relevant? Oder welches Wissen ist wirklich notwendig, um ein ML-Projekt erfolgreich zu meistern?
+Das Aussehen und die Bedienbarkeit von Webanwendungen ist mit klassischen Testverfahren nur schwer testbar. Lediglich
+Visuelle Regressionstests überprüfen eine Anwendung gegen einen Goldmaster und können so Veränderungen gegenüber diesem
+aufspüren.
 
-Unsere These ist: Vieles ist Gate-Keeping und wird zum Teil aus Mangel an Erfahrung und wegen der akademischen Herkunft
-der Disziplin gelehrt.
+Dieser Ansatz ist allerdings wenig flexibel, und natürliche Variationen in der Darstellung können nur schwer als solche
+erkannte werden.
 
-In diesem Talk beleuchten wir Beispiele von überflüssiger mathematischer Komplexität und wie wir selbst Erfahrungen mit
-falsch angewandtem mathematischem Anspruch gemacht haben. Dann diskutieren wir aber auch: Was ist wirklich wichtig, um
-erfolgreich Machine Learning und Data Science anzuwenden?
+In diesem Vortrag zeige ich einen auf Autoencodern basierenden Ansatz, der einem Machine-Learning-Modell beibringt, wie
+eine "normale" Anwendung aussieht und anhand dessen Abweichungen dazu feststellt.
 
 Vorkenntnisse | Previous knowledge:
 %
 
 Lernziele | learning objectives:
-Die Rolle und Notwendigkeit von Mathematik im Machine Learning hinterfragen.
+Wie können mit Hilfe von Unsupervised Learning Fehler in Bildern erkannt werden?
 
-https://www.m3-konferenz.de/lecture.php?id=12766
+https://www.m3-konferenz.de/lecture_compact1.php?id=12674
 
 -->
 
 
 <section data-markdown class="preparation">  
-### Öffnen
-
-https://www.mentimeter.com/s/bc96b6de8264bd94707ff2ecc9aa87ad/e7b1741f5a59/edit
 </section>
     
 <section data-markdown class="todo">
@@ -180,61 +177,115 @@ https://www.mentimeter.com/s/bc96b6de8264bd94707ff2ecc9aa87ad/e7b1741f5a59/edit
 </section>
 
 <section data-markdown class="todo">
-    The ability to understand mathematical processes is widespread, but the ability to parse mathematical notation isn't. Insisting on teaching deep learning (which is fundamentally software engineering, not mathematics) with equations is like insisting on teaching Hegel in German.
-(https://twitter.com/fchollet/status/1369793906922024965?s=03) 
+- Enthält auch Erklärung für allgemeinen Autoencoder: https://towardsdatascience.com/made-masked-autoencoder-for-distribution-estimation-fc95aaca8467
+- DALL-E scheint auch VAE zu nutzen: https://twitter.com/poolio/status/1364756787769958401
+- https://learning.oreilly.com/library/view/hands-on-unsupervised-learning/9781492035633/titlepage01.html#
 </section>
 
 <section data-markdown class="todo">
-Alles aus dem Doc übernehmen: https://docs.google.com/document/d/1bVZrRkJ_qS7JqPS4oAv8esfWTJYt4wXiTtgkCjH7qp4/edit
+### Allgemeine Intro Autoencoder
+- [ ] Autoencoder als Ausnahme von Dimensionality reduction: https://youtu.be/9iol3Lk6kyU
+- [ ] Interaktiver LDA Exporer: https://omarshehata.github.io/lda-explorable/
 </section>
-    
+
 
 <section data-markdown class="todo">
-Christoph Molnar (@ChristophMolnar) twitterte um 11:58 AM on Mi., März 17, 2021:
-Rule 4: Use Math Extensively
-
-Use as much math as possibly. This will impress your peers and create an impenetrable aura of the mystical around your work and your person. https://t.co/Bebh6r53RX
-(https://twitter.com/ChristophMolnar/status/1372140310596313088?s=03) 
-
+- Motivation, Umfrage, wie sieht das Testing der Zukunft auf
+- Mentimeter, was glauben die Leute?
 </section>
-    
+
+<section data-markdown class="todo">
+- The year is 2030. You're a software engineer at a company, writing tests for your program
+	- [ ] https://twitter.com/TaliaRinger/status/1365433319572185092
+	- [ ] I love this vision aside from the human writing the code and tests part.
+	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
+	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
+</section>
+
+
 <section data-markdown>
     <textarea data-template>
-# Das M in ML steht nicht für Mathematik
+# Visuelle Regressionstests mit Autoencodern
 
-M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12766
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12674
 
 Mikio Braun (<a href='https://twitter.com/mikiobraun'>@mikiobraun</a>), Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
 
-Diese Folien: http://bit.ly/m3-mathe
+Diese Folien: http://bit.ly/todo
 </textarea>
 </section>
 
 <section data-markdown>
-# Olli
-</section>
+### Programm
 
+1. Visuelle Regressionstests
+1. Autoencoder
+1. Visuelle Regressionstests mit Autoencodern
+1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
 
 <section data-markdown>
-## Eine kleine Umfrage zu Beginn
+### Programm
 
-https://www.menti.com/rfyyz36t9g
+1. Visuelle Regressionstests
+1. _Autoencoder_
+1. Visuelle Regressionstests mit Autoencodern
+1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
+
+<section data-markdown class="todo">
+### Was ist ein Autoencoder?
+
+</section>
+
+<section data-markdown class="todo">
+### Embedding vs Taxonomie
+    
 </section>
     
-    
+<section data-markdown>
+    <textarea data-template>
+### Taxonomien erscheinen natürlich
+
+
+<img src='img/taxonomie-supermarkt.jpg'>
+
+Alles ist in Hierarchien organisiert
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Ein Ding ist an genau einem Ort
+
+* Geht physisch mit Lokation auch nicht anders. 
+* Und ein Produkt ist unauffindbar wenn es nicht an seinem erwarteten Platz ist
+
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Embeddings sind viel flexibler
+
+</textarea>
+</section>
+
 <section data-markdown>
     <textarea data-template>
 # Vielen Dank
 
-Das M in ML steht nicht für Mathematik
+Visuelle Regressionstests mit Autoencodern
 
-M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12766
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12674
 
 Bleibt gern im Kontakt
 
-Mikio Braun (<a href='https://twitter.com/mikiobraun'>@mikiobraun</a>), Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
+Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
 
-Slides: http://bit.ly/m3-mathe
+Slides: http://bit.ly/todo
 
     </textarea>
 </section>
