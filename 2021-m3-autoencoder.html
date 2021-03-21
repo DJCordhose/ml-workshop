@@ -170,20 +170,20 @@ https://www.m3-konferenz.de/lecture_compact1.php?id=12674
 -->
 
 
-<section data-markdown class="preparation">  
-</section>
+<!-- <section data-markdown class="preparation">  
+    nix
+</section> -->
     
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
+Referenzen und mehr Links
+
 - Enthält auch Erklärung für allgemeinen Autoencoder: https://towardsdatascience.com/made-masked-autoencoder-for-distribution-estimation-fc95aaca8467
 - DALL-E scheint auch VAE zu nutzen: https://twitter.com/poolio/status/1364756787769958401
 - https://learning.oreilly.com/library/view/hands-on-unsupervised-learning/9781492035633/titlepage01.html#
-</section>
-
-<section data-markdown class="todo">
-### Allgemeine Intro Autoencoder
-- [ ] Autoencoder als Ausnahme von Dimensionality reduction: https://youtu.be/9iol3Lk6kyU
-- [ ] Interaktiver LDA Exporer: https://omarshehata.github.io/lda-explorable/
-</section>
+- Allgemeine Intro Autoencoder
+  - [ ] Autoencoder als Ausnahme von Dimensionality reduction: https://youtu.be/9iol3Lk6kyU
+  - [ ] Interaktiver LDA Exporer: https://omarshehata.github.io/lda-explorable/
+</section> -->
 
 
 <section data-markdown>
@@ -235,6 +235,18 @@ Simpel, aber komplex genug, um typische Fehlerfälle zu zeigen
 </section>
 
 <section data-markdown>
+<textarea data-template>
+### Regressionstest
+
+_Unter einem Regressionstest (von lateinisch regredior, regressus sum ‚zurückschreiten‘) versteht man in der Softwaretechnik die Wiederholung von Testfällen, um sicherzustellen, dass Modifikationen in bereits getesteten Teilen der Software keine neuen Fehler („Regressionen“) verursachen. Solche Modifikationen entstehen regelmäßig z. B. aufgrund der Pflege, Änderung und Korrektur von Software. Der Regressionstest gehört zu den dynamischen Testtechniken._
+
+https://de.wikipedia.org/wiki/Regressionstest    
+
+</textarea>
+</section>
+
+
+<section data-markdown>
     <textarea data-template>
 ### Klassische Visuelle Regressionstests
 
@@ -259,8 +271,8 @@ Automatischer Vergleich schlägt ab bestimmtem Schwellwert fehl
 
 *Ja, weil es auf der Ebene testet, die auch der Benutzer sieht, aber*
 
-* Man muss für jeden Fall eine Ground-Truth erzeugen und pflegen
-* Zu viele false positives: Es gibt eine ganze Reihe von Abweichungen, die offensichtlich keine Fehler sind  
+* man muss für jeden Fall eine Ground-Truth erzeugen und pflegen
+* viele false positives: Es gibt eine ganze Reihe von Abweichungen, die offensichtlich keine Fehler sind  
 * ein generelles, intelligentes Verständnis von einer heilen Anwendung existiert nicht
 </section>
 
@@ -291,7 +303,7 @@ Passiert nur bei sehr speziellen Eingaben, macht die Anwendung aber unbedienbar
 <section data-markdown class="fragments">
 ### Und nun?
 
-* Problemfall 1 sollte nicht ein Fehler sein, wenn der Text innerhalb der Box ist, wenn außerhalb, dann schon
+* Problemfall 1 sollte kein Fehler sein, wenn der Text innerhalb der Box ist, wenn außerhalb, dann schon
 * Das provozieren von Problemfall 2 ist nur durch chaotisches Testen mit Zufallsaktionen oder mit viel Erfahrung möglich
 * ein generelles, intelligentes Verständnis von einer heilen Anwendung hilft in beiden Fällen
 </section>
@@ -371,102 +383,139 @@ _Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_
 
 <section data-markdown>
 <textarea data-template>
-### Titel
+### Was wir eher wollen
 
-oben
-
-<img src='img/autoencoder/ML_0804_encoder.png'>
-
-unten
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Titel
-
-oben
-
-<img src='img/autoencoder/ML_0805_decoder.png'>
-
-unten
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Titel
-
-oben
-
-<img src='img/autoencoder/ML_0806_acc.png'>
-
-unten
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Titel
-
-oben
-
-<img src='img/autoencoder/ML_0807_train_diff.png'>
-
-unten
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Titel
-
-oben
+Sieht die Anwendung ungewöhnlich aus?
 
 <img src='img/autoencoder/ML_0808_test_diff.png'>
 
-unten
+Sehr lange Zahlen und komische Box oben rechts
 </textarea>
 </section>
 
+
 <section data-markdown>
 <textarea data-template>
-### Titel
+### Wir vergleichen die Darstellung mit der erwarteten
 
-oben
+Fehlerfreie Darstellung im Vergleich
 
-<img src='img/autoencoder/ML_0809_train_acc_hist.png'>
+<img src='img/autoencoder/ML_0807_train_diff.png'>
 
-unten
+Viel näher an der Erwartung
 </textarea>
 </section>
 
-<section data-markdown>
-<textarea data-template>
-### Titel
+<section data-markdown class="fragments">
+### Zusammenfassung Ansatz  
 
-oben
+_Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
 
-<img src='img/autoencoder/ML_0810_test_acc_hist.png'>
-
-unten
-</textarea>
+* dann vergleichen wir wie sehr sich diese unterscheiden
+* ab einer gewissen Grenze gehen wir davon aus, dass diese fehlerhaft sein könnte
+* nur dann muss der Mensch vergleichen
+* ein Anlegen und die Wartung von Ground-Truths ist nicht mehr notwendig
 </section>
 
 <section data-markdown>
-<textarea data-template>
-### Titel
+## Schwierigkeit
 
-oben
+### Woher bekommen wir für jede beliebige Darstellung die als heil erwartete?
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Unser Autoencoder als Lösung
+
+* Eingabe und Ausgabe: <span class="fragment" style="font-weight: bold;">Screenshots unserer Anwendung 256x256 als Graustufen von 0-1</span>
+* Modell-Architektur: <span class="fragment" style="font-weight: bold;">Stacked Convolutional für Encoder, Deconvolutional für Decoder, 8 Neuronen im Engpass</span>
+* Geschäfts-Metrik: <span class="fragment" style="font-weight: bold;">Anzahl passender Pixel gerundet auf Schwarz (0) oder Weiß (1)</span>
+* Loss: <span class="fragment" style="font-weight: bold;">Nicht MSE, weil Problem speziell formuliert ist, sondern Binary Cross-Entropy</span>
+
+<img src='img/unsupervised/autoencoder_schema.jpg' style="height: 100%;">
+
+</textarea>
+
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Sehr kleiner Engpass erzwingt extreme Abstraktion
+
+Ergebnis von Stacked Convolutional Layers direkt vor Engpass  
 
 <img src='img/autoencoder/ML_0811_h.png'>
 
-unten
+Um daraus wieder den Ursprung zu machen, muss dieses wie trainiert aussehen
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+### Wie läuft das Training?
+
+* Trainingsdaten sind Golden Master des aktuell als korrekt bekannten Releases
+  * wir gehen davon aus, dass die Anwendung vor der Änderung größtenteils wie erwartet aussah
+* Test- und Validation sind der Golden Master des neuen Release-Kandidation
+* Der Autoencoder lernt also wie die Anwendung normalerweise aussehen sollte
+* Was nicht im Paper stehe würde: 
+  * Ohne die erwähnte Umformulierung des Problems und den Binary Cross-Entropy Loss lief gar nichts
+  * Kudos dafür an Aurélien Géron und https://learning.oreilly.com/library/view/hands-on-machine-learning/9781491962282/
+  * ein paar andere kleine Trial-and-Error-Fummeleien ohne die es bei DL scheinbar nie geht
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Trainingsverlauf
+
+Das Modell lernt sehr gut wie die Anwendung aussehen sollte (Blau)
+
+<img src='img/autoencoder/ML_0806_acc.png'>
+
+Das neue Release zeigt deutliche Abweichungen (Orange)
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Wie gut funktioniert das Training
+
+Für die als richtig bekannten Screenshots
+
+<img src='img/autoencoder/ML_0809_train_acc_hist.png'>
+
+Links sieht man ungewöhnliches, vielleicht sogar kaputtes
 </textarea>
 </section>
 
 <section data-markdown>
-### Referenz: Kapitel 8 von Machine Learning kurz & gut
+<textarea data-template>
+### Autoencoder angewandt auf das neue Release
+
+Der Schwellwert *0.985* ist willkürlich gesetzt
+
+<img src='img/autoencoder/ML_0810_test_acc_hist.png'>
+
+Screenshots links des Schwellwerts sollten überprüft werden
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Beispiele links des Schwellwerts
+
+Oben das Original, unten den Rekonstruktion und die gerundete Accuracy
+
+<img src='img/autoencoder/broken.png'>
+
+Tatsächlich sind alle problematisch
+</textarea>
+</section>
+
+<section data-markdown>
+### Referenz: Kapitel 8 von Machine Learning kurz & gut, 2. Auflage
 
 Lauffähiger Code, Grafiken sind direkt aus diesem erzeugt
 
@@ -486,41 +535,60 @@ Kein doppelter Boden
 </section>
 
 <section data-markdown>
+## Die Ergebnisse sind immer noch nicht auf menschlichem Niveau
+
+* Wir erkennen z.B. lange Zahlen und wissen, ob die sinnvoll sein können
+* Überläufe sehen wir mit System 1, ohne nachzudenken
+* Fehlende Knöpfe können auch menschen nur erschließen
+</section>
+
+
+<section data-markdown>
 ## Wie wird das Testen im Jahr 2030 aussehen?
     
 https://www.menti.com/j6qqy5qr1p
 </section>
     
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
 - The year is 2030. You're a software engineer at a company, writing tests for your program
 	- [ ] https://twitter.com/TaliaRinger/status/1365433319572185092
 	- [ ] I love this vision aside from the human writing the code and tests part.
 	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
 	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+### Anomagram, interaktives Beispiel für Unsupervised Error Detection
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Testing von Frontends
+
+<a href='https://www.heise.de/hintergrund/Zwischen-Erwartung-und-Ergebnis-End-to-End-Tests-fuer-Web-Frontends-5990683.html'>
+<img src='img/autoencoder/heise-testing.png'>
+</a>
+
+https://www.heise.de/hintergrund/Zwischen-Erwartung-und-Ergebnis-End-to-End-Tests-fuer-Web-Frontends-5990683.html
+
+</textarea>
 </section>
 
 
-<section data-markdown class="todo">
-### Unsupervised Error Detection - wo noch sinnvoll?
 
-</section>
-
-<section data-markdown class="todo">
-### Weitere Anwendungen von Autoencodern allgemein
-
-</section>
-
-<section data-markdown class="todo">
-### Ressourcen
-
-* Buch, 2. Auflage
-* Heise Artikel: https://www.heise.de/hintergrund/Zwischen-Erwartung-und-Ergebnis-End-to-End-Tests-fuer-Web-Frontends-5990683.html
-
-</section>
-
-
-
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
 ### Embedding vs Taxonomie
     
 </section>
@@ -553,7 +621,7 @@ Alles ist in Hierarchien organisiert
 ### Embeddings sind viel flexibler
 
 </textarea>
-</section>
+</section> -->
 
 
 
