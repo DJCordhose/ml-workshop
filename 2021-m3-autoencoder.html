@@ -61,6 +61,7 @@
               img {
                   border: 0 !important;
                   box-shadow:0 0 0 0 !important;
+                  height: 450px;
               }
       
               .reveal {
@@ -209,8 +210,90 @@ https://www.menti.com/qhxi158h8f
 
 1. Visuelle Regressionstests
 1. Autoencoder
+1. Visuelle Regressionstests mit Autoencodern (Hauptteil)
+1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
+
+<section data-markdown>
+### Programm
+
+1. _Visuelle Regressionstests_
+1. Autoencoder
 1. Visuelle Regressionstests mit Autoencodern
 1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Unsere Beispielanwendung
+
+<img src='img/autoencoder/ML_0801_app.png'>
+
+Simpel, aber komplex genug, um typische Fehlerfälle zu zeigen
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Klassische Visuelle Regressionstests
+
+<img src='img/autoencoder/compare.png'>
+
+Vergleich von bekannt richtiger Darstellung
+</textarea>
+</section>
+    
+<section data-markdown>
+    <textarea data-template>
+### Klassische Visuelle Regressionstests
+
+<img src='img/autoencoder/report.png' style="height: 100%;">
+
+Automatischer Vergleich schlägt ab bestimmtem Schwellwert fehl
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+### Taugt das?
+
+*Ja, weil es auf der Ebene testet, die auch der Benutzer sieht, aber*
+
+* Man muss für jeden Fall eine Ground-Truth erzeugen und pflegen
+* Zu viele false positives: Es gibt eine ganze Reihe von Abweichungen, die offensichtlich keine Fehler sind  
+* ein generelles, intelligentes Verständnis von einer heilen Anwendung existiert nicht
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Problemfall 1: i18n
+
+Neue Texte sollten nicht zum Fehlschlag führen, aber das hier schon
+
+<img src='img/autoencoder/ML_0802_bug_i18n.png'>
+
+Unschön, gefährdet aber nicht zwingend die Bedienbarkeit der Anwendung
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Problemfall 2: Böse Overflows
+
+Der Knopf ist noch da, aber unsichtbar
+
+<img src='img/autoencoder/ML_0803_bug_overflow.png'>
+
+Passiert nur bei sehr speziellen Eingaben, macht die Anwendung aber unbedienbar
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+### Und nun?
+
+* Problemfall 1 sollte nicht ein Fehler sein, wenn der Text innerhalb der Box ist, wenn außerhalb, dann schon
+* Das provozieren von Problemfall 2 ist nur durch chaotisches Testen mit Zufallsaktionen oder mit viel Erfahrung möglich
+* ein generelles, intelligentes Verständnis von einer heilen Anwendung hilft in beiden Fällen
 </section>
 
 <section data-markdown>
@@ -222,10 +305,220 @@ https://www.menti.com/qhxi158h8f
 1. Ist das schon das Ende und was kann man damit noch machen?
 </section>
 
-<section data-markdown class="todo">
-### Was ist ein Autoencoder?
+<section data-markdown>
+    <textarea data-template>
+
+### Autoencoder Steckbrief
+
+* Daten
+  * Eingabe: <span class="fragment" style="font-weight: bold;">Alles Arten von Daten sind möglich</span> 
+  * Ausgabe: <span class="fragment" style="font-weight: bold;">Dieselben Daten</span>
+* Lern-Art: <span class="fragment" style="font-weight: bold;">Unüberwacht</span>  
+* Modell-Architektur: <span class="fragment" style="font-weight: bold;">Neuronales Netzwerk, symmetrisch mit Engpass</span>
+* Loss: <span class="fragment" style="font-weight: bold;">Typischerweise MSE, alle NN Losses möglich</span>
+* Optimierungs-Methode: <span class="fragment" style="font-weight: bold;">Backpropagation</span>
+* Geschäfts-Metrik: <span class="fragment" style="font-weight: bold;">Divers und schwierig anzugeben, später mehr</span>
+</textarea>
 
 </section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Autoencoder
+
+* neuronales Netz, das unüberwacht trainiert wird
+* reproduziert die Eingabe, während es einen Engpass durchläuft
+* Engpass ist eine Abstraktion der Daten
+* nur Engpass als Hidden Layer und MSE als Loss liefert Hauptkomponenten
+* arbeitet auf allen Arten von Daten, z. B. Bild-, Audio- und Tabellendaten
+
+<img src='img/unsupervised/autoencoder_schema.jpg' style="height: 100%;">
+
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Warum Autoencoder?
+
+_Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_
+
+* Kompression
+* Datenentrauschung
+* Dimensionalitätsreduktion
+* Aufbau einer abstrakten Darstellung zur weiteren Verwendung
+* Clustering (auch zur Datenvisualisierung)
+* Ausreißer-Erkennung
+
+</textarea>
+</section>
+
+<section data-markdown>
+### Programm
+
+1. Visuelle Regressionstests
+1. Autoencoder
+1. _Visuelle Regressionstests mit Autoencodern_
+1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0804_encoder.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0805_decoder.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0806_acc.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0807_train_diff.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0808_test_diff.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0809_train_acc_hist.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0810_test_acc_hist.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Titel
+
+oben
+
+<img src='img/autoencoder/ML_0811_h.png'>
+
+unten
+</textarea>
+</section>
+
+<section data-markdown>
+### Referenz: Kapitel 8 von Machine Learning kurz & gut
+
+Lauffähiger Code, Grafiken sind direkt aus diesem erzeugt
+
+https://colab.research.google.com/github/djcordhose/buch-machine-learning-notebooks/blob/master/kap8.ipynb
+
+Kein doppelter Boden
+
+</section>
+
+<section data-markdown>
+### Programm
+
+1. Visuelle Regressionstests
+1. Autoencoder
+1. Visuelle Regressionstests mit Autoencodern
+1. _Ist das schon das Ende und was kann man damit noch machen?_
+</section>
+
+<section data-markdown>
+## Wie wird das Testen im Jahr 2030 aussehen?
+    
+https://www.menti.com/j6qqy5qr1p
+</section>
+    
+<section data-markdown class="todo">
+- The year is 2030. You're a software engineer at a company, writing tests for your program
+	- [ ] https://twitter.com/TaliaRinger/status/1365433319572185092
+	- [ ] I love this vision aside from the human writing the code and tests part.
+	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
+	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
+</section>
+
+
+<section data-markdown class="todo">
+### Unsupervised Error Detection - wo noch sinnvoll?
+
+</section>
+
+<section data-markdown class="todo">
+### Weitere Anwendungen von Autoencodern allgemein
+
+</section>
+
+<section data-markdown class="todo">
+### Ressourcen
+
+* Buch, 2. Auflage
+* Heise Artikel: https://www.heise.de/hintergrund/Zwischen-Erwartung-und-Ergebnis-End-to-End-Tests-fuer-Web-Frontends-5990683.html
+
+</section>
+
+
 
 <section data-markdown class="todo">
 ### Embedding vs Taxonomie
@@ -262,39 +555,7 @@ Alles ist in Hierarchien organisiert
 </textarea>
 </section>
 
-<section data-markdown>
-### Programm
 
-1. Visuelle Regressionstests
-1. Autoencoder
-1. Visuelle Regressionstests mit Autoencodern
-1. _Ist das schon das Ende und was kann man damit noch machen?_
-</section>
-
-<section data-markdown>
-## Wie wird das Testen im Jahr 2030 aussehen?
-    
-https://www.menti.com/j6qqy5qr1p
-</section>
-    
-<section data-markdown class="todo">
-- The year is 2030. You're a software engineer at a company, writing tests for your program
-	- [ ] https://twitter.com/TaliaRinger/status/1365433319572185092
-	- [ ] I love this vision aside from the human writing the code and tests part.
-	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
-	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
-</section>
-
-
-<section data-markdown class="todo">
-### Unsupervised Error Detection - wo noch sinnvoll?
-
-</section>
-
-<section data-markdown class="todo">
-### Weitere Anwendungen von Autoencodern allgemein
-
-</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -359,7 +620,7 @@ Slides: https://bit.ly/m3-autoencoder
             }
 
             // we do not like fragments
-            $('.fragment').removeClass('fragment');
+            // $('.fragment').removeClass('fragment');
 
         } );
 
