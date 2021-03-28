@@ -305,13 +305,15 @@ Code implementation of ideas from: https://t.co/MvofadkdIa https://t.co/QQt2qsqX
 
 
 <section data-markdown class="todo">
-### Categorical Cross-Entropy and Softmax
+    <textarea data-template>
+        ### Categorical Cross-Entropy and Softmax
 
-<img src='img/skizze/crossentropy-one-hot.png'>
-<img src='img/skizze/crossentropy-formula.png'>
-<img src='img/skizze/crossentropy-overview.png'>
+<img src='img/skizze/crossentropy-one-hot.png' height="200">
+<img src='img/skizze/crossentropy-formula.png' height="200">
+<img src='img/skizze/crossentropy-overview.png' height="200">
 
 https://youtu.be/tRsSi_sqXjI
+</textarea>
 </section>
 
 <section data-markdown class="todo">
@@ -442,6 +444,24 @@ für letzten Layer passt zur Predition  und Loss wiederum dazu
 
 <section data-markdown class="todo">
     <textarea data-template>
+### Reconsidering the loss function
+
+_cross entropy is an alternative to mean squared error_ 
+
+* cross entropy can be used as an error measure when a network's outputs can be thought of as representing independent hypotheses
+* activations can be understood as representing the probability that each hypothesis might be true
+* penalizes very confident misclassifications strongly 
+* perfect score is 0 loss
+* imperfection gives unbounded loss 
+* in this case we are dealing with two exclusive hypothesis: either a sample is blue or it is red
+* this is encoded in a single value using sigmoid activation
+* this makes this binary cross entropy
+* using MSE will still work, but xent should give us steeper gradients leading to faster learning
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
 ## Losses
 
 * regression: linear (or any other activation if the range of values is limited) and MSE 
@@ -464,6 +484,7 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
 https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
 https://www.youtube.com/watch?v=ErfnhcEV1O8
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 
 Allgemeine Beschreinung Cross-Entropie: https://github.com/parrt/fundamentals-of-deep-learning/blob/main/lectures/intro.pptx
 
