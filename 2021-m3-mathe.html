@@ -180,7 +180,7 @@ https://www.m3-konferenz.de/lecture.php?id=12766
 # Todo für Mikio und Olli
 
 1. Passt das vom Umfang? 30-40 Folien sind realistisch
-1. Folien mit leben Füllen, möglichst wenig Text, viel Grafik
+1. Folien mit leben Füllen
     </section>
     
 <section data-markdown>
@@ -345,13 +345,20 @@ Oder Jimi Hendrix vs Les Paul
 ### Wenn Mathe nicht wichtig ist, ist ML dann nicht einfach Software-Entwicklung?
 
 _Nein, man muss die Konzepte, Methoden, Prozesse und Grenzen von ML verstehen_
-* TensorFlow ist nicht einachnur eine Library dessen API man lernen kann
+* TensorFlow ist nicht einfach nur eine Library dessen API man lernen kann
 * Einfach mal alle Classifier aus scikit-learn auf ein Problem werfen (oder?)
 * Metriken müssen verstanden sein und sind auch nicht die letzte Wahrheit
 * ML in Produktion zu bringen erfordert einen breiten Überblick
 
 </section>
 
+<section data-markdown>
+# Mikios und Olivers Opa erzählt vom Krieg
+
+</section>
+
+
+ 
 <section data-markdown>
 ### Warum kann ML nicht eine Library sein?
 
@@ -379,43 +386,94 @@ https://twitter.com/mikiobraun/status/1376495402728427522
 
 
 <section data-markdown class="todo">
-### Aber: Was ist wichtig?
-- “Man muss seine Tiere kennen”
-- ML Ops Kram
-- https://twitter.com/vboykis/status/1358126499489058819
-	- http://veekaybee.github.io/2020/06/09/ml-in-prod/ 
-- Welches Problem versucht man zu lösen und warum?
-- Konzepte wie Overfitting, Generalisierung
-	- Wie kommt man auf belastbare Annahmen, dass das Modell auch in Prod geht: wissenschaftliches Arbeiten mit Experimenten
-- Interpretierbarkeit
-- Integration in bestehende, klassische Systeme
-- Was passiert nach Live-Gang?
-- Wie kommt man von Experiment zu Prod?
-- Was funktioniert nicht nur für Google und OpenAI?
-- Welche existierende Modelle kann man wirklich nehmen? Oder gar keine?
-- Kochrezepte für Deep Learning
-	- Tesla Workflow zeigen
-		- Das Rezept für Training: https://karpathy.github.io/2019/04/25/recipe/ 
-			- Was macht man wenn das Modell nicht geht
-			- Wie nähert man sich einer Lösung 
-		- Der Talk, wie Tesla ihren Autopiloten trainiert: https://youtu.be/hx7BXih7zx8?t=922 
-- Welche (Fehler-)Kultur braucht man, um ML zu machen? (!)
+### Mikios Stichpunkte
+
 - Gesetz der großen Zahlen (?)
 - Fluch der hohen Dimension (!)
 - Statistische Tests (?)
 - Modellkomplexität vs. Datenmenge (nicht immer LSTMs auf alles werfen)
-- Mentale Stärke: Illusion begraben, dass man etwas im Griff hat
-- Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
+</section>
+
+<section data-markdown>
+### Wie kommt man von Experiment zu Prod?
+
+- Was passiert nach Live-Gang?
+- Was funktioniert nicht nur für Google und OpenAI?
+- ML Ops Kram
+- Konzepte wie Overfitting, Generalisierung
+	- Wie kommt man auf belastbare Annahmen, dass das Modell auch in Prod geht: wissenschaftliches Arbeiten mit Experimenten
+
+https://developers.google.com/machine-learning/guides/rules-of-ml
+</section>
+
+<section data-markdown>
+### “Man muss seine Tiere kennen”
+
+- Ein Überblick über gängige Technologien und Implementierungen
+- Was funktioniert wofür gut?
+- Viel Praxis an realen Beispielen
+- Wann macht ML überhaupt Sinn und wann nicht?
+- Typische Anwendungsgebiete
+- Welche existierende Modelle kann man wirklich nehmen? Oder gar keine?
+
+</section>
+
+<section data-markdown>
+### ML ist häufig nicht vom (Geschäfts-)Nutzen getrennt zu betrachten
+
+- Welches Problem versucht man zu lösen und warum?
 - Metriken
 	- Welche sagt was?
 	- Welche versucht man zu optimieren
 	- Wie korreliert Geschäftsnutzen mit der Metrik?
-- Annahmen
-- Use Cases
-- Wann macht ML Sinn
-- Ein Überblick über gängige Technologien und Implementierungen
-	- Was funktioniert wofür gut?
+
+
 </section>
+
+
+<section data-markdown>
+### Mentale Stärke
+
+- Illusion begraben, dass man etwas im Griff hat
+- Mit Unsicherheit umgehen können: wird das Vorhaben überhaupt erfolgreich sein
+- Fehlschläge identifizieren und akzeptieren können: Experimente sind billig, Prod ist teuer
+  - Auch eine Frage an ein Team oder Unternehmen: Welche (Fehler-)Kultur braucht man, um ML zu machen?
+
+
+</section>
+
+
+<section data-markdown>
+### Ist ein Machine Learning Vorhaben ein Software-Projekt?
+
+1. Ist das Ergenis meiner Arbeit eine Grafik, eine Erkenntnis oder eine Kennzahl? (Inferenz)
+1. Soll das Ergebnis Vorhersagen machen? (Prediction)  
+
+Häufig ist die Job-Bezeichnung dieselbe, die Arbeit und was wichtig ist aber ganz unterschiedlich
+
+</section>
+
+<section data-markdown>
+### Welche Anforderungen und Rahmenbedidungen gibt es für das Modell?
+
+Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
+
+1. Interpretierbarkeit
+1. Integration in bestehende, klassische Systeme
+1. Wie lange darf das Training dauern
+1. Wie lange die Vorhersage?
+1. Sind GPUs in Training oder Prediction Phase verfügbar
+
+</section>
+
+<section data-markdown>
+### Vorgehen
+    
+- Das Rezept für Training: https://karpathy.github.io/2019/04/25/recipe/ 
+    - Was macht man wenn das Modell nicht geht
+    - Wie nähert man sich einer Lösung 
+- Der Talk, wie Tesla ihren Autopiloten trainiert: https://youtu.be/hx7BXih7zx8?t=922 
+    </section>
 
 <section data-markdown>
 ### Woher weiß ich
@@ -448,6 +506,18 @@ Haben wir genug Daten bei Metric: https://twitter.com/_inesmontani/status/135397
 
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### ML Models are restricted by their training data
+
+<img src='img/ml-view-on-data.png' height="350px">
+
+<small>
+
+https://twitter.com/jacobmenick/status/1260658763687538688
+</small>
+    </textarea>
+</section>
 
     <section data-markdown>
 ### Programm
@@ -467,7 +537,6 @@ Haben wir genug Daten bei Metric: https://twitter.com/_inesmontani/status/135397
   * Wie muss der Loss aussehen?
 * Wenn man seinen PhD haben möchte: https://twitter.com/MLsummaries/status/1376631183589699586
 </section>
-
 
 <section data-markdown>
     <textarea data-template>
