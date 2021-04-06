@@ -1,0 +1,620 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Deep Learning</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reset.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!-- <link rel="stylesheet" href="reveal.js/css/theme/black.css"> -->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+
+    <style>
+        /*pre code {*/
+        /*display: block;*/
+        /*padding: 0.5em;*/
+        /*background: #FFFFFF !important;*/
+        /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+
+        .todo:before {
+            content: 'TODO: ';
+        }
+
+        .todo {
+            color: red !important;
+        }
+
+        code span.line-number {
+            color: lightcoral;
+        }
+
+        .reveal pre code {
+            max-height: 1000px !important;
+        }
+
+        img {
+            border: 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .reveal {
+            -ms-touch-action: auto !important;
+            touch-action: auto !important;
+        }
+
+        .reveal h2,
+        .reveal h3,
+        .reveal h4 {
+            letter-spacing: 2px;
+            font-family: 'Amiri', serif;
+            /* font-family: 'Times New Roman', Times, serif; */
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: -2px;
+            text-transform: none !important;
+        }
+
+        .reveal em {
+            font-weight: bold;
+        }
+
+        .reveal .step-subtitle h1 {
+            letter-spacing: 1px;
+        }
+
+        .reveal .step-subtitle h2,
+        .reveal .step-subtitle h3 {
+            text-transform: none;
+            font-style: italic;
+            font-weight: normal;
+            /* font-weight: 400; */
+            /* font-family: 'Amiri', serif; */
+            font-family: 'Lobster', serif;
+            letter-spacing: 1px;
+            color: #2aa198;
+            text-decoration: underline;
+        }
+
+        .reveal .front-page h1,
+        .reveal .front-page h2 {
+            font-family: "League Gothic";
+            font-style: normal;
+            text-transform: uppercase !important;
+            letter-spacing: 1px;
+        }
+
+        .reveal .front-page h1 {
+            font-size: 2.5em !important;
+        }
+
+        .reveal .highlight {
+            background-color: #D3337B;
+            color: white;
+        }
+
+        .reveal section img {
+            background: none;
+        }
+
+        .reveal img.with-border {
+            border: 1px solid #586e75 !important;
+            box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .reveal li {
+            margin-bottom: 8px;
+        }
+
+        /* For li's that use FontAwesome icons as bullet-point */
+        .reveal ul.fa-ul li {
+            list-style-type: none;
+        }
+    </style>
+
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+        <section data-markdown>
+            <textarea data-template>
+## Introduction to Deep Learning with TensorFlow 2                
+<h4><a href="http://zeigermann.eu">Oliver Zeigermann</a> / 
+    <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+</h4>
+
+https://djcordhose.github.io/ml-workshop/2021-nn-j.html
+
+            </textarea>
+        </section>
+
+<section data-markdown style="font-size: x-large;">
+    <textarea data-template>
+## Administratives
+
+* Zeiten, Pausen
+* Vorstellungsrunde
+* Kontext und Erwartungen
+* Google Colab (nur für den technischen Teil, heute Nachmittag): https://colab.research.google.com/
+
+</textarea>
+</section>
+        
+<section data-markdown>
+    <textarea data-template>
+## Schedule
+
+1. Introduction to Deep Learning
+1. Image Recognition
+1. Unsupervised Deep Learning
+1. Deep Reinforcement Learning
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: x-large;">
+    <textarea data-template>
+### Topics
+
+* Networks have predefined structures/architectures
+* NN training loop
+* loss functions
+	* crossentropy
+* optimizers
+* training in batches
+* evaluation methods
+  * overfitting/generalization
+  * training / test / validation split
+  * confusion matrices
+* basics of regularization for neural networks
+* Dense Layers
+* CNN Layers
+* Relu
+* Softmax
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### ML Models are restricted by their training data
+
+<img src='img/ml-view-on-data.png' height="350px">
+
+<small>
+
+https://twitter.com/jacobmenick/status/1260658763687538688
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Models will only learn what you feed them
+
+<img src='img/facebook-chatbot.png' height="350px">
+
+<small>
+
+https://twitter.com/TomerUllman/status/1259834838829465601
+https://twitter.com/mikiobraun/status/1260115051417124869
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+Deep learning isn't a science, but rather an ever-changing set of empirically-derived engineering best practices, woven together by over-claiming, unreliable narratives.
+
+https://twitter.com/fchollet/status/1333173017678028802
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Schedule
+
+1. _Introduction to Deep Learning_
+1. Image Recognition
+1. Unsupervised Deep Learning
+1. Deep Reinforcement Learning
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;" class="todo">
+    <textarea data-template>
+### Interactive introduction to Neural Networks with TensorFlow
+
+TODO: Notebook von ML Summit Notebook ableiten
+
+_Basics of Deep Learning, derived step by step_
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+## Practical advice from a master of his craft
+
+_Challenges of training neural nets_
+1. Neural net training is a leaky abstraction - you need to understand what is going on
+1. Neural net training fails silently - the possible error surface is large
+
+_The recipe_
+1. Understand your data
+1. Make one simple experiment after the other
+1. Make your model good / large enough to overfit on a batch
+1. Regularize on full data set
+1. Tune and scrape the barrel
+
+<small>
+
+https://karpathy.github.io/2019/04/25/recipe/    
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Challenges of Deep Learning
+
+* deep learning is more an art than a science
+* we can provide guidelines as to what is likely to work or not
+* ultimately every problem is unique 
+* you will have to try and evaluate different strategies empirically
+* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
+* You must try and iterate
+
+<small>
+
+François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+ML researchers work with fixed benchmark datasets, and spend all of their time searching over the knobs they do control: architecture & optimization. In applied ML, you're likely to spend most of your time on data collection and annotation -- where your investment will pay off.
+
+https://twitter.com/fchollet/status/1353421758699687942
+    </section>    
+
+<section data-markdown>
+    <textarea data-template>
+## Schedule
+
+1. Introduction to Deep Learning
+1. _Image Recognition_
+1. Unsupervised Deep Learning
+1. Deep Reinforcement Learning
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Understanding CNNs  
+
+_Network to process images_
+
+<a href='https://poloclub.github.io/cnn-explainer/'>
+<img src='img/cnn-explainer.png' height="400">
+</a>
+<small>
+
+https://poloclub.github.io/cnn-explainer/
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Even seemingly simple tasks are so far unsolved
+
+recognizing digits and numbers in natural scene images
+
+<img src='img/house_numbers.png' height="450px">
+
+<small>
+
+http://ufldl.stanford.edu/housenumbers/
+</small>
+    </textarea>
+</section>
+
+
+<section data-markdown class="todo">
+        <textarea data-template>
+## Networks for Images
+
+Image Notebook
+
+_A much more realistic example. How do you approach a challenge like this and how to you make it generalize to the real world._
+
+</textarea>
+</section>
+
+<!-- <section data-markdown>
+    <textarea data-template>
+# General Concepts
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Concepts: Metrics        
+
+* Loss functions need to be differentiable
+* This often restricts how speaking they are in terms of business value
+* Metrics do not have that restriction, but take the same parameters
+
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Regression Metric: R<sup>2</sup>
+
+_loosely speaking: how much better is this than predicting the constant mean_
+
+* 0 would mean just as good
+* 1 is perfect
+* neg. would mean even worse
+* it can become arbitrarily worse
+
+<small>
+
+https://en.wikipedia.org/wiki/Coefficient_of_determination
+</small>
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Understanding R<sup>2</sup>
+
+<img src='img/r2.png' height="450">
+
+<small>
+
+CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg
+</small>
+    </textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Basic Classification Metric
+
+<script type="math/tex; mode=display">
+accuracy = {\frac {correct\;predictions}{number\;of\;samples}}
+</script>
+
+_often given for training and test data separately_
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Demo: Anomagram 
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragment">
+    <textarea data-template>
+### What would you rather have?
+
+1. Attest a heart anomaly to someone who has none (aka Precision)
+1. Miss an actual anomaly (aka Recall, hit-rate)
+
+    </textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Reference: Metrics
+
+* _Precision_: percentage of positive predictions that are correct
+    * true positive / true positive + _false positive (predicted as true, but is false)_
+* _Recall_ (aka hit rate): proportion of actual positives that were correctly predicted
+    * true positive / true positive + _false negative (predicted as false, but is true)_
+* low enough threshold will yield excellent recall but reduced precision
+* F1 score is the harmonic mean of the precision and recall
+
+<small>
+
+https://zackakil.github.io/precision-recall-playground/
+<br>
+https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
+<br>
+https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Experiment with Metrics  
+
+<a href='https://zackakil.github.io/precision-recall-playground/'>
+<img src='img/metrics.png' height="400">
+</a>
+<small>
+
+https://zackakil.github.io/precision-recall-playground/
+</small>
+</textarea>
+</section> -->
+
+<section data-markdown>
+        <textarea data-template>
+# Finally
+    
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Teaching Resources by Keras author François Chollet
+
+* https://keras.io/getting_started/
+* A list of up-to-date Keras examples in one place: https://keras.io/examples/
+* A list of in-depth guides to learn modern Keras: https://keras.io/guides/
+
+<!-- * Intro to Keras for Researchers: https://colab.research.google.com/drive/169PfzM0kvtA5UP4k6Sl1yCG9tsE2MLia
+* Intro to Keras for Engineers: https://colab.research.google.com/drive/1lWUGZarlbORaHYUZlF9muCgpPl8pEvve
+* Image classification from scratch: https://colab.research.google.com/drive/1umJnCp8tZ7UDTYSQsuWdKRhqbHts38AC
+* Deep Dream:  https://colab.research.google.com/drive/18XPdEDVYdr_ODAvW0DrWRCRC25tvTuCE
+* Activation Maps:  https://colab.research.google.com/drive/1CJQSVaXG1ceBQGFrTHnt-pt1xjO4KFDe
+* Transfer Learning:  https://colab.research.google.com/drive/17vHSAj7no7RMdJ18MJomTf8twqw1suYC
+* VAE:  https://colab.research.google.com/drive/1COeSoasrpY-w3uF1JPVksLEjx4Tx2ns5 -->
+
+                            </textarea>
+    </section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## More Teaching Resources
+
+* https://www.tensorflow.org/guide
+* https://github.com/parrt/fundamentals-of-deep-learning
+* Short and practical introduction to data science: https://github.com/rasbt/data-science-tutorial
+* Fundamentals of Machine Learning and Deep Learning in Python using Scikit-Learn, Keras and TensorFlow 2: https://github.com/ageron/handson-ml2
+* CS231n: Convolutional Neural Networks for Visual Recognition: http://cs231n.stanford.edu/
+* CS224n: Natural Language Processing with Deep Learning: http://web.stanford.edu/class/cs224n/index.html#schedule
+
+
+</textarea>
+    </section>
+
+
+         <!-- <section data-markdown style="font-size: xx-large;">
+            <textarea data-template>
+### Finding data sets to play with
+    
+* Google released a search engine for datasets
+  * Search: https://toolbox.google.com/datasetsearch
+  * Launch blog post: https://www.blog.google/products/search/making-it-easier-discover-datasets/
+* Kaggle Datasets: https://www.kaggle.com/datasets
+* TensorFlow Datasets: https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3
+* https://www.openml.org/search?type=data
+* https://github.com/jbrownlee/Datasets
+</textarea>
+</section> -->
+
+        </div>
+    </div>
+
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="lib/jquery-2.2.4.js"></script>
+
+    <script>
+        $('section:not([data-background])').attr('data-background', "background/white.jpg");
+    </script>
+    <script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        $('.hide').remove();
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                $('.fragment').removeClass('fragment');
+            }
+    
+    
+        } );
+    </script>
+    
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: false,
+            history: true,
+            center: true,
+            width: 1100,
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [
+                { src: 'reveal.js/plugin/markdown/marked.js' },
+                { src: 'reveal.js/plugin/markdown/markdown.js' },
+                { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'reveal.js/plugin/highlight/highlight.js', async: true },
+                { src: 'lib/js/line-numbers.js' },
+                { src: 'reveal.js/plugin/math/math.js', async: true }
+            ]
+        });
+    </script>
+</body>
+
+</html>
