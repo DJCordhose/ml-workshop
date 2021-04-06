@@ -182,14 +182,6 @@ _Talk to your neighbors or ask Olli for help_
 </section>
 
     <section data-markdown class="todo">
-### Techniques for improving generalization performance of deep neural nets        
-
-- https://twitter.com/rasbt/status/1369045968738476035
-- https://twitter.com/DJCordhose/status/1369284422684577799
-</section>
-        
-
-    <section data-markdown class="todo">
 ### Plotting von NNs
     https://github.com/HarisIqbal88/PlotNeuralNet
 </section>
@@ -209,43 +201,6 @@ Notebooks für NN Kurs
 <section data-markdown class="todo">
 - [ ] Log Loss in NN Intro besser beschreiben mit Beispielen im Code
 - [ ] Wie Layers ein nicht lineares Problem in ein lineares überführen: https://youtu.be/UOvPeC8WOt8?t=532 
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Composing Neural Networks
-
-* input and output need to match training data and loss function
-* some parts have clear function
-  * mapping between dimensions, linear layer
-  * Flatten, Reshape, BatchNorm, Dropout, Up-/Down-Sample
-* the rest: 
-  * soviet approach to aviation: add enough power until things become airborne
-
-Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Composing Neural Networks cont'd
-
-Für Art des Problems
-- Für letztes Layer
-  - Anzahl Neuronen
-  - Aktivation
-- Loss
-- Kodierung von y
-
-- Regression
-- Single hot
-- Binary
-- Multi Hot
-
-Input wie Eingabe
-
-Dazwischen was auch immer until airborne mit ReLU
-</textarea>
 </section>
 
             <section data-markdown class="todo">
@@ -417,71 +372,6 @@ Model includes preprocessing steps thanks to the latest #keras features in the p
     <textarea data-template>
 ## Training für GANs
 https://keras.io/guides/customizing_what_happens_in_fit/
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-## Best Practices
-
-Alles Hidden ReLU außer es trainiert dann nicht
-
-3 Layers
-500 Neuronen
-VGG Untermenge mit Dropout
-GRU
-für letzten Layer passt zur Predition  und Loss wiederum dazu
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Reconsidering the loss function
-
-_cross entropy is an alternative to mean squared error_ 
-
-* cross entropy can be used as an error measure when a network's outputs can be thought of as representing independent hypotheses
-* activations can be understood as representing the probability that each hypothesis might be true
-* penalizes very confident misclassifications strongly 
-* perfect score is 0 loss
-* imperfection gives unbounded loss 
-* in this case we are dealing with two exclusive hypothesis: either a sample is blue or it is red
-* this is encoded in a single value using sigmoid activation
-* this makes this binary cross entropy
-* using MSE will still work, but xent should give us steeper gradients leading to faster learning
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-## Losses
-
-* regression: linear (or any other activation if the range of values is limited) and MSE 
-* multi class: softmax with cross entropy
-* multi-label output would be sigmoid on final layer with binary cross entropy, each output node would encode an hypothesis of its own
-
-https://stats.stackexchange.com/questions/260505/should-i-use-a-categorical-cross-entropy-or-binary-cross-entropy-loss-for-binary
-
-1. Binary classification: two exclusive classes
-2. Multi-class classification: more than two exclusive classes
-3. Multi-label classification: just non-exclusive classes
-Here, we can say
-
-1. In the case of (1), you need to use binary cross entropy.
-2. In the case of (2), you need to use categorical cross entropy.
-3. In the case of (3), you need to use binary cross entropy.
-
-https://gombru.github.io/2018/05/23/cross_entropy_loss/
-https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
-https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
-https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
-https://www.youtube.com/watch?v=ErfnhcEV1O8
-https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
-
-Allgemeine Beschreinung Cross-Entropie: https://github.com/parrt/fundamentals-of-deep-learning/blob/main/lectures/intro.pptx
-
-Bisschen Spielcode mit Losses: https://colab.research.google.com/drive/1v5zHdY7ezAV22Svthz75WhNlrZOkZaDm?hl=en#scrollTo=cyAbtZKaAtzg
 </textarea>
 </section>
 

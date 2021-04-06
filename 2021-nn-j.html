@@ -139,6 +139,23 @@
 <body>
     <div class="reveal">
         <div class="slides">
+<!-- 
+     
+Agenda
+
+Einführung in neuronale Netzwerke mit TensorFlow 2
+Regression, Klassifikation, Metriken und Regularisierung
+
+Supervised Deep Learning
+Anwendungen von Deep Learning auf strukturierten Daten, Bilddaten und Zeitreihen
+
+Unsupervised Deep Learning
+Autoencoder und Embeddings
+
+Deep Reinforcement Learning
+Modellierung, Algorithmen und Anwendungen
+
+ -->
 
         <section data-markdown>
             <textarea data-template>
@@ -321,22 +338,6 @@ https://twitter.com/fchollet/status/1353421758699687942
 
 <section data-markdown>
     <textarea data-template>
-### Understanding CNNs  
-
-_Network to process images_
-
-<a href='https://poloclub.github.io/cnn-explainer/'>
-<img src='img/cnn-explainer.png' height="400">
-</a>
-<small>
-
-https://poloclub.github.io/cnn-explainer/
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
 #### Even seemingly simple tasks are so far unsolved
 
 recognizing digits and numbers in natural scene images
@@ -355,140 +356,155 @@ http://ufldl.stanford.edu/housenumbers/
         <textarea data-template>
 ## Networks for Images
 
-Image Notebook
+Image Notebook, SSH, Moni
 
 _A much more realistic example. How do you approach a challenge like this and how to you make it generalize to the real world._
 
 </textarea>
 </section>
 
-<!-- <section data-markdown>
-    <textarea data-template>
-# General Concepts
-
-</textarea>
-</section>
-
 <section data-markdown>
     <textarea data-template>
-## Concepts: Metrics        
+### Understanding CNNs  
 
-* Loss functions need to be differentiable
-* This often restricts how speaking they are in terms of business value
-* Metrics do not have that restriction, but take the same parameters
+_Network to process images_
 
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Regression Metric: R<sup>2</sup>
-
-_loosely speaking: how much better is this than predicting the constant mean_
-
-* 0 would mean just as good
-* 1 is perfect
-* neg. would mean even worse
-* it can become arbitrarily worse
-
-<small>
-
-https://en.wikipedia.org/wiki/Coefficient_of_determination
-</small>
-    </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-### Understanding R<sup>2</sup>
-
-<img src='img/r2.png' height="450">
-
-<small>
-
-CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Coefficient_of_Determination.svg
-</small>
-    </textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Basic Classification Metric
-
-<script type="math/tex; mode=display">
-accuracy = {\frac {correct\;predictions}{number\;of\;samples}}
-</script>
-
-_often given for training and test data separately_
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Demo: Anomagram 
-<a href='https://victordibia.github.io/anomagram/#/'>
-<img src='img/embeddings/anomagram-inference.gif' height="450">
+<a href='https://poloclub.github.io/cnn-explainer/'>
+<img src='img/cnn-explainer.png' height="400">
 </a>
-<br>
 <small>
 
-https://github.com/victordibia/anomagram        
-https://victordibia.github.io/anomagram/#/
+https://poloclub.github.io/cnn-explainer/
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+* Auch RNN erwähnen
+  * GRU als best practice
     
-</small>
+    </section>    
+
+
+    <section data-markdown class="todo hide">
+### Ende von Tag 1
+
+Rezepte heraus holen
+    
+    </section>    
+
+<section data-markdown>
+    <textarea data-template>
+### Composing Neural Networks
+
+* input and output need to match training data and loss function
+* some parts have clear function
+  * mapping between dimensions, linear layer
+  * Flatten, Reshape, BatchNorm, Dropout, Up-/Down-Sample
+* the rest: 
+  * soviet approach to aviation: add enough power until things become airborne
+
+Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
 </textarea>
 </section>
 
-<section data-markdown class="fragment">
+<section data-markdown>
     <textarea data-template>
-### What would you rather have?
+## Best Practices - Tabular data
 
-1. Attest a heart anomaly to someone who has none (aka Precision)
-1. Miss an actual anomaly (aka Recall, hit-rate)
+* as a starting point
+  * 3 hidden layers
+  * 500 neurons per layer
 
-    </textarea>
-</section>
+* all hidden layers get ReLU activation
+  * only change to something else if model does not train
 
 
-<section data-markdown style="font-size: xx-large">
-    <textarea data-template>
-### Reference: Metrics
-
-* _Precision_: percentage of positive predictions that are correct
-    * true positive / true positive + _false positive (predicted as true, but is false)_
-* _Recall_ (aka hit rate): proportion of actual positives that were correctly predicted
-    * true positive / true positive + _false negative (predicted as false, but is true)_
-* low enough threshold will yield excellent recall but reduced precision
-* F1 score is the harmonic mean of the precision and recall
-
-<small>
-
-https://zackakil.github.io/precision-recall-playground/
-<br>
-https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62
-<br>
-https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
-</small>
 </textarea>
 </section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Best Practices - Image Data
+
+* try a couple of standard architectures 
+  * ResNet 50 can be a good starting point
+  * transfer learning typically does not work
+    * might only work if your image data is similar to ImageNet 
+  * use large batch size and SGD as a means to force regularization
+    * https://twitter.com/DJCordhose/status/1376140631555371008
+* if standard model seems too complex or does not generalize try custom model
+  * VGG subset with dropout and Batch Normalization might be a good candidate
+
+https://keras.io/api/applications/
+https://keras.io/api/applications/resnet/#resnet50v2-function
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Losses
+
+* regression: linear (or any other activation if the range of values is limited) activation and MSE 
+* two class: sigmoid activation and binary cross entropy
+* multi class: softmax activation with categorical cross entropy
+* multi-label: sigmoid activation and binary cross entropy, each output node would encode an hypothesis of its own
+
+https://stats.stackexchange.com/questions/260505/should-i-use-a-categorical-cross-entropy-or-binary-cross-entropy-loss-for-binary
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
+
+<!-- 
+https://gombru.github.io/2018/05/23/cross_entropy_loss/
+https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
+https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
+https://www.youtube.com/watch?v=ErfnhcEV1O8
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
+ -->
+</textarea>
+</section>
+
 
 
 <section data-markdown>
     <textarea data-template>
-### Experiment with Metrics  
+## Schedule
 
-<a href='https://zackakil.github.io/precision-recall-playground/'>
-<img src='img/metrics.png' height="400">
-</a>
-<small>
+1. Introduction to Deep Learning
+1. Image Recognition
+1. _Unsupervised Deep Learning_
+1. Deep Reinforcement Learning
 
-https://zackakil.github.io/precision-recall-playground/
-</small>
 </textarea>
-</section> -->
+</section>
 
+<section data-markdown class="todo">
+Wie im Buch und M3 Talk
+Notebook aus dem Buch nehmen
+Allgemeines Zeug nur in den Folien aus den Autoencoder Folien
+Mit interaktiven Beispielen wann immer möglich
+
+Auch VAE, GAN
+    </section>    
+
+<section data-markdown>
+    <textarea data-template>
+## Schedule
+
+1. Introduction to Deep Learning
+1. Image Recognition
+1. Unsupervised Deep Learning
+1. _Deep Reinforcement Learning_
+
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    Wie im Buch und den Workshops
+    Notebook aus dem Buch ableiten
+
+</section>    
+    
 <section data-markdown>
         <textarea data-template>
 # Finally
