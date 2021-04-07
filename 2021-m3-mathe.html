@@ -181,6 +181,7 @@ https://www.m3-konferenz.de/lecture.php?id=12766
 
 1. Passt das vom Umfang? 30-40 Folien sind realistisch
 1. Folien mit leben Füllen
+1. Ein Talk mit nicht einer einzigen Grafik ist ungültig. Daher das Katzen-Bild, ist das zu übel?
     </section>
     
 <section data-markdown>
@@ -195,18 +196,18 @@ Diese Folien: https://bit.ly/m3-mathe
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown data-background='img/ML-vs-Lib.jpg'>
+    <textarea data-template>
+<!-- <img src='img/ML-vs-Lib.jpg'> -->
 
-# Same for ML Dev
-
-You don’t need a degree to be a software engineer!!!! You just need a sprinkle of self loathing and desire to be wrong almost all the time
-(https://twitter.com/EmilyKager/status/1378009547734802433?s=03) 
-    
+    </textarea>
 </section>
-    
 
-<section data-markdown>
+
+<section data-markdown class="todo">
 # Olli
+
+An die Stellen tun an denen Mikio und Olli sabbeln sollen
 </section>
 
 
@@ -234,39 +235,38 @@ https://www.menti.com/rfyyz36t9g
 
 </section>
 
-<section data-markdown class="todo">
-### Stimmen von Stars \#1    
-The ability to understand mathematical processes is widespread, but the ability to parse mathematical notation isn't. Insisting on teaching deep learning (which is fundamentally software engineering, not mathematics) with equations is like insisting on teaching Hegel in German.
-(https://twitter.com/fchollet/status/1369793906922024965?s=03) 
+<section data-markdown>
+## Stimmen von Stars \#1    
+
+_The ability to understand mathematical processes is widespread, but the ability to parse mathematical notation isn't. Insisting on teaching deep learning (which is fundamentally software engineering, not mathematics) with equations is like insisting on teaching Hegel in German._
+
+https://twitter.com/fchollet/status/1369793906922024965
 </section>
 
-<section data-markdown class="todo">
-### Stimmen von Stars \#2    
+<section data-markdown>
+## Stimmen von Stars \#2    
 
-Christoph Molnar (@ChristophMolnar) twitterte um 11:58 AM on Mi., März 17, 2021:
-Rule 4: Use Math Extensively
+### Rule 4: Use Math Extensively (in "10 Rules to Assert Dominance in Research")
 
-Use as much math as possibly. This will impress your peers and create an impenetrable aura of the mystical around your work and your person. https://t.co/Bebh6r53RX
-(https://twitter.com/ChristophMolnar/status/1372140310596313088?s=03) 
+_Use as much math as possibly. This will impress your peers and create an impenetrable aura of the mystical around your work and your person._
+
+https://twitter.com/ChristophMolnar/status/1372140310596313088
+https://www.mlnar.com/10-rules-to-assert-dominance-in-research.html
 
 </section>
 
 
-<section data-markdown class="todo">
-### Stimmen von Stars \#3    
+<section data-markdown>
+## Stimmen von Stars \#3    
     
-So many smart and promising people I've seen get interested in machine learning started by telling themselves, "okay I'm going to brush up on matrix algebra" ... and then never got beyond that.
+_So many smart and promising people I've seen get interested in machine learning started by telling themselves, "okay I'm going to brush up on matrix algebra" ... and then never got beyond that._
+
+_like learning relational algebra for using SQL_
+
 https://twitter.com/RussellSPierce/status/1365034372638924802 
-As practitioner you need intuition about how machine learning works, but you don't need to know all the algorithms in detail.
 https://www.mlnar.com/you-don-t-need-to-know-all-the-algorithms.html 
+https://twitter.com/ChristophMolnar/status/1365035097217458183
 </section>
-
-<section data-markdown class="todo">
-### Stimmen von Stars \#4
-
-ML researchers work with fixed benchmark datasets, and spend all of their time searching over the knobs they do control: architecture & optimization. In applied ML, you're likely to spend most of your time on data collection and annotation -- where your investment will pay off.
-(https://twitter.com/fchollet/status/1353421758699687942?s=03)
-</section>    
 
 <section data-markdown>
 # Mikio
@@ -299,7 +299,7 @@ Der Spruch von meinem Prof: “Es kommt drauf an, ob es auch noch funktioniert a
 
 </section>
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 # Binary Cross Entropy oder Log Loss?
 
@@ -310,7 +310,7 @@ Hier die Formel und aufdröseln, was wird gezeigt, was ist es aber am Ende?
 https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section>
-
+ -->
 
 <section data-markdown class="todo">
 ### Aber auch Grenzen von Mathe: was weiß Mathe überhaupt?!
@@ -345,7 +345,7 @@ Oder Jimi Hendrix vs Les Paul
 1. Wo macht Mathe doch Sinn?
 
 </section>
-    
+
 <section data-markdown>
 ### Wenn Mathe nicht wichtig ist, ist ML dann nicht einfach Software-Entwicklung?
 
@@ -363,30 +363,50 @@ _Nein, man muss die Konzepte, Methoden, Prozesse und Grenzen von ML verstehen_
 </section>
 
 
- 
+
 <section data-markdown>
-### Warum kann ML nicht eine Library sein?
+## Stimmen von Stars \#4
 
-* Wieso ist ML immer noch nicht so abstrakt? 
-* CUDA wird weg abstrahiert. 
-* Abstraktion ist schwer und auch ein Software-Problem
-* Man muss zumindest verstehen was die Lib macht?
-* Was ist der richtige Grad der Abstraktion?
-    * SAAS? 
-    * Standard-Modelle aus sklearn?
-    * Fertige NN Architektur?
-    * Keras-API?
-    * TF-API?
-    * Jax, Matrix-Mul?
-    * Cuda?
-    * Assembler?
+_You don’t need a degree to be a software engineer!!!! You just need a sprinkle of self loathing and desire to be wrong almost all the time_
 
+https://twitter.com/EmilyKager/status/1378009547734802433
+    
+</section>
+    
+<section data-markdown>
+## Stimmen von Stars \#5
+
+_ML researchers work with fixed benchmark datasets, and spend all of their time searching over the knobs they do control: architecture & optimization. In applied ML, you're likely to spend most of your time on data collection and annotation -- where your investment will pay off._
+
+https://twitter.com/fchollet/status/1353421758699687942
+</section>    
+
+<section data-markdown class="fragments">
+## Stimmen von Stars \#6
+
+1. data quality is more important than models. If you have an okay model, rather invest time to improve data quality than tweak the model
+1. don’t spend years building up a data infrastructure first. Yes, data is important, but you also need to learn what kind of data you learn by doing small ML projects
+1. don’t just look for the problems best suited for ML, but also for what the problems of the business are. This is something that is popping up frequently lately. Don’t solve just any customer problem, but an important one
+1. there is a “small data regime” (less than 10000 data points) where you can for example look at individual data points and discuss what right label is
+
+Andrew Ng via https://twitter.com/mikiobraun/status/1376495402728427522
 </section>
 
-<section data-markdown class="todo">
-### Schön von Andrew klauen
+ 
+<section data-markdown class="fragments">
+### Warum kann ML nicht eine Library sein? oder 
+### Wieso kann man ML noch nicht im aus Lego-Steinen zusammen stecken?
 
-https://twitter.com/mikiobraun/status/1376495402728427522
+Was ist der richtige Grad der Abstraktion, d.h. was muss man noch beeinflussen und damit verstehen können?
+
+* SAAS? 
+* Standard-Modelle aus sklearn?
+* Fertige NN Architektur?
+* Keras-API?
+* TF-API?
+* Jax, Matrix-Mul?
+* Cuda?
+* Assembler?
 </section>
 
 
@@ -409,6 +429,21 @@ https://twitter.com/mikiobraun/status/1376495402728427522
 	- Wie kommt man auf belastbare Annahmen, dass das Modell auch in Prod geht: wissenschaftliches Arbeiten mit Experimenten
 
 https://developers.google.com/machine-learning/guides/rules-of-ml
+</section>
+
+
+<section data-markdown>
+
+### What’s your ML Test Score? A rubric for ML production systems
+
+_Using machine learning in real-world production systems is complicated by a
+host of issues not found in small toy examples or even large offline research
+experiments. Testing and monitoring are key considerations for assessing the
+production-readiness of an ML system. But how much testing and monitoring is
+enough? We present an ML Test Score rubric based on a set of actionable tests to
+help quantify these issues._
+
+https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45742.pdf
 </section>
 
 <section data-markdown>
@@ -470,10 +505,11 @@ Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
 1. Wie lange darf das Training dauern
 1. Wie lange die Vorhersage?
 1. Sind GPUs in Training oder Prediction Phase verfügbar
+1. Müssen Daten und Modell speziell geschützt werden?
 
 </section>
 
-<section data-markdown>
+<section data-markdown class="todo">
 ### Vorgehen
     
 - Das Rezept für Training: https://karpathy.github.io/2019/04/25/recipe/ 
@@ -492,13 +528,14 @@ Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
 </section>
 
 <section data-markdown>
-### wie viele Daten brauchen ich?
+### Wie viele Daten brauchen ich?
 
 Man muss wieder seine Tiere kennen
 
-* hängt vom Klassifier ab
+* hängt auch vom Klassifier ab
   * Gaussian Bayes braucht wenig
   * Deep Learning viel
+* zeigt letztlich nur das Experiment
 
 Haben wir genug Daten bei Metric: https://twitter.com/_inesmontani/status/1353979790781345792
 </section>
@@ -535,14 +572,37 @@ https://twitter.com/jacobmenick/status/1260658763687538688
 
 </section>
     
-<section data-markdown class="todo">
+<section data-markdown class="fragments">
+### Auch als Praktiker kommt man bei Deep Learning manchmal ans Eingemachte
 
-### Zur Versöhnung, wo macht Mathe für den Praktiker Sinn:
-* Mathe ist wichtig für Spezialisten und Forscher
-* hilfreich für Fortgeschrittenes Deep Learning (glaubt Olli selbst nicht mehr)
-  * Warum trainiert mein Modell nicht?
-  * Wie muss der Loss aussehen?
-* Wenn man seinen PhD haben möchte: https://twitter.com/MLsummaries/status/1376631183589699586
+Ausgetretene Pfade existieren und wenn man sich an diese hält kommt man sehr weit, aber eine gewisse mathamtische Tiefe hilft einzuschätzen
+* wo die Grenzen der eigenen Fähigkeiten liegen 
+* man also weiß was man nicht weiß
+* wo die Grenzen der ausgetretenen Pfade sind (z.B. Warum sollte man keine eigene Loss-Function schreiben?)
+
+</section>
+
+<section data-markdown class="fragments">
+### Neue Erkenntnisse brauchen oft ein tieferes Verständnis von Mathematik
+
+* Forscher im Bereich von ML müssen bestehende Ansatze komplett durchdringen, um etwas neues zu schaffen 
+* Wenn man seinen PhD haben möchte (https://twitter.com/MLsummaries/status/1376631183589699586)
+</section>
+
+
+<section data-markdown>
+### Irgendjemand muss ja auch sklearn, TensorFlow, etc. bauen
+
+_Maybe you have heard the advice that you learn best when you even implement the machine learning algorithms yourself. That's good advice if your goal is to become a machine learning specialist_ 
+
+https://www.mlnar.com/you-don-t-need-to-know-all-the-algorithms.html
+</section>
+
+
+<section data-markdown>
+### Zuletzt
+## Mathematik kann auch Freude machen
+
 </section>
 
 <section data-markdown>
@@ -608,7 +668,7 @@ Slides: https://bit.ly/m3-mathe
             }
 
             // we do not like fragments
-            $('.fragment').removeClass('fragment');
+            // $('.fragment').removeClass('fragment');
 
         } );
 
