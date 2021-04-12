@@ -176,13 +176,8 @@ https://www.m3-konferenz.de/lecture.php?id=12766
 * https://www.mentimeter.com/s/bc96b6de8264bd94707ff2ecc9aa87ad/e7b1741f5a59/edit
 </section>
     
-<section data-markdown class="todo">
-# Todo für Mikio und Olli
-
-1. Passt das vom Umfang? 30-40 Folien sind realistisch
-1. Folien mit leben Füllen
-1. Hintergrund mit Kamin? Zumindest am Anfang als Bild? Ist ja ein Kaminplausch
-    </section>
+<!-- <section data-markdown class="todo">
+    </section> -->
     
 <section data-markdown>
     <textarea data-template>
@@ -203,18 +198,26 @@ Diese Folien: https://bit.ly/m3-mathe
 <textarea data-template>
 ## Mathe-Hasser #1: Olli
 
-<img src='img/mathe-hasser-1.jpg' height="550">
+<img src='img/mathe-hasser-1.jpg' height="500">
 
 <small>Mathe und Physik Leistungskurs, hat was mit Mathe studiert</small>
 
 </textarea>
 </section>
 
-
 <section data-markdown class="todo">
-# Olli
+<textarea data-template>
+## Mathe-Hasser #2: Mikio
 
-An die Stellen tun an denen Mikio und Olli sabbeln sollen
+<img src='img/mathe-hasser-2.jpg' height="500">
+
+<small>Mathe und Physik Leistungskurs, hat was mit Mathe studiert</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+# Olli
 </section>
 
 
@@ -320,25 +323,7 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </section>
  -->
 
-<section data-markdown class="todo">
-### Aber auch Grenzen von Mathe: was weiß Mathe überhaupt?!
-
-* Man kann mathematisch herleiten, warum softmax mit crossentropie funktioniert, aber was ist der Sinn?
-https://twitter.com/rasbt/status/1364775034523439106 
-* Fully-Connected NN mit einem Hidden Layer und nicht-lineare Aktivierung reicht immer in Theorie, kann aber keiner trainieren
-Beweis nicht konstruktiv
-
-</section>
-
-<section data-markdown class="todo">
-### Lösung später in Teil 2 als Anknüpfung
-
-* Losses, welche wann? 
-* 3 Hidden Layer, nicht-lineare Aktivierung ReLU, Anzahl Neuronen tweaken
-
-</section>
-
-
+    
 <section data-markdown class="todo">
 # Jimi Hendrix hat nicht Elektrotechnik studiert
 
@@ -351,6 +336,22 @@ Beweis nicht konstruktiv
 
 </section>
 
+<section data-markdown>
+# Olli
+</section>
+
+<section data-markdown>
+### Aber auch Grenzen von Mathe: was weiß Mathe überhaupt?!
+
+Zum Beispiel
+
+* Fully-Connected NN mit einem Hidden Layer und nicht-lineare Aktivierung reicht immer in Theorie
+  * kann aber keiner trainieren
+  * Universal approximation theorem
+    * https://en.wikipedia.org/wiki/Universal_approximation_theorem
+    * Beweis nicht konstruktiv
+    * https://www.heatonresearch.com/2017/06/01/hidden-layers.html
+</section>
 
 <section data-markdown>
 ### Programm
@@ -373,7 +374,12 @@ _Nein, man muss die Konzepte, Methoden, Prozesse und Grenzen von ML verstehen_
 </section>
 
 <section data-markdown>
-# Mikios und Olivers Opa erzählt vom Krieg
+### Ist ein Machine Learning Vorhaben ein überhaupt ein Software-Projekt?
+
+1. Ist das Ergenis meiner Arbeit eine Grafik, eine Erkenntnis oder eine Kennzahl? (Inference)
+1. Soll das Ergebnis Vorhersagen machen? (Prediction)  
+
+Häufig ist die Job-Bezeichnung dieselbe, die Arbeit und was wichtig ist aber ganz unterschiedlich
 
 </section>
 
@@ -396,6 +402,10 @@ _ML researchers work with fixed benchmark datasets, and spend all of their time 
 https://twitter.com/fchollet/status/1353421758699687942
 </section>    
 
+<section data-markdown>
+# Mikio
+</section>
+
 <section data-markdown class="fragments">
 ## Stimmen von Stars \#6
 
@@ -408,6 +418,19 @@ Andrew Ng via https://twitter.com/mikiobraun/status/1376495402728427522
 </section>
 
  
+<section data-markdown class="todo">
+### Mikios Stichpunkte
+
+- Gesetz der großen Zahlen (?)
+- Fluch der hohen Dimension (!)
+- Statistische Tests (?)
+- Modellkomplexität vs. Datenmenge (nicht immer LSTMs auf alles werfen)
+</section>
+
+<section data-markdown>
+# Olli und Mikio gemeinsam
+</section>
+
 <section data-markdown class="fragments">
 ### Warum kann ML nicht eine Library sein? oder 
 ### Wieso kann man ML noch nicht im aus Lego-Steinen zusammen stecken?
@@ -425,15 +448,6 @@ Was ist der richtige Grad der Abstraktion, d.h. was muss man noch beeinflussen u
 </section>
 
 
-<section data-markdown class="todo">
-### Mikios Stichpunkte
-
-- Gesetz der großen Zahlen (?)
-- Fluch der hohen Dimension (!)
-- Statistische Tests (?)
-- Modellkomplexität vs. Datenmenge (nicht immer LSTMs auf alles werfen)
-</section>
-
 <section data-markdown>
 ### Wie kommt man von Experiment zu Prod?
 
@@ -446,11 +460,11 @@ Was ist der richtige Grad der Abstraktion, d.h. was muss man noch beeinflussen u
 https://developers.google.com/machine-learning/guides/rules-of-ml
 </section>
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
 ### Wie spielt ML mit uns Menschen zusammen?    
     
 https://pair.withgoogle.com/guidebook/
-</section>
+</section> -->
 
 <section data-markdown>
 
@@ -506,16 +520,6 @@ Gutes Beispiel für einen praktischen, akademischen Kurs: https://github.com/par
 
 
 <section data-markdown>
-### Ist ein Machine Learning Vorhaben ein Software-Projekt?
-
-1. Ist das Ergenis meiner Arbeit eine Grafik, eine Erkenntnis oder eine Kennzahl? (Inferenz)
-1. Soll das Ergebnis Vorhersagen machen? (Prediction)  
-
-Häufig ist die Job-Bezeichnung dieselbe, die Arbeit und was wichtig ist aber ganz unterschiedlich
-
-</section>
-
-<section data-markdown>
 ### Welche Anforderungen und Rahmenbedidungen gibt es für das Modell?
 
 Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
@@ -529,16 +533,16 @@ Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
 
 </section>
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
 ### Vorgehen
     
 - Das Rezept für Training: https://karpathy.github.io/2019/04/25/recipe/ 
     - Was macht man wenn das Modell nicht geht
     - Wie nähert man sich einer Lösung 
 - Der Talk, wie Tesla ihren Autopiloten trainiert: https://youtu.be/hx7BXih7zx8?t=922 
-    </section>
+    </section> -->
 
-<section data-markdown>
+<!-- <section data-markdown>
 ### Woher weiß ich
 
 * welche Daten ich brauche?
@@ -546,7 +550,7 @@ Welche Qualitätsmerkmale eines Modells sind entscheidend im konkreten Fall
 * wie gut mein Modell ist?
 * wie gut mein Modell sein muss? 
 </section>
-
+ -->
 <section data-markdown>
 ### Wie viele Daten brauchen ich?
 
@@ -560,7 +564,7 @@ Man muss wieder seine Tiere kennen
 Haben wir genug Daten bei Metric: https://twitter.com/_inesmontani/status/1353979790781345792
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
 ### Was mache ich wenn mein Modell nicht
 
 * traininert?
@@ -568,12 +572,8 @@ Haben wir genug Daten bei Metric: https://twitter.com/_inesmontani/status/135397
 * nicht generalisiert?
 * 3 Wochen zum Training braucht?
 
-</section>
-
-
-<section data-markdown>
-### Man kann aus Kacke keine Bonbons machen, aber anders herum
-</section>
+https://blog.slavv.com/37-reasons-why-your-neural-network-is-not-working-4020854bd607
+</section> -->
 
 
 <section data-markdown>
@@ -624,6 +624,19 @@ _Maybe you have heard the advice that you learn best when you even implement the
 https://www.mlnar.com/you-don-t-need-to-know-all-the-algorithms.html
 </section>
 
+<section data-markdown>
+### Mathe schläge Mathe
+
+_Das Universal Approximation Theorem, das wir bisher besprochen haben, berücksichtigt keine endliche Stichprobenmenge_
+
+Aber
+* Es existiert ein zweischichtiges neuronales Netz mit ReLU-Aktivierungen und 2n+d Gewichten, das jede Funktion auf einer Stichprobe der Größe n in d Dimensionen darstellen kann
+* Auch im Experiment wird bestätigt: es kann unstrukturiertes Zufallsrauschen perfektlernen
+* Wird Mathe auch für die Praxis noch sinnvoller werden?
+
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
+
+</section>
 
 <section data-markdown>
 ### Zuletzt
@@ -636,7 +649,10 @@ https://www.mlnar.com/you-don-t-need-to-know-all-the-algorithms.html
 
 * Angewandte ML ist eine andere Disziplin als universitäre ML 
 * Man muss mit Menschen sprechen
+* Man kann aus Kacke keine Bonbons machen, aber anders herum
+</section>
 
+    
 </section>
 
 <section data-markdown>
