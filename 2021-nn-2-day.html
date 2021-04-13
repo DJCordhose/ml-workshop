@@ -510,10 +510,32 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 Wie im Buch und M3 Talk
 Notebook aus dem Buch nehmen
 Allgemeines Zeug nur in den Folien aus den Autoencoder Folien
+Auch Anomgram (darauf optional nochmal zurück kommen)
 Mit interaktiven Beispielen wann immer möglich
 
-Auch VAE, GAN
+Unsupervised Deep Learning
+Auch VAE, GAN, Boltzman Maschine
+
+* Für Autoencoder-Beispiel auch mit UMAP auf 2D bringen und anzeigen
+
+- Auf Englisch
+- Übungen direkt im Notebook
+
     </section>    
+
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Introduction to Autoencoders
+
+Von hier ableiten
+https://colab.research.google.com/drive/1Vvvp3j802JEL0lOay4eC-FB_ttkFFxPr#scrollTo=j6tt1Z9cEV9m
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
+
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -528,11 +550,292 @@ Auch VAE, GAN
 </section>
 
 <section data-markdown class="todo">
-    Wie im Buch und den Workshops
-    Notebook aus dem Buch ableiten
+- Wie im Buch und den Workshops
+- Grafiken aus Buch nehmen und auch getting started open ai nehmen
+- Übungen im Notebook wie sonst im Workshop
 
 </section>    
     
+
+
+
+<section data-markdown class="fragments">
+### Reinforcement Learning
+
+* special position in the field of machine learning
+* does not rely on existing data here
+* generates data in experiments
+* experiments conducted in simulation or in the real world, if safel and in large numbers
+* experiments depend on desired outcome
+* desired outcome which formally defined by rewards
+* corresponds most closely to what many people intuitively imagine as intelligent behavior: learning more or less independently based on experience
+
+</section>    
+
+<section data-markdown class="fragments">
+### State of Reinforcement Learning
+
+* still rather academic
+* computer or board typical academic application
+* algorithm is central and important for academics
+* practical applications include 
+  * optimization
+  * robotics
+  * multi-armed bandits as a more general form of A/B testing
+</section>    
+
+<section data-markdown>
+<textarea data-template>
+### Real challenge is to model the problem for RL
+
+<div  style="max-width: 45%; float: left">
+<br>
+<img src='img/rl2/rl.png'>
+</div>
+<div style="max-width: 50%; float: right">
+<br>
+<ol>
+    <li>Based on <em>Observations</em> an <em>Agent</em> executes </li>
+<li> <em>Actions</em> within a given  
+<li><em>Environment</em> which lead to positive or negative 
+<li><em>Rewards</em>.
+</ol>
+</div>
+
+<div style="clear: both;">
+    <br>
+    <p >The Agent’s job is to maximize the cumulative Reward</p>
+</div>
+
+http://gym.openai.com/docs/
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Our Application
+
+<img src='img/rl2/orso.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Shared Exercise: How to model as an RL problem?
+
+- Objective: What should be achieved? When is an episode over?
+- Environment: Who or what provides observations and rewards? Typically a simulation or the real world.
+- Actions: What are the possible actions of the agent?
+- Agent: Who or what chooses actions?
+- Observations: What does the environment indicate to the agent?
+- Rewards: What are the rewards and how much are they?
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Sample/Reference Solution: Objective
+
+* find the least strenuous way through the territory
+* eat all the honey 
+* finally get back to the cave
+* after a certain number of steps we abort the episode without success
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Sample/Reference Solution: Environment
+
+Software simulation of the bear's territory
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Sample/Reference Solution: Actions
+
+* 4 discrete actions in the style of an Atari game:
+  * left
+  * right
+  * up
+  * down
+* doing nothing is not an option
+  * the bear never learns that staying in the cave and just sleeping on might be an interesting solution to the problem
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Sample/Reference Solution: Agent: 
+
+The bear
+* how this looks like technically we have to discuss later
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Sample/Reference Solution: Observations
+
+* we show the bear only the part of its territory that it can see from its current position (partially observed)
+* such an observation makes the problem more challenging
+* just as we would have to explore the game situation in such a game, the bear would have to do the same in many playthroughs
+* we choose this variant to demonstrate the power of reinforcement learning
+
+_More details in Notebook_
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Sample/Reference Solution: Rewards
+
+* for each step we combine different rewards 
+* normalize them by the theoretical number of points to be achieved
+* namely the sum of the rewards of all honey pots.
+* reward always below 1
+* if it is negative there was only cost, no reward.
+* different costs per path are modeled
+* honey is attractive to collect even if the path is expensive
+* otherwise the incentive for the bear is not there
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### There are a lot of algorithms
+
+<img src='img/rl_algorithms_9_15.svg'>
+<small>
+
+https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html    
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### For practical work PPO is the algorithm to choose when creating samples is inexpensive
+
+* if samples are expensive SAC might be best choice
+* for our example sampling is cheap
+
+https://spinningup.openai.com/en/latest/algorithms/ppo.html
+
+</textarea>
+</section>    
+
+
+<section data-markdown>
+    <textarea data-template>
+### PPO (Proximal Policy Optimization)
+
+<img src='img/rl2/ppo.png'>
+
+</textarea>
+</section>    
+
+<section data-markdown>
+    <textarea data-template>
+### Deep Reinforcement Learning with PPO
+
+<img src='img/rl2/drl-ppo.png'>
+
+<small><em>
+PPO uses two networks
+</em></small>
+    
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Special Loss in PPO
+
+* most advanced and practical variant of policy gradient branch
+* uses vanilla backpropagation for training
+* has special loss consisting of many parts
+* turns hard constraints into penalties 
+* uses value function to have better generalization
+
+<small><em>
+More details in Notebook
+</em></small>
+    
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Policy Loss
+
+_which action to perform_
+
+<img src='img/rl2/policy_loss.png' height="500">
+
+<small><em>
+</em></small>
+    
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Value Loss
+
+_prediction of reward_
+
+<img src='img/rl2/value_loss.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### KL Loss
+
+_prevent catatrophic updates_
+    
+<img src='img/rl2/kl_loss.png' height="500">
+
+    
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Entropy Loss
+
+_trade exploitation for exploration over time_
+
+<img src='img/rl2/entropy_loss.png' height="500">
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Introduction to Deep Reinforcement Learning
+
+Von hier ableiten
+https://colab.research.google.com/drive/12vF2vSZdj4dnlK1aceC_NvYGyrcuh2cz?hl=en
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_rl.ipynb?hl=en
+
+</textarea>
+</section>
+
+
+
 <section data-markdown>
         <textarea data-template>
 # Finally
