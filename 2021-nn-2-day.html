@@ -160,21 +160,15 @@ Modellierung, Algorithmen und Anwendungen
  <section data-markdown class="todo">
     <textarea data-template>
 
- * Tag 1 mit Übungen in den Notebooks, 
- * Tag 2 aus dem Buch und Übungen in den Folien
-   * oder aus dem Buch kopieren und anpassen?
+Agenda:
+* Einführung in neuronale Netzwerke mit TensorFlow 2: Regression, Klassifikation, Metriken
+* Supervised Deep Learning auf tabellarischen Daten, Bilddaten, Zeitreihen
+* Unsupervised Deep Learning: Autoencoder, Embeddings, VAEs, GANs
+* Deep Reinforcement Learning: Modellierung, Algorithmen, Anwendungen         
 
- Dazu Folien drum herum auch für RNN, Tabular, VAE, GAN
+Folien drum herum auch für RNN, Tabular, VAE, GAN
 </textarea>
 </section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# Übersichtsfolie mit allen Notebooks
-
-</textarea>
-</section>
-
 
         <section data-markdown>
             <textarea data-template>
@@ -195,7 +189,7 @@ https://djcordhose.github.io/ml-workshop/2021-nn-2-day.html
 * Zeiten, Pausen
 * Vorstellungsrunde
 * Kontext und Erwartungen
-* Google Colab (nur für den technischen Teil, heute Nachmittag): https://colab.research.google.com/
+* Google Colab: https://colab.research.google.com/
 
 </textarea>
 </section>
@@ -379,13 +373,13 @@ http://ufldl.stanford.edu/housenumbers/
     <textarea data-template>
 ## Networks for Images
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_cnn.ipynb?hl=en
-
 _A much more realistic example. How do you approach a challenge like this and how to you make it generalize to the real world._
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_cnn.ipynb?hl=en
 
 Outdated version unsuccessfully trying transfer learning
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb?hl=en
 
 (just for the idea how to do that) 
 </textarea>
@@ -441,13 +435,13 @@ Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
 ## Best Practices - Tabular data
 
 * as a starting point
-  * 3 hidden layers
+  * 2-3 hidden layers
   * 500 neurons per layer
 
 * all hidden layers get ReLU activation
   * only change to something else if model does not train
 
-
+https://lilianweng.github.io/lil-log/2019/03/14/are-deep-neural-networks-dramatically-overfitted.html
 </textarea>
 </section>
 
@@ -473,6 +467,8 @@ https://keras.io/api/applications/resnet/#resnet50v2-function
 <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ## Losses
+
+need to match final layer and output of training data 
 
 * regression: linear (or any other activation if the range of values is limited) activation and MSE 
 * two class: sigmoid activation and binary cross entropy
@@ -528,11 +524,14 @@ Auch VAE, GAN, Boltzman Maschine
     <textarea data-template>
 ## Introduction to Autoencoders
 
-Von hier ableiten
-https://colab.research.google.com/drive/1Vvvp3j802JEL0lOay4eC-FB_ttkFFxPr#scrollTo=j6tt1Z9cEV9m
-
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
 
+Hands-On:
+1. train model and tweak threhold to identify broken schreenshots
+
+Optional:
+1. experiment with dimensions of latent space, L1 and L2 regularization, and batch size and epochs
+1. do the plots of the latent space make sense? 
 </textarea>
 </section>
 
@@ -876,6 +875,24 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 </textarea>
     </section>
+
+<section data-markdown  style="font-size: x-large;">
+    <textarea data-template>
+## All Notebooks
+
+* Intro/Classification: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro-deep-learning.ipynb?hl=en
+  * Generalization: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb?hl=en
+
+* Image/CNN: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_cnn.ipynb?hl=en
+  * Outdated version unsuccessfully trying transfer learning (just for the idea how to do that): https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb?hl=en
+
+* Autoencoder/Unsupervised: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
+  
+* Deep Reinforcement Learning: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_rl.ipynb?hl=en
+</textarea>
+</section>
+
+
 
 
          <!-- <section data-markdown style="font-size: xx-large;">
