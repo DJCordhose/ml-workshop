@@ -108,7 +108,7 @@
                 /* font-family: 'Work Sans', 'Calibri'; */
                 font-family: 'Calibri';
                 color: black !important;
-                font-size: xx-large;
+                /* font-size: xx-large; */
              }
 
           </style>
@@ -150,19 +150,20 @@ Modellierung, Algorithmen und Anwendungen
 
  -->
 
+
  <section data-markdown class="todo">
-    <textarea data-template>
+- RL Übungen im Notebook wie sonst im Workshop
 
-Agenda:
-* Einführung in neuronale Netzwerke mit TensorFlow 2: Regression, Klassifikation, Metriken
-* Supervised Deep Learning auf tabellarischen Daten, Bilddaten, Zeitreihen
-* Unsupervised Deep Learning: Autoencoder, Embeddings, VAEs, GANs
-* Deep Reinforcement Learning: Modellierung, Algorithmen, Anwendungen         
+- [ ] Bessere Übungen für Autoencoder und RL
+	- [ ] kleinere Dinge
+	- [ ] Zwischenübung
+    - Nicht im Notebook
 
-Folien drum herum auch für RNN, Tabular, VAE, GAN
-</textarea>
-</section>
+- Folien aus M3 Autoencoder Talk hier nach der endgültigen Version des Talks übersetzen und einfügen        
 
+</section>    
+        
+    
         <section data-markdown>
             <textarea data-template>
 ## Introduction to Deep Learning with TensorFlow 2                
@@ -175,7 +176,7 @@ https://djcordhose.github.io/ml-workshop/2021-nn-2-day.html
             </textarea>
         </section>
 
-<section data-markdown style="font-size: x-large;">
+<section data-markdown>
     <textarea data-template>
 ## Administratives
 
@@ -186,7 +187,25 @@ https://djcordhose.github.io/ml-workshop/2021-nn-2-day.html
 
 </textarea>
 </section>
-        
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+
+Agenda:
+* Einführung in neuronale Netzwerke mit TensorFlow 2: Regression, Klassifikation, Metriken
+  * Für 2-Tage: nur als Folien Regression
+  * Für 3-Tage: Regression und Regularization nochmal als eigene Notebooks (+0,5 Tage)
+* Supervised Deep Learning auf tabellarischen Daten, Bilddaten, Zeitreihen
+  * Für 2-Tage: nur als Folien Zeitreihen
+  * Für 2-Tage: tabellarischen Daten schon in Einführung abgedeckt
+  * Für 3-Tage: Zeitreihen und Versicherungsbeispiel mit Notebooks (+0,5 Tage)
+* Unsupervised Deep Learning: Autoencoder, Embeddings, 
+  * VAEs, GANs nur als Folien und interaktive Sandboxes
+* Deep Reinforcement Learning: Modellierung, Algorithmen, Anwendungen         
+</textarea>
+</section>
+
+
 <section data-markdown>
     <textarea data-template>
 ## Schedule
@@ -274,12 +293,31 @@ https://twitter.com/fchollet/status/1333173017678028802
     <textarea data-template>
 ### Interactive introduction to Neural Networks with TensorFlow
 
+_Basics of Deep Learning, derived step by step_
+
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro-deep-learning.ipynb?hl=en
 
 
-Optional: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb?hl=en
+Optional I: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb?hl=en
 
-_Basics of Deep Learning, derived step by step_
+Optional II: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-01-regression.ipynb?hl=en
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+
+### Classification vs Regression
+
+_Regressions predict a quantity, and classifications predict a label_
+
+<img src="img/classification.jpg" height="400">
+
+1. Regression: Fitting a curve (often a line) through data points
+2. Classification: What category can be derived from data
+
 </textarea>
 </section>
 
@@ -394,21 +432,14 @@ https://poloclub.github.io/cnn-explainer/
 </textarea>
 </section>
 
-<section data-markdown class="todo">
-* Auch RNN erwähnen
-  * GRU als best practice
-    
-    </section>    
-
-
-    <section data-markdown class="todo hide">
+    <section data-markdown class="hide">
 ### Ende von Tag 1
 
 Rezepte heraus holen
     
     </section>    
 
-<section data-markdown>
+<section data-markdown style="font-size: xx-large;">
     <textarea data-template>
 ### Composing Neural Networks
 
@@ -481,6 +512,110 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section>
 
+<section>
+    <img src='img/data.png'>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Networks for Sequences, Time Series and Texts
+
+</textarea>
+</section>
+
+<section>
+    <h3>How does this sequence continue?</h3>
+    
+    <pre><code contenteditable data-trim class="line-numbers python">
+[10, 20, 30, 40, 50, 60, 70, 80, 90]    
+        </code></pre>
+    <p>Question: How do we train a network to predict the next number?</p>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Challenge: Dense Networks have no memory of previous events
+
+They lack capability to deal with sequential data, which is required to predict time series or "understand" text
+            </textarea>
+            </section>
+
+            <section data-markdown class='advanced'>
+        <textarea data-template>
+### Solution: Recurrent Neural Networks (RNNs)
+
+_If training vanilla neural nets is optimization over functions, training recurrent nets is optimization over programs._
+
+RNNs are Turing-Complete 
+
+<small>
+
+http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+<br>
+http://binds.cs.umass.edu/papers/1995_Siegelmann_Science.pdf
+
+</small>
+</textarea>
+            </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### RNNs - Networks with Loops
+
+<img src='img/colah/RNN-rolled.png' height="450px">
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+        </textarea>
+    </section>
+        
+    <section data-markdown>
+        <textarea data-template>
+### Unrolling the loop
+
+<img src='img/colah/RNN-unrolled.png'>
+
+<small>
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+</small>
+        </textarea>
+    </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Simple RNN
+
+<img src='img/seq/fchollet_rnn.png' height="350">
+
+<script type="math/tex; mode=display">
+output_t = activation(W input_t + U output_{t-1} + b)
+</script>
+    
+<small>
+<a href="https://livebook.manning.com/#!/book/deep-learning-with-python/chapter-6/129">
+    Deep Learning with Python, Chapter 6, François Chollet, Manning            
+</a>
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+#### Before you get tempted, read this
+
+<img src='img/fchollet-stock-prices.png'>
+<small>
+
+https://twitter.com/fchollet/status/1177633367472259072
+</small>
+        </textarea>
+</section>
 
 
 <section data-markdown>
@@ -495,22 +630,118 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### The brain might map out ideas like spaces
+
+<img src='img/embeddings/brain-abstract-knowledge.jpg' height="450">
+
+<small>
+
+https://twitter.com/PhilosophyMttrs/status/1085242776688775169
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Autoencoders
+
+* neural network trained in unsupervised manner
+* reproduces input while going through a low-dim bottleneck
+* low-dim latent representation is what you are interested in
+* works on all kinds of data, e.g. image, audio, and tabular
+
+<img src='img/unsupervised/autoencoder_schema.jpg'>
+
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Why Autoencoders
+
+* compression
+* data denoising
+* dimensionality reduction / clustering (for data visualization)
+* building an abstract representation for further use
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+</small>
+        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Example Application: Outlier Detection
+
+An anomaly (outlier, abnormality) is defined as “an observation which deviates so much from other observations as to
+arouse suspicions that it was generated by a different mechanism” - Hawkins 1980.
+
+https://www.springer.com/gp/book/9789401539968
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Demo: Anomagram 
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Detecting Anomalies in electrocardiograms (ECG) 
+
+* Train with normal data to low reconstruction loss
+* Abnormal data will not be reproduced well, i.e. will have high reconstruction loss
+* Set a threshold on loss by maximizing a metric (accuracy)
+* Does not need abnormal data for training (but can tolerate some abnormal data)
+* Can do without any labelling
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Exercise: Train your first Autoencoder 
+
+<a href='https://victordibia.github.io/anomagram/#/train'>
+<img src='img/embeddings/anomagram-training.gif' height="450">
+<br>
+<small>
+
+https://victordibia.github.io/anomagram/#/train  
+</small>
+</textarea>
+</section>
+
 <section data-markdown class="todo">
-Wie im Buch und M3 Talk
-Notebook aus dem Buch nehmen
-Allgemeines Zeug nur in den Folien aus den Autoencoder Folien
-Auch Anomgram (darauf optional nochmal zurück kommen)
-Mit interaktiven Beispielen wann immer möglich
-
-Unsupervised Deep Learning
-Auch VAE, GAN, Boltzman Maschine
-
-* Für Autoencoder-Beispiel auch mit UMAP auf 2D bringen und anzeigen
-
-- Auf Englisch
-- Übungen direkt im Notebook
-
-    </section>    
+    <textarea data-template>
+## Folien aus M3 Talk hier nach der endgültigen Version des Talks übersetzen und einfügen        
+</textarea>
+</section>
 
 
 <section data-markdown style="font-size: xx-large;">
@@ -528,6 +759,147 @@ Optional:
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+## What else in the area of Deep Unsupervised Learning?
+### Restricted Boltzmann Machines, VAEs, and GANs        
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+<img src='img/NeuralNetworkZoo20042019.png' height="600">        
+<small>
+https://www.asimovinstitute.org/neural-network-zoo/    
+</small>        
+    </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Restricted Boltzmann Machines (RBMs)
+
+* RBMs were founded 1986 by Geoffrey Hinton
+* Two-Layer networks like half an autoencoder where data flows back and forth
+* interesting for historical reasons, but surpassed by more up-to-date models: AE, VAE, GANS
+* Embeddings/Latent Space/Hidden Representation originally called 'Distributed representations'
+
+<small>
+
+https://en.wikipedia.org/wiki/Boltzmann_machine    
+https://dl.acm.org/citation.cfm?id=104287
+<br>
+http://www.cs.toronto.edu/~hinton/absps/families.pdf
+<br>
+https://pathmind.com/wiki/restricted-boltzmann-machine
+<br>
+https://towardsdatascience.com/restricted-boltzmann-machines-simplified-eab1e5878976
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Variational Auto Encoders (VAE)
+
+* VAE is a generative model
+* latent space learns a probability distribution modelling your data
+* actually learning mean and standard deviation of distribution
+* sampling from it can generate new data
+
+<small>
+
+https://blog.keras.io/building-autoencoders-in-keras.html
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/autoencoder-mnist-vae-gan.ipynb
+https://github.com/keras-team/keras/blob/master/examples/variational_autoencoder.py
+
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### VAE illustrated
+
+<img src='img/unsupervised/vae.png' height="500px">
+
+<small>
+
+https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf
+</small>
+
+</textarea>
+</section>
+
+<section>
+<h3>Generating Celebreties</h3>
+<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
+<div class="fragment" style="float: left">
+<img src="img/unsupervised/gan-model-male2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female2.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-female1.png" height="220">
+</div>
+<div class="fragment" style="float: left; padding-left: 25px">
+    <img src="img/unsupervised/gan-model-male.png" height="220">
+</div>
+<p style="clear: both">
+<small>
+<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
+<br>
+<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
+<br>
+<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
+</small>
+               
+</p>
+</section>                                
+
+<section data-markdown>
+<textarea data-template>
+## GANs
+
+* Generative adversarial networks
+* uses two neural networks, working against the each other
+*  one network tries to create artefacts that look real
+* the other one tries to classify which artefact presented is real and which is fake 
+* typically superior to VAE
+
+<small>
+
+https://pathmind.com/wiki/generative-adversarial-network-gan
+
+https://arxiv.org/abs/1406.2661
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Understanding GANs
+
+<a href='https://poloclub.github.io/ganlab/'>
+<img src='img/unsupervised/gan-lab.png'>
+</a>
+    
+<small>
+
+https://twitter.com/minsukkahng/status/1037016214575505409
+https://poloclub.github.io/ganlab/
+https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
+
+</small>
+</textarea>
+</section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -540,16 +912,6 @@ Optional:
 
 </textarea>
 </section>
-
-<section data-markdown class="todo">
-- Wie im Buch und den Workshops
-- Grafiken aus Buch nehmen und auch getting started open ai nehmen
-- Übungen im Notebook wie sonst im Workshop
-
-</section>    
-    
-
-
 
 <section data-markdown class="fragments">
 ### Reinforcement Learning
@@ -818,15 +1180,10 @@ _trade exploitation for exploration over time_
     <textarea data-template>
 ## Introduction to Deep Reinforcement Learning
 
-Von hier ableiten
-https://colab.research.google.com/drive/12vF2vSZdj4dnlK1aceC_NvYGyrcuh2cz?hl=en
-
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_rl.ipynb?hl=en
 
 </textarea>
 </section>
-
-
 
 <section data-markdown>
         <textarea data-template>
@@ -834,6 +1191,20 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
     
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+#### You can describe all networks as a combination of encoder / decoder
+
+<img src='img/embeddings/encoder-decoder-everywhere.png' height="530">
+
+<small style="font-size: large">
+
+https://medium.com/tensorflow/mit-deep-learning-basics-introduction-and-overview-with-tensorflow-355bcd26baf0
+</small>
+    </textarea>
+</section>
+
 
 <section data-markdown style="font-size: xx-large;">
     <textarea data-template>
