@@ -134,12 +134,14 @@
 <div class="reveal">
     <div class="slides">
 
- <!-- <section data-markdown class="todo">
+ <section data-markdown class="preparation">
     <textarea data-template>
-- als PDF mit Download link
-- bit.ly Link
+### Starten        
+
+* https://www.mentimeter.com/s/1f84385b85154e069317d4a39ea83fa7/e230a5bf994b/edit
+* https://www.mentimeter.com/s/14af7c432a37f0c78cf1d45663c7198f/30244b69d3bb/edit        
     </textarea>
-</section> -->
+</section>
 
 <!-- 
 
@@ -505,6 +507,53 @@ _Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
 
 </section>
 
+<section data-markdown>
+<textarea data-template>
+### Encoder
+
+<img src='img/autoencoder/ML_0804_encoder.png'>
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Encoder Details
+
+1. Bilder haben eine Auflösung von 256x256 und einen einzigen Farbkanal
+2. n Blöcken, die die Auflösung des Bilds mit jeder Convolution halbieren 
+   * MaxPooling Layer reduziert nach jeder Convolution nochmals die Auflösung 
+3. fasst die 16 Filter-Eingaben des vorherigen Layers in einer einzigen Ausgabe zusammen
+  * erlaubt aber eine weitere Messpunkt für eine menschlich verständliche Ausgabe
+4. 8x8 Bilder mit Graustufen flach geklopft als Eingabe für den Flaschenhals
+5. Dimensionierung des Flaschenhalses ist 8 und unterliegt unserer Willkür
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Decoder
+
+<img src='img/autoencoder/ML_0805_decoder.png'>
+
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Decoder Details
+
+1. Ausgabe des Encoders ist ein flacher Vektor mit 8 Werten
+  * Wir machen daraus 8 Bilder mit einem Pixel als Auflösung
+2. Conv2DTranspose und UpSampling2D Umkehrung der Convolution und des Downsamplings
+  * Von dieser Kombination schalten wir so viele Blöcke hintereinander wie wir brauchen, um die ursprüngliche Auflösung des Bilds wieder zu erlangen
+  * Gegenläufig zum Encoder steigen dabei Anzahl der Filter
+3. Fasst alle 64 vorheringen Kanäle zu einem einzigen Kanal zusammen
+  * Komprimiert den Wertraum mit einem Sigmoid auf den Bereich zwischen 0 und 1 als Grauwert ausgegeben
+</textarea>
+</section>
 
 <section data-markdown>
 <textarea data-template>
@@ -514,10 +563,20 @@ Ergebnis von Stacked Convolutional Layers direkt vor Engpass
 
 <img src='img/autoencoder/ML_0811_h.png'>
 
-Um daraus wieder den Ursprung zu machen, muss dieses wie trainiert aussehen
 </textarea>
 </section>
 
+<section data-markdown>
+<textarea data-template>
+### Der Engpass...`
+
+* hat nur 8 Werte
+* ist viel kleiner als die Eingabe, d.h. der Autoencoder ist extrem "undercomplete"
+* hat eine Lineare Aktivierung
+* wird nicht durch L1-Regularisierung Sparse gemacht, d.h. Werte im Engpass sind nicht 0
+* wird auch nicht L2 Regularisiert
+</textarea>
+</section>
 
 <section data-markdown class="fragments">
 ### Wie läuft das Training?
