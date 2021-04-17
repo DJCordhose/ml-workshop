@@ -185,13 +185,10 @@ Referenzen und mehr Links
 </section> -->
 
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
 ### TODO
 
-1. Auf neues Notebook umstellen und gucken was sich da noch getan hat: 
-  - https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
-  - Embedding Plots nutzen?
-</section>
+</section> -->
 
 <section data-markdown>
     <textarea data-template>
@@ -379,6 +376,69 @@ _Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_
 </textarea>
 </section>
 
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Autoencoder sind besonders
+
+* Dimensionalitätsreduktion fallen sonst in die beiden Bereiche
+  * Matrix-Faktorisierung oder
+  * Nachbarschafts-Graphen 
+* Linearer Autoencoder ist im wesentlichen PCA  
+* Nicht-Lineare Autoencoder sind viel mächtiger und fallen aus allen Kategorien  
+
+A Bluffer's Guide to Dimension Reduction - Leland McInnes: https://youtu.be/9iol3Lk6kyU?t=106
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Anomagram, interaktives Beispiel für Unsupervised Error Detection
+<a href='https://victordibia.github.io/anomagram/#/'>
+<img src='img/embeddings/anomagram-inference.gif' height="450">
+</a>
+<br>
+<small>
+
+https://github.com/victordibia/anomagram        
+https://victordibia.github.io/anomagram/#/
+    
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown class="fragment">
+    <textarea data-template>
+### Was würdest du lieber?
+
+1. Jemandem eine Herzanomalie attestieren, der keine hat
+1. Eine tatsächliche Herz-Anomalie übersehen
+        
+(nichts davon geht leider nicht)
+    </textarea>
+</section>
+
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+### Referenz: Metrics
+
+* _Genauigkeit (Precision)_: Prozentsatz der positiven Vorhersagen, die korrekt sind
+* _Trefferquote (Recall)_: Anteil der tatsächlich positiven Vorhersagen, die richtig vorhergesagt wurden
+* In einem binären Klassifikator wird oft durch einen Schwellwert zwischen positivem und negativem Ergebnis unterschieden
+* Ein ausreichend niedriger Schwellenwert führt zu einem exzellenten Recall, aber zu einer reduzierten Precision
+* _F1-Score_: harmonische Mittel aus Precision und Recall
+        
+<small>
+https://de.wikipedia.org/wiki/Beurteilung_eines_bin%C3%A4ren_Klassifikators
+</small>
+</textarea>
+</section>
+
+
 <section data-markdown>
 ### Programm
 
@@ -466,12 +526,17 @@ Um daraus wieder den Ursprung zu machen, muss dieses wie trainiert aussehen
   * wir gehen davon aus, dass die Anwendung vor der Änderung größtenteils wie erwartet aussah
 * Test- und Validation sind der Golden Master des neuen Release-Kandidation
 * Der Autoencoder lernt also wie die Anwendung normalerweise aussehen sollte
-* Was nicht im Paper stehe würde: 
-  * Ohne die erwähnte Umformulierung des Problems und den Binary Cross-Entropy Loss lief gar nichts
-  * Kudos dafür an Aurélien Géron und https://learning.oreilly.com/library/view/hands-on-machine-learning/9781491962282/
-  * ein paar andere kleine Trial-and-Error-Fummeleien ohne die es bei DL scheinbar nie geht
 </section>
 
+<section data-markdown class="fragments">
+### Was nicht im Paper stehe würde
+    
+* Ohne die erwähnte Umformulierung des Problems und den Binary Cross-Entropy Loss läuft gar nichts
+* Kudos dafür an Aurélien Géron und https://learning.oreilly.com/library/view/hands-on-machine-learning/9781491962282/
+* ein paar andere kleine Trial-and-Error-Fummeleien ohne die es bei DL scheinbar nie geht
+    </section>
+    
+    
 <section data-markdown>
 <textarea data-template>
 ### Trainingsverlauf
@@ -499,15 +564,32 @@ Links sieht man ungewöhnliches, vielleicht sogar kaputtes
 
 <section data-markdown>
 <textarea data-template>
+## Wie setzt man den Schwellwert?
+
+* Wir haben keine Labels (Ground-Truth), können daher nicht Sensitivität und Spezifität berechnen
+* Wir machen daher Annahmen
+  1. Normalverteilung der Accuracy oder MSE
+  1. Entweder die Screenshots des neuen Releases als hauptsächlich falsch oder korrekt 
+  1. Alle mit mehr als 3 Standardabweichugnen als Fehlerhaft ansehen 
+* Als Mensch kann man das interaktiv einfacher
+  * Teils durch Intuition, meist durch ausprobieren (wir sehen an einem Bild, ob es einen Fehler enthält)
+  * Heuristik: Threshold komplett rechts von allen Traningsdaten
+</textarea>
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
 ### Autoencoder angewandt auf das neue Release
 
-Der Schwellwert *0.985* ist willkürlich gesetzt
+Der Schwellwert *0.985* ist willkürlich gesetzt, wir nehmen hauptsächlich falsch an 
 
 <img src='img/autoencoder/ML_0810_test_acc_hist.png'>
 
 Screenshots links des Schwellwerts sollten überprüft werden
 </textarea>
 </section>
+
 
 <section data-markdown>
 <textarea data-template>
@@ -517,19 +599,43 @@ Oben das Original, unten den Rekonstruktion und die gerundete Accuracy
 
 <img src='img/autoencoder/broken.png'>
 
-Tatsächlich sind alle problematisch
+Tatsächlich sind alle gezeigten problematisch
 </textarea>
 </section>
 
+<section data-markdown class="fragments">
+<textarea data-template>
+### Ergebnis
+
+* Tatsächlich sind die meisten Test-Screenshots fehlerhaft
+* Unser Schwellwert ist vernünftig, da wir nur wenige korrekte Screenshots haben
+* Wir haben nicht die typischen verwischten Reproduktionen 
+  * https://twitter.com/francoisfleuret/status/1382708204468060171
+  * https://fleuret.org/dlc/#lecture-7
+  * vermutlich weil wir kein MSE, sondern Log Loss nehmen
+* sollte in weiteren Schritten auch für hauptsächlich korrekte Schreenshots ausprobiert werden     
+</textarea>
+</section>
+
+
 <section data-markdown>
+<textarea data-template>
 ### Referenz: Kapitel 8 von Machine Learning kurz & gut, 2. Auflage
 
-Lauffähiger Code, Grafiken sind direkt aus diesem erzeugt
+<a href='https://oreilly.de/produkt/machine-learning-kurz-gut-2/'>
+<img src='img/ml-buch-v2.jpg'>
+</a>
+
+<small>
 
 https://colab.research.google.com/github/djcordhose/buch-machine-learning-notebooks/blob/master/kap8.ipynb
+<br>
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
+<br>
+https://www.embarc.de/ml-buch-v2/
 
-Kein doppelter Boden
-
+</small>
+</textarea>
 </section>
 
 <section data-markdown>
@@ -563,22 +669,6 @@ https://www.menti.com/j6qqy5qr1p
 	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
 	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
 </section> -->
-
-<section data-markdown>
-    <textarea data-template>
-### Anomagram, interaktives Beispiel für Unsupervised Error Detection
-<a href='https://victordibia.github.io/anomagram/#/'>
-<img src='img/embeddings/anomagram-inference.gif' height="450">
-</a>
-<br>
-<small>
-
-https://github.com/victordibia/anomagram        
-https://victordibia.github.io/anomagram/#/
-    
-</small>
-</textarea>
-</section>
 
 <section data-markdown>
     <textarea data-template>
