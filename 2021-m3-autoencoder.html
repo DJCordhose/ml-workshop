@@ -112,6 +112,17 @@
                 font-size: xx-large;
              }
 
+             .container {
+                display: flex;
+            }
+            .col, col-1 {
+                flex: 1;
+            }
+
+            .col-2 {
+                flex: 2;
+            }
+
           </style>
       
     <!-- Printing and PDF exports -->
@@ -212,115 +223,20 @@ https://www.menti.com/qhxi158h8f
         
     
 <section data-markdown>
-### Programm
+# Programm
 
-1. Visuelle Regressionstests
 1. Autoencoder
+1. Visuelle Regressionstests
 1. Visuelle Regressionstests mit Autoencodern (Hauptteil)
 1. Ist das schon das Ende und was kann man damit noch machen?
 </section>
 
-<section data-markdown>
-### Programm
-
-1. _Visuelle Regressionstests_
-1. Autoencoder
-1. Visuelle Regressionstests mit Autoencodern
-1. Ist das schon das Ende und was kann man damit noch machen?
-</section>
-
 
 <section data-markdown>
-<textarea data-template>
-### Unsere Beispielanwendung
+# Programm
 
-<img src='img/autoencoder/ML_0801_app.png'>
-
-Simpel, aber komplex genug, um typische Fehlerfälle zu zeigen
-
-https://djcordhose.github.io/react-showcase/
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Regressionstest
-
-_Unter einem Regressionstest (von lateinisch regredior, regressus sum ‚zurückschreiten‘) versteht man in der Softwaretechnik die Wiederholung von Testfällen, um sicherzustellen, dass Modifikationen in bereits getesteten Teilen der Software keine neuen Fehler („Regressionen“) verursachen. Solche Modifikationen entstehen regelmäßig z. B. aufgrund der Pflege, Änderung und Korrektur von Software. Der Regressionstest gehört zu den dynamischen Testtechniken._
-
-https://de.wikipedia.org/wiki/Regressionstest    
-
-</textarea>
-</section>
-
-
-<section data-markdown>
-    <textarea data-template>
-### Klassische Visuelle Regressionstests    
-
-<img src='img/autoencoder/compare.png'>
-
-Vergleich mit bekannt richtiger Darstellung
-</textarea>
-</section>
-    
-<section data-markdown>
-    <textarea data-template>
-### Klassische Visuelle Regressionstests
-
-<img src='img/autoencoder/report.png' style="height: 100%;">
-
-Automatischer Vergleich schlägt ab bestimmtem Schwellwert fehl
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-### Taugt das?
-
-*Ja, weil es auf der Ebene testet, die auch der Benutzer sieht, aber*
-
-* man muss für jeden Fall eine Ground-Truth erzeugen und pflegen
-* viele false positives: Es gibt eine ganze Reihe von Abweichungen, die offensichtlich keine Fehler sind  
-* ein generelles, intelligentes Verständnis von einer heilen Anwendung existiert nicht
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Problemfall 1: i18n
-
-Neue Texte sollten nicht zum Fehlschlag führen, aber das hier schon
-
-<img src='img/autoencoder/ML_0802_bug_i18n.png'>
-
-Unschön, gefährdet aber nicht zwingend die Bedienbarkeit der Anwendung
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Problemfall 2: Böse Overflows
-
-Der Knopf ist noch da, aber unsichtbar
-
-<img src='img/autoencoder/ML_0803_bug_overflow.png'>
-
-Passiert nur bei sehr speziellen Eingaben, macht die Anwendung aber unbedienbar
-</textarea>
-</section>
-
-<section data-markdown class="fragments">
-### Und nun?
-
-* Problemfall 1 sollte kein Fehler sein, wenn der Text innerhalb der Box ist, wenn außerhalb, dann schon
-* Das provozieren von Problemfall 2 ist nur durch chaotisches Testen mit Zufallsaktionen oder mit viel Erfahrung möglich
-* ein generelles, intelligentes Verständnis von einer heilen Anwendung hilft in beiden Fällen
-</section>
-
-<section data-markdown>
-### Programm
-
-1. Visuelle Regressionstests
 1. _Autoencoder_
+1. Visuelle Regressionstests
 1. Visuelle Regressionstests mit Autoencodern
 1. Ist das schon das Ende und was kann man damit noch machen?
 </section>
@@ -331,36 +247,21 @@ Passiert nur bei sehr speziellen Eingaben, macht die Anwendung aber unbedienbar
 ### Autoencoder Steckbrief
 
 * Daten
-  * Eingabe: <span class="fragment" style="font-weight: bold;">Alles Arten von Daten sind möglich</span> 
+  * Eingabe: <span class="fragment" style="font-weight: bold;">Alle Arten von Daten sind möglich</span> 
   * Ausgabe: <span class="fragment" style="font-weight: bold;">Dieselben Daten</span>
 * Lern-Art: <span class="fragment" style="font-weight: bold;">Unüberwacht</span>  
 * Modell-Architektur: <span class="fragment" style="font-weight: bold;">Neuronales Netzwerk, symmetrisch mit Engpass</span>
 * Loss: <span class="fragment" style="font-weight: bold;">Typischerweise MSE, alle NN Losses möglich</span>
 * Optimierungs-Methode: <span class="fragment" style="font-weight: bold;">Backpropagation</span>
-* Geschäfts-Metrik: <span class="fragment" style="font-weight: bold;">Divers und schwierig anzugeben, später mehr</span>
-</textarea>
+<!-- * Geschäfts-Metrik: <span class="fragment" style="font-weight: bold;">Divers und schwierig anzugeben, später mehr</span> -->
 
-</section>
-
-<section data-markdown class="fragments">
-    <textarea data-template>
-### Autoencoder
-
-* neuronales Netz, das unüberwacht trainiert wird
-* reproduziert die Eingabe, während es einen Engpass durchläuft
-* Engpass ist eine Abstraktion der Daten
-* nur Engpass als Hidden Layer und MSE als Loss liefert Hauptkomponenten
-* arbeitet auf allen Arten von Daten, z. B. Bild-, Audio- und Tabellendaten
-
-<img src='img/unsupervised/autoencoder_schema.jpg' style="height: 100%;">
-
-
+<img src='img/unsupervised/autoencoder_schema.jpg' style="height: 200px">
+<br>
 <small>
 
 https://blog.keras.io/building-autoencoders-in-keras.html
 
 </small>
-        
 </textarea>
 </section>
 
@@ -368,7 +269,7 @@ https://blog.keras.io/building-autoencoders-in-keras.html
     <textarea data-template>
 ### Warum Autoencoder?
 
-_Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_
+<!-- _Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_ -->
 
 * Kompression
 * Datenentrauschung
@@ -383,7 +284,7 @@ _Aus dem gewünschten Nutzen leitet sich die Geschäfts-Metrik ab_
 
 <section data-markdown class="fragments">
     <textarea data-template>
-### Autoencoder sind besonders
+### Autoencoder haben eine Sonderstellung innerhalb von Dimensionalitätsreduktion
 
 * Dimensionalitätsreduktion fallen sonst in die beiden Bereiche
   * Matrix-Faktorisierung oder
@@ -397,7 +298,7 @@ A Bluffer's Guide to Dimension Reduction - Leland McInnes: https://youtu.be/9iol
 </section>
 
 
-<section data-markdown>
+<!-- <section data-markdown>
     <textarea data-template>
 ### Anomagram, interaktives Beispiel für Unsupervised Error Detection
 <a href='https://victordibia.github.io/anomagram/#/'>
@@ -437,17 +338,126 @@ https://victordibia.github.io/anomagram/#/
 * _F1-Score_: harmonische Mittel aus Precision und Recall
         
 <small>
+
 https://de.wikipedia.org/wiki/Beurteilung_eines_bin%C3%A4ren_Klassifikators
+
 </small>
+</textarea>
+</section> -->
+
+<section data-markdown>
+# Programm
+
+1. Autoencoder
+1. _Visuelle Regressionstests_
+1. Visuelle Regressionstests mit Autoencodern
+1. Ist das schon das Ende und was kann man damit noch machen?
+</section>
+
+
+<section data-markdown>
+<textarea data-template>
+### Unsere Beispielanwendung
+
+<img src='img/autoencoder/ML_0801_app.png'>
+
+Simpel, aber komplex genug, um typische Fehlerfälle zu zeigen
+
+https://djcordhose.github.io/react-showcase/
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Regressionstest
+
+_Unter einem Regressionstest (von lateinisch regredior, regressus sum ‚zurückschreiten‘) versteht man in der Softwaretechnik die Wiederholung von Testfällen, um sicherzustellen, dass Modifikationen in bereits getesteten Teilen der Software keine neuen Fehler („Regressionen“) verursachen. Solche Modifikationen entstehen regelmäßig z. B. aufgrund der Pflege, Änderung und Korrektur von Software. Der Regressionstest gehört zu den dynamischen Testtechniken._
+
+https://de.wikipedia.org/wiki/Regressionstest    
+
 </textarea>
 </section>
 
 
 <section data-markdown>
-### Programm
+    <textarea data-template>
+### Klassische Visuelle Regressionstests    
 
-1. Visuelle Regressionstests
+<img src='img/autoencoder/compare.png'>
+
+Vergleich mit bekannt richtiger Darstellung
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+    ### Klassische Visuelle Regressionstests
+
+Sieht die Anwendung ungewöhnlich aus?
+
+<img src='img/autoencoder/ML_0808_test_diff.png'>
+
+Bilder können automatisch auf Pixelebene verglichen werden
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Klassische Visuelle Regressionstests
+
+<img src='img/autoencoder/report.png' style="height: 100%;">
+
+Automatischer Vergleich schlägt ab bestimmtem Schwellwert fehl
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+### Taugt das?
+
+*Ja, weil es auf der Ebene testet, die auch der Benutzer sieht, aber*
+
+* man muss für jeden Fall eine Ground-Truth erzeugen und pflegen
+* viele false positives: Es gibt eine ganze Reihe von Abweichungen, die offensichtlich keine Fehler sind
+* der Test hat kein generelles, intelligentes Verständnis von einer heilen Anwendung
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Problemfall 1: i18n
+
+Neue Texte sollten nicht zum Fehlschlag führen, aber das hier schon
+
+<img src='img/autoencoder/ML_0802_bug_i18n.png'>
+
+Unschön, gefährdet aber nicht zwingend die Bedienbarkeit der Anwendung
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Problemfall 2: Böse Overflows
+
+Der Knopf ist noch da, aber unsichtbar
+
+<img src='img/autoencoder/ML_0803_bug_overflow.png'>
+
+Passiert nur bei sehr speziellen Eingaben, macht die Anwendung aber unbedienbar
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+### Und nun?
+
+* Problemfall 1 sollte kein Fehler sein, wenn der Text innerhalb der Box ist, wenn außerhalb, dann schon
+* Das provozieren von Problemfall 2 ist nur durch chaotisches Testen mit Zufallsaktionen oder mit viel Erfahrung möglich
+* ein generelles, intelligentes Verständnis von einer heilen Anwendung hilft in beiden Fällen
+</section>
+
+<section data-markdown>
+# Programm
+
 1. Autoencoder
+1. Visuelle Regressionstests
 1. _Visuelle Regressionstests mit Autoencodern_
 1. Ist das schon das Ende und was kann man damit noch machen?
 </section>
@@ -478,7 +488,7 @@ Viel näher an der Erwartung
 </section>
 
 <section data-markdown class="fragments">
-### Zusammenfassung Ansatz  
+### Ansatz
 
 _Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
 
@@ -510,17 +520,16 @@ _Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
 </section>
 
 <section data-markdown>
-<textarea data-template>
+    <textarea data-template>
 ### Encoder
 
-<img src='img/autoencoder/ML_0804_encoder.png'>
+<div class="container">
 
-</textarea>
-</section>
+<div class="col">
+    <img src='img/autoencoder/ML_0804_encoder.png' style="height: 15%;">
+</div>
 
-<section data-markdown class="fragments">
-<textarea data-template>
-### Encoder Details
+<div class="col-2 fragments">
 
 1. Bilder haben eine Auflösung von 256x256 und einen einzigen Farbkanal
 2. n Blöcken, die die Auflösung des Bilds mit jeder Convolution halbieren 
@@ -529,23 +538,25 @@ _Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
   * erlaubt aber eine weitere Messpunkt für eine menschlich verständliche Ausgabe
 4. 8x8 Bilder mit Graustufen flach geklopft als Eingabe für den Flaschenhals
 5. Dimensionierung des Flaschenhalses ist 8 und unterliegt unserer Willkür
+
+</div>
+    
+</div>
+
 </textarea>
 </section>
-
 
 <section data-markdown>
-<textarea data-template>
+    <textarea data-template>
 ### Decoder
 
-<img src='img/autoencoder/ML_0805_decoder.png'>
+<div class="container">
 
-</textarea>
-</section>
+<div class="col">
+    <img src='img/autoencoder/ML_0805_decoder.png' style="height: 13%;">
+</div>
 
-
-<section data-markdown class="fragments">
-<textarea data-template>
-### Decoder Details
+<div class="col fragments" style="font-size: x-large;">
 
 1. Ausgabe des Encoders ist ein flacher Vektor mit 8 Werten
   * Wir machen daraus 8 Bilder mit einem Pixel als Auflösung
@@ -554,6 +565,11 @@ _Wir vergleichen beliebige Darstellung mit der als heil erwarteten_
   * Gegenläufig zum Encoder steigen dabei Anzahl der Filter
 3. Fasst alle 64 vorheringen Kanäle zu einem einzigen Kanal zusammen
   * Komprimiert den Wertraum mit einem Sigmoid auf den Bereich zwischen 0 und 1 als Grauwert ausgegeben
+
+</div>
+    
+</div>
+
 </textarea>
 </section>
 
@@ -568,26 +584,36 @@ Ergebnis von Stacked Convolutional Layers direkt vor Engpass
 </textarea>
 </section>
 
-<section data-markdown>
+<section data-markdown class="fragments">
 <textarea data-template>
-### Der Engpass...`
+### Der Engpass...
 
 * hat nur 8 Werte
 * ist viel kleiner als die Eingabe, d.h. der Autoencoder ist extrem "undercomplete"
 * hat eine Lineare Aktivierung
-* wird nicht durch L1-Regularisierung Sparse gemacht, d.h. Werte im Engpass sind nicht 0
-* wird auch nicht L2 Regularisiert
+* könnte zusätzlich 
+  * durch L1-Regularisierung Sparse gemacht
+  * durch L2 Regularisiert begrenzt werden
+  * durch ReLU in den positiven Bereich gezwungen werden
 </textarea>
 </section>
 
 <section data-markdown class="fragments">
+<textarea data-template>
+
 ### Wie läuft das Training?
 
-* Trainingsdaten sind Golden Master des aktuell als korrekt bekannten Releases
-  * wir gehen davon aus, dass die Anwendung vor der Änderung größtenteils wie erwartet aussah
-* Test- und Validation sind der Golden Master des neuen Release-Kandidation
+* Autoencoder wird mit Gold Master (als korrekt angesehen) trainiert
+* wir gehen davon aus, dass die Anwendung vor der Änderung größtenteils wie erwartet aussah
+* Validation kann das neue Release (enthält wahrscheinlich Regressionen) sein`
 * Der Autoencoder lernt also wie die Anwendung normalerweise aussehen sollte
+
+<img src='img/autoencoder/training.png' style="height: 250px;">
+
+
+</textarea>
 </section>
+
 
 <section data-markdown class="fragments">
 ### Was nicht im Paper stehe würde
@@ -619,9 +645,20 @@ Für die als richtig bekannten Screenshots
 
 <img src='img/autoencoder/ML_0809_train_acc_hist.png'>
 
-Links sieht man ungewöhnliches, vielleicht sogar kaputtes
 </textarea>
 </section>
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Links sieht man ungewöhnliches, vielleicht sogar kaputtes
+
+* Der Autoencoder kann nur "gewöhnliches" gut reproduzieren
+* Rechts haben wir die ganzen heilen Bilder
+* Wir nehmen einen Schwellenwert an, ab dem wir den Input als fehlerhaft ansehen
+
+</textarea>
+</section>
+
 
 <section data-markdown>
 <textarea data-template>
@@ -668,6 +705,7 @@ Tatsächlich sind alle gezeigten problematisch
 <textarea data-template>
 ### Ergebnis
 
+* Das hier ist ein Experiment, nichts marktreifes
 * Tatsächlich sind die meisten Test-Screenshots fehlerhaft
 * Unser Schwellwert ist vernünftig, da wir nur wenige korrekte Screenshots haben
 * Wir haben nicht die typischen verwischten Reproduktionen 
@@ -677,7 +715,6 @@ Tatsächlich sind alle gezeigten problematisch
 * sollte in weiteren Schritten auch für hauptsächlich korrekte Schreenshots ausprobiert werden     
 </textarea>
 </section>
-
 
 <section data-markdown>
 <textarea data-template>
@@ -700,36 +737,113 @@ https://www.embarc.de/ml-buch-v2/
 </section>
 
 <section data-markdown>
-### Programm
+# Programm
 
-1. Visuelle Regressionstests
 1. Autoencoder
+1. Visuelle Regressionstests
 1. Visuelle Regressionstests mit Autoencodern
 1. _Ist das schon das Ende und was kann man damit noch machen?_
 </section>
 
 <section data-markdown>
-## Die Ergebnisse sind immer noch nicht auf menschlichem Niveau
+## Autoencoder
+</section>
+
+
+<section data-markdown class="fragments">
+<textarea data-template>
+### Wir können auch direkt auf der Ausgabe des Engpasses arbeiten
+
+* weiter mit klassischen Methoden auf 2-D reduzieren und (UMAP)
+* clustern und Ausreißer bestimmen (HDBSCAN)
+* wie könnte das aussehen?
+
+    </textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Clustering der Trainingsdaten auf Basis der Ausgabe des Engpasses
+
+<img src='img/autoencoder/clusters.png'>
+
+<small>
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/2021/intro_autoencoder.ipynb?hl=en
+
+</small>
+    </textarea>
+</section>
+    
+
+<section data-markdown>
+    <textarea data-template>
+### Was steckt hinter den Clustern?
+
+<div class="container">
+
+<div class="col fragment">
+    <img src='img/autoencoder/clusters-highlight.png'>
+    Ausgewählter Cluster
+</div>
+
+<div class="col fragment">
+    <img src='img/autoencoder/cluster-sample-1.png'>
+    Beispiel 1
+</div>
+    
+<div class="col fragment">
+    <img src='img/autoencoder/cluster-sample-2.png' class="">
+    Beispiel 2
+</div>
+    
+</div>
+            
+        </textarea>
+    </section>
+        
+    
+<section data-markdown>
+    <textarea data-template>
+### Mehr Links
+
+* Mehr Beispiele für Autoencoder: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-autoencoder.ipynb
+* Breite Auswahl an Beispielen aus dem Bereich Autoencoder, unsere Architektur ist davon abgeleitet: https://colab.research.google.com/github/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb 
+
+* Academische Betrachtungen
+  * https://fleuret.org/dlc/#lecture-7
+    * https://twitter.com/francoisfleuret/status/1382708204468060171
+  * https://www.deeplearningbook.org/contents/autoencoders.html
+  * Deconvolution erklärt: https://arxiv.org/pdf/1603.07285v1.pdf, S. 18ff
+</textarea>
+</section>
+
+<section data-markdown>
+## Testing
+</section>
+
+<section data-markdown>
+### Die Ergebnisse sind immer noch nicht auf menschlichem Niveau
 
 * Wir erkennen z.B. lange Zahlen und wissen, ob die sinnvoll sein können
 * Überläufe sehen wir mit System 1, ohne nachzudenken
-* Fehlende Knöpfe können auch menschen nur erschließen
+* Fehlende Knöpfe können auch Menschen nur erschließen
 </section>
 
 
-<section data-markdown>
+<!-- <section data-markdown>
 ## Wie wird das Testen im Jahr 2030 aussehen?
     
 https://www.menti.com/j6qqy5qr1p
-</section>
-    
-<!-- <section data-markdown class="todo">
-- The year is 2030. You're a software engineer at a company, writing tests for your program
-	- [ ] https://twitter.com/TaliaRinger/status/1365433319572185092
-	- [ ] I love this vision aside from the human writing the code and tests part.
-	- [ ] I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any.
-	- [ ] (https://twitter.com/ChrSzegedy/status/1365780380733726720?s=03)
 </section> -->
+    
+<section data-markdown class="fragments">
+### Wie wird das Testen im Jahr 2030 aussehen?
+
+- After you write a few tests, your IDE is like, "hey, I noticed you were testing this; do you want this more general thing to hold?" and spits back a specification for you. (https://twitter.com/TaliaRinger/status/1365433319572185092)
+- I hope that by 2030 software synthesis could be possible mostly informal language input, in which human will only need to inspect the code and specification occasionally, but would not need to produce any. (https://twitter.com/ChrSzegedy/status/1365780380733726720)
+
+</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -780,22 +894,6 @@ Alles ist in Hierarchien organisiert
 
 </textarea>
 </section> -->
-
-
-<section data-markdown>
-    <textarea data-template>
-### Mehr Links
-
-* Mehr Beispiele für Autoencoder: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf-intro/2020-01-autoencoder.ipynb
-* Breite Auswahl an Beispielen aus dem Bereich Autoencoder, unsere Architektur ist davon abgeleitet: https://colab.research.google.com/github/ageron/handson-ml2/blob/master/17_autoencoders_and_gans.ipynb 
-
-* Academische Betrachtungen
-  * https://fleuret.org/dlc/#lecture-7
-    * https://twitter.com/francoisfleuret/status/1382708204468060171
-  * https://www.deeplearningbook.org/contents/autoencoders.html
-  * Deconvolution erklärt: https://arxiv.org/pdf/1603.07285v1.pdf, S. 18ff
-</textarea>
-</section>
 
 
 <section data-markdown>
