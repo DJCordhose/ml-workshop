@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>M3 2021: TensorFlow, ein Zwischenresümee</title>
+
+    <meta name="description" content="M3 2021: TensorFlow, ein Zwischenresümee">
+    <meta name="author" content="Oliver Zeigermann">
+	<link rel="shortcut icon" href="/img/favicon.ico" >
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+          <link rel="stylesheet" href="reveal.js/css/reveal.css">
+          <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+          <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+          <!-- <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme"> -->
+      
+          <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+
+            <!-- Theme used for syntax highlighting of code -->
+            <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+          <style>
+              /*pre code {*/
+                  /*display: block;*/
+                  /*padding: 0.5em;*/
+                  /*background: #FFFFFF !important;*/
+                  /*color: #000000 !important;*/
+              /*}*/
+      
+            @font-face {
+                font-family: Sunrise;
+                src: url("Sunrise International_special.ttf") format("opentype");
+            }
+
+              .right-img {
+                  margin-left: 10px !important;
+                  float: right;
+                  height: 500px;
+              }
+              .todo:before {
+                  content: 'TODO: ';
+              }
+              .todo {
+                  color: red !important;
+              }
+              code span.line-number {
+                  color: lightcoral;
+              }
+              .reveal pre code {
+                  max-height: 1000px !important;
+              }
+      
+              img {
+                  border: 0 !important;
+                  box-shadow:0 0 0 0 !important;
+                  height: 450px;
+              }
+      
+              .reveal {
+                  -ms-touch-action: auto !important;
+                  touch-action: auto !important;
+                      }
+
+                .reveal h1,
+                .reveal h2,
+                .reveal h3,
+                .reveal h4  {
+                        /* letter-spacing: 2px; */
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          /* font-weight: bold; */
+                          color: black;
+                          /* font-style: italic; */
+                          /* letter-spacing: -2px; */
+                          text-transform: none !important;
+                      }
+      
+                      .reveal em {
+                          font-weight: bold;
+                      }
+      
+              .reveal section img {
+                background: none;
+              }
+      
+                      .reveal img.with-border {
+                          border: 1px solid #586e75 !important;
+                          box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+                      }
+      
+                      .reveal li {
+                          margin-bottom: 8px;
+                      }
+      
+                      /* For li's that use FontAwesome icons as bullet-point */
+                  .reveal ul.fa-ul li {
+                      list-style-type: none;
+                  }
+
+            .reveal {
+                /* font-family: 'Work Sans', 'Calibri'; */
+                font-family: 'Calibri';
+                color: black !important;
+                font-size: xx-large;
+             }
+
+             .container {
+                display: flex;
+            }
+            .col, col-1 {
+                flex: 1;
+            }
+
+            .col-2 {
+                flex: 2;
+            }
+
+          </style>
+      
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        var printMode = window.location.search.match(/print-pdf/gi);
+        link.href = printMode ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body style="background-color: whitesmoke;">
+
+<div class="reveal">
+    <div class="slides">
+
+ <section data-markdown class="preparation">
+    <textarea data-template>
+### Starten        
+
+* https://www.mentimeter.com/s/1f84385b85154e069317d4a39ea83fa7/e230a5bf994b/edit
+* https://www.mentimeter.com/s/14af7c432a37f0c78cf1d45663c7198f/30244b69d3bb/edit        
+    </textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### TODO
+
+* mentimeter Umfrage
+* Ablauf
+  * Philosophy
+	- Folien von fchollet von scaledml aus dem Video klauen für TensorFlow Vortrag
+    https://www.youtube.com/watch?v=HBqCpWldPII&list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0&index=8
+  * Praxis
+    * https://www.tensorflow.org/guide/effective_tf2
+    * Colab
+    * Tools wie lcurve
+    * Execution Model
+      * Eager und tf function
+        * https://www.tensorflow.org/guide/eager
+      * CUDA and CudNN: https://keras.io/guides/working_with_rnns/#performance-optimization-and-cudnn-kernels
+      * Loops
+        * https://www.tensorflow.org/guide/basic_training_loops
+  * Pipeline
+    * https://www.tensorflow.org/guide/data#preprocessing_data
+    * https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines
+  * Deployment  
+    * Wsl und Docker
+    * Edge-Site
+    * https://www.tensorflow.org/guide/keras/training_keras_models_on_cloud
+    * https://www.tensorflow.org/tfx/guide/serving
+    * https://www.tensorflow.org/lite/api_docs
+  * Peripherie
+    * TF Agents
+    * https://www.tensorflow.org/tfx/
+    * Lite: https://www.tensorflow.org/lite/api_docs
+    * JS: https://www.tensorflow.org/js
+    * Google
+      * https://developers.google.com/machine-learning/guides/rules-of-ml
+      * https://pair.withgoogle.com/guidebook/
+      * https://cloud.google.com/ai-platform/docs/getting-started-keras
+    
+  * What's next?
+    * Low level Jax
+    * High Level keras
+      * the king is dead long live the king
+
+
+    </textarea>
+</section>
+
+
+
+<!-- 
+
+
+Titel: Neuronale Netzwerke mit TensorFlow, ein Zwischenresümee
+Art des Vortrags: Vortrag (45 Minuten)
+
+Abstract:
+TensorFlow ist vom Hype zu einer Commodity geworden. Als Platform und Ecosystem ist TensorFlow anerkannt und in vielen Projekten gesetzt. 
+Damit geht die Erfolgsgeschichte natürlich nicht zuende, aber große Innovationen sind nun nicht mehr zu erwarten und wir können ein Resümee ziehen. 
+
+Oliver Zeigermann berichtet in diesem TensorFlow-/Keras-Überblick von der Philosophie, der praktischen Arbeit und den Best Practices. Und: Was kommt eigentlich nach TensorFlow und Keras? Was ist der nächste Hype?
+
+Vorkenntnisse | Previous knowledge:
+Verständnis von Machine Learning erforderlich und Grundverständnis von Deep Learning vorteilhaft 
+
+Lernziele | learning objectives:
+Zwischenresümee TensorFlow
+
+https://www.m3-konferenz.de/lecture_compact1.php?id=12863
+
+-->
+
+
+<!-- <section data-markdown class="preparation">  
+</section> -->
+    
+<!-- <section data-markdown class="todo">
+Referenzen und mehr Links
+
+- Enthält auch Erklärung für allgemeinen Autoencoder: https://towardsdatascience.com/made-masked-autoencoder-for-distribution-estimation-fc95aaca8467
+- DALL-E scheint auch VAE zu nutzen: https://twitter.com/poolio/status/1364756787769958401
+- https://learning.oreilly.com/library/view/hands-on-unsupervised-learning/9781492035633/titlepage01.html#
+- Allgemeine Intro Autoencoder
+  - [ ] Autoencoder als Ausnahme von Dimensionality reduction: https://youtu.be/9iol3Lk6kyU
+  - [ ] Interaktiver LDA Exporer: https://omarshehata.github.io/lda-explorable/
+</section> -->
+
+
+<!-- <section data-markdown class="todo">
+### TODO
+
+</section> -->
+
+<section data-markdown>
+    <textarea data-template>
+# Neuronale Netzwerke mit TensorFlow, ein Zwischenresümee
+
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12863
+
+Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
+
+Diese Folien: https://bit.ly/m3-tf
+</textarea>
+</section>
+
+<section data-markdown>
+# Agenda
+
+1. What is TensorFlow?
+1. Keras vs TensorFlow
+1. Best Practices
+1. Environment
+1. What's next?
+</section>
+
+<section data-markdown>
+# Agenda
+
+1. _What is TensorFlow?_
+1. Keras vs TensorFlow
+1. Best Practices
+1. Environment
+1. What's next?
+</section>
+
+
+
+<section data-markdown>
+## What is TensorFlow
+
+* Platform
+* Ecosystem
+* Foundation for differentiable programming
+</section>
+        
+<section data-markdown>
+## Numpy++
+
+* Gradients
+* GPU, TPU
+* Tensor = Multi Dimensional Array
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Strong Deployment Story
+
+<img src='img/tf-deploy.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+<section data-markdown>
+# Agenda
+
+1. What is TensorFlow?
+1. _Keras vs TensorFlow_
+1. Best Practices
+1. Environment
+1. What's next?
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Keras vs TensorFlow
+
+<img src='img/tf-vs-keras.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Progressive Disclosure of Complexity
+
+Keras can go from Scikit-Learn API style all the way to Numpy API style
+
+<img src='img/keras-levels.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+## TensorFlow Low-Level Training Loop
+
+
+https://www.tensorflow.org/guide/basic_training_loops
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+## Keras High-Level Training "Loop"
+
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+# Agenda
+
+1. What is TensorFlow?
+1. Keras vs TensorFlow
+1. _Best Practices_
+1. Environment
+1. What's next?
+</section>
+
+
+<section data-markdown class="todo">
+
+* Best Practices
+    * Colab
+</section>
+
+<section data-markdown>
+### Standard Models: Image
+
+https://keras.io/api/applications/
+
+</section>
+
+<section data-markdown>
+### Standard Models: Language
+
+https://huggingface.co/transformers/
+</section>
+
+<section data-markdown>
+### Standard Models: Tabular Data
+
+_There exists a two-layer neural network with ReLU activations and 2n+d weights that can represent any function on a sample of size n in d dimensions._
+
+https://arxiv.org/abs/1611.03530
+</section>
+    
+<section data-markdown>
+<textarea data-template>
+### Why have larger models then?
+
+<img src='img/new-bias-variance-risk-curve.png'>
+
+https://arxiv.org/abs/1812.11118
+</textarea>
+
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+### Composing Neural Networks
+
+* input and output need to match training data and loss function
+* some parts have clear function
+  * mapping between dimensions, linear layer
+  * Flatten, Reshape, BatchNorm, Dropout, Up-/Down-Sample
+* the rest: 
+  * soviet approach to aviation: add enough power until things become airborne
+
+Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large;">
+    <textarea data-template>
+## Losses
+
+need to match final layer and output of training data 
+
+* regression: linear (or any other activation if the range of values is limited) activation and MSE 
+* two class: sigmoid activation and binary cross entropy
+* multi class: softmax activation with categorical cross entropy
+* multi-label: sigmoid activation and binary cross entropy, each output node would encode an hypothesis of its own
+
+https://stats.stackexchange.com/questions/260505/should-i-use-a-categorical-cross-entropy-or-binary-cross-entropy-loss-for-binary
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
+
+<!-- 
+https://gombru.github.io/2018/05/23/cross_entropy_loss/
+https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
+https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
+https://www.youtube.com/watch?v=ErfnhcEV1O8
+https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
+ -->
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+# Vielen Dank
+
+Neuronale Netzwerke mit TensorFlow, ein Zwischenresümee
+
+M3 2021 online, https://www.m3-konferenz.de/lecture.php?id=12863
+
+Bleibt gern im Kontakt
+
+Oliver Zeigermann (<a href='https://twitter.com/djcordhose'>@DJCordhose</a>)
+
+Slides: https://bit.ly/m3-tf
+
+    </textarea>
+</section>
+
+
+
+</div>
+
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+        // $('section:not([data-background])').attr('data-background', "background/white.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/pale-clouds.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/street.jpg");
+        // $('section:not([data-background])').attr('data-background', "background/white-transparent.jpg");
+</script>
+
+<script>
+        const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+        $('.hide').remove();
+
+        if (isLocal && !printMode) {
+        } else {
+            // only applies to public version
+                $('.todo').remove();
+                $('.preparation').remove();
+                $('.local').remove();
+        }
+    
+        Reveal.addEventListener( 'ready', function( event ) {
+            // applies to all versions
+            $('code').addClass('line-numbers');
+    
+            $('.fragments li').addClass('fragment')
+    
+            // make all links open in new tab
+            $('a').attr('target', '_blank')
+    
+            if (isLocal && !printMode) {
+                // only applies to presentation version
+                Reveal.configure({ controls: false });
+            } else {
+                // only applies to public version
+                // $('.fragment').removeClass('fragment');
+            }
+
+            // we do not like fragments
+            // $('.fragment').removeClass('fragment');
+
+        } );
+
+</script>
+    
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 1100,
+        slideNumber: true,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        math: {
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            // https://github.com/mikemiles86/reveal-line-numbers
+            {src: 'lib/js/line-numbers.js'},
+            { src: 'reveal.js/plugin/math/math.js', async: true }
+
+        ]
+    });
+
+</script>
+
+</body>
+</html>
