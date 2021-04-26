@@ -425,8 +425,8 @@ https://tfhub.dev/
 <section data-markdown>
 ### Standard Models: Image
 
-https://keras.io/api/applications/
-
+Typical Architectures: https://keras.io/api/applications/
+Augmentation: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing
 </section>
 
 <section data-markdown>
@@ -434,6 +434,14 @@ https://keras.io/api/applications/
 
 https://huggingface.co/transformers/
 </section>
+
+
+<section data-markdown>
+### Standard Models: Recommendation
+    
+https://github.com/tensorflow/recommenders
+</section>
+    
 
 <section data-markdown>
 ### Standard Models: Tabular Data
@@ -501,19 +509,6 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section> -->
 
-<section data-markdown class="todo">
-    <textarea data-template>
-### Pipelines and Preprocessing
-
-* https://www.tensorflow.org/guide/data#preprocessing_data
-* https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines
-* https://twitter.com/ludwig_stumpp/status/1287374973397602305
-
-</textarea>
-</section>
-
-
-
 <section data-markdown>
 <textarea data-template>
 <img src='img/dl-expert.png'>
@@ -533,31 +528,7 @@ https://twitter.com/fchollet/status/1386373123889528835
 1. What's next?
 </section>
 
-<section data-markdown class="todo">
-    <textarea data-template>
-* pip install -q keras-tuner
-* # https://github.com/AndreasMadsen/python-lrcurve
-* !pip install -q lrcurve
-* 
-* https://www.tensorflow.org/recommenders
-* https://www.tensorflow.org/lattice
-* https://mlcommons.org/en/
-* https://colab.research.google.com
-* https://playground.tensorflow.org/
-* https://pair-code.github.io/what-if-tool/
-* https://www.tensorflow.org/agents
-* https://www.tensorflow.org/guide/profiler
-
-
-More https://www.tensorflow.org/resources
-
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb?hl=en#scrollTo=XdfXfXK2-CiG
-    </textarea>
-</section>
-
-
-
-<section>
+<!-- <section>
 <h2>Model optimization</h2>
 
 <img src='img/pruning.png' style="height: 200px;">
@@ -584,6 +555,40 @@ model_for_pruning.fit(...)
 
 </textarea>
 </section>
+ -->
+
+
+<section data-markdown>
+    <textarea data-template>
+### TFX
+
+Google-production-scale machine learning (ML) platform based on TensorFlow
+
+<img src='https://www.tensorflow.org/tfx/guide/images/prog_fin.png'>
+
+https://www.tensorflow.org/tfx/guide
+</textarea>
+</section>
+
+
+
+
+ <section data-markdown>
+    <textarea data-template>
+### Kubeflow: TensorFlow on Kubernetes
+
+<img src='https://miro.medium.com/max/1400/0*tBPpU3UqM_MeJ0-P'>
+
+<small>
+
+https://www.kubeflow.org/
+<br>
+https://medium.com/kubeflow/kubeflow-1-0-cloud-native-ml-for-everyone-a3950202751
+
+</small>
+
+</textarea>
+</section>
 
 <section data-markdown class="fragments">
     <textarea data-template>
@@ -596,6 +601,26 @@ model_for_pruning.fit(...)
 * Cultural
   * The People + AI Guidebook: https://pair.withgoogle.com/guidebook/
   * Google Ethical AI Group’s Turmoil: https://twitter.com/mmitchell_ai/status/1386059201772867585
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### More Useful stuff
+
+Overview https://www.tensorflow.org/resources
+
+* plot learning curve while training: https://github.com/AndreasMadsen/python-lrcurve
+* tune hyper parameters: https://keras-team.github.io/keras-tuner/
+* mostly free cloud notebooks providing GPU and TPU support: https://colab.research.google.com
+* interatctive experiments in the browser: https://playground.tensorflow.org/
+* implementation of typical RL algorithms: https://www.tensorflow.org/agents
+* visually probing your trained models: https://pair-code.github.io/what-if-tool/
+* optimized models (e.g. pruning), especially useful for edgesite prediction: https://www.tensorflow.org/model_optimization
+* profling: https://www.tensorflow.org/guide/profiler
+* specify constraints such as monotonicity: https://www.tensorflow.org/lattice
+
 
 </textarea>
 </section>
@@ -646,6 +671,30 @@ https://jax.readthedocs.io/en/latest/index.html
 
 <!-- https://towardsdatascience.com/deep-learning-with-jax-and-elegy-c0765e3ec31a
 https://iaml.it/blog/jax-intro-english -->
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Machine Learning kurz & gut, 2. Auflage
+
+<a href='https://oreilly.de/produkt/machine-learning-kurz-gut-2/'>
+<img src='img/ml-buch-v2.jpg'>
+</a>
+
+https://www.embarc.de/ml-buch-v2/
+</textarea>
+</section>
+
+<section data-markdown class="local">
+<textarea data-template>
+### code@embarc
+
+* längerfristige Umsetzungsunterstützungen
+* von Ideenfindung
+* bis Produktion
+* punktuelle Begleitung gibt es nach wie vor
+
 </textarea>
 </section>
 
