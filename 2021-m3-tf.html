@@ -26,7 +26,8 @@
           <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
 
             <!-- Theme used for syntax highlighting of code -->
-            <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
+            <!-- <link rel="stylesheet" href="reveal.js/lib/css/monokai.css"> -->
+            <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
           <style>
               /*pre code {*/
                   /*display: block;*/
@@ -145,34 +146,17 @@
 <div class="reveal">
     <div class="slides">
 
- <section data-markdown class="preparation">
-    <textarea data-template>
-### Starten        
-
-* https://www.mentimeter.com/s/1f84385b85154e069317d4a39ea83fa7/e230a5bf994b/edit
-* https://www.mentimeter.com/s/14af7c432a37f0c78cf1d45663c7198f/30244b69d3bb/edit        
-    </textarea>
-</section>
-
 <section data-markdown class="todo">
     <textarea data-template>
 ### TODO
 
-* mentimeter Umfrage
 * Ablauf
-  * Philosophy
-	- Folien von fchollet von scaledml aus dem Video klauen für TensorFlow Vortrag
-    https://www.youtube.com/watch?v=HBqCpWldPII&list=PLRM2gQVaW_wVM4FBALoM7Wydb6n9NOiJ0&index=8
   * Praxis
     * https://www.tensorflow.org/guide/effective_tf2
-    * Colab
-    * Tools wie lcurve
     * Execution Model
       * Eager und tf function
         * https://www.tensorflow.org/guide/eager
       * CUDA and CudNN: https://keras.io/guides/working_with_rnns/#performance-optimization-and-cudnn-kernels
-      * Loops
-        * https://www.tensorflow.org/guide/basic_training_loops
   * Pipeline
     * https://www.tensorflow.org/guide/data#preprocessing_data
     * https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines
@@ -183,19 +167,10 @@
     * https://www.tensorflow.org/tfx/guide/serving
     * https://www.tensorflow.org/lite/api_docs
   * Peripherie
-    * TF Agents
-    * https://www.tensorflow.org/tfx/
-    * Lite: https://www.tensorflow.org/lite/api_docs
-    * JS: https://www.tensorflow.org/js
     * Google
       * https://developers.google.com/machine-learning/guides/rules-of-ml
       * https://pair.withgoogle.com/guidebook/
       * https://cloud.google.com/ai-platform/docs/getting-started-keras
-    
-  * What's next?
-    * Low level Jax
-    * High Level keras
-      * 
 
 
     </textarea>
@@ -264,7 +239,7 @@ Diese Folien: https://bit.ly/m3-tf
 1. What is TensorFlow?
 1. Keras vs TensorFlow
 1. Best Practices
-1. Environment
+1. Periphery
 1. What's next?
 </section>
 
@@ -274,7 +249,7 @@ Diese Folien: https://bit.ly/m3-tf
 1. _What is TensorFlow?_
 1. Keras vs TensorFlow
 1. Best Practices
-1. Environment
+1. Periphery
 1. What's next?
 </section>
 
@@ -313,7 +288,7 @@ Franćois Chollet - Keras: The Next Five Years, Scaled ML
 1. What is TensorFlow?
 1. _Keras vs TensorFlow_
 1. Best Practices
-1. Environment
+1. Periphery
 1. What's next?
 </section>
 
@@ -373,23 +348,62 @@ Model includes preprocessing steps thanks to the latest #keras features in the p
 </section>
 
 
-<section data-markdown class="todo">
-    <textarea data-template>
-## TensorFlow Low-Level Training Loop
+<section>
+<h3>TensorFlow Low-Level Training Loop</h3>
 
+<pre><code data-line-numbers data-trim class="python">
+optimizer = tf.keras.optimizers.SGD(learning_rate=1e-3)
+loss_fn = tf.keras.losses.SparseCategoricalCrossentropy()
 
-https://www.tensorflow.org/guide/basic_training_loops
-</textarea>
+train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train))
+train_dataset = train_dataset.shuffle(buffer_size=1024).batch(batch_size)
+
+val_dataset = tf.data.Dataset.from_tensor_slices((x_val, y_val))
+val_dataset = val_dataset.batch(batch_size)
+
+for epoch in range(epochs):
+    for step, (x_batch_train, y_batch_train) in enumerate(train_dataset):
+        with tf.GradientTape() as tape:
+            y_batch_pred = model(x_batch_train, training=True)
+            loss_value = loss_fn(y_batch_train, y_batch_pred)
+        grads = tape.gradient(loss_value, model.trainable_weights)
+        optimizer.apply_gradients(zip(grads, model.trainable_weights))
+        train_acc_metric.update_state(y_batch_train, y_batch_pred)
+
+    train_acc = train_acc_metric.result()
+    train_acc_metric.reset_states()
+
+    for x_batch_val, y_batch_val in val_dataset:
+        y_batch_val_pred = model(x_batch_val, training=False)
+        val_acc_metric.update_state(y_batch_val, y_batch_val_pred)
+
+    val_acc = val_acc_metric.result()
+    val_acc_metric.reset_states()
+    
+</code></pre>    
+
+<a href='https://www.tensorflow.org/guide/basic_training_loops'>https://www.tensorflow.org/guide/basic_training_loops</a>
+<a href='https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch'>https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch</a>
 </section>
 
-<section data-markdown class="todo">
-    <textarea data-template>
-## Keras High-Level Training "Loop"
+<section>
+<h3>Keras High-Level Training "Loop"</h3>
 
+<pre><code data-line-numbers data-trim class="python">
+optimizer = tf.keras.optimizers.SGD(learning_rate=1e-3)
+loss_fn = tf.keras.losses.SparseCategoricalCrossentropy()
 
-</textarea>
+model.compile(
+    optimizer=optimizer,
+    loss=loss_fn,
+    metrics=['accuracy']
+)
+model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val))
+</code></pre>    
+
+<a href='https://www.tensorflow.org/guide/basic_training_loops'>https://www.tensorflow.org/guide/basic_training_loops</a>
+<a href='https://www.tensorflow.org/api_docs/python/tf/keras/Model'>https://www.tensorflow.org/api_docs/python/tf/keras/Model</a>
 </section>
-
 
 <section data-markdown>
 # Agenda
@@ -397,16 +411,25 @@ https://www.tensorflow.org/guide/basic_training_loops
 1. What is TensorFlow?
 1. Keras vs TensorFlow
 1. _Best Practices_
-1. Environment
+1. Periphery
 1. What's next?
 </section>
 
+<section data-markdown>
+### Verified Demo Code
 
-<section data-markdown class="todo">
-
-* Best Practices
-    * Colab
+https://keras.io/examples/
 </section>
+
+<section data-markdown>
+### Standard Models: Asorted
+
+TensorFlow Hub is a repository of trained machine learning models
+    
+https://www.tensorflow.org/hub
+https://tfhub.dev/
+</section>
+
 
 <section data-markdown>
 ### Standard Models: Image
@@ -487,13 +510,23 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section>
 
+
+<section data-markdown>
+<textarea data-template>
+<img src='img/dl-expert.png'>
+
+https://twitter.com/fchollet/status/1386373123889528835
+</textarea>
+
+</section>
+
 <section data-markdown>
 # Agenda
 
 1. What is TensorFlow?
 1. Keras vs TensorFlow
 1. Best Practices
-1. _Environment_
+1. _Periphery_
 1. What's next?
 </section>
 
@@ -502,12 +535,55 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 * pip install -q keras-tuner
 * # https://github.com/AndreasMadsen/python-lrcurve
 * !pip install -q lrcurve
+* 
+* https://www.tensorflow.org/recommenders
+* https://www.tensorflow.org/lattice
+* https://mlcommons.org/en/
+* https://colab.research.google.com
+* https://playground.tensorflow.org/
+* https://pair-code.github.io/what-if-tool/
+* https://www.tensorflow.org/agents
+* https://www.tensorflow.org/tfx/
+* Lite: https://www.tensorflow.org/lite/api_docs
+* JS: https://www.tensorflow.org/js
+* https://www.tensorflow.org/guide/profiler
 
+
+More https://www.tensorflow.org/resources
 
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/intro/nn-03-regularization.ipynb?hl=en#scrollTo=XdfXfXK2-CiG
     </textarea>
 </section>
 
+
+
+<section>
+<h2>Model optimization</h2>
+
+<img src='img/pruning.png' style="height: 200px;">
+<br>
+
+<pre><code data-line-numbers data-trim class="python">
+
+import tensorflow as tf
+import tensorflow_model_optimization as tfmot
+
+model = tf.keras.Sequential([...])
+
+pruning_schedule = tfmot.sparsity.keras.PolynomialDecay(
+                        initial_sparsity=0.0, final_sparsity=0.5,
+                        begin_step=2000, end_step=4000)
+
+model_for_pruning = tfmot.sparsity.keras.prune_low_magnitude(
+    model, pruning_schedule=pruning_schedule)
+
+model_for_pruning.fit(...)
+</code></pre>    
+
+<a href='https://www.tensorflow.org/model_optimization'>https://www.tensorflow.org/model_optimization</a>
+
+</textarea>
+</section>
 
 <section data-markdown>
 # Agenda
@@ -515,7 +591,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 1. What is TensorFlow?
 1. Keras vs TensorFlow
 1. Best Practices
-1. Environment
+1. Periphery
 1. _What's next?_
 </section>
 
@@ -533,6 +609,31 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 Franćois Chollet - Keras: The Next Five Years, Scaled ML
 </textarea>
 </section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+## JAX
+
+clean and simple low level base
+
+* uses XLA to compile and run your NumPy programs on GPUs and TPUs
+  * ```import jax.numpy as np```
+* automatic differentiation to any order
+  * ```grad(grad(grad(tanh)))(1.0)```
+  * can also differentiate lists, tuples, and dictionaries
+* https://github.com/google/jax#compilation-with-jit
+* https://github.com/google/jax#spmd-programming-with-pmap
+* might just as well get a high level Keras API: https://www.youtube.com/watch?v=J0p_thJJnoo&t=4838s
+
+https://github.com/google/jax
+<br>
+https://jax.readthedocs.io/en/latest/index.html
+
+<!-- https://towardsdatascience.com/deep-learning-with-jax-and-elegy-c0765e3ec31a
+https://iaml.it/blog/jax-intro-english -->
+</textarea>
+</section>
+
 
 <section data-markdown>
     <textarea data-template>
@@ -557,6 +658,8 @@ Slides: https://bit.ly/m3-tf
 
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
+<script src="reveal.js/plugin/highlight/highlight.js"></script>
+
 
 <script>
         // $('section:not([data-background])').attr('data-background', "background/white.jpg");
@@ -581,8 +684,9 @@ Slides: https://bit.ly/m3-tf
     
         Reveal.addEventListener( 'ready', function( event ) {
             // applies to all versions
-            $('code').addClass('line-numbers');
-    
+            $('code').attr('data-line-numbers', '');
+            $('code').attr('data-trim', '');
+            
             $('.fragments li').addClass('fragment')
     
             // make all links open in new tab
@@ -622,6 +726,7 @@ Slides: https://bit.ly/m3-tf
             config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
         },
 
+        plugins: [ RevealHighlight ],
         // Optional reveal.js plugins
         dependencies: [
             {
@@ -648,8 +753,6 @@ Slides: https://bit.ly/m3-tf
             },
             {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
             {src: 'reveal.js/plugin/notes/notes.js', async: true},
-            // https://github.com/mikemiles86/reveal-line-numbers
-            {src: 'lib/js/line-numbers.js'},
             { src: 'reveal.js/plugin/math/math.js', async: true }
 
         ]
