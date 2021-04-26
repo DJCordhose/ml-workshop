@@ -146,35 +146,13 @@
 <div class="reveal">
     <div class="slides">
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 ### TODO
 
-* Ablauf
-  * Praxis
-    * https://www.tensorflow.org/guide/effective_tf2
-    * Execution Model
-      * Eager und tf function
-        * https://www.tensorflow.org/guide/eager
-      * CUDA and CudNN: https://keras.io/guides/working_with_rnns/#performance-optimization-and-cudnn-kernels
-  * Pipeline
-    * https://www.tensorflow.org/guide/data#preprocessing_data
-    * https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines
-  * Deployment  
-    * Wsl und Docker
-    * Edge-Site
-    * https://www.tensorflow.org/guide/keras/training_keras_models_on_cloud
-    * https://www.tensorflow.org/tfx/guide/serving
-    * https://www.tensorflow.org/lite/api_docs
-  * Peripherie
-    * Google
-      * https://developers.google.com/machine-learning/guides/rules-of-ml
-      * https://pair.withgoogle.com/guidebook/
-      * https://cloud.google.com/ai-platform/docs/getting-started-keras
-
 
     </textarea>
-</section>
+</section> -->
 
 
 
@@ -253,8 +231,6 @@ Diese Folien: https://bit.ly/m3-tf
 1. What's next?
 </section>
 
-
-
 <section data-markdown>
 ## What is TensorFlow
 
@@ -277,7 +253,13 @@ Diese Folien: https://bit.ly/m3-tf
 
 <img src='img/tf-deploy.png'>
 
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
+<small>
+
+* https://www.tensorflow.org/tfx/guide/serving
+* https://www.tensorflow.org/lite/api_docs
+* https://www.tensorflow.org/js
+
+</small>
 
 </textarea>
 </section>
@@ -324,29 +306,6 @@ Franćois Chollet - Keras: The Next Five Years, Scaled ML
 
 </textarea>
 </section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-https://keras.io/guides/customizing_what_happens_in_fit/
-    </textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### TF 2.3    
-
-https://blog.tensorflow.org/2020/07/whats-new-in-tensorflow-2-3.html
-
-* https://twitter.com/TensorFlow/status/1287832408947978240?s=09
-
-*    Ludwig Stumpp (@ludwig_stumpp) tweeted at 3:11 pm on Sun, Jul 26, 2020:
-Starting with #Tensorflow 2.3, this is all it needs to train a simple and fast classificator with 90% validation accuracy using #transferLearning.
-
-Model includes preprocessing steps thanks to the latest #keras features in the preprocessing module. https://t.co/PLdt7FJHiu
-(https://twitter.com/ludwig_stumpp/status/1287374973397602305?s=09)
-</textarea>
-</section>
-
 
 <section>
 <h3>TensorFlow Low-Level Training Loop</h3>
@@ -403,6 +362,38 @@ model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_dat
 
 <a href='https://www.tensorflow.org/guide/basic_training_loops'>https://www.tensorflow.org/guide/basic_training_loops</a>
 <a href='https://www.tensorflow.org/api_docs/python/tf/keras/Model'>https://www.tensorflow.org/api_docs/python/tf/keras/Model</a>
+</section>
+
+<section>
+<h3>You can float between the extremes</h3>
+
+<pre><code data-line-numbers data-trim class="python">
+class CustomModel(keras.Model):
+    def train_step(self, data):
+        x, y = data
+
+        with tf.GradientTape() as tape:
+            y_batch_pred = self(x_batch_train, training=True)
+            loss_value = self.compiled_loss(y_batch_train, y_batch_pred)
+        grads = tape.gradient(loss_value, self.trainable_weights)
+        self.optimizer.apply_gradients(zip(grads, self.trainable_weights))
+        self.compiled_metrics.update_state(y_batch_train, y_batch_pred)
+
+        return {m.name: m.result() for m in self.metrics}
+    
+    def test_step(self, data):
+        ...
+
+model = CustomModel()
+model.compile(
+    optimizer=optimizer,
+    loss=loss_fn,
+    metrics=['accuracy']
+)
+model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_val, y_val))
+</code></pre>    
+
+<a href='https://keras.io/guides/customizing_what_happens_in_fit/'>https://keras.io/guides/customizing_what_happens_in_fit/</a>
 </section>
 
 <section data-markdown>
@@ -502,13 +493,25 @@ https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
 </textarea>
 </section>
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 
 * https://lossfunctions.tumblr.com/
 * https://twitter.com/fchollet/status/1296292123768025090
 </textarea>
+</section> -->
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Pipelines and Preprocessing
+
+* https://www.tensorflow.org/guide/data#preprocessing_data
+* https://www.tensorflow.org/tfx/tutorials/tfx/cloud-ai-platform-pipelines
+* https://twitter.com/ludwig_stumpp/status/1287374973397602305
+
+</textarea>
 </section>
+
 
 
 <section data-markdown>
@@ -543,9 +546,6 @@ https://twitter.com/fchollet/status/1386373123889528835
 * https://playground.tensorflow.org/
 * https://pair-code.github.io/what-if-tool/
 * https://www.tensorflow.org/agents
-* https://www.tensorflow.org/tfx/
-* Lite: https://www.tensorflow.org/lite/api_docs
-* JS: https://www.tensorflow.org/js
 * https://www.tensorflow.org/guide/profiler
 
 
@@ -581,6 +581,21 @@ model_for_pruning.fit(...)
 </code></pre>    
 
 <a href='https://www.tensorflow.org/model_optimization'>https://www.tensorflow.org/model_optimization</a>
+
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Google as Environment
+
+* Technical
+  * Best Practices for ML Engineering: https://developers.google.com/machine-learning/guides/rules-of-ml
+  * Deploy on Google Cloud Platform: https://cloud.google.com/ai-platform/docs/getting-started-keras
+
+* Cultural
+  * The People + AI Guidebook: https://pair.withgoogle.com/guidebook/
+  * Google Ethical AI Group’s Turmoil: https://twitter.com/mmitchell_ai/status/1386059201772867585
 
 </textarea>
 </section>
