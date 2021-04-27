@@ -533,6 +533,50 @@ https://twitter.com/fchollet/status/1386373123889528835
 </section>
 
 <section data-markdown>
+    <textarea data-template>
+## Challenges of Deep Learning
+
+* deep learning is more an art than a science
+* we can provide guidelines as to what is likely to work or not
+* ultimately every problem is unique 
+* you will have to try and evaluate different strategies empirically
+* currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
+* You must try and iterate
+
+<small>
+
+François Chollet in [Deep Learning with Python (Manning Publications)](https://www.manning.com/books/deep-learning-with-python?a_aid=keras&a_bid=76564dff)    
+
+</small>
+
+</textarea>
+</section>
+
+<section data-markdown style="font-size: xx-large">
+    <textarea data-template>
+## Practical advice from a master of his craft
+
+_Challenges of training neural nets_
+1. Neural net training is a leaky abstraction - you need to understand what is going on
+1. Neural net training fails silently - the possible error surface is large
+
+_The recipe_
+1. Understand your data
+1. Make one simple experiment after the other
+1. Make your model good / large enough to overfit on a batch
+1. Regularize on full data set
+1. Tune and scrape the barrel
+
+<small>
+
+https://karpathy.github.io/2019/04/25/recipe/    
+
+</small>
+</textarea>
+</section>
+
+
+<section data-markdown>
 # Agenda
 
 1. What is TensorFlow?
@@ -571,6 +615,20 @@ model_for_pruning.fit(...)
 </section>
  -->
 
+ <section data-markdown>
+        <textarea data-template>
+### Bringing TensorFlow to the Edge
+
+* https://www.tensorflow.org/lite
+  * Works for Android: https://www.tensorflow.org/lite/guide/android
+  * And iOS: https://www.tensorflow.org/lite/guide/ios
+  * How to deploy Keras models on Android via TFLite: https://medium.com/@margaretmz/e2e-tfkeras-tflite-android-273acde6588
+* https://www.tensorflow.org/js/
+  * Works on any modern browser using the GPU via WebGL
+</textarea>
+</section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -583,8 +641,6 @@ Google-production-scale machine learning (ML) platform based on TensorFlow
 https://www.tensorflow.org/tfx/guide
 </textarea>
 </section>
-
-
 
 
  <section data-markdown>
