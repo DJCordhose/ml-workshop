@@ -605,7 +605,8 @@ Ergebnis von Stacked Convolutional Layers direkt vor Engpass
 
 * Autoencoder wird mit Gold Master (als korrekt angesehen) trainiert
 * wir gehen davon aus, dass die Anwendung vor der Änderung größtenteils wie erwartet aussah
-* Validation kann das neue Release (enthält wahrscheinlich Regressionen) sein`
+* Validation kann das neue (minor) Release sein 
+  * enthält wahrscheinlich Regressionen
 * Der Autoencoder lernt also wie die Anwendung normalerweise aussehen sollte
 
 <img src='img/autoencoder/training.png' style="height: 250px;">
@@ -666,9 +667,9 @@ Für die als richtig bekannten Screenshots
 
 * Wir haben keine Labels (Ground-Truth), können daher nicht Sensitivität und Spezifität berechnen
 * Wir machen daher Annahmen
-  1. Normalverteilung der Accuracy oder MSE
-  1. Entweder die Screenshots des neuen Releases als hauptsächlich falsch oder korrekt 
-  1. Alle mit mehr als 3 Standardabweichugnen als Fehlerhaft ansehen 
+  1. Normalverteilung der Accuracy oder Loss
+  1. die Screenshots des neuen Releases entweder als hauptsächlich falsch oder korrekt 
+  1. Alle mit mehr als x (3?) Standardabweichugnen als fehlerhaft ansehen 
 * Als Mensch kann man das interaktiv einfacher
   * Teils durch Intuition, meist durch ausprobieren (wir sehen an einem Bild, ob es einen Fehler enthält)
   * Heuristik: Threshold komplett rechts von allen Traningsdaten
@@ -802,12 +803,12 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 ## Testing
 </section>
 
-<section data-markdown>
+<section data-markdown class="fragments">
 ### Die Ergebnisse sind immer noch nicht auf menschlichem Niveau
 
 * Wir erkennen z.B. lange Zahlen und wissen, ob die sinnvoll sein können
 * Überläufe sehen wir mit System 1, ohne nachzudenken
-* Fehlende Knöpfe können auch Menschen nur erschließen
+* Permantent fehlende Knöpfe oder fehlende Funktionalität können auch weiterhin nur Menschen erschließen
 </section>
 
 
@@ -816,7 +817,23 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
     
 https://www.menti.com/j6qqy5qr1p
 </section> -->
-    
+
+
+<section data-markdown class="fragments">
+### Offene Fragen
+* Wie kommt man eigentlich an gute Trainingsdaten
+  * Man müsste jeden sinnvollen Zustand der Anwendung durchklicken und einen Screenshot machen
+  * ist für sich schon ein ML Problem
+    * RL mit PPO habe ich angefangen, aber technisch nicht trivial
+* Oder noch radikeler: war nimmt man eigentlich zum Training 
+  * wie unterscheidet man komplett neue und korrekte Features von Fehlern?
+  * Major Release viel problematischer als Minor Release
+  * kann man auf demselben Datensatz Fehler finden mit dem man auch trainiert hat?
+    * dann muss man annehmen, dass das meiste heil ist
+    * bei i18n Fehlern nicht unbedingt gegeben  
+
+</section>
+
 <section data-markdown class="fragments local">
 ### Wie wird das Testen im Jahr 2030 aussehen?
 
