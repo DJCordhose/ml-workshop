@@ -298,28 +298,6 @@ Franćois Chollet - Keras: The Next Five Years, Scaled ML
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-## Progressive Disclosure of Complexity
-
-<img src='img/keras-levels.png'>
-
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Keras can go from Scikit-Learn API style all the way to Numpy API style
-
-<img src='img/keras-abstraction.png'>
-
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
-
-</textarea>
-</section>
-
 <section>
 <h3>TensorFlow Low-Level Training Loop</h3>
 
@@ -356,6 +334,29 @@ for epoch in range(epochs):
 
 <a href='https://www.tensorflow.org/guide/basic_training_loops'>https://www.tensorflow.org/guide/basic_training_loops</a>
 <a href='https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch'>https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch</a>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Keras: Progressive Disclosure of Complexity
+
+<img src='img/keras-levels.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Keras can go from Scikit-Learn API style all the way to Numpy API style
+
+<img src='img/keras-abstraction.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
 </section>
 
 <section>
@@ -439,8 +440,10 @@ https://tfhub.dev/
 <section data-markdown>
 ### Standard Models: Image
 
-* Typical Architectures: https://keras.io/api/applications/
-* Augmentation: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing
+https://keras.io/api/applications/
+
+<!-- * Typical Architectures: https://keras.io/api/applications/
+* Augmentation: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing -->
 </section>
 
 <section data-markdown>
@@ -457,26 +460,28 @@ https://github.com/tensorflow/recommenders
 </section>
     
 
-<section data-markdown>
+<section data-markdown class="fragments">
 ### Standard Models: Tabular Data
 
-_There exists a two-layer neural network with ReLU activations and 2n+d weights that can represent any function on a sample of size n in d dimensions._
+* Fully-Connected Layers, but how many and how big?
+* And what acitivation?
+* There exists a two-layer neural network with ReLU activations and 2n+d weights that can represent any function on a sample of size n in d dimensions. (https://arxiv.org/abs/1611.03530)
+* interatctive experiments in the browser: https://playground.tensorflow.org/
 
-https://arxiv.org/abs/1611.03530
 </section>
     
 <section data-markdown>
 <textarea data-template>
 ### Why have larger models then?
 
-<img src='img/new-bias-variance-risk-curve.png'>
+<img src='img/new-bias-variance-risk-curve.png' class="fragment">
 
 https://arxiv.org/abs/1812.11118
 </textarea>
 
 </section>
 
-<section data-markdown style="font-size: xx-large;">
+<section data-markdown style="font-size: xx-large;" class="fragments">
     <textarea data-template>
 ### Composing Neural Networks
 
@@ -491,7 +496,7 @@ Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
 </textarea>
 </section>
 
-<section data-markdown style="font-size: xx-large;">
+<section data-markdown style="font-size: xx-large;" class="fragments">
     <textarea data-template>
 ## Losses
 
@@ -532,7 +537,7 @@ https://twitter.com/fchollet/status/1386373123889528835
 
 </section>
 
-<section data-markdown>
+<section data-markdown class="fragments">
     <textarea data-template>
 ## Challenges of Deep Learning
 
@@ -541,7 +546,7 @@ https://twitter.com/fchollet/status/1386373123889528835
 * ultimately every problem is unique 
 * you will have to try and evaluate different strategies empirically
 * currently there is no theory that will tell you in advance precisely what you should do to optimally solve a problem
-* You must try and iterate
+* you must try and iterate
 
 <small>
 
@@ -625,7 +630,7 @@ model_for_pruning.fit(...)
 </section>
  -->
 
- <section data-markdown>
+ <section data-markdown class="fragments">
         <textarea data-template>
 ### Bringing TensorFlow to the Edge
 
@@ -694,7 +699,7 @@ Overview https://www.tensorflow.org/resources
 * plot learning curve while training: https://github.com/AndreasMadsen/python-lrcurve
 * tune hyper parameters: https://keras-team.github.io/keras-tuner/
 * mostly free cloud notebooks providing GPU and TPU support: https://colab.research.google.com
-* interatctive experiments in the browser: https://playground.tensorflow.org/
+<!-- * interatctive experiments in the browser: https://playground.tensorflow.org/ -->
 * implementation of typical RL algorithms: https://www.tensorflow.org/agents
 * visually probing your trained models: https://pair-code.github.io/what-if-tool/
 * optimized models (e.g. pruning), especially useful for edgesite prediction: https://www.tensorflow.org/model_optimization
