@@ -213,41 +213,7 @@ MLConference 2021, Berlin, https://mlconference.ai/machine-learning-principles/w
 Oliver Zeigermann, https://www.embarc.de/oliver-zeigermann/
 
 Slides: https://bit.ly/mlconf-2021-cnn-workshop
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# CNN wird Tag 1 bei Deep Kurs
-
-Tag 2 dann der ganze low Level Kram
-
-Tag 3
-
-* Transformer (mit RNN Intro)
-* Unsupervised
-* RL
-
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# Block 2, Netzwerk Typen
-
-https://keras.io/examples/vision/image_classification_from_scratch/
-
-Hunde und Katzen
-https://www.kaggle.com/pybear/cats-vs-dogs
-Kaggle Dataset from Colab: https://www.kaggle.com/general/74235
-Das Dataset kann man auch direkt herunterladen, wie hier gezeigt: 
-* https://keras.io/examples/vision/image_classification_from_scratch/
-* curl -O https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip
-
-
-https://towardsdatascience.com/tensorflow-for-computer-vision-how-to-implement-convolutions-from-scratch-in-python-609158c24f82
-https://towardsdatascience.com/tensorflow-for-image-classification-top-3-prerequisites-for-deep-learning-projects-34c549c89e42
+https://djcordhose.github.io/ml-workshop/2021-mlconf-cnn.html
 </textarea>
 </section>
 
@@ -340,7 +306,7 @@ https://keras.io/examples/nlp/active_learning_review_classification/#training-vi
 
 <section data-markdown class="todo">
     <textarea data-template>
-# Regularization (Block 2 oder 3)
+# Regularization (Block 2)
 
 Adam an Batch-Size anpassen
 
@@ -363,35 +329,12 @@ Erstmal Dense machen?
 
 <section data-markdown class="todo">
     <textarea data-template>
-# Intro Netzwerk Architekturen (Block 3)
-
-
-Tiefe ist wichtig bei Netzwerken
-
-* Aber dann trainiert VGG nicht mehr
-* Vanishing Gradient
-* Experiment mit immer tieferem VGG machen
-* Resnet schafft das durch shortcut
-
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
 # High Level Todos
 
 Intro, Block 1
  * Why CNNs in the first place?
    * http://colah.github.io/notes/bio-analogies/ 
    * In neural networks, weight-tying is when the same weights are used in multiple locations. This allows the network to abstract repeated "functions" and use them multiple times. The most famous example is probably the convolutional neural network, which uses a special version of weight tying to implement translation symmetry. Weight tying allows neural networks to encode complex functions with many fewer weights, making them easier to learn.
-
-Architectures, Block 3   
-* Einbauen: fashion-mnist-resnet
-
-* What is special about MobilNet?
-* What is special about ResNet?
-* MLFlow heil machen (oder ist es bis dahin mit einer neuen Version wieder heil?) oder ausbauen
 
 
 Advanced, Block 4
@@ -442,18 +385,6 @@ You don't really realize how quickly ML moves until you look back. If you go bac
 </textarea>
 </section>
 
-<section data-markdown class="todo">
-# Resnet besser fundieren
-
-* Sebastian Raschka (@rasbt) twitterte um 7:06 PM on Fr., Okt. 01, 2021:
-"Has the ResNet Hypothesis been debunked?" -- Once in a while, you can find really good discussions and pointers on reddit (https://t.co/B96xaI23r8)
-
-aka papers that you can (1) train ResNets without shortcuts with good results if you are careful about initialization and [1/2]
-(https://twitter.com/rasbt/status/1443985707601735681?s=03) 
-
-* https://www.youtube.com/watch?v=q_IlqYlYhlo
-</section>    
-    
 <section data-markdown class="todo">
 ### Wie geht es weiter mit CNNs
 
@@ -1441,6 +1372,62 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 * choose a data set
 * import it into the notebook
 </section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+# Block 2, Netzwerk Typen
+
+https://keras.io/examples/vision/image_classification_from_scratch/
+
+Hunde und Katzen
+https://www.kaggle.com/pybear/cats-vs-dogs
+Kaggle Dataset from Colab: https://www.kaggle.com/general/74235
+Das Dataset kann man auch direkt herunterladen, wie hier gezeigt: 
+* https://keras.io/examples/vision/image_classification_from_scratch/
+* curl -O https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip
+
+
+https://towardsdatascience.com/tensorflow-for-computer-vision-how-to-implement-convolutions-from-scratch-in-python-609158c24f82
+https://towardsdatascience.com/tensorflow-for-image-classification-top-3-prerequisites-for-deep-learning-projects-34c549c89e42
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+
+### Architectures   
+* Einbauen: fashion-mnist-resnet
+
+* What is special about MobilNet?
+* What is special about ResNet?
+* MLFlow heil machen (oder ist es bis dahin mit einer neuen Version wieder heil?) oder ausbauen
+</section>
+
+<section data-markdown class="todo">
+# Resnet besser fundieren
+
+* Sebastian Raschka (@rasbt) twitterte um 7:06 PM on Fr., Okt. 01, 2021:
+"Has the ResNet Hypothesis been debunked?" -- Once in a while, you can find really good discussions and pointers on reddit (https://t.co/B96xaI23r8)
+
+aka papers that you can (1) train ResNets without shortcuts with good results if you are careful about initialization and [1/2]
+(https://twitter.com/rasbt/status/1443985707601735681?s=03) 
+
+* https://www.youtube.com/watch?v=q_IlqYlYhlo
+</section>    
+    
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Tiefe ist wichtig bei Netzwerken
+
+* Aber dann trainiert VGG nicht mehr
+* Vanishing Gradient
+* Experiment mit immer tieferem VGG machen
+* Resnet schafft das durch shortcut
+
+https://towardsdatascience.com/resnets-why-do-they-perform-better-than-classic-convnets-conceptual-analysis-6a9c82e06e53
+</textarea>
+</section>
+
 
 <section data-markdown style="font-size: x-large;">
     <textarea data-template>
