@@ -124,16 +124,6 @@
                 flex: 2;
             }
 
-            /* body:after {
-                content: url(img/embarc_logo.svg) ;
-                position: fixed;
-                bottom: -40px;
-                left: -130px;
-                transform: scale(.3);
-                /* height: 30px; */
-                /* box-shadow: 5px 5px 10px #000;  */
-            } */
-
           </style>
       
     <!-- Printing and PDF exports -->
@@ -495,19 +485,17 @@ https://t.co/crUMktQ0ig "the first model that achieves the elusive dual goals of
     <textarea data-template>
 ### Blocks
 
-1. <a href='#bl1'>Image Recognition quick-start</a>
+1. <a href='#bl1'>Image Recognition Quick-Start</a>
     1. History of Image Recognition
     1. Our first complete example using TensorFlow
-1. <a href='#bl2'>Layers for Image Recognition</a>
+1. <a href='#bl2'>Foundation and BUilding Blocks of Image Recognition</a>
     1. Dense, Convolutions, Pooling, Flatten 
     1. Training und Regularizing a basic VGG
-1. <a href='#bl3'>Standard Architectures</a>
-    1. VGG
-    1. Resnet
-    1. Mobilnet
+1. <a href='#bl3'>What you would really do in a real project?</a>
+   1. Getting and preparing data
+   1. Choosing a pre-built model architecture
+   1. Evaluating results and plan subsequent steps
 1. <a href='#bl4'>Advanced Topics</a>
-    1. Applying image recognition to your own dataset
-    1. Saliency Maps and Active Learning
     1. Transfer Learning
     1. Object Detection
 
@@ -599,7 +587,7 @@ https://vimeo.com/272696002
 <section data-markdown style="font-size: x-large;">
 ### Quickstart - using a CNN model
 
-https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/intro_quickstart.ipynb?hl=en
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/intro_quickstart.ipynb?hl=en
 
 1. Make sure you are ready to work with Colab
     * open the notebook in Chrome
@@ -755,7 +743,7 @@ _VGG starts with a number of convolutional blocks for feature extraction and end
     <textarea data-template>
 ## First training using Keras API
 
-https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/fashion-mnist.ipynb?hl=en
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
 
 _make a copy of the notebook to your Google Drive_
 </textarea>
@@ -1111,8 +1099,7 @@ https://brohrer.github.io/what_nns_learn.html
     <textarea data-template>
 ## MINST training using Keras API Revisited
 
-https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/fashion-mnist.ipynb?hl=en
-
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
 
 * make a copy of the notebook to your Google Drive
 * create your own VGG style network and train it
@@ -1415,7 +1402,7 @@ https://twitter.com/fchollet/status/1463383604675833856
     <textarea data-template>
 ## MINST training using Keras API Revisited
 
-https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/fashion-mnist.ipynb?hl=en
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
 
 * make a copy of the notebook to your Google Drive
 * find out if your model does indeed overfit
@@ -1429,11 +1416,48 @@ https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/fas
 
 <section data-markdown id='bl3'>
     <textarea data-template>
-### Block 3        
+### Block 3 - Practical Image Recognition        
 
-## Standard Architectures
+What you would really do in a real project?
+- Getting and preparing data
+1. Applying image recognition to your own dataset
+- Choosing a pre-built model architecture
+1. VGG
+1. Resnet
+1. Mobilnet
 
+- Evaluating results and plan subsequent steps
+  1. Saliency Maps and Active Learning
+  1. Let Learning Curves Speak to you
 </textarea>
+</section>
+
+<section data-markdown style="font-size: x-large;">
+## Getting and preparing data
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/practical_cnn.ipynb?hl=en
+
+* make a copy of the notebook to your Google Drive
+* choose a data set
+* import it into the notebook
+</section>
+
+<section data-markdown style="font-size: x-large;">
+    <textarea data-template>
+## Applying an architecture of your choice
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/practical_cnn.ipynb?hl=en
+
+* keep working on your copy of the notebook
+* Try out at least one standard CNN architecture: https://keras.io/api/applications/
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+### Let Learning Curves Speak to you
+
+Lernkurven anzeichnen und diskutieren was die aussagen. Auch: welche sind realistisch?
 </section>
 
 <section data-markdown>
@@ -1444,19 +1468,6 @@ https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/fas
 <img src='https://miro.medium.com/max/1400/1*n16lj3lSkz2miMc_5cvkrA.jpeg'>
 
 https://towardsdatascience.com/neural-network-architectures-156e5bad51ba
-</textarea>
-</section>
-
-<section data-markdown style="font-size: x-large;">
-    <textarea data-template>
-## Networks for Images
-
-_A much more realistic example. How do you approach a challenge like this and how to you make it generalize to the real world._
-
-https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/intro_cnn.ipynb?hl=en
-
-* make a copy of the notebook to your Google Drive
-* Try out at least one standard CNN architecture: https://keras.io/api/applications/
 </textarea>
 </section>
 
@@ -1579,11 +1590,11 @@ Notebook auf Fordermann bringen
 </textarea>
 </section>
 
-<section data-markdown style="font-size: x-large;">
+<section data-markdown style="font-size: x-large;" class="todo">
     <textarea data-template>
 ## Transfer learning
 
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/tf2/images-intro.ipynb?hl=en
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/images-intro.ipynb?hl=en
 
 
 _make a copy of the notebook to your Google Drive_
@@ -1683,11 +1694,9 @@ https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
 # All Notebooks
 
 * Intro: 
-  * Quickstart: https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/intro_quickstart.ipynb?hl=en
+  * Quickstart: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/intro_quickstart.ipynb?hl=en
   * MNIST: TODO
-
-* Image/CNN: 
-  * https://colab.research.google.com/github/embarced/notebooks/blob/master/deep/intro_cnn.ipynb?hl=en
+  * Practical: TODO
 
 </textarea>
 </section>
