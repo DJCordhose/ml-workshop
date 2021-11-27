@@ -409,6 +409,16 @@ https://t.co/crUMktQ0ig "the first model that achieves the elusive dual goals of
          - https://btsd.ethz.ch/shareddata/BelgiumTSC/BelgiumTSC_Testing.zip
 </section>    
 
+<section data-markdown class="todo">
+
+Florence: A New Foundation Model for Computer Vision
+abs: https://t.co/sxNJitYcL0
+
+sota results in majority of 44 representative benchmarks, ImageNet-1K zero-shot classification with top-1 accuracy of 83.74 and the top-5 accuracy of
+97.18, 62.4 mAP on COCO fine tuning https://t.co/cln0KqeWxY
+(https://twitter.com/ak92501/status/1462970921518514177?t=12I4f_GejX-Kdjgi8GE5rg&s=03) 
+</section>
+
 
 
 <section data-markdown style="font-size: x-large;" id='agenda'>
@@ -1372,7 +1382,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 * import it into the notebook
 </section>
 
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
     <textarea data-template>
 # Block 2, Netzwerk Typen
 
@@ -1389,17 +1399,7 @@ Das Dataset kann man auch direkt herunterladen, wie hier gezeigt:
 https://towardsdatascience.com/tensorflow-for-computer-vision-how-to-implement-convolutions-from-scratch-in-python-609158c24f82
 https://towardsdatascience.com/tensorflow-for-image-classification-top-3-prerequisites-for-deep-learning-projects-34c549c89e42
 </textarea>
-</section>
-
-<section data-markdown class="todo">
-
-### Architectures   
-* Einbauen: fashion-mnist-resnet
-
-* What is special about MobilNet?
-* What is special about ResNet?
-* MLFlow heil machen (oder ist es bis dahin mit einer neuen Version wieder heil?) oder ausbauen
-</section>
+</section> -->
 
 <section data-markdown class="todo">
 # Resnet besser fundieren
@@ -1510,6 +1510,28 @@ https://poloclub.github.io/cnn-explainer/
 
 <section data-markdown>
     <textarea data-template>
+### Transfer Learning
+</textarea>
+</section>
+
+<section data-markdown style="font-size: x-large;" class="todo">
+    <textarea data-template>
+## Transfer learning
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/practical_cnn.ipynb?hl=en
+
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Object Detection
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
 ### Deep Learning best Practices
 
 </textarea>
@@ -1564,117 +1586,6 @@ _don't give up before you know what the problem is, have trust in your abilities
 </section>
 
 
-<section data-markdown>
-    <textarea data-template>
-### Transfer Learning
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-Notebook auf Fordermann bringen
-</textarea>
-</section>
-
-<section data-markdown style="font-size: x-large;" class="todo">
-    <textarea data-template>
-## Transfer learning
-
-https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/images-intro.ipynb?hl=en
-
-
-_make a copy of the notebook to your Google Drive_
-</textarea>
-</section>
-
-
-
-<section data-markdown>
-    <textarea data-template>
-### Advanced Applications
-
-</textarea>
-</section>
-
-
-<section>
-<h3>Celebrities</h3>
-<p>Do you know any of them?</p>
-<div class="container">
-
-<div class="fragment col">
-<img src="img/unsupervised/gan-model-male2.png" style="height: 250px;">
-</div>
-<div class="fragment col">
-    <img src="img/unsupervised/gan-model-female2.png" style="height: 250px;">
-</div>
-<div class="fragment col">
-    <img src="img/unsupervised/gan-model-female1.png" style="height: 250px;">
-</div>
-<div class="fragment col">
-    <img src="img/unsupervised/gan-model-male.png" style="height: 250px;">
-</div>
-
-</div>
-</section>                                
-
-<section>
-<h3>Images of Celebrities have been generated</h3>
-<p>Trained for two weeks on a single high-end GPU on CelebA-HQ data set (images of celebreties)</p>
-<small>
-<a href="https://alantian.net/ganshowcase/" target="_blank">https://alantian.net/ganshowcase/</a>
-<br>
-<a href="https://github.com/alantian/ganshowcase" target="_blank">https://github.com/alantian/ganshowcase</a>
-<br>
-<a href="https://twitter.com/alanyttian/status/988242167998148608" target="_blank">https://twitter.com/alanyttian/status/988242167998148608</a>
-</small>
-               
-</p>
-</section>                                
-
-
-<section data-markdown>
-<textarea data-template>
-## GANs
-
-* Generative adversarial networks
-* uses two neural networks, working against each other
-* one network tries to create artefacts that look real
-* the other one tries to classify which artefact presented is real and which is fake 
-* typically superior to VAE
-
-<small>
-
-https://pathmind.com/wiki/generative-adversarial-network-gan
-<br>
-https://arxiv.org/abs/1406.2661
-
-</small>
-
-</textarea>
-</section>
-
-<section data-markdown>
-<textarea data-template>
-### Understanding GANs
-
-<a href='https://poloclub.github.io/ganlab/'>
-<img src='img/unsupervised/gan-lab.png'>
-</a>
-    
-<small>
-
-https://twitter.com/minsukkahng/status/1037016214575505409
-<br>
-https://poloclub.github.io/ganlab/
-<br>
-https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
-
-</small>
-</textarea>
-</section>
-
-
 <section data-markdown style="font-size: x-large;" id='notebooks'>
     <textarea data-template>
 # All Notebooks
@@ -1682,7 +1593,8 @@ https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
 * Intro: 
   * Quickstart: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/intro_quickstart.ipynb?hl=en
   * MNIST: TODO
-  * Practical: TODO
+  * Practical: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/practical_cnn.ipynb?hl=en
+
 
 </textarea>
 </section>
@@ -1702,8 +1614,6 @@ https://minsuk.com/research/papers/kahng-ganlab-vast2018.pdf
  * https://transcranial.github.io/keras-js/#/mnist-cnn
   * https://poloclub.github.io/cnn-explainer/
   * https://setosa.io/ev/image-kernels/
-* GANs
-  * https://poloclub.github.io/ganlab/
 * Metrics
   * https://zackakil.github.io/precision-recall-playground/
 
