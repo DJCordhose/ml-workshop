@@ -187,92 +187,13 @@
         9:00 - 17:00
  -->
 
- <section data-markdown class='local' style="font-size: xx-large">
-<textarea data-template>
-### Workshop: Image Recognition with TensorFlow
-
-_Make sure you are prepared_
-1. #wifi Name: xxx, pwd: xxx    
-1. Open this slide deck: https://bit.ly/mlconf-2021-cnn-workshop
-1. Make sure you are ready to work with Colab
-* open https://colab.research.google.com/notebooks/welcome.ipynb in Chrome (IE will not work)
-* make it run using the "Run All" command from the "Runtime" menu
-* you need to allow execution and must either have a Google login or are willing to create one
-* Go through the notebook and make yourself comfortable with Colab
-
-_Talk to your neighbors or ask Olli for help_   
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-# Workshop: Image Recognition with TensorFlow
-
-MLConference 2021, Berlin, https://mlconference.ai/machine-learning-principles/workshop-image-recognition-with-tensorflow/
-
-Oliver Zeigermann, https://www.embarc.de/oliver-zeigermann/
-
-Slides: https://bit.ly/mlconf-2021-cnn-workshop
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# Block 4
-
-Mit Object Detection ausprobieren
-
-Votrainiertes Modell (fettes Resnet)
-
-<img src='img/image/object_detection_present.jpg'>
-<img src='img/image/object_detection_missing.jpg'>
-<img src='img/image/magic_eraser.png'>
-</textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# Block 4: Object Detection API
-
-https://blog.tensorflow.org/2021/11/announcing-tensorflows-kaggle-challenge.html
- * https://www.kaggle.com/c/tensorflow-great-barrier-reef
- * https://www.kaggle.com/khanhlvg/cots-detection-w-tensorflow-object-detection-api
-</textarea>
-</section>
-
-
-<section data-markdown class="todo">
+<!--  
+ <section data-markdown class="todo">
 ### Beispiel für Intro    
 
 The prior in your brain is wrong. This isn’t fried chicken https://t.co/m7ur8rsIR5
 (https://twitter.com/docmilanfar/status/1461194441738178565?t=8QzNG6qVEKII8SpdENga7g&s=03) 
 </section>
-
-
-<section data-markdown class="todo">
-    <textarea data-template>
-# Für Intro (Block 1), Geschichte von Alex Net
-
-A big moment for image recognition
-
-In 2012, a paper wowed the research world for making a huge jump in accuracy on image recognition using deep neural
-networks, leading to a series of rapid advances by researchers outside and within Google. Further advances led to
-applications like Google Photos in 2015, letting you search photos by what’s in them. We then developed other deep
-learning models to help you find addresses in Google Maps, make sense of videos on YouTube, and explore the world around
-you using Google Lens. Beyond our products, we applied these approaches to health-related problems, such as detecting
-diabetic retinopathy in 2016, and then cancerous cells in 2017, and breast cancer in 2020. Better understanding of
-aerial imagery through deep learning let us launch flood forecasting in 2018, now expanded to cover more than 360
-million people in 2021.
-
-https://blog.google/technology/ai/decade-deep-learning-and-whats-next/
-
-ImageNet Classification with Deep Convolutional Neural Networks: 
-- 2021 Nips
-- https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf
-- Our network takes between five and six days to train on two GTX 580 3GB GPUs.
-</textarea>
-</section>
-
 
 <section data-markdown class="todo">
     <textarea data-template>
@@ -314,8 +235,6 @@ Adam an Batch-Size anpassen
 </textarea>
 </section>
 
-
-
 <section data-markdown class="todo">
     <textarea data-template>
 # Intro CNN (Block 2)
@@ -324,7 +243,6 @@ Erstmal Dense machen?
 
 </textarea>
 </section>
-
 
 <section data-markdown class="todo">
     <textarea data-template>
@@ -417,9 +335,40 @@ abs: https://t.co/sxNJitYcL0
 sota results in majority of 44 representative benchmarks, ImageNet-1K zero-shot classification with top-1 accuracy of 83.74 and the top-5 accuracy of
 97.18, 62.4 mAP on COCO fine tuning https://t.co/cln0KqeWxY
 (https://twitter.com/ak92501/status/1462970921518514177?t=12I4f_GejX-Kdjgi8GE5rg&s=03) 
+</section> -->
+
+ <section data-markdown class='local' style="font-size: xx-large">
+<textarea data-template>
+### Workshop: Image Recognition with TensorFlow
+
+_Make sure you are prepared_
+1. #wifi Name: xxx, pwd: xxx    
+1. Open this slide deck: https://bit.ly/mlconf-2021-cnn-workshop
+1. Make sure you are ready to work with Colab
+* open https://colab.research.google.com/notebooks/welcome.ipynb in Chrome (IE will not work)
+* make it run using the "Run All" command from the "Runtime" menu
+* you need to allow execution and must either have a Google login or are willing to create one
+* Go through the notebook and make yourself comfortable with Colab
+
+_Talk to your neighbors or ask Olli for help_   
+</textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+# Workshop: Image Recognition with TensorFlow
 
+MLConference 2021, Berlin, https://mlconference.ai/machine-learning-principles/workshop-image-recognition-with-tensorflow/
+
+Oliver Zeigermann, https://www.embarc.de/oliver-zeigermann/
+
+Slides: https://bit.ly/mlconf-2021-cnn-workshop
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+* Grundlagen Standard-Architekturen besser ausarbeiten (Todos sind im Text)
+</section>
 
 <section data-markdown style="font-size: x-large;" id='agenda'>
     <textarea data-template>
@@ -510,6 +459,18 @@ https://vimeo.com/272696002
 
 <section data-markdown>
     <textarea data-template>
+### ImageNet Classification with Deep Convolutional Neural Networks (AlexNet) 
+- https://en.wikipedia.org/wiki/AlexNet
+- https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf
+- 2012 at NIPS
+- Our network takes between five and six days to train on two GTX 580 3GB GPUs.
+- https://blog.google/technology/ai/decade-deep-learning-and-whats-next/
+  - 2012 huge jump in accuracy on image recognition using deep neural networks
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
 ## History of Image Recognition: Deep Learning
 
 <img src='img/viz-hist-3.png'>
@@ -523,6 +484,9 @@ https://vimeo.com/272696002
 
 </textarea>
 </section>
+
+
+
 
 <section data-markdown style="font-size: x-large;">
 ### Quickstart - using a CNN model
@@ -1360,15 +1324,8 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 What you would really do in a real project?
 - Getting and preparing data
-1. Applying image recognition to your own dataset
 - Choosing a pre-built model architecture
-1. VGG
-1. Resnet
-1. Mobilnet
-
 - Evaluating results and plan subsequent steps
-  1. Saliency Maps and Active Learning
-  1. Let Learning Curves Speak to you
 </textarea>
 </section>
 
@@ -1400,6 +1357,30 @@ https://towardsdatascience.com/tensorflow-for-computer-vision-how-to-implement-c
 https://towardsdatascience.com/tensorflow-for-image-classification-top-3-prerequisites-for-deep-learning-projects-34c549c89e42
 </textarea>
 </section> -->
+
+<section data-markdown>
+## Let Learning Curves Speak to you
+### Optional interactive experiment: 
+
+1. let's make up some learning curves
+1. what do they look like?
+1. are they speaking to you?
+1. what do they mean?
+1. do they look realistic?
+
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+
+## Comparing Standard CNN Architectures
+
+<img src='https://miro.medium.com/max/1400/1*n16lj3lSkz2miMc_5cvkrA.jpeg'>
+
+https://towardsdatascience.com/neural-network-architectures-156e5bad51ba
+</textarea>
+</section>
+
 
 <section data-markdown class="todo">
 # Resnet besser fundieren
@@ -1436,24 +1417,6 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 * keep working on your copy of the notebook
 * Try out at least one standard CNN architecture: https://keras.io/api/applications/
-</textarea>
-</section>
-
-
-<section data-markdown class="todo">
-### Let Learning Curves Speak to you
-
-Lernkurven anzeichnen und diskutieren was die aussagen. Auch: welche sind realistisch?
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-
-## Comparing Standard CNN Architectures
-
-<img src='https://miro.medium.com/max/1400/1*n16lj3lSkz2miMc_5cvkrA.jpeg'>
-
-https://towardsdatascience.com/neural-network-architectures-156e5bad51ba
 </textarea>
 </section>
 
@@ -1508,13 +1471,7 @@ https://poloclub.github.io/cnn-explainer/
 </textarea>
 </section>
 
-<section data-markdown>
-    <textarea data-template>
-### Transfer Learning
-</textarea>
-</section>
-
-<section data-markdown style="font-size: x-large;" class="todo">
+<section data-markdown style="font-size: x-large;">
     <textarea data-template>
 ## Transfer learning
 
@@ -1523,11 +1480,36 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </textarea>
 </section>
 
-<section data-markdown class="todo">
+<section data-markdown style="font-size: x-large">
     <textarea data-template>
 ### Object Detection
+
+https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/od_cats_dogs.ipynb
+
+<!-- 
+* https://colab.research.google.com/github/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb
+  * Run and add an image of a cat and a dog for detection
+  * https://images.ctfassets.net/82d3r48zq721/45liwTLsDMSJt4N22RqrHX/cd992f88ca8737f95b085212906d6d86/Can-cats-and-dogs-get-coronavirus_resized.jpg
+* https://github.com/tensorflow/models/tree/master/research/object_detection
+  * https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md
+  * https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
+  * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/object_detection_eager_few_shot_od_training.ipynb?hl=en
+    * Fixed copy of https://colab.research.google.com/github/tensorflow/models/blob/master/research/object_detection/colab_tutorials/eager_few_shot_od_training_tf2_colab.ipynb
+    * Label with bounding boxes and train to recognize the rubber duckie
+  * https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/od_cats_dogs.ipynb -->
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Join the competition
+
+https://blog.tensorflow.org/2021/11/announcing-tensorflows-kaggle-challenge.html
+ * https://www.kaggle.com/c/tensorflow-great-barrier-reef
+ * https://www.kaggle.com/khanhlvg/cots-detection-w-tensorflow-object-detection-api
+</textarea>
+</section>
+
 
 
 <section data-markdown>
@@ -1592,7 +1574,7 @@ _don't give up before you know what the problem is, have trust in your abilities
 
 * Intro: 
   * Quickstart: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/intro_quickstart.ipynb?hl=en
-  * MNIST: TODO
+  * MNIST: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
   * Practical: https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/practical_cnn.ipynb?hl=en
 
 
