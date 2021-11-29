@@ -248,12 +248,6 @@ Erstmal Dense machen?
     <textarea data-template>
 # High Level Todos
 
-Intro, Block 1
- * Why CNNs in the first place?
-   * http://colah.github.io/notes/bio-analogies/ 
-   * In neural networks, weight-tying is when the same weights are used in multiple locations. This allows the network to abstract repeated "functions" and use them multiple times. The most famous example is probably the convolutional neural network, which uses a special version of weight tying to implement translation symmetry. Weight tying allows neural networks to encode complex functions with many fewer weights, making them easier to learn.
-
-
 Advanced, Block 4
 * https://pair-code.github.io/lit/demos/images.html
 
@@ -263,42 +257,6 @@ Advanced, Block 4
 Matthew Carrigan (@carrigmat) twitterte um 4:11 PM on Di., Okt. 12, 2021:
 You don't really realize how quickly ML moves until you look back. If you go back more than 5 years everyone is still fumbling around trying to work out why their convnet maxes out at 8 layers and won't train after that.
 (https://twitter.com/carrigmat/status/1447927947390857222?t=I8U8YuLdUl1FWyHt3VmLlw&s=03) 
-
-
-- [ ] tf.data Ansatz ins CNN Notebook
-- [ ] Hier gibt es schon die Arbeits-Kopie: https://colab.research.google.com/drive/1XX5wjhsk4-tlf0iHiq3iHU7OKiywiHV1?hl=en
-- [ ] tf.data und diese Keras Funktion zum einfachen erzeugen auch für das CNN Notebook mit den Verkehrsschildren
-- [ ] CNN Notebook: PPMs kodiert als png in TFRecords
-    - [ ] Oder zur Not als aufgeblasene arrays
-    - [ ] TFRecords dekodieren und enkodieren und Rescale
-    - [ ] https://www.tensorflow.org/api_docs/python/tf/io/encode_png
-
-* Transfer Learning zum laufen bringen
-  * Standard-Beispiel nehmen?
-  * Anderer Datensatz?
-  * Hunde?
-
-  * Object Detection mit Standard-Notebooks
-  - [ ] https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md
-      - [ ] https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_notebook.md
-
-      Amusing! Object detection cast naively into language modeling framework + borrowing many of the tips&tricks.
-      - random object ordering seems fine ✅
-      - coords, class labels flattened into a single softmax 😂
-      - sequence augmentation is the most gnarly part, almost as yucky as nms 😬
-      (https://twitter.com/karpathy/status/1441497808897380357?s=03) 
-      
-
-  * Andere Möglichkeiten?
- - [ ] auch Unsupervised?
- - [ ] Object Detection?
- - [ ] OCR: https://keras.io/examples/vision/handwriting_recognition/ ?
- - [ ] I can't believe how freakishly easy it is to train an image classifier using @huggingface's HuggingPics hub model. I created a string instrument classifier. You can check it out here. https://t.co/c8M8k9o8bA (https://twitter.com/vesuvius_24/status/1411388101981655041?s=03) 
-- [ ] Curriculum Learning ausprobieren
-- [ ] - [ ] Wenn die Labeln drei Oberordner
-- [ ] 	- [ ] leicht, mittel, schwer
-- [ ] 	- [ ] https://towardsdatascience.com/how-to-improve-your-network-performance-by-using-curriculum-learning-3471705efab4
-- [ ] 	- [ ] https://en.wikipedia.org/wiki/Active_learning_(machine_learning)  
 </textarea>
 </section>
 
@@ -315,6 +273,12 @@ https://t.co/crUMktQ0ig "the first model that achieves the elusive dual goals of
 
 <section data-markdown class="todo">
 # Nice to have
+
+- [ ] Curriculum Learning ausprobieren
+- [ ] - [ ] Wenn die Labeln drei Oberordner
+- [ ] 	- [ ] leicht, mittel, schwer
+- [ ] 	- [ ] https://towardsdatascience.com/how-to-improve-your-network-performance-by-using-curriculum-learning-3471705efab4
+- [ ] 	- [ ] https://en.wikipedia.org/wiki/Active_learning_(machine_learning)  
 
   - [ ] Curriculum Learning
   - Mehr Samples suchen, oder welche zurückhalten
@@ -770,6 +734,18 @@ y_pred = model.predict(X_pred)
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Why CNNs in the first place?
+
+_In neural networks, weight-tying is when the same weights are used in multiple locations. This allows the network to
+abstract repeated "functions" and use them multiple times. The most famous example is probably the convolutional neural
+network, which uses a special version of weight tying to implement translation symmetry. Weight tying allows neural
+networks to encode complex functions with many fewer weights, making them easier to learn._
+
+http://colah.github.io/notes/bio-analogies/
+</textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
