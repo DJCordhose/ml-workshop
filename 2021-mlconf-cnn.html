@@ -301,7 +301,28 @@ sota results in majority of 44 representative benchmarks, ImageNet-1K zero-shot 
 (https://twitter.com/ak92501/status/1462970921518514177?t=12I4f_GejX-Kdjgi8GE5rg&s=03) 
 </section> -->
 
- <section data-markdown style="font-size: xx-large">
+
+<!-- <section data-markdown class="todo">
+# Resnet besser fundieren
+
+* Sebastian Raschka (@rasbt) twitterte um 7:06 PM on Fr., Okt. 01, 2021:
+"Has the ResNet Hypothesis been debunked?" -- Once in a while, you can find really good discussions and pointers on reddit (https://t.co/B96xaI23r8)
+
+aka papers that you can (1) train ResNets without shortcuts with good results if you are careful about initialization and [1/2]
+(https://twitter.com/rasbt/status/1443985707601735681?s=03) 
+
+* https://www.youtube.com/watch?v=q_IlqYlYhlo
+</section>     -->
+    
+
+<!-- <section data-markdown class="todo">
+
+When Vision Transformers Outperform ResNets without Pre-training or Strong Data Augmentations
+
+https://arxiv.org/abs/2106.01548
+</section>     -->
+
+<section data-markdown style="font-size: xx-large">
 <textarea data-template>
 ### Workshop: Image Recognition with TensorFlow
 
@@ -328,10 +349,6 @@ Oliver Zeigermann, https://www.embarc.de/oliver-zeigermann/
 
 Slides: https://bit.ly/mlconf-2021-cnn-workshop
 </textarea>
-</section>
-
-<section data-markdown class="todo">
-* Grundlagen Standard-Architekturen besser ausarbeiten (Todos sind im Text)
 </section>
 
 <section data-markdown style="font-size: x-large;" id='agenda'>
@@ -470,7 +487,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 </section>
 
-<section data-markdown>
+<!-- <section data-markdown>
 ## What is TensorFlow
 
 * Platform
@@ -501,42 +518,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 </small>
 
 </textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Keras vs TensorFlow
-
-<img src='img/tf-vs-keras.png'>
-
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
-
-</textarea>
-</section>
-
-<!-- 
-<section data-markdown>
-    <textarea data-template>
-## Keras: Progressive Disclosure of Complexity
-
-<img src='img/keras-levels.png'>
-
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
-
-</textarea>
-</section>
-
-<section data-markdown>
-    <textarea data-template>
-## Keras can go from Scikit-Learn API style all the way to Numpy API style
-
-<img src='img/keras-abstraction.png'>
-
-Franćois Chollet - Keras: The Next Five Years, Scaled ML
-
-</textarea>
-</section>
- -->
+</section> -->
 
 <section data-markdown>
 ### Deep Learning requires special skills
@@ -595,6 +577,42 @@ model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_dat
 <a href='https://www.tensorflow.org/guide/basic_training_loops'>https://www.tensorflow.org/guide/basic_training_loops</a>
 <a href='https://www.tensorflow.org/api_docs/python/tf/keras/Model'>https://www.tensorflow.org/api_docs/python/tf/keras/Model</a>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+## Keras vs TensorFlow
+
+<img src='img/tf-vs-keras.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+
+<section data-markdown>
+    <textarea data-template>
+## Keras: Progressive Disclosure of Complexity
+
+<img src='img/keras-levels.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Keras can go from Scikit-Learn API style all the way to Numpy API style
+
+<img src='img/keras-abstraction.png'>
+
+Franćois Chollet - Keras: The Next Five Years, Scaled ML
+
+</textarea>
+</section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -763,10 +781,7 @@ https://twitter.com/wster/status/1079741301418049537
     <textarea data-template>
 ### Interactive exploration
 
-* https://github.com/okdalto/VisualizeMNIST
-* https://transcranial.github.io/keras-js/#/mnist-cnn
-* https://cs.stanford.edu/people/karpathy/convnetjs/demo/cifar10.html
-* http://setosa.io/ev/image-kernels/
+http://setosa.io/ev/image-kernels/
 
 </textarea>
 </section>
@@ -862,7 +877,7 @@ Oriol Vinyals - The Deep Learning toolkit in 2020:  https://youtu.be/-fdexQBpRas
 
 <section data-markdown style="font-size: xx-large;" class="fragments">
     <textarea data-template>
-## Losses
+## How-To Losses
 
 need to match final layer and output of training data 
 
@@ -981,7 +996,7 @@ https://brohrer.github.io/what_nns_learn.html
 
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
 
-* make a copy of the notebook to your Google Drive
+* keep working on your copy
 * create your own VGG style network and train it
 * competition: who gets the best score?
 </textarea>
@@ -1284,7 +1299,7 @@ https://twitter.com/fchollet/status/1463383604675833856
 
 https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/notebooks/cnn/fashion-mnist.ipynb?hl=en
 
-* make a copy of the notebook to your Google Drive
+* keep working on your copy
 * find out if your model does indeed overfit
  * enable logging and analytics
  * all this is already prepared in the notebook
@@ -1298,7 +1313,7 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
     <textarea data-template>
 ### Block 3 - Practical Image Recognition        
 
-What you would really do in a real project?
+What you would do in a real project?
 - Getting and preparing data
 - Choosing a pre-built model architecture
 - Evaluating results and plan subsequent steps
@@ -1312,7 +1327,14 @@ https://colab.research.google.com/github/DJCordhose/ml-workshop/blob/master/note
 
 * make a copy of the notebook to your Google Drive
 * choose a data set
+  * use the one prepared in the notebook
+  * you can try another one, but be prepared for trouble
 * import it into the notebook
+* train using your best model
+* evaluate the results 
+  * https://raghakot.github.io/keras-vis/visualizations/saliency/
+  * change in which pixel has high impace on prediction class?
+* stop at _Step VII: Standard Architectures_
 </section>
 
 <!-- <section data-markdown class="todo">
@@ -1357,33 +1379,81 @@ https://towardsdatascience.com/neural-network-architectures-156e5bad51ba
 </textarea>
 </section>
 
-
-<!-- <section data-markdown class="todo">
-# Resnet besser fundieren
-
-* Sebastian Raschka (@rasbt) twitterte um 7:06 PM on Fr., Okt. 01, 2021:
-"Has the ResNet Hypothesis been debunked?" -- Once in a while, you can find really good discussions and pointers on reddit (https://t.co/B96xaI23r8)
-
-aka papers that you can (1) train ResNets without shortcuts with good results if you are careful about initialization and [1/2]
-(https://twitter.com/rasbt/status/1443985707601735681?s=03) 
-
-* https://www.youtube.com/watch?v=q_IlqYlYhlo
-</section>     -->
-    
-
-<section data-markdown class="todo">
+<section data-markdown class="fragments">
     <textarea data-template>
-### Tiefe ist wichtig bei Netzwerken
+### Depth in Image Recognition is king
 
-* Aber dann trainiert VGG nicht mehr
-* Vanishing Gradient
-* Experiment mit immer tieferem VGG machen
-* Resnet schafft das durch shortcut
+* the deeper the network, the more powerful it is
+* but when you add more layers, the model does not train any more
+* vanishing or exploding gradients are the problem
+* regularization no longer works 
 
 https://towardsdatascience.com/resnets-why-do-they-perform-better-than-classic-convnets-conceptual-analysis-6a9c82e06e53
 </textarea>
 </section>
 
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Effect of large networks
+
+<img src='img/vanishing-gradients-example.png'>
+
+https://arxiv.org/abs/1512.03385
+</textarea>
+</section>
+
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Resnet offers a solution to vanishing gradients
+
+<img src='img/residual.png' style="height: 400px;">
+
+* introduces shortcuts
+* 8x deeper than VGG
+* skips final fc layer used for classifier
+
+
+
+<!-- https://arxiv.org/abs/1512.03385 -->
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Mobilenet: Efficiency is king
+
+* based on a streamlined architecture 
+* reduces computational load from ResNet
+* uses depth-wise separable convolutions
+  * much more efficient, but can not perform as many different filters
+* recommended to try first, often simply gets the job done
+
+https://arxiv.org/abs/1704.04861
+https://keras.io/applications/#mobilenet
+https://towardsdatascience.com/a-basic-introduction-to-separable-convolutions-b99ec3102728
+</textarea>
+</section>
+
+<section data-markdown class="fragments">
+    <textarea data-template>
+### Mobilenet V2
+
+* very similar to the original MobileNet
+  * it has a drastically lower parameter count than the original MobileNet 
+* inverted residual with linear bottleneck
+  * input is a low-dimensional compressed representation
+  * first expanded to high dimension 
+  * then filtered with a lightweight depthwise convolution
+  * finally projected back to a low-dimensional representation with a linear convolution
+* support any input size greater than 32 x 32
+  * larger image sizes offering better performance
+* V1 might still be better (again, try it out)
+
+https://arxiv.org/abs/1801.04381
+https://keras.io/api/applications/mobilenet/#mobilenetv2-function
+</textarea>
+</section>
 
 <section data-markdown style="font-size: x-large;">
     <textarea data-template>
@@ -1490,7 +1560,7 @@ https://blog.tensorflow.org/2021/11/announcing-tensorflows-kaggle-challenge.html
 
 <section data-markdown>
     <textarea data-template>
-### Deep Learning best Practices
+## Deep Learning best Practices
 
 </textarea>
 </section>
@@ -1566,7 +1636,6 @@ _don't give up before you know what the problem is, have trust in your abilities
 * Deep Learning in general
   * https://okai.brown.edu
   * https://playground.tensorflow.org/
-* Classification:
 * CNNs
  * https://teachablemachine.withgoogle.com/
  * https://transcranial.github.io/keras-js/#/mnist-cnn
